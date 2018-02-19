@@ -7,13 +7,15 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
 
 // Modules
 import { SidebarJSModule } from 'ng-sidebarjs';
+import { ContentHomeComponent } from './content-home/content-home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    SidemenuComponent
+    SidemenuComponent,
+    ContentHomeComponent
   ],
   imports: [
     BrowserModule,
