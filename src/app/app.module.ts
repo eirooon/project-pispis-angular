@@ -1,25 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { SidemenuComponent } from './sidemenu/sidemenu.component';
+
+//Features
+import { HomeComponent } from './modules/home/home.component';
+import { PatientComponent } from './modules/patient/patient.component';
 
 // Modules
-import { SidebarJSModule } from 'ng-sidebarjs';
-import { ContentHomeComponent } from './content-home/content-home.component';
-
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    SidemenuComponent,
-    ContentHomeComponent
+    HomeComponent,
+    PatientComponent
   ],
   imports: [
     BrowserModule,
-    SidebarJSModule.forRoot()
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
