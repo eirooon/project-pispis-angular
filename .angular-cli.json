@@ -19,7 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "sass/styles.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js"
@@ -56,7 +56,9 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
-    "component": {}
+    "styleExt": "scss",
+    "component": {
+      
+    }
   }
 }
