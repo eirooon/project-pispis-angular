@@ -1,0 +1,19 @@
+span, p, section, aside{
+    padding: 5px 0px;
+    font-size: 12px;
+}
+a{
+    color: $primary-color;
+    cursor: pointer;
+}
+.btn{
+    width: 100%;
+    height: 40px;
+    border-radius: 3px;
+    border: none;
+    color: $primary-color-text;
+}
+
+.btn-primary{
+    background-color: $primary-color;
+}

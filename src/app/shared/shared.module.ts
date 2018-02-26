@@ -21,7 +21,7 @@ import { SidebarJSModule } from 'ng-sidebarjs';
   ],
   exports: [
     HeaderComponent,
-    SidemenuComponent,
+    SidemenuComponent
   ]
 })
 export class SharedModule { }

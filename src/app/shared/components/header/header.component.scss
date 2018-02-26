@@ -1,0 +1,23 @@
+header {
+    display: grid;
+    grid-template-columns: 1fr 9fr 1fr;
+    grid-auto-rows: 60px;
+    width: 100%;
+    background-color: #0052cc;
+    color: white;
+    position: fixed;
+    top: 0;
+    transition: top 0.3s ease-in-out;
+    align-items: center;
+    
+    .menu-hamburger{
+        justify-self: end;
+    }
+    .menu-title{
+        justify-self: center;
+    }
+}
+
+.nav-up {
+    top: -60px;
+}
