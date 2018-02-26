@@ -5,10 +5,9 @@
     max-width: 1024px;
     margin: 80px auto;
     grid-gap: 30px;}
-    section{
-        font-size: 12px;
-        padding: 10px;
-    }
+.content-wrapper section{
+    font-size: 12px;
+    background-color: #f1f1f1;}
     @media only screen and (max-width:1024px){
         .content-wrapper{
             margin-left: 15px;
@@ -17,4 +16,3 @@
         .content-wrapper{
             grid-template-columns: 1fr;}}
 
-            

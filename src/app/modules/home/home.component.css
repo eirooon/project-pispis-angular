@@ -1,0 +1,20 @@
+.content-wrapper{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(300px, auto);
+    max-width: 1024px;
+    margin: 80px auto;
+    grid-gap: 30px;}
+section{
+    font-size: 12px;
+    padding: 10px;
+}
+@media only screen and (max-width:1024px){
+    .content-wrapper{
+        margin-left: 15px;
+        margin-right: 15px;}}
+@media only screen and (max-width:768px){
+    .content-wrapper{
+        grid-template-columns: 1fr;}}
+
+            

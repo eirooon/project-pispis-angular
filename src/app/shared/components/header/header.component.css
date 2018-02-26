@@ -10,14 +10,16 @@ header {
     transition: top 0.3s ease-in-out;
     align-items: center;
     
-    .menu-hamburger{
-        justify-self: end;
-    }
-    .menu-title{
-        justify-self: center;
-    }
 }
-
+header .menu-hamburger{
+    justify-self: end;
+}
+header .menu-title{
+    justify-self: center;
+}
+header i{
+    color: white;
+}
 .nav-up {
     top: -60px;
 }
