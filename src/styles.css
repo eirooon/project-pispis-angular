@@ -1,39 +1,25 @@
 body {
     overflow-x: hidden;
     background-color: #FAFBFC;
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto; 
-}
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto;}
 
 label{
     color: #091E42;
-    font-weight: 500;
-}
+    font-weight: 500;}
 .description{
     color: #5E6C84;
-    padding: 10px 0;
-    
-}
+    padding: 10px 0;}
+
 /*--- ELEMENTS ---*/
 span, p, section, aside{
     padding: 5px 0px;
-    font-size: 12px;
-}
+    font-size: 12px;}
 a{
-    cursor: pointer;
-}
+    cursor: pointer;}
 
 /*--- BUTTONS ---*/
-.btn{
-    width: 100%;
-    height: 40px;
-    border-radius: 3px;
-    border: none;
-    color: #fff;
-}
-
-.btn-primary{
-    background-color: #0052CC;
-}
+.btn{ width: 100%; height: 40px; border-radius: 3px; border: none; color: #fff;}
+.btn-primary{ background-color: #0052CC; }
 
 /*--- FORMS ---*/
 form{
