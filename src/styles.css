@@ -10,12 +10,49 @@ label{
     color: #5E6C84;
     padding: 10px 0;}
 
+/*--- HEADER ---*/
+header {
+    height: 60px;
+    width: 100%;
+    background-color: #0052cc;
+    color: white;
+    position: fixed;
+    top: 0;
+    transition: top 0.3s ease-in-out;
+    align-items: center;}
+.header-wrapper{
+    width: 1024px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-auto-rows: 60px;}
+.header-wrapper .menu-hamburger{
+    align-self: center;
+    padding-left: 20px;}
+.header-wrapper .menu-title{
+    justify-self: center;
+    align-self: center;}
+.header-wrapper .menu-more{
+    align-self: center;
+    justify-self: end;
+    padding-right: 20px;}
+.header-wrapper i{
+    color: white;}
+.nav-up {
+    top: -60px;}
+
+@media only screen and (max-width:768px){
+    .header-wrapper{
+        width: 100%;}
+}
+
 /*--- ELEMENTS ---*/
 span, p, section, aside{
     padding: 5px 0px;
     font-size: 12px;}
 a{
     cursor: pointer;}
+    
 
 /*--- BUTTONS ---*/
 .btn{ width: 100%; height: 40px; border-radius: 3px; border: none; color: #fff;}
@@ -39,3 +76,4 @@ form{
     padding-left:10px;
     border: 1px solid #979797;
     border-radius: 3px; }
+

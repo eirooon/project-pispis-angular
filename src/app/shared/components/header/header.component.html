@@ -1,7 +1,8 @@
 <header class="nav-down">
     <div class="header-wrapper">
         <div class="menu-hamburger"><a sidebarjsOpen><i class="zmdi zmdi-menu"></i></a></div>
-        <h3 class="menu-title">App Title Here</h3>
-        <div class="menu-more"><a><i class="zmdi zmdi-more"></i></a></div>
+        <h3 class="menu-title">{{setTitle}}</h3>
+        <div class="menu-more" *ngIf="isHomeSelected"><a><i class="zmdi zmdi-more"></i></a></div>
+        <div class="menu-more" *ngIf="isPatientSelected"><a><i class="zmdi zmdi-plus"></i></a></div>
     </div>
 </header>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import * as $ from 'jquery';
+import {} from '../sidemenu/sidemenu.component';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +7,18 @@ import * as $ from 'jquery';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  @Input() setTitle;
+  isHomeSelected: boolean;
+  isPatientSelected: boolean;
 
   constructor() { }
 
   ngOnInit() {
+    if(this.setTitle == "Home" ){
+      this.isHomeSelected = true;
+    }else if (this.setTitle == "Patient"){
+      this.isPatientSelected = true;
+    }
   }
 
 }

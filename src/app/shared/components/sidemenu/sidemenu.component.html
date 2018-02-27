@@ -4,22 +4,23 @@
     </div>
     <div class="sidenav-content">
         <ul>
-            <li routerLink="/home"  routerLinkActive="active" sidebarjsClose><a>Home</a></li>
+            <li routerLink="/home" routerLinkActive="active" sidebarjsClose><a>Home</a></li>
             <li><a sidebarjsClose>Appointment and Schedule</a></li>
             <hr>
             <li><a sidebarjsClose>Queue List</a></li>
-            <li routerLink="/patient" sidebarjsClose><a>Patient List</a></li>
-            <li><a sidebarjsClose>ICD-10 List</a></li>
-            <li><a sidebarjsClose>Medication List</a></li>
+            <li routerLink="/patient" routerLinkActive="active" sidebarjsClose><a>Patient</a></li>
+            <li><a sidebarjsClose>ICD-10</a></li>
+            <li><a sidebarjsClose>Medications</a></li>
             <hr>
-            <li><a sidebarjsClose>Diagnostic Test List</a></li>
-            <li><a sidebarjsClose>Download Template</a></li>
+            <li><a sidebarjsClose>Diagnostic Tests</a></li>
+            <li><a sidebarjsClose>Download Templates</a></li>
             <hr>
             <li><a sidebarjsClose>Contact Us</a></li>
             <li><a sidebarjsClose>Privacy Policy</a></li>
         </ul>
     </div>
     <div class="sidenav-footer">
-            <a><i class="zmdi zmdi-account"></i>Account Settings</a>
+        <a><i class="zmdi zmdi-account"></i>Account Settings</a>
+        <a class="logout" title="Logout" routerLink="/login" sidebarjsClose><i class="zmdi zmdi-power"></i></a>
     </div>
 </sidebar-js>

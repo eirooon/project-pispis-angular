@@ -22,7 +22,8 @@ header {
 .header-wrapper .menu-more{
     align-self: center;
     justify-self: end;
-    padding-right: 20px;}
+    padding-right: 20px;
+    font-size: 22px !important;}
 .header-wrapper i{
     color: white;}
 .nav-up {

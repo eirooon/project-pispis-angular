@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +8,14 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(
-    private router: Router
-  ) { }
+  private router: Router
+  constructor() { }
 
   ngOnInit() {
   }
 
-  onLoginClick(){
-    this.router.navigate(['/home']);
+  goHome(){
+    // this.router.navigate(['/home']);
+    console.log("click");
   }
 }
