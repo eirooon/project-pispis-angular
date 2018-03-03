@@ -50,6 +50,12 @@ sidebar-js hr {
     border:0;
     border-top: 1px solid #f1f1f1;}
 
+[sidebarjs].sidebarjs--left [sidebarjs-container]{
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+}
 .active{
     background-color:rgb(239, 245, 255);
     color: #0052CC;}
+
+    
