@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 
 // Modules
 import { SharedModule } from './shared/shared.module';
+import { HomeModule } from './modules/home/home.module'
+import { PatientModule } from './modules/patient/patient.module';
 
 //Features
 import { HomeComponent } from './modules/home/home.component';
