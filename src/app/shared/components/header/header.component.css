@@ -3,7 +3,6 @@ header {
     width: 100%;
     background-color: #0052cc;
     color: white;
-    position: fixed;
     top: 0;
     transition: top 0.3s ease-in-out;
     align-items: center;}
@@ -15,21 +14,26 @@ header {
     grid-auto-rows: 60px;}
 .header-wrapper .menu-hamburger{
     align-self: center;
-    padding-left: 20px;}
+    /* display: none; */
+}
 .header-wrapper .menu-title{
     justify-self: center;
     align-self: center;}
 .header-wrapper .menu-more{
     align-self: center;
-    justify-self: end;
-    padding-right: 20px;
-    font-size: 22px !important;}
+    justify-self: end;}
 .header-wrapper i{
     color: white;}
 .nav-up {
     top: -60px;}
 
-@media only screen and (max-width:768px){
+@media only screen and (max-width:1024px){
     .header-wrapper{
         width: 100%;}
+    .header-wrapper .menu-more{
+        padding-right: 20px;}
+    .header-wrapper .menu-hamburger{
+        padding-left: 20px;
+        /* display: block; */
+    }
 }

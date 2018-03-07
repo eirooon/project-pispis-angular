@@ -25,6 +25,8 @@
         padding-top: 20px;
         text-align: center;
 }
+.login-page .login-wrapper button{
+    width: 100%;}
 @media only screen and (max-width:768px){
     .login-page .login-wrapper{
         align-self: flex-start;

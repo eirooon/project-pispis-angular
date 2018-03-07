@@ -6,24 +6,20 @@ import { AppComponent } from './app.component';
 // Modules
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './modules/home/home.module'
-import { PatientModule } from './modules/patient/patient.module';
-
-//Features
-import { HomeComponent } from './modules/home/home.component';
-import { PatientComponent } from './modules/patient/patient.component';
-import { LoginComponent } from './modules/login/login.component';
+import { LoginModule } from './modules/login/login.module';
+// import { PatientModule } from './modules/patient/patient.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    PatientComponent,
-    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    LoginModule,
+    HomeModule,
+    // PatientModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

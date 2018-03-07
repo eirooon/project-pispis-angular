@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {} from '../sidemenu/sidemenu.component';
-import { Route, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,22 +11,22 @@ export class HeaderComponent implements OnInit {
   setTitle: string;
   isHomeSelected: boolean;
   isPatientSelected: boolean;
-  
+  isLoginSelected: boolean;
+
   constructor(
-    private route: ActivatedRoute
-  ) { }
+    private router: Router) {
+  }
 
   ngOnInit() {
-    if(this.route.routeConfig != null){
-      if (this.route.routeConfig.path == "home"){
-        this.isHomeSelected = true;
-        this.setTitle = "Home";
-      }else if( this.route.routeConfig.path == "patient"){
-        this.isPatientSelected = true;
+    this.router.events
+    .subscribe((event) => {
+      if(this.router.url.startsWith('/home')){
+        this.setTitle = "Home";   
+      }else if(this.router.url.startsWith('/patient')){
         this.setTitle = "Patient";
       }
-    }
-    
+    });
+
   }
 
 }

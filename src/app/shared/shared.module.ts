@@ -9,6 +9,8 @@ import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
 //3rd Party
 import { SidebarJSModule } from 'ng-sidebarjs';
 
+
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -17,7 +19,7 @@ import { SidebarJSModule } from 'ng-sidebarjs';
   imports: [
     CommonModule,
     SidebarJSModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
   ],
   exports: [
     HeaderComponent,
