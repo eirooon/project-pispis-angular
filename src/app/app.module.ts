@@ -9,6 +9,10 @@ import { HomeModule } from './modules/home/home.module'
 import { LoginModule } from './modules/login/login.module';
 // import { PatientModule } from './modules/patient/patient.module';
 
+//Service worker
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +24,7 @@ import { LoginModule } from './modules/login/login.module';
     HomeModule,
     // PatientModule,
     SharedModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [],
   bootstrap: [AppComponent]
