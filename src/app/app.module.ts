@@ -9,7 +9,6 @@ import { HomeModule } from './modules/home/home.module'
 import { LoginModule } from './modules/login/login.module';
 // import { PatientModule } from './modules/patient/patient.module';
 
-//Service worker
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
