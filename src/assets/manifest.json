@@ -1,0 +1,27 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "Patient Information System",
+    "scope": "/",
+    "display": "standalone",
+    "start_url": "/index.html",
+    "short_name": "NF",
+    "icons": [
+        {
+        "src": "/assets/icons/icon-384x384.png",
+        "sizes": "384x384",
+        "type": "image/png"
+        },
+        {
+        "src": "/assets/icons/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+        }
+    ],
+    "theme_color": "#0052cc",
+    "description": "",
+    "orientation": "any",
+    "background_color": "#0052cc",
+    "related_applications": [],
+    "prefer_related_applications": false
+}
