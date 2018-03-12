@@ -1,22 +1,26 @@
 <div class="login-page">
   <div class="login-wrapper">
-      <div class="login-cover"></div>
-      <form>
-         <div class="form-group">
-            <label>Username</label>
-            <input type="text" placeholder="Enter username"/>
-          </div>
-          <div class="form-group">
-            <label>Password</label>
-            <input type="text" placeholder="Enter password"/>
-          </div>
-          <button class="btn btn-primary" routerLink="/home"> Login </button>
-
-      <div class="call-to-action-register">
-          <p>
-            Don't have an account? <a>Register Now!</a>
-          </p>
+    <div class="login-cover"></div>
+    <form class="login-form">
+    <div class="form-inputs">
+      <div class="form-group">
+        <label>Username</label>
+        <input class="form-control" type="text" placeholder="Enter username" />
       </div>
-      </form>
+      <div class="form-group">
+        <label>Password</label>
+        <input class="form-control" type="password" placeholder="Enter password" />
+      </div>
+    </div>
+    <div class="form-actions">
+      <input class="btn btn-primary btn-wide" type="submit" value="Log in" routerLink="/home"/>
+    </div>
+    <div class="call-to-action-register">
+      <span>
+        Don't have an account?
+        <a>Register Now!</a>
+      </span>
+    </div>
+  </form>
   </div>
 </div>

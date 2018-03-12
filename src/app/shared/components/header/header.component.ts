@@ -8,10 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  setTitle: string;
-  isHomeSelected: boolean;
-  isPatientSelected: boolean;
-  isLoginSelected: boolean;
+  @Input() setTitle: string = "Page Title";
 
   constructor(
     private router: Router) {
@@ -20,13 +17,15 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.router.events
     .subscribe((event) => {
-      if(this.router.url.startsWith('/home')){
-        this.setTitle = "Home";   
-      }else if(this.router.url.startsWith('/patient')){
-        this.setTitle = "Patient";
-      }
+      // if(this.router.url.startsWith('/home')){
+      //   this.setTitle = "Home";   
+      // }else if(this.router.url.startsWith('/patient')){
+      //   this.setTitle = "Patient";
+      // }
+
     });
 
+    // console.log(this.router.url);
   }
 
 }

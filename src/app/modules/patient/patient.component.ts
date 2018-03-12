@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener} from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-patient',
@@ -7,20 +8,30 @@ import { DOCUMENT } from '@angular/platform-browser';
   styleUrls: ['./patient.component.css']
 })
 export class PatientComponent implements OnInit {
-  public sticky: boolean = false;
+  myTitle = "Patient"
+  public shadow: boolean = false;
 
-  constructor() { }
+  constructor(
+      private router: Router
+  ) { }
 
   ngOnInit() {
+    this.router.events.subscribe((evt) => {
+        if (!(evt instanceof NavigationEnd)) {
+            return;
+        }
+        window.scrollTo(0, 0)
+        console.log(this.router.url);
+    });
   }
 
   @HostListener("window:scroll", ['$event'])
   onWindowScroll($event) {
       let number = window.pageYOffset || document.documentElement.scrollTop || window.scrollY || 0;
-      if (number > 40) {
-          this.sticky = true;
-      } else if (this.sticky && number < 10) {
-          this.sticky = false;
+      if (number > 10) {
+          this.shadow = true;
+      } else if (this.shadow && number < 10) {
+          this.shadow = false;
       }
   }
   

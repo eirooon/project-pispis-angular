@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 
 @Component({
@@ -8,7 +8,7 @@ import { DOCUMENT } from '@angular/platform-browser';
 })
 
 export class HomeComponent implements OnInit {
-
+  myTitle = "Home"
   constructor() { }
 
   ngOnInit() {

@@ -1,0 +1,112 @@
+<header class="header-primary">
+    <div class="header-wrapper">
+        <div class="menu-left"><a (click)="goBack()"><i class="mdi mdi-arrow-left"></i></a></div>
+        <h3 class="menu-title">Add New Patient</h3>
+        <!-- <div class="menu-right"><a (click)="goBack()">Cancel</a></div> -->
+    </div>
+</header>
+<div class="content-wrapper">
+    <div class="form-subheader">Basic Information</div>
+    <section>
+        <div class="form-inputs">
+            <div class="form-group">
+                <label>Patient Type</label>
+                <div class="form-select-wrapper">
+                    <i class="mdi mdi-caret-down"></i>
+                    <select class="form-control">
+                        <option>In-Patient</option>
+                        <option>Admitted</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>First Name</label>
+                <input class="form-control" type="text" placeholder="Enter first name" />
+            </div>
+            <div class="form-group">
+                <label>Middle Name</label>
+                <input class="form-control" type="text" placeholder="Enter middle name" />
+            </div>
+            <div class="form-group">
+                <label>Last Name</label>
+                <input class="form-control" type="text" placeholder="Enter last name" />
+            </div>
+            <div class="form-group">
+                <label>Gender</label>
+                <div class="form-inline">
+                    <div class="form-radio">
+                        <input type="radio" value="Male" name="gender"/>
+                        <label>Male</label>
+                    </div>
+                    <div class="form-radio">
+                        <input type="radio" value="Female" name="gender"/>
+                        <label>Female</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Birthdate</label>
+                <input class="form-control" type="text" placeholder="Enter birthday" />
+            </div>
+
+            <div class="form-group">
+                <label>Address</label>
+                <input class="form-control" type="text" placeholder="Enter address" />
+            </div>
+            <div class="form-group">
+                <label>Occupation</label>
+                <input class="form-control" type="text" placeholder="Enter occupation" />
+            </div>
+            <div class="form-group">
+                <label>Landline No.</label>
+                <input class="form-control" type="text" placeholder="Enter landline no." />
+            </div>
+            <div class="form-group">
+                <label>Mobile No.</label>
+                <input class="form-control" type="text" placeholder="Enter mobile no." />
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input class="form-control" type="text" placeholder="Enter email address" />
+            </div>
+            <div class="form-group">
+                <label>Height</label>
+                <input class="form-control" type="text" placeholder="Enter height" />
+            </div>
+            <div class="form-group">
+                <label>Weight</label>
+                <input class="form-control" type="text" placeholder="Enter weight" />
+            </div>
+            <div class="form-group">
+                <label>Body Mass Index (BMI)</label>
+                <input class="form-control" type="text" placeholder="Enter Body Mass Index (BMI)" />
+            </div>
+        </div>
+            
+    </section>
+    <div class="form-subheader">For Emergency</div>
+    <section>
+        <div class="form-group">
+            <label>First Name</label>
+            <input class="form-control" type="text" placeholder="Enter first name" />
+        </div>
+        <div class="form-group">
+            <label>Middle Name</label>
+            <input class="form-control" type="text" placeholder="Enter middle name" />
+        </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input class="form-control" type="text" placeholder="Enter last name" />
+        </div>
+        <div class="form-group">
+            <label>Contact No.</label>
+            <input class="form-control" type="text" placeholder="Enter contact no." />
+        </div>
+        <div class="form-group">
+            <label>Email Address</label>
+            <input class="form-control" type="text" placeholder="Enter email address" />
+        </div>
+        <button class="btn btn-primary btn-wide" (click)="addPatient()">Add Patient</button>
+    </section>
+    
+</div>

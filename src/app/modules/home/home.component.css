@@ -4,6 +4,8 @@
     grid-auto-rows: minmax(300px, auto);
     max-width: 1024px;
     margin: 15px auto;
+    margin-top:60px;
+    padding-top: 20px;
     grid-gap: 30px;
     overflow-y: auto;}
 section{

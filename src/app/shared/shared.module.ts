@@ -1,29 +1,34 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppRoutingModule } from '../app-routing.module';
+import { RouterModule } from '@angular/router';
 
 //Components
 import { HeaderComponent } from './components/header/header.component';
 import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
 
 //3rd Party
-import { SidebarJSModule } from 'ng-sidebarjs';
-
-
+import { SidebarJSModule, SidebarJSService } from 'ng-sidebarjs';
 
 @NgModule({
+  imports: [
+    CommonModule,
+    SidebarJSModule,
+    RouterModule,
+  ],
   declarations: [
     HeaderComponent,
     SidemenuComponent
-  ],
-  imports: [
-    CommonModule,
-    SidebarJSModule.forRoot(),
-    AppRoutingModule,
   ],
   exports: [
     HeaderComponent,
     SidemenuComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule { 
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: [SidebarJSService]
+    }
+  }
+}
