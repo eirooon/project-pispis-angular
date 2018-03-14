@@ -9,21 +9,18 @@ import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './modules/home/home.module'
 import { LoginModule } from './modules/login/login.module';
 
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'my-app' }),
+    SharedModule.forRoot(),
+    BrowserAnimationsModule,
     AppRoutingModule,
     LoginModule,
-    HomeModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
-    SharedModule.forRoot(),
-    BrowserAnimationsModule
+    HomeModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

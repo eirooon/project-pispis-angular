@@ -1,20 +1,23 @@
 {
-    "short_name": "PIS",
-    "name": "Patient Information System",
-    "start_url": "/",
-
-    "theme_color": "#f48c5b",
-    "background_color": "#ffffff",
-
-    "display": "standalone",
-    "orientation": "portrait",
-
-    "icons": [
-        {
-            "src": "/assets/icons/icon-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ]
-
+  "name": "mr-doctor",
+  "short_name": "MD-PIS",
+  "theme_color": "#0052cc",
+  "background_color": "#2196f3",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/index.html",
+  "icons": [
+    {
+      "src": "assets/img/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "splash_pages": null
 }
