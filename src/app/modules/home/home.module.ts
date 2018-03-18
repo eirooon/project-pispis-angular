@@ -11,7 +11,7 @@ import { HomeComponent } from './home.component';
     ],
     imports: [
         HomeRoutingModule,
-        SharedModule
+        SharedModule 
     ]
 })
 
