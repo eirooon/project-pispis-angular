@@ -9,6 +9,9 @@ import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './modules/home/home.module'
 import { LoginModule } from './modules/login/login.module';
 
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../../src/environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,8 +22,8 @@ import { LoginModule } from './modules/login/login.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     LoginModule,
-    HomeModule
-
+    HomeModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
