@@ -18,9 +18,11 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 //Auth
-import {AuthService} from './auth/auth.service';
+import { AuthService } from './auth/auth.service';
 import { SignupModule } from './auth/signup/signup.module';
 import { SigninModule } from './auth/signin/signin.module';
+
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -34,11 +36,11 @@ import { SigninModule } from './auth/signin/signin.module';
     SharedModule.forRoot(),
     BrowserAnimationsModule,
     AppRoutingModule,
-    LoginModule,
     HomeModule,
     FormsModule,
     SignupModule,
-    SigninModule
+    SigninModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   
   providers: [AuthService],

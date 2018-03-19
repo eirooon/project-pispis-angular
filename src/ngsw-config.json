@@ -1,51 +1,53 @@
 {
     "index": "/index.html",
-    "assetGroups": [{
-      "name": "mr-doctor",
-      "installMode": "prefetch",
-      "resources": {
-        "files": [
-          "/index.html"
-        ],
-        "versionedFiles": [
-          "/*.bundle.css",
-          "/*.bundle.js",
-          "/*.chunk.js"
-        ]
-      }
-    }, {
-      "name": "assets",
-      "installMode": "lazy",
-      "updateMode": "prefetch",
-      "resources": {
-        "files": [
-          "/assets/**"
-        ]
-      }
-    }],
-    "dataGroups": [{
-      "name": "api-freshness",
-      "urls": [
-        "/patient"
-      ],
-      "cacheConfig": {
-        "maxSize": 100,
-        "maxAge": "1h",
-        "timeout": "10s",
-        "strategy": "freshness"
-      }
-    }, {
-      "name": "api-performance",
-      "urls": [
-        "/",
-        "/login",
-        "/home",
-        "/patient"
-      ],
-      "cacheConfig": {
-        "maxSize": 100,
-        "maxAge": "1d",
-        "strategy": "performance"
-      }
-    }]
-  }
+    "routing": {
+        "index": "/index.html",
+        "routes": {
+            "/": {
+                "match": "exact"
+            },
+            "/home": {
+                "match": "exact"
+            },
+            "/signin": {
+                "match": "exact"
+            },
+            "/patient": {
+                "match": "exact"
+            },
+            "/patient/add-patient": {
+                "match": "exact"
+            },
+            "/patient/patient-details": {
+                "match": "exact"
+            }
+        }
+    },
+    "assetGroups": [
+        {
+            "name": "app",
+            "installMode": "prefetch",
+            "resources": {
+                "files": [
+                    "/favicon.ico",
+                    "/index.html"
+                ],
+                "versionedFiles": [
+                    "/*.bundle.css",
+                    "/*.bundle.js",
+                    "/*.chunk.js"
+                ]
+            }
+        },
+        {
+            "name": "assets",
+            "installMode": "lazy",
+            "updateMode": "prefetch",
+            "resources": {
+                "files": [
+                    "/assets/**"
+                ]
+            }
+        }
+    ]
+}
