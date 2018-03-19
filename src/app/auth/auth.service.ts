@@ -39,4 +39,13 @@ export class AuthService{
         )
         return this.token;
      }
+     
+     isAuthenticated(){
+         return this.token! = null;
+     }
+
+     logout(){
+         this.afAuth.auth.signOut();
+         this.token = null;
+     }
 }
