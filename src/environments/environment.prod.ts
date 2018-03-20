@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebase : {
-    apiKey: "AIzaSyB3oQLY1h0z4SjJXUatEg_7iy-MwV52Dno",
-    authDomain: "authsample-dc128.firebaseapp.com",
-    databaseURL: "https://authsample-dc128.firebaseio.com",
-    projectId: "authsample-dc128",
-    storageBucket: "authsample-dc128.appspot.com",
-    messagingSenderId: "180034420521"
+    apiKey: "AIzaSyA0EJnToojyX3NTCiQFCAzXZVQ5d2v8mZc",
+    authDomain: "project-pispis.firebaseapp.com",
+    databaseURL: "https://project-pispis.firebaseio.com",
+    projectId: "project-pispis",
+    storageBucket: "project-pispis.appspot.com",
+    messagingSenderId: "538589836499"
   }
 };

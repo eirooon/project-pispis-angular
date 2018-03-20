@@ -1,13 +1,14 @@
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
+import {Observable} from 'rxjs/Rx';
+import { Router } from '@angular/router';
 
 export class AuthService{
 
     token: string;
-    constructor(private afAuth: AngularFireAuth,
+    constructor(private router: Router, private afAuth: AngularFireAuth,
         private afs: AngularFirestore){
-
     }
 
     signupUser(email: string , password:string){
@@ -26,10 +27,12 @@ export class AuthService{
                     .then(
                         (token: string) => this.token = token
                     )
-             }
+                    this.router.navigate(['/home']); //if successfuly logged-in, redirect to Home page
+             }    
          ).catch(
              error=> console.log(error)
          );
+         
      }
 
      getToken(){
