@@ -3,10 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { PatientComponent } from './patient.component';
 import { AddPatientComponent } from './add-patient/add-patient.component';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
+import { AuthGuard } from '../../auth/auth-guard.service';
 const routes: Routes = [
   { 
     path: '', 
-    component: PatientComponent
+    component: PatientComponent,
+    canActivate:[AuthGuard]
     // children: [
     //   { path: 'add-patient', 
     //     component: AddPatientComponent 

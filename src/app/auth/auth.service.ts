@@ -1,12 +1,13 @@
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
-import {Observable} from 'rxjs/Rx';
+import { Observable} from 'rxjs/Rx';
 import { Router } from '@angular/router';
 
 export class AuthService{
 
     token: string;
+    uid: string;
     constructor(private router: Router, private afAuth: AngularFireAuth,
         private afs: AngularFirestore){
     }
@@ -23,10 +24,14 @@ export class AuthService{
         this.afAuth.auth.signInWithEmailAndPassword(email, password)
          .then(
              response => {
-                this.afAuth.auth.currentUser.getToken()
+                this.afAuth.auth.currentUser.getIdToken()
                     .then(
                         (token: string) => this.token = token
+                    
                     )
+                   
+                    console.log("Successful sign in");
+                    
                     this.router.navigate(['/home']); //if successfuly logged-in, redirect to Home page
              }    
          ).catch(
@@ -40,11 +45,20 @@ export class AuthService{
          .then(
             (token: string) => this.token = token
         )
+        let token = localStorage.getItem( this.token);
         return this.token;
      }
      
      isAuthenticated(){
-         return this.token! = null;
+        console.log( "Token from firebase: " + this.token);
+        const userKey = Object.keys(window.localStorage)
+                .filter(it => it.startsWith('firebase:authUser'))[0];
+        const user = userKey ? JSON.parse(localStorage.getItem(userKey)) : undefined;
+        console.log( "Token from storage: " + user);
+        if(user!= undefined)
+            return true;
+        else
+            return false;
      }
 
      logout(){

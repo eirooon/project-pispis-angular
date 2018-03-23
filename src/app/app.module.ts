@@ -23,6 +23,7 @@ import { SignupModule } from './auth/signup/signup.module';
 import { SigninModule } from './auth/signin/signin.module';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { AuthGuard } from './auth/auth-guard.service';
 
 import { PatientService} from './shared/service/patient.service';
 
@@ -45,7 +46,11 @@ import { PatientService} from './shared/service/patient.service';
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   
+<<<<<<< HEAD
   providers: [AuthService, PatientService],
+=======
+  providers: [AuthService, AuthGuard],
+>>>>>>> 2c0bbc5eb3df44aefa1ea172e494acf2df481017
   bootstrap: [AppComponent]
 })
 export class AppModule {}
