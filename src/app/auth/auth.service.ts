@@ -27,6 +27,7 @@ export class AuthService{
                     .then(
                         (token: string) => this.token = token
                     )
+                    console.log("Successful sign in");
                     this.router.navigate(['/home']); //if successfuly logged-in, redirect to Home page
              }    
          ).catch(
@@ -44,7 +45,11 @@ export class AuthService{
      }
      
      isAuthenticated(){
-         return this.token! = null;
+        console.log( "Token" + this.token);
+        if(this.token != null)
+            return true;
+        else
+            return false;
      }
 
      logout(){
