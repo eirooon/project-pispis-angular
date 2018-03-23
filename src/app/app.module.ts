@@ -46,11 +46,7 @@ import { PatientService} from './shared/service/patient.service';
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   
-<<<<<<< HEAD
-  providers: [AuthService, PatientService],
-=======
-  providers: [AuthService, AuthGuard],
->>>>>>> 2c0bbc5eb3df44aefa1ea172e494acf2df481017
+  providers: [AuthService, AuthGuard,PatientService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
