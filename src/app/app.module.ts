@@ -24,13 +24,15 @@ import { SigninModule } from './auth/signin/signin.module';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 
+import { PatientService} from './shared/service/patient.service';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'my-app' }),
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase, 'angularfs'),
     AngularFireAuthModule,
     AngularFirestoreModule,
     SharedModule.forRoot(),
@@ -43,7 +45,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   
-  providers: [AuthService],
+  providers: [AuthService, PatientService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

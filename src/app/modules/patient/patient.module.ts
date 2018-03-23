@@ -7,6 +7,7 @@ import { PatientRoutingModule } from './patient-routing.module';
 import { PatientComponent } from './patient.component';
 import { AddPatientComponent } from './add-patient/add-patient.component';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { PatientDetailsComponent } from './patient-details/patient-details.compo
     ],
     imports: [
         PatientRoutingModule,
-        SharedModule
+        SharedModule,
+        CommonModule
     ]
 })
 
