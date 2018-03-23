@@ -23,6 +23,7 @@ import { SignupModule } from './auth/signup/signup.module';
 import { SigninModule } from './auth/signin/signin.module';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { AuthGuard } from './auth/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
