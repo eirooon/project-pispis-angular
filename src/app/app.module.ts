@@ -10,6 +10,8 @@ import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './modules/home/home.module'
 import { LoginModule } from './modules/login/login.module';
 import { FormsModule }   from '@angular/forms';
+import { SignupModule } from './auth/signup/signup.module';
+import { SigninModule } from './auth/signin/signin.module';
 
 //Firestore
 import { AngularFireModule } from 'angularfire2';
@@ -19,13 +21,10 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 //Auth
 import { AuthService } from './auth/auth.service';
-import { SignupModule } from './auth/signup/signup.module';
-import { SigninModule } from './auth/signin/signin.module';
-
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { AuthGuard } from './auth/auth-guard.service';
 
-import { PatientService} from './shared/service/patient.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +45,7 @@ import { PatientService} from './shared/service/patient.service';
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   
-  providers: [AuthService, AuthGuard,PatientService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

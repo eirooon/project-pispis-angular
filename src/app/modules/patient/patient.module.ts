@@ -7,7 +7,7 @@ import { PatientRoutingModule } from './patient-routing.module';
 import { PatientComponent } from './patient.component';
 import { AddPatientComponent } from './add-patient/add-patient.component';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
-import {CommonModule} from '@angular/common';
+// import {CommonModule} from '@angular/common';
 import { AuthService } from '../../auth/auth.service';
 import { AuthGuard } from '../../auth/auth-guard.service';
 
@@ -20,7 +20,7 @@ import { AuthGuard } from '../../auth/auth-guard.service';
     imports: [
         PatientRoutingModule,
         SharedModule,
-        CommonModule
+        // CommonModule
     ],
     providers: [
         AuthService, 

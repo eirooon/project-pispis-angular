@@ -6,6 +6,9 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
 
+//Services
+import { PatientService } from '../shared/service/patient.service';
+
 //3rd Party
 import { SidebarJSModule, SidebarJSService } from 'ng-sidebarjs';
 
@@ -21,7 +24,11 @@ import { SidebarJSModule, SidebarJSService } from 'ng-sidebarjs';
   ],
   exports: [
     HeaderComponent,
-    SidemenuComponent
+    SidemenuComponent,
+    CommonModule
+  ],
+  providers:[
+    PatientService
   ]
 })
 export class SharedModule { 
