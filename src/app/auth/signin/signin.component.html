@@ -9,7 +9,9 @@
         type="email" 
         id="email" 
         name="email"
-         ngModel placeholder="Enter username" />
+         ngModel placeholder="Enter username" 
+         required
+         pattern="[a-zA-Z0-9\s]+"/>
       </div>
       <div class="form-group">
         <label>Password</label>
@@ -17,8 +19,10 @@
         type="password"
         id="password"
         name="password"
-        ngModel placeholder="Enter password" />
+        ngModel placeholder="Enter password"
+        required />
       </div>
+      
     </div>
     <div class="form-actions">
       <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Sign In</button>
