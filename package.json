@@ -13,7 +13,7 @@
     "serve:universal": "node dist/server.js",
     "build:client-and-server-bundles": "ng build --prod && ng build --prod --app 1 --output-hashing=false",
     "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
-    "start-build-and-serve": "npm run build:universal && npm run serve:universal"
+    "build_2": "npm run build:universal && npm run serve:universal"
   },
   "private": true,
   "dependencies": {
@@ -37,7 +37,7 @@
     "firebase": "^4.11.0",
     "mdi": "^2.1.99",
     "ng-sidebarjs": "^3.0.0",
-    "npm": "^5.7.1",
+    "npm": "^5.8.0",
     "rxjs": "^5.5.6",
     "ts-loader": "3.5.0",
     "zone.js": "^0.8.19"

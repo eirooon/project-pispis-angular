@@ -16,7 +16,7 @@ export class PatientService {
   
   getPatients(max){
 
-		this.patientsCollection = this.afs.collection('ptrecords', ref => ref.orderBy('title', 'asc').limit(max));
+		this.patientsCollection = this.afs.collection('patients', ref => ref.orderBy('firstname', 'asc').limit(max));
 	
 		this.patients = this.patientsCollection.snapshotChanges().map(changes => {
 			return changes.map(a => {

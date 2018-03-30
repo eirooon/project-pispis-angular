@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 
 import { SharedModule } from '../../shared/shared.module';
 import { PatientRoutingModule } from './patient-routing.module';
@@ -20,6 +20,7 @@ import { AuthGuard } from '../../auth/auth-guard.service';
     imports: [
         PatientRoutingModule,
         SharedModule,
+        FormsModule,
         // CommonModule
     ],
     providers: [
