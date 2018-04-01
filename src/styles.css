@@ -213,6 +213,7 @@ header {
     padding: 15px;
     outline: none;
     font-size: 14px;
+    background-color: #fff;
 }
 .list-view-item:active{
     background-color:#FAFBFC;

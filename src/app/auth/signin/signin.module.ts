@@ -4,8 +4,7 @@ import { SigninRoutingModule } from './signin-routing.module';
 import { SigninComponent } from './signin.component';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-// import { AuthService } from '../auth.service';
-
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -14,6 +13,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     imports: [
         SigninRoutingModule,
         FormsModule,
+        SharedModule
     ],
     //providers:[AuthService]
 })

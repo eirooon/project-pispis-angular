@@ -3,11 +3,10 @@ import { AuthService } from '../auth.service';
 import { NgForm }   from '@angular/forms';
 import { Router } from "@angular/router";
 import { auth } from 'firebase/app';
-
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  styleUrls: ['./signin.component.css'],
 })
 export class SigninComponent implements OnInit {
 
@@ -28,13 +27,14 @@ export class SigninComponent implements OnInit {
     form.form.controls['email'].setErrors(null);
     const email = form.value.email;
     const password = form.value.password;
-    this.authService.signinUser(email, password).subscribe(
+    this.authService.signinUser(email, password)
+    .subscribe(
       data =>   console.log(data), //if successfuly logged-in, redirect to Home page,
-      error => {
-        form.form.controls['email'].markAsTouched();
-         console.log(error);
-      },
-      ()  =>  console.log("Finished")
+      // error => {
+      //   form.form.controls['email'].markAsTouched();
+      //    console.log(error);
+      // },
+      // ()  =>  console.log("Finished")
     );
   }
 }

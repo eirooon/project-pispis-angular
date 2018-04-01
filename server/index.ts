@@ -6,11 +6,12 @@ import { renderModuleFactory } from '@angular/platform-server';
 import * as fs from 'fs';
 
 const document = fs.readFileSync(__dirname + '/index.html', 'utf8');
-const AppServerModuleNgFactory = require(__dirname + '/dist-server/main.bundle').AppServerModuleNgFactory;
+const AppServerModuleNgFactory = require(__dirname + '/dist-server/main.bundle');
 
 const app = express();
 app.get('**', (req, res) =>{
     const url = req.path;
+    console.log(url);
     renderModuleFactory(AppServerModuleNgFactory,{ document, url })
         .then(html => {
             res.set('Cache-Control', 'public, max-age=600, s-maxage=1200')

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-//import { Patient } from '../../../shared/models/patient';
+
 @Component({
   selector: 'app-add-patient',
   templateUrl: './add-patient.component.html',
