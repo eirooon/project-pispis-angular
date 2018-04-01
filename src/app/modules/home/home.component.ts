@@ -1,6 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 
+import { Router, NavigationEnd } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,9 +11,18 @@ import { DOCUMENT } from '@angular/platform-browser';
 
 export class HomeComponent implements OnInit {
   myTitle = "Home"
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+          return;
+      }
+      window.scrollTo(0, 0)
+      console.log(this.router.url);
+  });
   }
 
 }

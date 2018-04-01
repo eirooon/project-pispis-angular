@@ -35,10 +35,13 @@
     "core-js": "^2.4.1",
     "express": "^4.16.2",
     "firebase": "^4.11.0",
+    "firebase-admin": "~5.8.1",
+    "firebase-functions": "^0.8.1",
     "mdi": "^2.1.99",
     "ng-sidebarjs": "^3.0.0",
     "npm": "^5.8.0",
     "rxjs": "^5.5.6",
+    "sidebarjs": "^5.1.0",
     "ts-loader": "3.5.0",
     "zone.js": "^0.8.19"
   },

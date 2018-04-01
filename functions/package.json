@@ -1,0 +1,42 @@
+{
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase serve --only functions",
+    "shell": "firebase experimental:functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "@angular/animations": "^5.2.8",
+    "@angular/common": "^5.2.0",
+    "@angular/compiler": "^5.2.0",
+    "@angular/core": "^5.2.0",
+    "@angular/forms": "^5.2.0",
+    "@angular/http": "^5.2.0",
+    "@angular/platform-browser": "^5.2.0",
+    "@angular/platform-browser-dynamic": "^5.2.0",
+    "@angular/platform-server": "^5.2.8",
+    "@angular/router": "^5.2.0",
+    "@angular/service-worker": "^5.2.9",
+    "@nguniversal/common": "^5.0.0-beta.5",
+    "@nguniversal/express-engine": "^5.0.0-beta.6",
+    "@nguniversal/module-map-ngfactory-loader": "^5.0.0-beta.6",
+    "angularfire2": "^5.0.0-rc.6",
+    "core-js": "^2.4.1",
+    "express": "^4.16.2",
+    "firebase": "^4.11.0",
+    "firebase-admin": "~5.8.1",
+    "firebase-functions": "^0.8.1",
+    "mdi": "^2.1.99",
+    "ng-sidebarjs": "^3.0.0",
+    "sidebarjs": "^5.1.0",
+    "npm": "^5.7.1",
+    "rxjs": "^5.5.6",
+    "ts-loader": "3.5.0",
+    "zone.js": "^0.8.19",
+    "reflect-metadata": "^0.1.12"
+  },
+  "private": true
+}

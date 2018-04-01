@@ -1,0 +1,63 @@
+{
+  "configVersion": 1,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/favicon.ico",
+        "/main.bundle.js",
+        "/styles.bundle.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/assets/css/css-reset.css",
+        "/assets/img/icon-384x384.png",
+        "/assets/img/icon-512x512.png",
+        "/assets/img/login-cover.jpg",
+        "/assets/img/login-cover2.jpg",
+        "/assets/js/common.js",
+        "/assets/js/fastclick.js",
+        "/assets/mdi/css/materialdesignicons.css",
+        "/assets/mdi/css/materialdesignicons.css.map",
+        "/assets/mdi/css/materialdesignicons.min.css",
+        "/assets/mdi/css/materialdesignicons.min.css.map",
+        "/assets/mdi/fonts/materialdesignicons-webfont.eot",
+        "/assets/mdi/fonts/materialdesignicons-webfont.svg",
+        "/assets/mdi/fonts/materialdesignicons-webfont.ttf",
+        "/assets/mdi/fonts/materialdesignicons-webfont.woff",
+        "/assets/mdi/fonts/materialdesignicons-webfont.woff2"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/main.bundle.js": "a670e67413344befa85cc04b361ed2a5602bbed6",
+    "/assets/css/css-reset.css": "5fa4f471bf16e9cdf78c7446b59cce638093772c",
+    "/styles.bundle.css": "764792b36ffa4a1fac2eda9ef8ce7aec1389ccf9",
+    "/assets/img/icon-384x384.png": "c0eb6236768fdebddbed2b00a12055772b57374e",
+    "/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
+    "/assets/img/icon-512x512.png": "9c5e93125ab29fc363da3b423e5735193301fbda",
+    "/assets/img/login-cover.jpg": "2c14d45e8f2090eac5604d9a4ee3293c53734e60",
+    "/assets/img/login-cover2.jpg": "0d01befbf2293c3e37de183e15259e2b66035152",
+    "/assets/js/common.js": "526b83fdffbf3ffc16120462644f41b3c7b18c33",
+    "/assets/js/fastclick.js": "b48481265d9713f64872b6597db620be9cd8f9b3",
+    "/assets/mdi/css/materialdesignicons.css": "30e370019d7f9e6cdb2d6032ce5311d44bd6c087",
+    "/assets/mdi/css/materialdesignicons.css.map": "e6dbcb1ad8a1206facf8bf8186b0815746b9eb2d",
+    "/assets/mdi/css/materialdesignicons.min.css": "e9b5c14c2249b9fca9b4ec46e4df7dc696126b9d",
+    "/assets/mdi/css/materialdesignicons.min.css.map": "90d8ba0a7adcfce056068e8277ea4bbcb231b16e",
+    "/assets/mdi/fonts/materialdesignicons-webfont.eot": "d77d751f1b691b3038458b1d6a79c60d0f81e8e9",
+    "/assets/mdi/fonts/materialdesignicons-webfont.svg": "1c593c70df4495939723efea885294c6328a5906",
+    "/assets/mdi/fonts/materialdesignicons-webfont.ttf": "45018b77d67573a7df9ad12f81927f4eaabe0018",
+    "/assets/mdi/fonts/materialdesignicons-webfont.woff": "8111a8ae5322b98744746e032fd4110c7c2a0973",
+    "/assets/mdi/fonts/materialdesignicons-webfont.woff2": "81806d0588ba53c4321ac49e0a748f31a57c3a41"
+  }
+}
