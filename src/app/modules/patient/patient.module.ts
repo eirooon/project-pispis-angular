@@ -20,7 +20,6 @@ import { AuthGuard } from '../../auth/auth-guard.service';
         PatientRoutingModule,
         SharedModule,
         FormsModule,
-        // CommonModule
         SharedModule
     ],
     providers: [
