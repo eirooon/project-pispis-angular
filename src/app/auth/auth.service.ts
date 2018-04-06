@@ -11,6 +11,7 @@ export class AuthService{
     uid: string;
     private signInIndicator = new Subject<string>();
     signInIndicator$ = this.signInIndicator.asObservable();
+    
     constructor(private router: Router, private afAuth: AngularFireAuth,
         private afs: AngularFirestore){
     }
@@ -31,12 +32,12 @@ export class AuthService{
                     .then(
                         (token: string) => this.token = token
                     )              
-                    console.log("Successful sign in");
-                    this.router.navigate(['/home']);
+                    return this.token;
              }    
          )
          .catch((err:Response) => {
-            return Observable.throw(err);
+            console.log(err.body);
+            return Observable.throw(err.body);
          });
          this.signInIndicator.next(this.token);
          return  this.signInIndicator$;
@@ -64,7 +65,20 @@ export class AuthService{
      }
 
      logout(){
+         //localStorage.removeItem('token');
          this.afAuth.auth.signOut();
          this.token = null;
+     }
+
+     getUidOfCurrentDoctor(){
+        console.log("getUidOfCurrentDoctor");
+        if (this.afAuth.auth.currentUser!=null) {
+            console.log(this.afAuth.auth.currentUser.uid);
+            return this.afAuth.auth.currentUser.uid;
+        }
+        else{
+            console.log("null user");
+            return null;
+        }
      }
 }

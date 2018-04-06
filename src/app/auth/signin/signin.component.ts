@@ -11,6 +11,9 @@ import { auth } from 'firebase/app';
 export class SigninComponent implements OnInit {
 
   result: string;
+  error: any; 
+  uid: string;
+
   constructor( private router: Router, private authService: AuthService) {
     authService.signInIndicator$.subscribe(
      resultToken => {
@@ -23,18 +26,23 @@ export class SigninComponent implements OnInit {
   }
 
   onSignin(form : NgForm){
-
-    form.form.controls['email'].setErrors(null);
-    const email = form.value.email;
-    const password = form.value.password;
-    this.authService.signinUser(email, password)
+    this.authService.signinUser(form.value.email, form.value.password)
     .subscribe(
-      data =>   console.log(data), //if successfuly logged-in, redirect to Home page,
-      // error => {
-      //   form.form.controls['email'].markAsTouched();
-      //    console.log(error);
-      // },
-      // ()  =>  console.log("Finished")
+      data =>  {
+        if(data!=null || data!=undefined){
+            console.log("Successful sign in" + data);
+            this.uid = this.authService.getUidOfCurrentDoctor();
+            this.router.navigate(['/home']); //if successfuly logged-in, redirect to Home page,
+        }
+        else
+          console.log(data);
+          this.error = data; 
+        },
+       error => {
+        console.log(error);
+        this.error = error; 
+      },
+      ()  =>  console.log("Finished")
     );
   }
 }
