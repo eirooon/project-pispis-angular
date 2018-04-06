@@ -17,10 +17,12 @@ export class PatientService {
 	  private authService: AuthService
 	) { 
 	//this.patients = this.afs.collection('ptrecords').valueChanges();
-	this.uid = this.authService.getUidOfCurrentDoctor();
+	
   	}
   
   getPatients(max){
+		this.uid = this.authService.getUidOfCurrentDoctor();
+		console.log("uid from patient list" + this.uid);
 		this.patientsCollection = this.afs.collection('patients', ref => ref.limit(max).where('idDoc','==', this.uid));
 	// /.where('firstname','==','Anthony')
 		this.patients = this.patientsCollection.snapshotChanges().map(changes => {
