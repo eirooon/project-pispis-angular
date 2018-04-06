@@ -1,4 +1,5 @@
 export interface Patient {
+	idDoc:string;
 	id?:string;
 	firstname:string;
 	middlename:string;
