@@ -23,6 +23,8 @@
                 <span class="item-desc text-ellipsis">{{patient.type}}</span>
             </li>
         </ul>
+        <ngx-spinner loadingText="Please wait" type="ball-pulse"></ngx-spinner>
+        <button class="btn btn-primary btn-wide" (click)="loadMorePatient()" >Load more...</button>
     </section>
 </div>
 <ng-template #noPatients >

@@ -4,6 +4,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Patient } from '../../shared/models/patient';
 import { PatientService } from '../../shared/service/patient.service';
 import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -34,12 +35,13 @@ export class PatientComponent implements OnInit {
   state: string = '';
 
   patients: Patient[];
-  max: number = 8;
+  max: number = 6;
   first: boolean = true;
 
   constructor(
       private router: Router,
-      private patientService: PatientService
+      private patientService: PatientService,
+      private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit() {
@@ -59,8 +61,10 @@ export class PatientComponent implements OnInit {
   }
 
   loadMorePatient(){
+    console.log("LOADED here more.");
+    this.spinner.show();
     if(this.first){
-      this.max = this.max + 3;
+      this.max = this.max + 2;
       this.first = false;
     }
     this.patientService.getPatients(this.max).subscribe(patients => { 
@@ -69,6 +73,10 @@ export class PatientComponent implements OnInit {
     });
 
     this.max = this.max + 3;
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 2500);
   }
 
 //  @HostListener("window:scroll", ['$event'])
@@ -86,7 +94,7 @@ export class PatientComponent implements OnInit {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         console.log('bottom reached 123');
        // alert("End");
-        this.loadMorePatient();
+       // this.loadMorePatient();
     }
   } 
   
