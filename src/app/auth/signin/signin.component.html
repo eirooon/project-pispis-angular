@@ -2,6 +2,8 @@
   <div class="login-wrapper">
     <div class="login-cover"></div>
     <form class="login-form" (ngSubmit)="onSignin(f)" #f="ngForm">
+    <div class="error" *ngIf="error">{{ error }}</div>
+  
     <div class="form-inputs">
       <div class="form-group">
         <label>Email</label>
