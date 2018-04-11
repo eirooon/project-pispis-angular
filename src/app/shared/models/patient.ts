@@ -8,11 +8,17 @@ export interface Patient {
 	birthdate:string;
 	address:string;
 	occupation:string;
-	landline:number;
+	landline?:number;
 	mobile:number;
-	email:string;
+	email?:string;
 	height:string;
 	weight:string;
 	bmi:string;
 	type:string;
+	emgy_firstname:string;
+	emgy_midname:string;
+	emgy_lastname:string;
+	emgy_contact:number;
+	emgy_email?:string;
+
 }

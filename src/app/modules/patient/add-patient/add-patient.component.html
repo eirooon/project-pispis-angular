@@ -6,107 +6,176 @@
     </div>
 </header>
 <div class="content-wrapper">
-    <div class="form-subheader">Basic Information</div>
-    <section>
-        <div class="form-inputs">
-            <div class="form-group">
-                <label>Patient Type</label>
-                <div class="form-select-wrapper">
-                    <i class="mdi mdi-caret-down"></i>
-                    <select [(ngModel)]="patient.type" class="form-control">
-                        <option>In-Patient</option>
-                        <option>Admitted</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>First Name</label>
-                <input [(ngModel)]="patient.firstname" name="firstname" class="form-control" type="text" placeholder="Enter first name" />
-            </div>
-            <div class="form-group">
-                <label>Middle Name</label>
-                <input [(ngModel)]="patient.middlename" class="form-control" type="text" placeholder="Enter middle name" />
-            </div>
-            <div class="form-group">
-                <label>Last Name</label>
-                <input [(ngModel)]="patient.lastname" class="form-control" type="text" placeholder="Enter last name" />
-            </div>
-            <div class="form-group">
-                <label>Gender</label>
-                <div class="form-inline">
-                    <div class="form-radio">
-                        <input [(ngModel)]="patient.gender" type="radio" value="Male" name="gender"/>
-                        <label>Male</label>
-                    </div>
-                    <div class="form-radio">
-                        <input [(ngModel)]="patient.gender" type="radio" value="Female" name="gender"/>
-                        <label>Female</label>
+    <form #ptnForm="ngForm" (ngSubmit)="addPatient(ptnForm)">
+        <!-- {{ptnForm.value | json }}
+        {{ptnForm.valid | json }} -->
+        <div class="form-subheader">Basic Information</div>
+        <section>
+            <div class="form-inputs">
+                <div class="form-group">
+                    <label>Patient Type*</label>
+                    <div class="form-select-wrapper">
+                        <i class="mdi mdi-caret-down"></i>
+                        <select [(ngModel)]="patient.type" name="type" class="form-control" name="type" #type="ngModel" required >
+                            <option>In-Patient</option>
+                            <option>Admitted</option>
+                        </select>
+                        <div *ngIf="type.touched">
+                            <div *ngIf="type.errors?.required">
+                                Please fill in patient type
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label>Birthdate</label>
-                <input [(ngModel)]="patient.birthdate" class="form-control" type="text" placeholder="Enter birthday" />
-            </div>
+                <div class="form-group">
+                    <label>First Name*</label>
+                    <input [(ngModel)]="patient.firstname" name="firstname" class="form-control" type="text" placeholder="Enter first name" #firstname="ngModel" required/>
+                    <div *ngIf="firstname.touched">
+                        <div *ngIf="firstname.errors?.required">
+                            Please fill in firstname
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Middle Name*</label>
+                    <input [(ngModel)]="patient.middlename" name="middlename" class="form-control" type="text" placeholder="Enter middle name" #middlename="ngModel" required/>
+                    <div *ngIf="middlename.touched">
+                        <div *ngIf="middlename.errors?.required">
+                            Please fill in middlename
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Last Name*</label>
+                    <input [(ngModel)]="patient.lastname" name="lastname" class="form-control" type="text" placeholder="Enter last name" #lastname="ngModel" required/>
+                    <div *ngIf="lastname.touched">
+                        <div *ngIf="lastname.errors?.required">
+                            Please fill in lastname
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Gender*</label>
+                    <div class="form-inline">
+                        <div class="form-radio">
+                            <input [(ngModel)]="patient.gender" type="radio" value="Male" name="gender" #gender="ngModel" required/>
+                            <label>Male</label>
+                        </div>
+                        <div class="form-radio">
+                            <input [(ngModel)]="patient.gender" type="radio" value="Female" name="gender" #gender="ngModel" required/>
+                            <label>Female</label>
+                        </div>
+                    </div>
+                    <div *ngIf="gender.touched">
+                        <div *ngIf="gender.errors?.required">
+                            Please select gender
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Birthdate*</label>
+                    <input [(ngModel)]="patient.birthdate" name="birthdate" class="form-control" type="date" placeholder="Enter birthday" #birthdate="ngModel" required/>
+                    <div *ngIf="birthdate.touched">
+                        <div *ngIf="birthdate.errors?.required">
+                            Please fill in birthdate
+                        </div>
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <label>Address</label>
-                <input [(ngModel)]="patient.address" class="form-control" type="text" placeholder="Enter address" />
+                <div class="form-group">
+                    <label>Address*</label>
+                    <input [(ngModel)]="patient.address" name="address" class="form-control" type="text" placeholder="Enter address" #address="ngModel" required/>
+                    <div *ngIf="address.touched">
+                        <div *ngIf="address.errors?.required">
+                            Please fill in address
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Occupation*</label>
+                    <input [(ngModel)]="patient.occupation" name="occupation" class="form-control" type="text" placeholder="Enter occupation" #occupation="ngModel" required/>
+                    <div *ngIf="occupation.touched">
+                        <div *ngIf="occupation.errors?.required">
+                            Please fill in occupation
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Landline No.</label>
+                    <input [(ngModel)]="patient.landline" name="landline" class="form-control" type="number" placeholder="Enter landline no." />
+                </div>
+                <div class="form-group">
+                    <label>Mobile No.*</label>
+                    <input [(ngModel)]="patient.mobile" name="mobile" class="form-control" type="number" placeholder="Enter mobile no." #mobile="ngModel" required/>
+                    <div *ngIf="mobile.touched">
+                        <div *ngIf="mobile.errors?.required">
+                            Please fill in mobile number
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input [(ngModel)]="patient.email" name="email" class="form-control" type="email" placeholder="Enter email address" />
+                </div>
+                <div class="form-group">
+                    <label>Height</label>
+                    <input [(ngModel)]="patient.height" name="height" class="form-control" type="text" placeholder="Enter height" />
+                </div>
+                <div class="form-group">
+                    <label>Weight</label>
+                    <input [(ngModel)]="patient.weight" name="weight" class="form-control" type="text" placeholder="Enter weight" />
+                </div>
+                <div class="form-group">
+                    <label>Body Mass Index (BMI)</label>
+                    <input [(ngModel)]="patient.bmi" name="bmi" class="form-control" type="text" placeholder="Enter Body Mass Index (BMI)" />
+                </div>
+            </div>
+        </section>
+
+
+        <div class="form-subheader">For Emergency</div>
+        <section>
+            <div class="form-group">    
+                <label for="e_firstname">First Name*</label>
+                <input [(ngModel)]="patient.emgy_firstname" class="form-control" type="text" placeholder="Enter first name" name="e_firstname" #e_firstname="ngModel" required/>
+                <div *ngIf="e_firstname.touched">
+                    <div *ngIf="e_firstname.errors?.required">
+                        Please fill in emergency contact's firstname
+                    </div>
+                </div>
             </div>
             <div class="form-group">
-                <label>Occupation</label>
-                <input [(ngModel)]="patient.occupation" class="form-control" type="text" placeholder="Enter occupation" />
+                <label for="e_middlename">Middle Name*</label>
+                <input [(ngModel)]="patient.emgy_midname" class="form-control" type="text" placeholder="Enter middle name" name="e_middlename" #e_middlename="ngModel" required/>
+                <div *ngIf="e_middlename.touched">
+                    <div *ngIf="e_middlename.errors?.required">
+                        Please fill in emergency contact's middlename
+                    </div>
+                </div>
             </div>
             <div class="form-group">
-                <label>Landline No.</label>
-                <input [(ngModel)]="patient.landline" class="form-control" type="number" placeholder="Enter landline no." />
+                <label for="e_lastname">Last Name*</label>
+                <input [(ngModel)]="patient.emgy_lastname" class="form-control" type="text" placeholder="Enter last name" name="e_lastname" #e_lastname="ngModel" required/>
+                <div *ngIf="e_lastname.touched">
+                    <div *ngIf="e_lastname.errors?.required">
+                        Please fill in emergency contact's lastname
+                    </div>
+                </div>
             </div>
             <div class="form-group">
-                <label>Mobile No.</label>
-                <input [(ngModel)]="patient.mobile" class="form-control" type="number" placeholder="Enter mobile no." />
+                <label for="e_contact">Contact No.*</label>
+                <input [(ngModel)]="patient.emgy_contact" class="form-control" type="number" placeholder="Enter contact no." name="e_contact" #e_contact="ngModel" required/>
+                <div *ngIf="e_contact.touched">
+                    <div *ngIf="e_contact.errors?.required">
+                        Please fill in emergency contact's mobile number
+                    </div>
+                </div>
             </div>
             <div class="form-group">
-                <label>Email Address</label>
-                <input [(ngModel)]="patient.email" class="form-control" type="email" placeholder="Enter email address" />
+                <label for="e_email">Email Address</label>
+                <input [(ngModel)]="patient.emgy_email" class="form-control" type="text" placeholder="Enter email address" name="e_email" ngModel/>
             </div>
-            <div class="form-group">
-                <label>Height</label>
-                <input [(ngModel)]="patient.height" class="form-control" type="text" placeholder="Enter height" />
-            </div>
-            <div class="form-group">
-                <label>Weight</label>
-                <input [(ngModel)]="patient.weight" class="form-control" type="text" placeholder="Enter weight" />
-            </div>
-            <div class="form-group">
-                <label>Body Mass Index (BMI)</label>
-                <input [(ngModel)]="patient.bmi" class="form-control" type="text" placeholder="Enter Body Mass Index (BMI)" />
-            </div>
-        </div>
-            
-    </section>
-    <div class="form-subheader">For Emergency</div>
-    <section>
-        <div class="form-group">
-            <label>First Name</label>
-            <input class="form-control" type="text" placeholder="Enter first name" />
-        </div>
-        <div class="form-group">
-            <label>Middle Name</label>
-            <input class="form-control" type="text" placeholder="Enter middle name" />
-        </div>
-        <div class="form-group">
-            <label>Last Name</label>
-            <input class="form-control" type="text" placeholder="Enter last name" />
-        </div>
-        <div class="form-group">
-            <label>Contact No.</label>
-            <input class="form-control" type="text" placeholder="Enter contact no." />
-        </div>
-        <div class="form-group">
-            <label>Email Address</label>
-            <input class="form-control" type="text" placeholder="Enter email address" />
-        </div>
-        <button class="btn btn-primary btn-wide" (click)="addPatient()">Add Patient</button>
-    </section>
-    
+        </section>
+        <button class="btn btn-primary btn-wide" type="submit">Add Patient</button>    
+    </form>
 </div>
