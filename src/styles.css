@@ -49,6 +49,9 @@ span{
     color: white;}
 .btn-primary:hover{ 
     background-color: #1068EB;}
+.btn-primary:disabled{
+    opacity: 0.60; 
+    cursor: not-allowed;}
 .btn-secondary {
     background-color: #fff;
     box-shadow: 0 0 0 1px rgba(20,11,47,0.1), 0 2px 4px -2px rgba(0,0,0,0.2);
@@ -60,7 +63,6 @@ span{
 .btn.btn-wide{
     width: 100%;
 }
-
 /*--- FORMS ---*/
 .form-group{
     display: grid;
@@ -124,13 +126,6 @@ input.form-control::placeholder{
     top:60px;
     z-index: 1000;
 }
-/* .sticky{
-    position: sticky;
-    margin: 0px;
-    overflow: auto;
-    top: 0;
-    z-index:9999;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.08);} */
 .shadow{
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.08);
 }

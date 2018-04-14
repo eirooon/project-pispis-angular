@@ -15,7 +15,7 @@
 </div>
 
 <div *ngIf="patients?.length > 0; else noPatients" class="content-wrapper"  >
-    <section [@listAnimation]="patients.length">
+    <section>
         <ul class="list-view-wrapper">
             <li  *ngFor="let patient of patients" class="list-view-item" (dblclick)="deletePatient($event, patient)"  routerLink="patient-details">
                 <div class="item-thumbnail"><i class="mdi mdi-account"></i></div>

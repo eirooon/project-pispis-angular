@@ -16,7 +16,7 @@ import { SidebarJSModule, SidebarJSService } from 'ng-sidebarjs';
   imports: [
     CommonModule,
     SidebarJSModule,
-    RouterModule,
+    RouterModule
   ],
   declarations: [
     HeaderComponent,
@@ -25,7 +25,7 @@ import { SidebarJSModule, SidebarJSService } from 'ng-sidebarjs';
   exports: [
     HeaderComponent,
     SidemenuComponent,
-    CommonModule
+    CommonModule,
   ],
   providers:[
     PatientService

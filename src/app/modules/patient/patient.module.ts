@@ -11,6 +11,7 @@ import { AuthService } from '../../auth/auth.service';
 import { AuthGuard } from '../../auth/auth-guard.service';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
+
 @NgModule({
     declarations: [
         PatientComponent,

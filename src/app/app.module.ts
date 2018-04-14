@@ -8,8 +8,7 @@ import { AppComponent } from './app.component';
 // Modules
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './modules/home/home.module'
-import { LoginModule } from './modules/login/login.module';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { SignupModule } from './auth/signup/signup.module';
 import { SigninModule } from './auth/signin/signin.module';
 
@@ -33,6 +32,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
   imports: [
     BrowserModule.withServerTransition({ appId: 'my-app' }),
     AngularFireModule.initializeApp(environment.firebase, 'angularfs'),
+    AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     AngularFirestoreModule,
     SharedModule.forRoot(),
@@ -40,6 +40,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AppRoutingModule,
     HomeModule,
     FormsModule,
+    ReactiveFormsModule,
     SignupModule,
     SigninModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
