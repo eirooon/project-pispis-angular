@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { NgForm }   from '@angular/forms';
 import { Router } from "@angular/router";
-// import { auth } from 'firebase/app';
-
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signin',
@@ -16,6 +13,10 @@ export class SigninComponent implements OnInit {
   result: string;
   hasError: boolean; 
   uid: string;
+
+  passwordType: string = 'password';
+  passwordShown: boolean = false;
+  iconStyle: string = "mdi mdi-eye";
 
   constructor( 
     private router: Router, 
@@ -42,14 +43,29 @@ export class SigninComponent implements OnInit {
               this.uid = this.authService.getUidOfCurrentDoctor();
               this.router.navigate(['/home']); //if successfuly logged-in, redirect to Home page,
           }
-          else
+          else{
             console.log("Error signin");
             this.hasError = true; 
-          },
+          }
+        },
         error => {
-          this.hasError = error; 
+          console.log("Error signin 2: ", error);
+          this.hasError = true; 
         },
         ()  =>  console.log("Finished")
     );
   }
+  
+  togglePassword(){
+    if(this.passwordShown){
+      this.passwordShown = false;
+      this.passwordType = 'password';
+      this.iconStyle = "mdi mdi-eye";
+    }else{
+      this.passwordShown = true;
+      this.passwordType = 'text';
+      this.iconStyle = "mdi mdi-eye-off";
+    }
+  }
+
 }

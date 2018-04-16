@@ -24,7 +24,7 @@
 .login-page .login-wrapper button{
     width: 100%;}
 
-.login-form{
+.login-forms{
     padding:30px;}
 @media only screen and (max-width:768px){
     .login-page .login-wrapper{
@@ -33,6 +33,11 @@
         width: 100%;
         height: 100%;}
 }
-input.ng-invalid.ng-touched {
-    border: 1px solid red;
-  }
+.hasError-bar{
+    width: 100%;
+    background-color: red;
+    color: white !important;
+    align-self: end;
+    height: 30px;
+    padding: 10px;
+}

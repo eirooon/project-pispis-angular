@@ -9,6 +9,10 @@ import { AuthService } from '../auth.service';
 })
 export class SignupComponent implements OnInit {
 
+  passwordType: string = 'password';
+  passwordShown: boolean = false;
+  iconStyle: string = "mdi mdi-eye";
+
   constructor(public authService : AuthService) { }
 
   ngOnInit() {
@@ -21,4 +25,15 @@ export class SignupComponent implements OnInit {
     this.authService.signupUser(email, password);
   }
 
+  togglePassword(){
+    if(this.passwordShown){
+      this.passwordShown = false;
+      this.passwordType = 'password';
+      this.iconStyle = "mdi mdi-eye";
+    }else{
+      this.passwordShown = true;
+      this.passwordType = 'text';
+      this.iconStyle = "mdi mdi-eye-off";
+    }
+  }
 }

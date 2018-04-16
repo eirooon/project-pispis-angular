@@ -1,0 +1,35 @@
+.signup-page{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 100vh;
+    background-color:#F7F8FB;
+    overflow: hidden;
+    -webkit-overflow-scrolling: hidden;}
+.signup-page .signup-wrapper{
+    display: grid;
+    align-self: center;
+    justify-self: center;
+    background-color: white;
+    width: 450px;
+    box-shadow: 1px 2px 5px #f1f1f1;
+    border-radius: 4px;}
+.signup-page .signup-wrapper button{
+    width: 100%;}
+.signup-form{
+    padding:30px;}
+@media only screen and (max-width:768px){
+    .signup-page .signup-wrapper{
+        align-self: flex-start;
+        justify-self: flex-start;
+        width: 100%;
+        height: 100%;}
+}
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }
+
+.title{
+    padding: 30px 30px 0px 30px;
+    font-size: 24pt;
+    align-self: end;
+}

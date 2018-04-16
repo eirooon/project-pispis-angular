@@ -11,7 +11,6 @@ import { PatientService } from '../shared/service/patient.service';
 
 //3rd Party
 import { SidebarJSModule, SidebarJSService } from 'ng-sidebarjs';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -25,7 +24,7 @@ import { SidebarJSModule, SidebarJSService } from 'ng-sidebarjs';
   exports: [
     HeaderComponent,
     SidemenuComponent,
-    CommonModule,
+    CommonModule
   ],
   providers:[
     PatientService

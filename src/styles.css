@@ -82,7 +82,8 @@ span{
     font-size: 14px;
     line-height: normal;
     transition: none;
-    font-weight: 200;}
+    font-weight: 200;
+    width: 100%;}
 input.form-control, select{
     height: 40px;
     padding: 0px 12px;}
@@ -115,6 +116,15 @@ input.form-control::placeholder{
 }
 .form-select-wrapper i{
     position: absolute;
+}
+.form-input-icon{
+    position: relative;
+}
+.form-input-icon i{
+    position: absolute;
+    top: 12px;
+    float: right;
+    right: 12px;
 }
 
 /*--- SUB-HEADER ---*/
