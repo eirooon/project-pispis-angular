@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { NgForm }   from '@angular/forms';
 import { Router } from "@angular/router";
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signin',
@@ -18,6 +18,14 @@ export class SigninComponent implements OnInit {
   passwordShown: boolean = false;
   iconStyle: string = "mdi mdi-eye";
 
+  form = new FormGroup({
+    username: new FormControl('',[ 
+          Validators.required,
+          Validators.minLength(5)
+        ]),
+    password: new FormControl('', Validators.required)
+  });
+
   constructor( 
     private router: Router, 
     private authService: AuthService
@@ -29,12 +37,15 @@ export class SigninComponent implements OnInit {
      })
    }
 
+  getUserName(){
+    return this.form.get('username');
+  }
   ngOnInit() {
   }
 
-  onSignin(form: NgForm){
+  onSignin(){
     this.authService
-      .signinUser(form.value.email, form.value.password)
+      .signinUser(username, form.password)
       .subscribe(
         data =>  {
           if(data!=null || data!=undefined){

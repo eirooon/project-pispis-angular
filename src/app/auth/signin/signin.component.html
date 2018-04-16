@@ -2,7 +2,7 @@
   <div class="login-wrapper">
     <div class="login-cover">
     </div>
-    <form (ngSubmit)="onSignin(loginForm)" #loginForm="ngForm">
+    <form [formGroup]="form"  (ngSubmit)="onSignin(loginForm)" #loginForm="ngForm">
       <div class="hasError-bar" *ngIf="hasError">
           <span>Error Here~</span>
         </div>
@@ -10,25 +10,29 @@
           <div class="form-inputs">
               <div class="form-group">
                 <label>Email</label>
-                <input  class="form-control" 
-                        type="email" 
-                        id="email" 
+                <input  
+                        formControlName="username"
+                        id="email"
+                        type="email"  
                         name="email" 
-                        ngModel 
                         placeholder="Enter email"
-                        required
+                        class="form-control" 
                         />
+                        <div *ngIf="username.touched && username.invalid" class="aler alert-danger">
+                          <div *ngIf="username.errors.required">Username is required.</div>
+                          <div *ngIf="username.errors.minlength">Username should be minimum of 3 characters.</div>
+                        </div>
               </div>
               <div class="form-group">
                 <label>Password</label>
                 <div class="form-input-icon">
-                    <input  class="form-control" 
-                            [type]="passwordType" 
+                    <input    
+                            formControlName="password"                          
                             id="password" 
+                            type="passwordType" 
                             name="password" 
-                            ngModel 
                             placeholder="Enter password"
-                            required
+                            class="form-control" 
                             />
                     <i [class]="iconStyle" (click)="togglePassword()"></i>
                   </div>
@@ -44,7 +48,6 @@
               </span>
             </div>
       </div>
-      
     </form>
   </div>
 </div>

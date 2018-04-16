@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "project-pispis"
+    "default": "project-pispis",
+    "staging": "project-pispis"
   }
 }

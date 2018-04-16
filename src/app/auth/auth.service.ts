@@ -65,7 +65,7 @@ export class AuthService{
      }
 
      logout(){
-         //localStorage.removeItem('token');
+         localStorage.removeItem('firebase:authUser');
          this.afAuth.auth.signOut();
          this.token = null;
      }
