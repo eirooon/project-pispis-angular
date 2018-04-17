@@ -9,10 +9,9 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class AuthService{
 
+    public hasError: boolean = false; 
     token: string;
     uid: string;
-    private signInIndicator = new Subject<string>();
-    signInIndicator$ = this.signInIndicator.asObservable();
     
     constructor(private router: Router, private afAuth: AngularFireAuth,
         private afs: AngularFirestore){
@@ -26,32 +25,30 @@ export class AuthService{
         )
     }
 
-    signinUser(email: string , password:string):Observable<any>{
-        this.afAuth.auth.signInWithEmailAndPassword(email, password)
+    signinUser(email: string , password:string){
+        firebase.auth().signInWithEmailAndPassword(email, password)
          .then(
              response => {
                 this.afAuth.auth.currentUser.getIdToken()
                     .then(
                         (token: string) => this.token = token
-                    )              
-                    return this.token;
+                    ) 
+                    this.router.navigate(['/home']);             
              }    
          )
          .catch(function(error) {
             console.log("Error from Auth Service: " + error);
-            throw Observable.throw(error);
+            this.hasError = true;
+            //throw Observable.throw(error);
          });
-            
-         this.signInIndicator.next(this.token);
-         return  this.signInIndicator$;
      }
 
      getToken(){
-         this.afAuth.auth.currentUser.getIdToken()
+         firebase.auth().currentUser.getIdToken()
          .then(
             (token: string) => this.token = token
         )
-        let token = localStorage.getItem( this.token);
+        //let token = localStorage.getItem( this.token);
         return this.token;
      }
      
@@ -68,8 +65,8 @@ export class AuthService{
      }
 
      logout(){
-         localStorage.removeItem('firebase:authUser');
-         this.afAuth.auth.signOut();
+         //localStorage.removeItem('firebase:authUser');
+         firebase.auth().signOut();
          this.token = null;
      }
 

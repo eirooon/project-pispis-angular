@@ -17,6 +17,7 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import * as firebase from "firebase";
 
 //Auth
 import { AuthService } from './auth/auth.service';
@@ -31,7 +32,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'my-app' }),
-    AngularFireModule.initializeApp(environment.firebase, 'angularfs'),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     AngularFirestoreModule,
