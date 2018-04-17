@@ -14,8 +14,8 @@
     </div>
 </div>
 
-<div *ngIf="patients?.length > 0; else noPatients" class="content-wrapper"  >
-    <section>
+<div class="content-wrapper"  >
+    <section  *ngIf="patients?.length > 0; else noPatients" >
         <ul class="list-view-wrapper">
             <li  *ngFor="let patient of patients" class="list-view-item" (dblclick)="deletePatient($event, patient)"  routerLink="patient-details">
                 <div class="item-thumbnail"><i class="mdi mdi-account"></i></div>
@@ -23,11 +23,17 @@
                 <span class="item-desc text-ellipsis">{{patient.type}}</span>
             </li>
         </ul>
-        <ngx-spinner loadingText="Please wait" type="ball-pulse"></ngx-spinner>
-        <button class="btn btn-primary btn-wide" (click)="loadMorePatient()" >Load more...</button>
+        <!-- <ngx-spinner loadingText="Please wait" type="ball-pulse"></ngx-spinner> -->
+        <!-- <button class="btn btn-primary btn-wide" (click)="loadMorePatient()" >Load more...</button> -->
     </section>
+
+    <ng-template #noPatients >
+        <section class="empty-list-state">
+            <div>
+                <p>You don't have any patients yet.</p>
+                <p style="margin-top: 5px;">Add your first patient now!</p>
+            </div>
+            <button class="btn btn-primary" routerLink="add-patient">Add Patient</button>
+        </section>
+    </ng-template>
 </div>
-<ng-template #noPatients >
-    <hr>
-        <h5>There are no patients on the list</h5>
-</ng-template>

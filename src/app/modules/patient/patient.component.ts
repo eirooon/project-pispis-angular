@@ -61,16 +61,6 @@ export class PatientComponent implements OnInit {
     }, 2500);
   }
 
-//  @HostListener("window:scroll", ['$event'])
-//  onWindowScroll($event) {
-//      let number = window.pageYOffset || document.documentElement.scrollTop || window.scrollY || 0;
-//      if (number > 10) {
-//          this.shadow = true;
-//     } else if (this.shadow && number < 10) {
-//          this.shadow = false;
-//      }
-//  }
-
   @HostListener("window:scroll", [])
   scroll(): void {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {

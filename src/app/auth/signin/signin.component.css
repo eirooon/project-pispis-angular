@@ -35,9 +35,10 @@
 }
 .hasError-bar{
     width: 100%;
-    background-color: red;
+    background-color: #DE350B;
     color: white !important;
     align-self: end;
-    height: 30px;
-    padding: 10px;
+    height: 38px;
+    padding: 13px;
+    font-size: 12px;
 }

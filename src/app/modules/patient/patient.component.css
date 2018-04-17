@@ -32,3 +32,14 @@
 .button-wrapper button{
     margin: 2px;
 }
+
+.empty-list-state{
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+}
+.empty-list-state .btn-primary{
+    margin-top: 20px;
+    padding: auto 10px;
+    width: 190px;
+}

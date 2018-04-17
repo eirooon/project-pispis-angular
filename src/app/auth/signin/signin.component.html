@@ -4,7 +4,7 @@
     </div>
     <form (ngSubmit)="onSignin(loginForm)" #loginForm="ngForm">
       <div class="hasError-bar" *ngIf="hasError">
-          <span>Error Here~</span>
+          <div>Invalid Email and/or Password</div>
         </div>
       <div class="login-forms">
           <div class="form-inputs">
