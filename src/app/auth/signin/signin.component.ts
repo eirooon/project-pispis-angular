@@ -11,10 +11,13 @@ import { Router } from "@angular/router";
 export class SigninComponent implements OnInit {
 
   uid: string;
-
+  error: { name: string, message: string } = { name: '', message: '' };
+  
   passwordType: string = 'password';
   passwordShown: boolean = false;
   iconStyle: string = "mdi mdi-eye";
+
+  hasError: boolean = false;
 
   constructor( 
     private router: Router, 
@@ -27,7 +30,16 @@ export class SigninComponent implements OnInit {
 
   onSignin(form: NgForm){
     this.authService
-      .signinUser(form.value.email, form.value.password);
+      .signinUser(form.value.email, form.value.password)
+      .then(() => {
+        this.hasError = false;
+        this.router.navigate(['/home']);
+      })
+      .catch(_error => {
+        this.error = _error
+        this.hasError = true;
+        console.log("Error from sign in component: " + this.error.message);
+      })
   }
   
   togglePassword(){

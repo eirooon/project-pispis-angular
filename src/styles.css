@@ -23,7 +23,7 @@ label{
 a{
     cursor: pointer;}
 span{
-    font-size: 12px;
+    font-size: 14px;
     color: #474747;}
     
 /*--- BUTTONS ---*/
@@ -70,8 +70,8 @@ span{
     grid-auto-columns: 100%;
     margin-bottom: 20px;}
 .form-group label{
-    margin-bottom: 5px;
-    font-size: 12px;
+    margin-bottom: 10px;
+    font-size: 14px;
     font-weight: 400;
     color: #5B5B5B;}
 .form-control{
@@ -98,7 +98,7 @@ input.form-control::placeholder{
 .form-subheader{
     padding-top: 20px;
     padding-bottom: 20px;
-    font-size: 10px;
+    font-size: 12px;
     text-transform: uppercase;
     color: #132A51;
     font-weight: 600;

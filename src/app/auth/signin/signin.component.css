@@ -7,7 +7,7 @@
     -webkit-overflow-scrolling: hidden;}
 .login-page .login-wrapper{
     display: grid;
-    grid-template-rows:5fr 2fr;
+    grid-template-rows:2fr 1fr;
     align-self: center;
     justify-self: center;
     background-color: white;
@@ -38,14 +38,11 @@
     background-color: #DE350B;
     color: white !important;
     align-self: end;
-    height: 38px;
     padding: 13px;
     font-size: 12px;
 }
 .hasError-text{
-    width: 100%;
-    color: red !important;
-    align-self: end;
-    height: 30px;
-    padding: 10px;
+    color:#DE350B;
+    padding-top: 10px;
+    font-size: 12px;
 }
