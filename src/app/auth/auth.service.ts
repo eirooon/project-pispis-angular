@@ -4,7 +4,9 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable} from 'rxjs/Rx';
 import { Router } from '@angular/router';
 import { Subject}    from 'rxjs/Subject';
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class AuthService{
 
     token: string;
@@ -35,10 +37,11 @@ export class AuthService{
                     return this.token;
              }    
          )
-         .catch((err:Response) => {
-            console.log(err.body);
-            return Observable.throw(err.body);
+         .catch(function(error) {
+            console.log("Error from Auth Service: " + error);
+            throw Observable.throw(error);
          });
+            
          this.signInIndicator.next(this.token);
          return  this.signInIndicator$;
      }
@@ -65,7 +68,7 @@ export class AuthService{
      }
 
      logout(){
-         //localStorage.removeItem('token');
+         localStorage.removeItem('firebase:authUser');
          this.afAuth.auth.signOut();
          this.token = null;
      }

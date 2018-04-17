@@ -42,3 +42,10 @@
     padding: 13px;
     font-size: 12px;
 }
+.hasError-text{
+    width: 100%;
+    color: red !important;
+    align-self: end;
+    height: 30px;
+    padding: 10px;
+}
