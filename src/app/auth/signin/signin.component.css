@@ -41,3 +41,10 @@
     height: 30px;
     padding: 10px;
 }
+.hasError-text{
+    width: 100%;
+    color: red !important;
+    align-self: end;
+    height: 30px;
+    padding: 10px;
+}

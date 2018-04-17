@@ -3,8 +3,11 @@
     <div class="login-cover">
     </div>
     <form (ngSubmit)="onSignin(loginForm)" #loginForm="ngForm">
-      <div class="hasError-bar" *ngIf="hasError">
+      <!--<div class="hasError-bar" *ngIf="hasError">
           <span>Error Here~</span>
+        </div>-->
+        <div *ngIf="hasError" class="hasError-bar">
+          Invalid username and/or password.
         </div>
       <div class="login-forms">
           <div class="form-inputs">
@@ -16,8 +19,12 @@
                         name="email" 
                         ngModel 
                         placeholder="Enter email"
-                        required
+                        required 
+                        #email="ngModel"
                         />
+                        <div class="hasError-bar" *ngIf="email.touched && !email.valid" class="alert alert-danger" >
+                           Please input email.
+                          </div>
               </div>
               <div class="form-group">
                 <label>Password</label>
@@ -29,7 +36,11 @@
                             ngModel 
                             placeholder="Enter password"
                             required
+                            #password="ngModel"
                             />
+                            <div class="hasError-bar"*ngIf="password.touched && !password.valid" class="alert alert-danger" >
+                                Please input password.
+                               </div>
                     <i [class]="iconStyle" (click)="togglePassword()"></i>
                   </div>
               </div>

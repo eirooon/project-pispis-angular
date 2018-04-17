@@ -44,7 +44,7 @@ export class SigninComponent implements OnInit {
               this.router.navigate(['/home']); //if successfuly logged-in, redirect to Home page,
           }
           else{
-            console.log("Error signin");
+            console.log("Error sign in" + data);
             this.hasError = true; 
           }
         },
