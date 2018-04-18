@@ -34,6 +34,8 @@ export class SigninComponent implements OnInit {
       .then(() => {
         this.hasError = false;
         this.router.navigate(['/home']);
+        this.uid = this.authService.getUidOfCurrentDoctor();
+        localStorage.setItem("UID", this.uid);
       })
       .catch(_error => {
         this.error = _error
