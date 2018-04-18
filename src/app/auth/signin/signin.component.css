@@ -25,24 +25,11 @@
     width: 100%;}
 
 .login-forms{
-    padding:30px;}
-@media only screen and (max-width:768px){
+    padding:25px;}
+@media only screen and (max-width:480px){
     .login-page .login-wrapper{
         align-self: flex-start;
         justify-self: flex-start;
         width: 100%;
         height: 100%;}
-}
-.hasError-bar{
-    width: 100%;
-    background-color: #DE350B;
-    color: white !important;
-    align-self: end;
-    padding: 13px;
-    font-size: 12px;
-}
-.hasError-text{
-    color:#DE350B;
-    padding-top: 10px;
-    font-size: 12px;
 }

@@ -11,12 +11,11 @@ import { Router } from "@angular/router";
 export class SigninComponent implements OnInit {
 
   uid: string;
-  error: { name: string, message: string } = { name: '', message: '' };
-  
   passwordType: string = 'password';
   passwordShown: boolean = false;
   iconStyle: string = "mdi mdi-eye";
 
+  error: { name: string, message: string } = { name: '', message: '' };
   hasError: boolean = false;
 
   constructor( 
@@ -54,6 +53,10 @@ export class SigninComponent implements OnInit {
       this.passwordType = 'text';
       this.iconStyle = "mdi mdi-eye-off";
     }
+  }
+
+  closeErrorBar(){
+    this.hasError = false;
   }
 
 }

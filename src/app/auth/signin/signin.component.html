@@ -3,9 +3,10 @@
     <div class="login-cover">
     </div>
     <form (ngSubmit)="onSignin(loginForm)" #loginForm="ngForm">
-        <div *ngIf="hasError" class="hasError-bar">
-          {{error.message}}
-        </div>
+      <div *ngIf="hasError" class="hasError-bar">
+        <p style="align-self: center;">{{error.message}}</p>
+        <i class="mdi mdi-close" (click)="closeErrorBar()"></i>
+      </div>
       <div class="login-forms">
           <div class="form-inputs">
               <div class="form-group">

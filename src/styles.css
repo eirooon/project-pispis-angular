@@ -165,7 +165,7 @@ input.form-control::placeholder{
 .search-icon{
     position: absolute;
     font-size: 20px;
-    padding-left: 10px;
+    padding-left: 5px;
     line-height: 40px;
     vertical-align: middle;
 }
@@ -273,4 +273,26 @@ header {
         grid-row: 2/3; */
     }
     
+}
+
+/* Error Messages */
+
+.hasError-bar{
+    display: grid;
+    grid-template-columns: 1fr 20px;
+    width: 100%;
+    background-color: #DE350B;
+    color: white !important;
+    padding: 10px;
+    font-size: 12px;
+}
+.hasError-bar i{
+    align-self: center;
+    text-align: center;
+    font-size: 18px;
+}
+.hasError-text{
+    color:#DE350B;
+    padding-top: 10px;
+    font-size: 12px;
 }

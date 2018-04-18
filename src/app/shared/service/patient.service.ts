@@ -29,7 +29,11 @@ export class PatientService {
   }
   
   addPatient(patient: Patient){
-	  this.patientsCollection.add(patient);
+	  return this.patientsCollection.add(patient)
+	  .catch(error => 
+		{
+			throw error
+		});
   }
   
   deletePatient(patient: Patient){

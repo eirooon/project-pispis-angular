@@ -1,5 +1,9 @@
 <div class="signup-page">
   <div class="signup-wrapper">
+    <div *ngIf="hasError" class="hasError-bar">
+        <p style="align-self: center;">{{error.message}}</p>
+        <i class="mdi mdi-close" (click)="closeErrorBar()"></i>
+    </div>
     <h1 class="title">Register</h1>
     <form class="signup-form"(ngSubmit)="onSignup(signupForm)" #signupForm="ngForm">
       <div class="form-inputs">
