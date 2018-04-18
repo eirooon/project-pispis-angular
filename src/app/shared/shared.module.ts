@@ -11,6 +11,7 @@ import { PatientService } from '../shared/service/patient.service';
 
 //3rd Party
 import { SidebarJSModule, SidebarJSService } from 'ng-sidebarjs';
+import { ControlMessagesComponent } from './components/control-messages/control-messages.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -19,12 +20,14 @@ import { SidebarJSModule, SidebarJSService } from 'ng-sidebarjs';
   ],
   declarations: [
     HeaderComponent,
-    SidemenuComponent
+    SidemenuComponent,
+    ControlMessagesComponent
   ],
   exports: [
     HeaderComponent,
     SidemenuComponent,
-    CommonModule
+    CommonModule,
+    ControlMessagesComponent
   ],
   providers:[
     PatientService

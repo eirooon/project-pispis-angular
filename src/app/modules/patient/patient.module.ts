@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../../shared/shared.module';
 import { PatientRoutingModule } from './patient-routing.module';
@@ -10,18 +10,19 @@ import { PatientDetailsComponent } from './patient-details/patient-details.compo
 import { AuthService } from '../../auth/auth.service';
 import { AuthGuard } from '../../auth/auth-guard.service';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
+//import { ControlMessagesComponent } from '../../shared/components/control-messages/control-messages.component';
 
 @NgModule({
     declarations: [
         PatientComponent,
         AddPatientComponent,
-        PatientDetailsComponent
+        PatientDetailsComponent,
     ],
     imports: [
         PatientRoutingModule,
         SharedModule,
         FormsModule,
+        ReactiveFormsModule,
         SharedModule,
         NgxSpinnerModule
     ],
