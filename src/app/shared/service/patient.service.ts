@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Patient } from '../models/patient';
-import { AuthService } from '../../auth/auth.service';
 
 @Injectable()
 export class PatientService {
@@ -10,21 +9,15 @@ export class PatientService {
 	patients: Observable<Patient[]>;
 	patientDoc: AngularFirestoreDocument<Patient>;
 
-	uid: string;
 
   constructor(
-	  public afs: AngularFirestore, 
-	  private authService: AuthService
+	  public afs: AngularFirestore
 	) { 
-	//this.patients = this.afs.collection('ptrecords').valueChanges();
-	
   	}
   
   getPatients(max){
-		this.uid = this.authService.getUidOfCurrentDoctor();
-		console.log("uid from patient list" + this.uid);
-		this.patientsCollection = this.afs.collection('patients', ref => ref.limit(max).where('idDoc','==', this.uid));
-	// /.where('firstname','==','Anthony')
+		console.log("UID DOCTOR: [" + localStorage.getItem("UID") + "]");
+		this.patientsCollection = this.afs.collection('patients', ref => ref.limit(max).where('idDoc','==', localStorage.getItem("UID")));
 		this.patients = this.patientsCollection.snapshotChanges().map(changes => {
 			return changes.map(a => {
 				const data = a.payload.doc.data() as Patient;

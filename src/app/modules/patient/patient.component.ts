@@ -24,7 +24,8 @@ export class PatientComponent implements OnInit {
       private router: Router,
       private patientService: PatientService,
       private spinner: NgxSpinnerService
-  ) { }
+  ) { 
+  }
 
   ngOnInit() {
     this.router.events.subscribe((evt) => {
@@ -32,18 +33,14 @@ export class PatientComponent implements OnInit {
             return;
         }
         window.scrollTo(0, 0)
-        console.log(this.router.url);
     });
 
     this.patientService.getPatients(this.max).subscribe(patients => { 
-		//console.log(patients);
 		this.patients = patients;
-		
-	});
+    });
   }
 
   loadMorePatient(){
-    console.log("LOADED here more.");
     this.spinner.show();
     if(this.first){
       this.max = this.max + 2;
@@ -65,7 +62,6 @@ export class PatientComponent implements OnInit {
   scroll(): void {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         console.log('bottom reached 123');
-       // alert("End");
        // this.loadMorePatient();
     }
   } 
