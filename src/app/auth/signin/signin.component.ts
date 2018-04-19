@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { NgForm }   from '@angular/forms';
 import { Router } from "@angular/router";
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-signin',
@@ -17,10 +18,12 @@ export class SigninComponent implements OnInit {
 
   error: { name: string, message: string } = { name: '', message: '' };
   hasError: boolean = false;
+  showSpinner: boolean = true;
 
   constructor( 
     private router: Router, 
-    public authService: AuthService){
+    public authService: AuthService,
+    private ngProgress: NgProgress){
 
    }
 
@@ -28,15 +31,18 @@ export class SigninComponent implements OnInit {
   }
 
   onSignin(form: NgForm){
+    this.ngProgress.start();
     this.authService
       .signinUser(form.value.email, form.value.password)
       .then(() => {
+        this.ngProgress.done();
         this.hasError = false;
         this.router.navigate(['/home']);
         this.uid = this.authService.getUidOfCurrentDoctor();
         localStorage.setItem("UID", this.uid);
       })
       .catch(_error => {
+        this.ngProgress.done();
         this.error = _error
         this.hasError = true;
         console.log("Error from sign in component: " + this.error.message);

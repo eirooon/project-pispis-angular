@@ -15,17 +15,18 @@ export class PatientService {
 	) { 
   	}
   
-  getPatients(max){
-		console.log("UID DOCTOR: [" + localStorage.getItem("UID") + "]");
-		this.patientsCollection = this.afs.collection('patients', ref => ref.limit(max).where('idDoc','==', localStorage.getItem("UID")));
-		this.patients = this.patientsCollection.snapshotChanges().map(changes => {
-			return changes.map(a => {
-				const data = a.payload.doc.data() as Patient;
-				data.id = a.payload.doc.id;
-				return data;
-			})
-		});
-		return this.patients;
+  getPatients(){
+	console.log("UID DOCTOR: [" + localStorage.getItem("UID") + "]");
+	this.patientsCollection = this.afs.collection('patients', ref => ref.where('idDoc','==', localStorage.getItem("UID")));
+	this.patients = this.patientsCollection.snapshotChanges()
+		.map(changes => {
+		return changes.map(a => {
+			const data = a.payload.doc.data() as Patient;
+			data.id = a.payload.doc.id;
+			return data;
+		})
+});
+	return this.patients;
   }
   
   addPatient(patient: Patient){

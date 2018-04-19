@@ -3,8 +3,7 @@ import { DOCUMENT } from '@angular/platform-browser';
 import { Router, NavigationEnd } from '@angular/router';
 import { Patient } from '../../shared/models/patient';
 import { PatientService } from '../../shared/service/patient.service';
-import { NgxSpinnerService } from 'ngx-spinner';
-
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-patient',
@@ -13,17 +12,16 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class PatientComponent implements OnInit {
   myTitle = "Patient"
-  public shadow: boolean = false;
+  hasList: boolean = true;
   state: string = '';
-
   patients: Patient[];
-  max: number = 6;
+  // max: number = 6;
   first: boolean = true;
 
   constructor(
       private router: Router,
       private patientService: PatientService,
-      private spinner: NgxSpinnerService
+      private ngProgress: NgProgress
   ) { 
   }
 
@@ -34,29 +32,41 @@ export class PatientComponent implements OnInit {
         }
         window.scrollTo(0, 0)
     });
-
-    this.patientService.getPatients(this.max).subscribe(patients => { 
-		this.patients = patients;
-    });
+    this.ngProgress.start();
+    this.patientService.getPatients()
+      .subscribe(patients => { 
+        if(patients.length > 0){
+          console.log('withlist');
+          this.hasList = true;
+          this.patients = patients;
+        }else{
+          this.hasList = false;
+        }
+        this.ngProgress.done();
+    },
+    err => {
+      console.error('Oops:', err.message);
+      this.hasList = false;
+    },
+    
+  );
   }
 
-  loadMorePatient(){
-    this.spinner.show();
-    if(this.first){
-      this.max = this.max + 2;
-      this.first = false;
-    }
-    this.patientService.getPatients(this.max).subscribe(patients => { 
-        //console.log(patients);
-        this.patients = patients;
-    });
+  // loadMorePatient(){
+  //   if(this.first){
+  //     this.max = this.max + 2;
+  //     this.first = false;
+  //   }
+  //   this.patientService.getPatients(this.max).subscribe(patients => { 
+  //       //console.log(patients);
+  //       this.patients = patients;
+  //   });
 
-    this.max = this.max + 3;
-    setTimeout(() => {
-      /** spinner ends after 5 seconds */
-      this.spinner.hide();
-    }, 2500);
-  }
+  //   this.max = this.max + 3;
+  //   setTimeout(() => {
+  //     /** spinner ends after 5 seconds */
+  //   }, 2500);
+  // }
 
   @HostListener("window:scroll", [])
   scroll(): void {

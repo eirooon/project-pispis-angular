@@ -3,7 +3,7 @@ body {
     background-color: #FAFBFC;
     font-size: 16px;
     font-weight: 200;    
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto;}
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto !important;}
 label{
     color: #091E42;
     font-weight: 500;}

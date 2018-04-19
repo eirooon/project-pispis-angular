@@ -1,4 +1,4 @@
-body{overflow-x:hidden;background-color:#fafbfc;font-size:16px;font-weight:200;font-family:-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto}label{color:#091e42;font-weight:500}.description{color:#5e6c84;padding:10px 0}
+body{overflow-x:hidden;background-color:#fafbfc;font-size:16px;font-weight:200;font-family:-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto!important}label{color:#091e42;font-weight:500}.description{color:#5e6c84;padding:10px 0}
 /*--- MISC ---*/*{-webkit-box-sizing:border-box;box-sizing:border-box}.text-ellipsis{text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
 /*--- ELEMENTS ---*/a{cursor:pointer}span{color:#474747}
 /*--- BUTTONS ---*/.btn,span{font-size:14px}.btn{border:1px solid transparent;border-radius:3px;cursor:pointer;display:inline-block;height:40px;outline:none;text-align:center;-webkit-appearance:none;width:auto}.btn-default{background-color:#ececec;color:#091e42}.btn-default:hover{background-color:#f2f2f2}.btn-primary{background-color:#0052cc; 

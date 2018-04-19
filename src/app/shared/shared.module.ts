@@ -12,11 +12,15 @@ import { PatientService } from '../shared/service/patient.service';
 //3rd Party
 import { SidebarJSModule, SidebarJSService } from 'ng-sidebarjs';
 import { ControlMessagesComponent } from './components/control-messages/control-messages.component';
+import { NgProgressModule } from 'ngx-progressbar';
+
+
 @NgModule({
   imports: [
     CommonModule,
     SidebarJSModule,
-    RouterModule
+    RouterModule,
+    NgProgressModule
   ],
   declarations: [
     HeaderComponent,
@@ -27,7 +31,8 @@ import { ControlMessagesComponent } from './components/control-messages/control-
     HeaderComponent,
     SidemenuComponent,
     CommonModule,
-    ControlMessagesComponent
+    ControlMessagesComponent,
+    NgProgressModule
   ],
   providers:[
     PatientService

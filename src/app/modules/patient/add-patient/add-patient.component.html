@@ -16,7 +16,8 @@
                     <label>Patient Type*</label>
                     <div class="form-select-wrapper">
                         <i class="mdi mdi-caret-down"></i>
-                        <select formControlName="type" name="type" class="form-control" >
+                        <select formControlName="type" name="type" class="form-control" required>
+                            <option value='' hidden>Select Patient Type</option>
                             <option>In-Patient</option>
                             <option>Admitted</option>
                         </select>
@@ -81,16 +82,16 @@
                     <input formControlName="email" name="email" class="form-control" type="email" placeholder="Enter email address" />
                 </div>
                 <div class="form-group">
-                    <label>Height</label>
-                    <input formControlName="height" name="height" class="form-control" type="text" placeholder="Enter height" />
+                    <label>Height (cm)</label>
+                    <input formControlName="height" name="height" class="form-control" type="number" placeholder="Enter height" />
                 </div>
                 <div class="form-group">
-                    <label>Weight</label>
-                    <input formControlName="weight" name="weight" class="form-control" type="text" placeholder="Enter weight" />
+                    <label>Weight (kg)</label>
+                    <input formControlName="weight" name="weight" class="form-control" type="number" placeholder="Enter weight" />
                 </div>
                 <div class="form-group">
                     <label>Body Mass Index (BMI)</label>
-                    <input formControlName="bmi" name="bmi" class="form-control" type="text" placeholder="Enter Body Mass Index (BMI)" />
+                    <input formControlName="bmi" name="bmi" class="form-control" type="number" placeholder="Enter Body Mass Index (BMI)" />
                 </div>
             </div>
         </section>

@@ -9,8 +9,6 @@ import { AddPatientComponent } from './add-patient/add-patient.component';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
 import { AuthService } from '../../auth/auth.service';
 import { AuthGuard } from '../../auth/auth-guard.service';
-import { NgxSpinnerModule } from 'ngx-spinner';
-//import { ControlMessagesComponent } from '../../shared/components/control-messages/control-messages.component';
 
 @NgModule({
     declarations: [
@@ -22,9 +20,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
         PatientRoutingModule,
         SharedModule,
         FormsModule,
-        ReactiveFormsModule,
-        SharedModule,
-        NgxSpinnerModule
+        ReactiveFormsModule
     ],
     providers: [
         AuthService, 

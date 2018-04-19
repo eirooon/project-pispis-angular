@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
 import { AuthService } from '../auth.service';
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-signup',
@@ -19,19 +20,23 @@ export class SignupComponent implements OnInit {
 
   constructor(
     public authService : AuthService,
-    private router: Router) { }
+    private router: Router,
+    private ngProgress: NgProgress
+  ) { }
 
   ngOnInit() {
   }
   
   onSignup( form : NgForm ) {
-    console.log(form.value.email);
+    this.ngProgress.start();
     this.authService.signupUser(form.value.email, form.value.password)
     .then(() => {
+      this.ngProgress.done();
       this.hasError = false;
       this.router.navigate(['/home']);
     })
     .catch(_error => {
+      this.ngProgress.done();
       this.error = _error
       this.hasError = true;
       console.log("Error from sign up component: " + this.error.message);
