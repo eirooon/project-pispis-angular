@@ -10,8 +10,11 @@ export class AuthService {
     token: string;
     uid: string;
 
-    constructor(private router: Router, private afAuth: AngularFireAuth,
-        private afs: AngularFirestore) {
+    constructor(
+        private router: Router,
+        private afAuth: AngularFireAuth,
+        private afs: AngularFirestore
+    ) {
     }
 
     signupUser(email: string, password: string) {
@@ -43,7 +46,6 @@ export class AuthService {
             .then(
                 (token: string) => this.token = token
             )
-        //let token = localStorage.getItem( this.token);
         return this.token;
     }
 
@@ -60,8 +62,8 @@ export class AuthService {
     }
 
     logout() {
-        //localStorage.removeItem('firebase:authUser');
-        firebase.auth().signOut();
+        localStorage.removeItem('firebase:authUser');
+        this.afAuth.auth.signOut();
         this.token = null;
     }
 

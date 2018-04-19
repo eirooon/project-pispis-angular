@@ -8,12 +8,31 @@
     padding: 20px;
     grid-gap: 30px;
     overflow-y: auto;}
+    @media only screen and (max-width:480px){
+        .content-wrapper{
+            grid-template-columns: 1fr;
+            padding-left: 20px;
+            padding-right: 20px;}}
 section{
     font-size: 14px;
 }
-@media only screen and (max-width:480px){
-    .content-wrapper{
-        grid-template-columns: 1fr;
-        padding-left: 20px;
-        padding-right: 20px;}}
+
+.list-view-wrapper{
+    padding-top: 20px !important;
+}
+.overview-profile{
+    background-color: #F4F5F7;
+    border-radius: 4px;
+    padding: 30px;
+    align-self: start;
+}
+
+.overview-profile-wrapper h1{
+    font-size: 30px;
+    padding-top: 5px;
+    font-weight: 300;
+}
+
+
+
 

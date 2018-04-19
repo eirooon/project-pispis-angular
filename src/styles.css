@@ -2,14 +2,14 @@ body {
     overflow-x: hidden;
     background-color: #FAFBFC;
     font-size: 16px;
-    font-weight: 200;    
+    font-weight: 400;    
     font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto !important;}
 label{
-    color: #091E42;
-    font-weight: 500;}
+    color: #5E6C84;
+    }
 .description{
     color: #5E6C84;
-    padding: 10px 0;}
+    padding: 5px 0;}
 
 /*--- MISC ---*/
 *{
@@ -19,12 +19,20 @@ label{
     white-space: nowrap;
     overflow: hidden;
 }
+.statusbar-overlay {
+    background-color: #0052CC !important;
+}
+
 /*--- ELEMENTS ---*/
 a{
     cursor: pointer;}
 span{
     font-size: 14px;
     color: #474747;}
+h1, h2, h3, h4, h5, h6{
+    color: #091E42;
+    font-weight: 600;
+}
     
 /*--- BUTTONS ---*/
 .btn{ 
@@ -72,7 +80,7 @@ span{
 .form-group label{
     margin-bottom: 10px;
     font-size: 14px;
-    font-weight: 400;
+    /* font-weight: 400; */
     color: #5B5B5B;}
 .form-control{
     background-color: rgb(252, 252, 252);
@@ -83,7 +91,7 @@ span{
     font-size: 14px;
     line-height: normal;
     transition: none;
-    font-weight: 200;
+    /* font-weight: 200; */
     width: 100%;}
 input.form-control, select{
     height: 40px;
@@ -149,7 +157,7 @@ input.form-control::placeholder{
     outline: none;
     height: 40px;
     font-size: 14px;
-    font-weight: 200;
+    /* font-weight: 200; */
     box-sizing: border-box;
     padding-left: 34px;
     padding-right: 5px;
@@ -180,7 +188,7 @@ header {
     z-index: 1000;}
 .header-primary{
     background-color: #0052cc;
-    color: white;
+    color: white !important;
 }
 .header-secondary{
     background-color: #fff;
@@ -248,7 +256,7 @@ header {
     align-self: center;
     text-decoration: none;
     color: #0052CC;
-    font-weight: 300;
+    /* font-weight: 300; */
 }
 
 .item-desc{
@@ -296,3 +304,8 @@ header {
     padding-top: 10px;
     font-size: 12px;
 }
+
+input.ng-invalid.ng-touched {
+    border: 1px solid #DE350B;
+  }
+

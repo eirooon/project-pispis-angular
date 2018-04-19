@@ -11,7 +11,7 @@ import { NgProgress } from 'ngx-progressbar';
   styleUrls: ['./patient.component.css']
 })
 export class PatientComponent implements OnInit {
-  myTitle = "Patient"
+  myTitle = "Patients"
   hasList: boolean = true;
   state: string = '';
   patients: Patient[];

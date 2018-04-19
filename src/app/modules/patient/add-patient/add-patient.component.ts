@@ -3,8 +3,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Patient } from '../../../shared/models/patient';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { AuthService } from '../../../auth/auth.service';
-import { AuthGuard } from '../../../auth/auth-guard.service';
+import { AuthService } from '../../../shared/service/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidationService } from '../../../shared/service/validation.service';
 

@@ -8,6 +8,9 @@ import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
 
 //Services
 import { PatientService } from '../shared/service/patient.service';
+import { AuthGuard } from '../shared/service/auth-guard.service';
+import { AuthService } from '../shared/service/auth.service';
+
 
 //3rd Party
 import { SidebarJSModule, SidebarJSService } from 'ng-sidebarjs';
@@ -35,7 +38,9 @@ import { NgProgressModule } from 'ngx-progressbar';
     NgProgressModule
   ],
   providers:[
-    PatientService
+    PatientService,
+    AuthGuard,
+    AuthService
   ]
 })
 export class SharedModule { 
