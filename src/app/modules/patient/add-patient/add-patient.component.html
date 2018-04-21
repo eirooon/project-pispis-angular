@@ -42,12 +42,14 @@
                     <label>Gender*</label>
                     <div class="form-inline">
                         <div class="form-radio">
-                            <input formControlName="gender" type="radio" value="Male" name="gender" />
-                            <label>Male</label>
-                        </div>
-                        <div class="form-radio">
-                            <input formControlName="gender" type="radio" value="Female" name="gender" />
-                            <label>Female</label>
+                            <div class="form-radio-item">
+                                <input formControlName="gender" type="radio" value="Male" name="gender" />
+                                <p>Male</p>
+                            </div>
+                            <div class="form-radio-item">
+                                <input formControlName="gender" type="radio" value="Female" name="gender" />
+                                <p>Female</p>
+                            </div>
                         </div>
                         <control-messages [control]="ptnForm.controls.gender"></control-messages>
                     </div>

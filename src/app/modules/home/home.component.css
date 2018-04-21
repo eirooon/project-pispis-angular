@@ -6,19 +6,16 @@
     margin: 15px auto;
     margin-top:60px;
     padding: 20px;
-    grid-gap: 30px;
+    grid-gap: 40px;
     overflow-y: auto;}
     @media only screen and (max-width:480px){
         .content-wrapper{
             grid-template-columns: 1fr;
             padding-left: 20px;
             padding-right: 20px;}}
-section{
-    font-size: 14px;
-}
 
 .list-view-wrapper{
-    padding-top: 20px !important;
+    padding-top: 30px !important;
 }
 .overview-profile{
     background-color: #F4F5F7;
@@ -33,6 +30,12 @@ section{
     font-weight: 300;
 }
 
+.more-actions-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    margin-top: 10px;
+}
 
 
 

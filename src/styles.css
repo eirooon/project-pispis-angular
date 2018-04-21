@@ -1,9 +1,8 @@
 body {
     overflow-x: hidden;
     background-color: #FAFBFC;
-    font-size: 16px;
-    font-weight: 400;    
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto !important;}
+    /* font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto !important;} */
+    font-family: Helvetica, sans-serif;}
 label{
     color: #5E6C84;
     }
@@ -27,7 +26,7 @@ label{
 a{
     cursor: pointer;}
 span{
-    font-size: 14px;
+    font-size: 10pt;
     color: #474747;}
 h1, h2, h3, h4, h5, h6{
     color: #091E42;
@@ -40,8 +39,8 @@ h1, h2, h3, h4, h5, h6{
     border-radius: 3px;
     cursor: pointer;
     display: inline-block;
-    font-size: 14px;
-    height: 40px;
+    font-size: 12pt;
+    height: 45px;
     outline: none;
     text-align: center;
     -webkit-appearance: none;
@@ -76,25 +75,29 @@ h1, h2, h3, h4, h5, h6{
 .form-group{
     display: grid;
     grid-auto-columns: 100%;
-    margin-bottom: 20px;}
+    margin-bottom: 25px;}
 .form-group label{
     margin-bottom: 10px;
-    font-size: 14px;
-    /* font-weight: 400; */
-    color: #5B5B5B;}
+    color: #5B5B5B;
+    font-size: 10pt;
+    font-weight: 200;
+    }
 .form-control{
     background-color: rgb(252, 252, 252);
     border: 1px solid #f2f2f2;
     border-radius: 3px;
+    -webkit-appearance: none;
+    appearance: none;
+    border: 1px solid #B1B1B3;
     box-shadow: 0 2px 2px -3px rgba(0,0,0,0.2);
     color: #140b2f;
-    font-size: 14px;
+    font-size: 12pt;
     line-height: normal;
     transition: none;
-    /* font-weight: 200; */
-    width: 100%;}
-input.form-control, select{
+    width: 100%;
     height: 40px;
+    font-weight: 200;}
+input.form-control, select{
     padding: 0px 12px;}
 input.form-control:focus{
     outline: none;
@@ -106,8 +109,6 @@ input.form-control::placeholder{
 .form-subheader{
     padding-top: 20px;
     padding-bottom: 20px;
-    font-size: 12px;
-    text-transform: uppercase;
     color: #132A51;
     font-weight: 600;
 }
@@ -118,7 +119,21 @@ input.form-control::placeholder{
     display: inline-block;
 }
 .form-radio{
-    display: inline-block;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+}
+.form-radio-item{
+    display: inline-flex;   
+    align-self: center;
+}
+.form-radio-item p{
+    padding-left: 10px;   
+    padding-top: 5px;
+    font-weight: 200;
+}
+.form-radio-item input[type="radio"]{
+    width: 20px;
+    height: 20px;
 }
 .form-select-wrapper{
     display: relative;
@@ -133,7 +148,7 @@ input.form-control::placeholder{
     position: absolute;
     top: 12px;
     float: right;
-    right: 12px;
+    right: 12pt;
 }
 
 /*--- SUB-HEADER ---*/
@@ -156,8 +171,8 @@ input.form-control::placeholder{
     border: 1px solid transparent;
     outline: none;
     height: 40px;
-    font-size: 14px;
-    /* font-weight: 200; */
+    font-size: 12pt;
+    font-weight: 200;
     box-sizing: border-box;
     padding-left: 34px;
     padding-right: 5px;
@@ -226,7 +241,8 @@ header {
     border-bottom: 2px solid #FAFBFC;
     padding: 15px;
     outline: none;
-    font-size: 14px;
+    font-size: 12pt;
+    font-weight: 200;
     background-color: #fff;
 }
 .list-view-item:active{
@@ -292,7 +308,9 @@ header {
     background-color: #DE350B;
     color: white !important;
     padding: 10px;
-    font-size: 12px;
+    font-size: 10pt;
+    line-height: 14pt;
+    font-weight: 200;
 }
 .hasError-bar i{
     align-self: center;
@@ -302,7 +320,8 @@ header {
 .hasError-text{
     color:#DE350B;
     padding-top: 10px;
-    font-size: 12px;
+    font-size: 10pt;
+    font-weight: 200;
 }
 
 input.ng-invalid.ng-touched {
