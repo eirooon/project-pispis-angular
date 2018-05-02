@@ -7,6 +7,7 @@ import { AuthGuard } from './shared/service/auth-guard.service';
 const routes : Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'signin'},
     { path: 'patient', loadChildren: './modules/patient/patient.module#PatientModule', canActivate:[AuthGuard]},
+    { path: 'settings', loadChildren: './modules/settings/settings.module#SettingsModule', canActivate:[AuthGuard]},
 ];
 
 @NgModule({
