@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SettingsComponent } from './settings.component';
+import { ClinicComponent } from './clinic.component';
 import { SharedModule } from '../../shared/shared.module';
-import { SettingsRoutingModule } from './settings-routing.module';
-import { ClinicComponent } from './clinic/clinic.component';
+import { SettingsRoutingModule } from './clinic-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AddClinicComponent } from './add-clinic/add-clinic.component';
 
 @NgModule({
   imports: [
@@ -15,8 +15,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   declarations: [
-    SettingsComponent,
-    ClinicComponent
+    ClinicComponent,
+    AddClinicComponent
   ]
 })
-export class SettingsModule { }
+export class ClinicModule { }

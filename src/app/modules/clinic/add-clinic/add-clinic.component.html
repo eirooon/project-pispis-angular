@@ -5,7 +5,7 @@
     </div>
 </header>
 <div class="content-wrapper">
-    <form [formGroup]="form">
+    <form [formGroup]="clinicForm" (ngSubmit)="addClinic()" >
     <div class="form-group">
         <label for="username">Clinic Name:</label>
         <input 
@@ -15,21 +15,11 @@
             class="form-control">
             <div *ngIf="clinicname.touched && clinicname.invalid" class="alert alert-danger">
                 <div *ngIf="clinicname.errors.required">Clinic name is required</div>
-                <div *ngIf="clinicname.errors.minlength">Clinic should be minimum {{username.errors.minlength.requiredLength}} </div>
+                <div *ngIf="clinicname.errors.minlength">Clinic should be minimum {{clinicname.errors.minlength.requiredLength}} </div>
             </div>
 
     </div>
-    <div class="form-group">
-        <label for="address">Address:</label>
-        <input 
-            formControlName="address"
-            id="address" 
-            type="text" 
-            class="form-control">
-            <div *ngIf="address.touched && address.invalid" class="alert alert-danger">
-                <div *ngIf="address.errors.required">Address is required</div>
-            </div>
-    </div>
+    
     <div class="form-group">
         <label>Province: </label>
         <div class="form-select-wrapper">
@@ -68,7 +58,17 @@
                 </select>
         </div>
     </div>
-
+    <div class="form-group">
+            <label for="address">Address:</label>
+            <input 
+                formControlName="address"
+                id="address" 
+                type="text" 
+                class="form-control">
+                <div *ngIf="address.touched && address.invalid" class="alert alert-danger">
+                    <div *ngIf="address.errors.required">Address is required</div>
+                </div>
+    </div>
         <div class="form-group">
                 <label>Hospital: </label>
                 <div class="form-select-wrapper">
@@ -95,7 +95,10 @@
                     id="roomnumber" 
                     type="text" 
                     class="form-control">
+                    <div *ngIf="address.touched && address.invalid" class="alert alert-danger">
+                            <div *ngIf="address.errors.required">Room number is required</div>
+                        </div>
         </div>
-    <button class="btn btn-primary" type="submit">Add Clinic</button>
+    <button class="btn btn-primary" type="submit" [disabled]="!this.clinicForm.valid">Add Clinic</button>
     </form>
 </div>

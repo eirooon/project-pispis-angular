@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../../shared/service/auth-guard.service';
-import { SettingsComponent } from './settings.component';
-import { ClinicComponent } from './clinic/clinic.component';
+import { ClinicComponent } from './clinic.component';
+import { AddClinicComponent } from './add-clinic/add-clinic.component';
 
 const routes: Routes = [
   { 
     path: '', 
-    component: SettingsComponent,
+    component: ClinicComponent,
     canActivate:[AuthGuard]
   },
   { path: 'clinic', 
-    component: ClinicComponent,
+    component: AddClinicComponent,
   },
 ];
 
