@@ -1,4 +1,9 @@
-<p>
-      Don't have an account?
-      <a routerLink="clinic">Go to Clinic settings! </a>
-</p>
+<header class="header-primary">
+            <div class="header-wrapper">
+                <div class="menu-left"><a (click)="goBack()"><i class="mdi mdi-arrow-left"></i></a></div>
+                <div class="menu-title">Add New Clinic</div>
+            </div>
+</header>
+<div class="content-wrapper">
+<button class="btn btn-primary" routerLink="clinic">Add Clinic</button>
+</div>

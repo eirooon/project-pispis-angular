@@ -4,12 +4,15 @@ import { SettingsComponent } from './settings.component';
 import { SharedModule } from '../../shared/shared.module';
 import { SettingsRoutingModule } from './settings-routing.module';
 import { ClinicComponent } from './clinic/clinic.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     SettingsRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     SettingsComponent,

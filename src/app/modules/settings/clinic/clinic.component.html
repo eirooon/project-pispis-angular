@@ -1,3 +1,101 @@
-<p>
-  clinic works!
-</p>
+<header class="header-primary">
+    <div class="header-wrapper">
+        <div class="menu-left"><a (click)="goBack()"><i class="mdi mdi-arrow-left"></i></a></div>
+        <div class="menu-title">Add New Clinic</div>
+    </div>
+</header>
+<div class="content-wrapper">
+    <form [formGroup]="form">
+    <div class="form-group">
+        <label for="username">Clinic Name:</label>
+        <input 
+        formControlName="clinicname"
+            id="clinicname" 
+            type="text" 
+            class="form-control">
+            <div *ngIf="clinicname.touched && clinicname.invalid" class="alert alert-danger">
+                <div *ngIf="clinicname.errors.required">Clinic name is required</div>
+                <div *ngIf="clinicname.errors.minlength">Clinic should be minimum {{username.errors.minlength.requiredLength}} </div>
+            </div>
+
+    </div>
+    <div class="form-group">
+        <label for="address">Address:</label>
+        <input 
+            formControlName="address"
+            id="address" 
+            type="text" 
+            class="form-control">
+            <div *ngIf="address.touched && address.invalid" class="alert alert-danger">
+                <div *ngIf="address.errors.required">Address is required</div>
+            </div>
+    </div>
+    <div class="form-group">
+        <label>Province: </label>
+        <div class="form-select-wrapper">
+                <i class="mdi mdi-caret-down"></i>
+                <select 
+                    formControlName="province"
+                    id="province" 
+                    type="text" 
+                    class="form-control">
+                    <option value='' hidden>Select Province</option>
+                    <option>Aklan</option>
+                    <option>Antique</option>
+                    <option>Capiz</option>
+                    <option>Guimaras</option>
+                    <option>Iloilo</option>
+                    <option>Negros Oriental</option>
+                </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>City: </label>
+        <div class="form-select-wrapper">
+                <i class="mdi mdi-caret-down"></i>
+                <select 
+                    formControlName="city"
+                    id="city" 
+                    type="text" 
+                    class="form-control">
+                    <option value='' hidden>Select City</option>
+                    <option>Roxas City</option>
+                    <option>Cuartero</option>
+                    <option>Dao</option>
+                    <option>Dumalag</option>
+                    <option>Dumarao</option>
+                    <option>Ivisan</option>
+                </select>
+        </div>
+    </div>
+
+        <div class="form-group">
+                <label>Hospital: </label>
+                <div class="form-select-wrapper">
+                        <i class="mdi mdi-caret-down"></i>
+                        <select 
+                            formControlName="hospital"
+                            id="hospital" 
+                            type="text" 
+                            class="form-control">
+                            <option value='' hidden>Select City</option>
+                            <option>Capiz Doctors Hospital</option>
+                            <option>Capiz Emmanuel Hospital</option>
+                            <option>Mambusao District Hospital</option>
+                            <option>Roxas Memorial Provincial Hospital</option>
+                            <option>St. Anthony College Hospital</option>
+                            <option>The Health Centrum Hospital</option>
+                        </select>
+                </div>
+        </div>
+        <div class="form-group">
+                <label for="address">Room number:</label>
+                <input 
+                    formControlName="roomnumber"
+                    id="roomnumber" 
+                    type="text" 
+                    class="form-control">
+        </div>
+    <button class="btn btn-primary" type="submit">Add Clinic</button>
+    </form>
+</div>
