@@ -19,6 +19,21 @@
             </div>
 
     </div>
+    <div class="text-header">Address</div>
+    <div class="form-group">
+            <label>Region: </label>
+            <div class="form-select-wrapper">
+                    <i class="mdi mdi-caret-down"></i>
+                    <select 
+                        formControlName="region"
+                        id="region" 
+                        type="text" 
+                        class="form-control">
+                        <option value='' hidden>Select Region</option>
+                        <option *ngFor="let region of allRegion" [value]="region.name">{{region.name}}</option>
+                    </select>
+            </div>
+        </div>
     
     <div class="form-group">
         <label>Province: </label>
@@ -30,12 +45,7 @@
                     type="text" 
                     class="form-control">
                     <option value='' hidden>Select Province</option>
-                    <option>Aklan</option>
-                    <option>Antique</option>
-                    <option>Capiz</option>
-                    <option>Guimaras</option>
-                    <option>Iloilo</option>
-                    <option>Negros Oriental</option>
+                    <option *ngFor="let province of regionSix" [value]="province.name">{{province.name}}</option>
                 </select>
         </div>
     </div>
@@ -49,25 +59,9 @@
                     type="text" 
                     class="form-control">
                     <option value='' hidden>Select City</option>
-                    <option>Roxas City</option>
-                    <option>Cuartero</option>
-                    <option>Dao</option>
-                    <option>Dumalag</option>
-                    <option>Dumarao</option>
-                    <option>Ivisan</option>
+                    <option *ngFor="let city of city" [value]="city.name">{{city.name}}</option>
                 </select>
         </div>
-    </div>
-    <div class="form-group">
-            <label for="address">Address:</label>
-            <input 
-                formControlName="address"
-                id="address" 
-                type="text" 
-                class="form-control">
-                <div *ngIf="address.touched && address.invalid" class="alert alert-danger">
-                    <div *ngIf="address.errors.required">Address is required</div>
-                </div>
     </div>
         <div class="form-group">
                 <label>Hospital: </label>
@@ -78,13 +72,8 @@
                             id="hospital" 
                             type="text" 
                             class="form-control">
-                            <option value='' hidden>Select City</option>
-                            <option>Capiz Doctors Hospital</option>
-                            <option>Capiz Emmanuel Hospital</option>
-                            <option>Mambusao District Hospital</option>
-                            <option>Roxas Memorial Provincial Hospital</option>
-                            <option>St. Anthony College Hospital</option>
-                            <option>The Health Centrum Hospital</option>
+                            <option value='' hidden>Select Hospitals</option>
+                            <option *ngFor="let hospital of hospitals" [value]="hospital.name">{{hospital.name}}</option>
                         </select>
                 </div>
         </div>
@@ -95,9 +84,9 @@
                     id="roomnumber" 
                     type="text" 
                     class="form-control">
-                    <div *ngIf="address.touched && address.invalid" class="alert alert-danger">
-                            <div *ngIf="address.errors.required">Room number is required</div>
-                        </div>
+                    <div *ngIf="roomnumber.touched && roomnumber.invalid" class="alert alert-danger">
+                            <div *ngIf="roomnumber.errors.required">Room number is required</div>
+                    </div>
         </div>
     <button class="btn btn-primary" type="submit" [disabled]="!this.clinicForm.valid">Add Clinic</button>
     </form>

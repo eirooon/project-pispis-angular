@@ -3,6 +3,10 @@ import { FormGroup,  FormControl , Validators} from '@angular/forms';
 import { Location } from '@angular/common';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { AuthService } from '../../../shared/service/auth.service';
+import { RegionSixProvince, RegionSevenProvince, AllRegion } from '../../../shared/constantValues/regionConstants';
+import { CapizCity } from '../../../shared/constantValues/cityConstants';
+import { RoxasCityHospitals } from '../../../shared/constantValues/hospitalConstants';
+
 
 @Component({
   selector: 'app-clinic',
@@ -11,6 +15,11 @@ import { AuthService } from '../../../shared/service/auth.service';
 })
 export class AddClinicComponent implements OnInit {
 
+  allRegion = AllRegion
+  regionSix =  RegionSixProvince;
+  regionSeven = RegionSevenProvince;
+  city = CapizCity;
+  hospitals = RoxasCityHospitals;
 
   clinicCollection: AngularFirestoreCollection<any> = this.afs.collection('clinics');
   ptnObserver = this.clinicCollection.valueChanges();
@@ -20,9 +29,9 @@ export class AddClinicComponent implements OnInit {
       Validators.required,
       Validators.minLength(3)
     ]),
+    region: new FormControl('', Validators.required),
     province: new FormControl('',Validators.required),
     city: new FormControl('',Validators.required),
-    address: new FormControl('', Validators.required),
     hospital: new FormControl('', Validators.required),
     roomnumber: new FormControl('', Validators.required)
   });
@@ -57,7 +66,6 @@ export class AddClinicComponent implements OnInit {
         clinicname: this.clinicForm.value.clinicname,
         province: this.clinicForm.value.province,
         city: this.clinicForm.value.province,
-        address: this.clinicForm.value.address,
         hospital: this.clinicForm.value.hospital,
         roomnumber: this.clinicForm.value.roomnumber,
       }).then(function(docRef) {
