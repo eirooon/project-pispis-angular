@@ -1,0 +1,79 @@
+<header class="header-primary">
+    <div class="header-wrapper">
+        <div class="menu-left">
+            <a (click)="goBack()">
+                <i class="mdi mdi-arrow-left"></i>
+            </a>
+        </div>
+        <div class="menu-title">Add New Clinic</div>
+    </div>
+</header>
+<div class="content-wrapper">
+    <form [formGroup]="clinicForm" (ngSubmit)="addClinic()">
+        <div class="form-subheader">Basic Information</div>
+        <section>
+            <div class="form-group">
+                <label for="username">Clinic Name</label>
+                <input formControlName="clinicname" id="clinicname" type="text" class="form-control">
+                <div *ngIf="clinicname.touched && clinicname.invalid" class="alert alert-danger hasError-text">
+                    <div *ngIf="clinicname.errors.required">Clinic name is required</div>
+                    <div *ngIf="clinicname.errors.minlength">Clinic should be minimum {{clinicname.errors.minlength.requiredLength}} </div>
+                </div>
+
+            </div>
+        </section>
+        <div class="form-subheader">Address</div>
+        <section>
+            <div class="form-group">
+                <label>Region</label>
+                <div class="form-select-wrapper">
+                    <i class="mdi mdi-caret-down"></i>
+                    <select formControlName="region" id="region" type="text" class="form-control">
+                        <option value='' hidden>Select Region</option>
+                        <option *ngFor="let region of allRegion" [value]="region.name">{{region.name}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Province</label>
+                <div class="form-select-wrapper">
+                    <i class="mdi mdi-caret-down"></i>
+                    <select formControlName="province" id="province" type="text" class="form-control">
+                        <option value='' hidden>Select Province</option>
+                        <option *ngFor="let province of regionSix" [value]="province.name">{{province.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>City</label>
+                <div class="form-select-wrapper">
+                    <i class="mdi mdi-caret-down"></i>
+                    <select formControlName="city" id="city" type="text" class="form-control">
+                        <option value='' hidden>Select City</option>
+                        <option *ngFor="let city of city" [value]="city.name">{{city.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Hospital</label>
+                <div class="form-select-wrapper">
+                    <i class="mdi mdi-caret-down"></i>
+                    <select formControlName="hospital" id="hospital" type="text" class="form-control">
+                        <option value='' hidden>Select Hospitals</option>
+                        <option *ngFor="let hospital of hospitals" [value]="hospital.name">{{hospital.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address">Room number</label>
+                <input formControlName="roomnumber" id="roomnumber" type="text" class="form-control">
+                <div *ngIf="roomnumber.touched && roomnumber.invalid" class="alert alert-danger hasError-text">
+                    <div *ngIf="roomnumber.errors.required">Room number is required</div>
+                </div>
+            </div>
+            <button class="btn btn-primary btn-wide" type="submit" [disabled]="!this.clinicForm.valid">Add Clinic</button>
+        </section>
+
+    </form>
+</div>

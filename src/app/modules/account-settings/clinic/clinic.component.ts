@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./clinic.component.css']
 })
 export class ClinicComponent implements OnInit {
-
+  myTitle = "Clinic"
   constructor(private location: Location) { }
 
   ngOnInit() {

@@ -20,9 +20,6 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent

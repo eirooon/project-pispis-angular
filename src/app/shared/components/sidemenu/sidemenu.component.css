@@ -5,7 +5,7 @@ sidebar-js .sidenav-header {
     padding-left: 20px;}
     sidebar-js .sidenav-content {
         overflow-y: auto; 
-        overflow: scroll;
+        /* overflow: scroll; */
     }
 sidebar-js .sidenav-content ul {
     margin: 0;

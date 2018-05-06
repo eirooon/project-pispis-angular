@@ -9,7 +9,7 @@
     display: grid;
     max-width: 1024px;
     margin: auto;
-    grid-template-columns: 2fr 132px;
+    grid-template-columns: 2fr 42px;
     grid-auto-rows: 60px;
     grid-gap: 5px;
     padding: auto 20px;}

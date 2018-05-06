@@ -21,7 +21,12 @@ label{
 .statusbar-overlay {
     background-color: #0052CC !important;
 }
-
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
 /*--- ELEMENTS ---*/
 a{
     cursor: pointer;}
@@ -40,18 +45,19 @@ h1, h2, h3, h4, h5, h6{
     cursor: pointer;
     display: inline-block;
     font-size: 12pt;
-    height: 45px;
     outline: none;
     text-align: center;
     -webkit-appearance: none;
     width: auto;}
 .btn-default{
     background-color: #ECECEC;
-    color: #091E42;}
+    color: #091E42;
+    height: 45px;}
 .btn-default:hover{
     background-color: #f2f2f2;}
 .btn-primary{ 
-    background-color: #0052CC; 
+    background-color: #0052CC;
+    height: 45px; 
     /* box-shadow: 0 0 0 1px #0052CC, 0 2px 4px -2px rgba(0,0,0,0.2); */
     color: white;}
 .btn-primary:hover{ 
@@ -63,11 +69,13 @@ h1, h2, h3, h4, h5, h6{
     background-color: #fff;
     /* box-shadow: 0 0 0 1px rgba(20,11,47,0.1), 0 2px 4px -2px rgba(0,0,0,0.2); */
     border: 1px solid #ECECEC;
-    color: #726d82;}
+    color: #726d82;
+    height: 45px;}
 .btn-icon{
     padding:0px;
     font-size: 20px;
-    min-width:40px;}
+    min-width:40px;
+    height: 40px;}
 .btn.btn-wide{
     width: 100%;
 }
