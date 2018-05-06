@@ -20,7 +20,9 @@ sidebar-js .sidenav-content li {
     outline: none;}
 sidebar-js .sidenav-content li:hover {
     background-color:rgb(239, 245, 255);
-    color: #0052CC;}
+    color: #0052CC;
+    cursor: pointer; 
+}
 sidebar-js .sidenav-footer {
     display: grid;
     grid-template-columns: 4fr 1fr;
@@ -49,8 +51,8 @@ sidebar-js .sidenav-footer .logout{
 sidebar-js a {
     display: block;
     text-decoration: none; }
-sidebar-js a:hover {
-    cursor: pointer; }
+/* sidebar-js a:hover {
+    cursor: pointer; } */
 sidebar-js hr {
     border:0;
     border-top: 1px solid #f1f1f1;}

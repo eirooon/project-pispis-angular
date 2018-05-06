@@ -7,6 +7,7 @@ const routes : Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'signin'},
     { path: 'patient', loadChildren: './modules/patient/patient.module#PatientModule', canActivate:[AuthGuard]},
     { path: 'account-settings', loadChildren: './modules/account-settings/account-settings.module#AccountSettingsModule', canActivate:[AuthGuard]},
+    { path: 'templates', loadChildren: './modules/templates/templates.module#TemplatesModule', canActivate:[AuthGuard]},
 ];
 
 @NgModule({
