@@ -6,6 +6,7 @@ import { AuthService } from '../../../shared/service/auth.service';
 import { RegionSixProvince, RegionSevenProvince, AllRegion } from '../../../shared/constantValues/regionConstants';
 import { CapizCity } from '../../../shared/constantValues/cityConstants';
 import { RoxasCityHospitals } from '../../../shared/constantValues/hospitalConstants';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -39,7 +40,8 @@ export class AddClinicComponent implements OnInit {
   constructor(
     private location: Location,
     private afs: AngularFirestore,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -63,17 +65,25 @@ export class AddClinicComponent implements OnInit {
   addClinic(){
     if(this.clinicForm.valid){
       this.clinicCollection.add({
+        idDoc: this.authService.getUidOfCurrentDoctor(),
         clinicname: this.clinicForm.value.clinicname,
         province: this.clinicForm.value.province,
         city: this.clinicForm.value.province,
         hospital: this.clinicForm.value.hospital,
         roomnumber: this.clinicForm.value.roomnumber,
-      }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+      })
+      .then((docRef) => {
+        this.clinicCollection.doc(docRef.id).update({
+          prodid: docRef.id
+        })
+        console.log(docRef.id);
+        this.router.navigateByUrl('clinic');
       })
       .catch(function(error) {
           console.error("Error adding document: ", error);
       });
+    }else {
+    console.log('Form is invalid');
     }
   }
 }
