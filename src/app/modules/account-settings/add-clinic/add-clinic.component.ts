@@ -34,7 +34,8 @@ export class AddClinicComponent implements OnInit {
     province: new FormControl('', Validators.required),
     city: new FormControl('',Validators.required),
     hospital: new FormControl('', Validators.required),
-    roomnumber: new FormControl('', Validators.required)
+    roomnumber: new FormControl('', Validators.required),
+    clinic: new FormControl('', Validators.required)
   });
 
   constructor(
