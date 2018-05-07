@@ -99,5 +99,4 @@ export class AddClinicComponent implements OnInit {
     console.log('Form is invalid');
     }
   }
-
 }
