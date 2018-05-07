@@ -29,6 +29,8 @@ export class AddClinicComponent implements OnInit {
       Validators.minLength(3)
     ]),
 
+    phone: new FormControl(),
+    mobile: new FormControl(),
     province: new FormControl('', Validators.required),
     city: new FormControl('',Validators.required),
     hospital: new FormControl('', Validators.required),

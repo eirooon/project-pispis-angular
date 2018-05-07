@@ -21,10 +21,17 @@
                 </div>
 
             </div>
+            <div class="form-group">
+                <label for="username">Phone</label>
+                <input formControlName="phone" id="phone" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="username">Mobile</label>
+                <input formControlName="mobile" id="mobile" type="text" class="form-control">
+            </div>
         </section>
         <div class="form-subheader">Address</div>
         <section>
-
             <div class="form-group">
                 <label>Province</label>
                 <input type="text" placeholder="Find province" list="provinceList" id="province" formControlName="province" data-list-filter="^" class="form-control"> 
@@ -63,14 +70,54 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="address">Room number</label>
+                <label for="roomnumber">Room number</label>
                 <input formControlName="roomnumber" id="roomnumber" type="text" class="form-control">
                 <div *ngIf="roomnumber.touched && roomnumber.invalid" class="alert alert-danger hasError-text">
                     <div *ngIf="roomnumber.errors.required">Room number is required</div>
                 </div>
             </div>
-            <button class="btn btn-primary btn-wide" type="submit" [disabled]="!this.clinicForm.valid">Add Clinic</button>
+            
         </section>
 
+        <div class="form-subheader">Clinic schedule</div>
+        <section>
+            <div class="form-group">
+                <label>Day</label>
+                <input type="text" placeholder="Monday" list="clinicDay" id="clinic" formControlName="clinic" data-list-filter="^" class="form-control"> 
+                <datalist id="clinicDay">
+                    <select>
+                        <option value="Monday"></option>
+                        <option value="Tuesday"></option>
+                        <option value="Wednesday"></option>
+                        <option value="Thursday"></option>
+                        <option value="Friday"></option>
+                        <option value="Saturday"></option>
+                        <option value="Sunday"></option>
+                    </select>
+                </datalist>
+            </div> 
+            <div class="form-group">
+                <label>Clinic Type</label>
+                <input type="text" placeholder="No Clinic" list="clinicType" id="clinic" formControlName="clinic" data-list-filter="^" class="form-control"> 
+                <datalist id="clinicType">
+                    <select>
+                        <option value="No Clinic"></option>
+                        <option value="Appointment"></option>
+                        <option value="Walk-in"></option>
+                    </select>
+                </datalist>
+            </div> 
+            <div class="form-group">   
+                <label for="address">From</label>
+                <input type="time" placeholder="00:00" id="mondayFromTime" class="form-control">
+            </div>
+            <div class="form-group">    
+                <label for="address">To</label>
+                <input type="time" placeholder="00:00" id="mondayToTime" class="form-control">       
+            </div>
+
+            <button class="btn btn-primary" type="submit" >Add Clinic Schedule</button>
+            </section>
+            <button class="btn btn-primary btn-wide" type="submit" [disabled]="!this.clinicForm.valid">Add Clinic</button>
     </form>
 </div>
