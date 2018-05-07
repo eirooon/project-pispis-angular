@@ -77,7 +77,7 @@ export class AddClinicComponent implements OnInit {
           prodid: docRef.id
         })
         console.log(docRef.id);
-        this.router.navigateByUrl('clinic');
+        this.goBack();
       })
       .catch(function(error) {
           console.error("Error adding document: ", error);
