@@ -1,7 +1,7 @@
 import { Address } from '../models/addressModel';
 
 
-export const RoxasCityHospitals: Address[] = [
+export const AllHospitals: Address[] = [
     { name: 'Capiz Doctors Hospital' },
     { name: 'Capiz Emmanuel Hospital' },
     { name: 'Mambusao District Hospital' },

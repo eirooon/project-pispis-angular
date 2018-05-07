@@ -1,7 +1,7 @@
 import { Address } from '../models/addressModel';
 
 
-export const CapizCity: Address[] = [
+export const AllCity: Address[] = [
     { name: 'Roxas City' },
     { name: 'Cuartero' },
     { name: 'Dao' },

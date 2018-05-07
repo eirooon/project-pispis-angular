@@ -24,45 +24,42 @@
         </section>
         <div class="form-subheader">Address</div>
         <section>
-            <div class="form-group">
-                <label>Region</label>
-                <div class="form-select-wrapper">
-                    <i class="mdi mdi-caret-down"></i>
-                    <select formControlName="region" id="region" type="text" class="form-control">
-                        <option value='' hidden>Select Region</option>
-                        <option *ngFor="let region of allRegion" [value]="region.name">{{region.name}}</option>
-                    </select>
-                </div>
-            </div>
 
             <div class="form-group">
                 <label>Province</label>
-                <div class="form-select-wrapper">
-                    <i class="mdi mdi-caret-down"></i>
-                    <select formControlName="province" id="province" type="text" class="form-control">
-                        <option value='' hidden>Select Province</option>
-                        <option *ngFor="let province of regionSix" [value]="province.name">{{province.name}}</option>
+                <input type="text" placeholder="Find province" list="provinceList" id="province" formControlName="province" data-list-filter="^" class="form-control"> 
+                <datalist id="provinceList">
+                    <select>
+                        <option  *ngFor="let province of provinceList" value="{{province.name}}"></option>    
                     </select>
+                </datalist>
+                <div *ngIf="province.touched && province.invalid" class="alert alert-danger hasError-text">
+                    <div *ngIf="province.errors.required">Province is required</div>
                 </div>
             </div>
             <div class="form-group">
                 <label>City</label>
-                <div class="form-select-wrapper">
-                    <i class="mdi mdi-caret-down"></i>
-                    <select formControlName="city" id="city" type="text" class="form-control">
-                        <option value='' hidden>Select City</option>
-                        <option *ngFor="let city of city" [value]="city.name">{{city.name}}</option>
+                <input type="text" placeholder="Find city" list="cityList" id="city" formControlName="city" data-list-filter="^" class="form-control"> 
+                <datalist id="cityList">
+                    <select>
+                        <option  *ngFor="let city of cityList" value="{{city.name}}"></option>    
                     </select>
+                </datalist>
+                <div *ngIf="city.touched && city.invalid" class="alert alert-danger hasError-text">
+                    <div *ngIf="city.errors.required">City is required</div>
                 </div>
             </div>
             <div class="form-group">
                 <label>Hospital</label>
-                <div class="form-select-wrapper">
-                    <i class="mdi mdi-caret-down"></i>
-                    <select formControlName="hospital" id="hospital" type="text" class="form-control">
-                        <option value='' hidden>Select Hospitals</option>
-                        <option *ngFor="let hospital of hospitals" [value]="hospital.name">{{hospital.name}}</option>
+                <input type="text" placeholder="Find hospital" list="hospitalList" id="hospital" formControlName="hospital" data-list-filter="^" class="form-control"> 
+                <datalist id="hospitalList">
+                    <select>
+                        <option  *ngFor="let hospital of hospitalList" value="{{hospital.name}}"></option>    
                     </select>
+                 
+                </datalist>
+                <div *ngIf="hospital.touched && hospital.invalid" class="alert alert-danger hasError-text">
+                    <div *ngIf="hospital.errors.required">Hospital is required</div>
                 </div>
             </div>
             <div class="form-group">
