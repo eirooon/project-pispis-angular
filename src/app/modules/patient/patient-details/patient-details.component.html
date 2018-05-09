@@ -1,10 +1,41 @@
 <header class="header-primary">
-    <div class="header-wrapper">
-        <div class="menu-left"><a (click)="goBack()"><i class="mdi mdi-arrow-left"></i></a></div>
-        <div class="menu-title">Patient Details</div>
-        <div class="menu-right"><a><i class="mdi mdi-dots-horizontal"></i></a></div>
-    </div>
+	<div class="header-wrapper">
+		<div class="menu-left" (click)="goBack()">
+			<i class="mdi mdi-arrow-left"></i>
+		</div>
+		<div class="menu-title">Patient Details</div>
+		<div class="menu-right">
+			<i class="mdi mdi-dots-horizontal"></i>
+		</div>
+	</div>
 </header>
 <div class="content-wrapper">
-    
+	<sui-tabset>
+		<div class="ui top attached tabular menu">
+			<a class="item" suiTabHeader="1">Consultation</a>
+			<a class="item" suiTabHeader="2">Personal Profile</a>
+			<a class="item" suiTabHeader="2">Heath Profile</a>
+			<a class="item" suiTabHeader="3">Vital Signs</a>
+			<a class="item" suiTabHeader="4">Health Records</a>
+		</div>
+		<div class="ui bottom attached segment" suiTabContent="1">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer semper luctus ex a euismod. Cras interdum nibh ligula, id placerat erat ullamcorper accumsan. Donec auctor nisi dui, eu sodales massa pharetra quis. Aliquam erat volutpat. Suspendisse ut vulputate sem. Nullam dignissim at metus nec hendrerit. Quisque ut finibus libero. Nunc sed accumsan elit. Nulla molestie nulla id tristique sagittis. Aenean id quam non turpis vehicula dignissim. Nam venenatis rhoncus egestas. Aenean risus odio, rutrum et feugiat eu, euismod sed arcu. Donec dignissim dictum sagittis. Cras dictum malesuada leo, eget pulvinar metus varius congue.
+
+				Proin ornare semper nibh, eu vulputate arcu feugiat volutpat. In elementum tristique mauris eu iaculis. Duis et facilisis arcu. Ut eget vehicula leo. Quisque feugiat mauris ut erat consectetur egestas. Sed ut odio pellentesque, facilisis sapien quis, malesuada nulla. Nullam convallis purus ut rutrum vehicula. Nunc fermentum magna non turpis hendrerit, nec pellentesque velit congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut luctus, orci ac congue tempus, quam ante volutpat elit, a sagittis libero nisl ac diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer semper luctus ex a euismod. Cras interdum nibh ligula, id placerat erat ullamcorper accumsan. Donec auctor nisi dui, eu sodales massa pharetra quis. Aliquam erat volutpat. Suspendisse ut vulputate sem. Nullam dignissim at metus nec hendrerit. Quisque ut finibus libero. Nunc sed accumsan elit. Nulla molestie nulla id tristique sagittis. Aenean id quam non turpis vehicula dignissim. Nam venenatis rhoncus egestas. Aenean risus odio, rutrum et feugiat eu, euismod sed arcu. Donec dignissim dictum sagittis. Cras dictum malesuada leo, eget pulvinar metus varius congue.
+
+				Proin ornare semper nibh, eu vulputate arcu feugiat volutpat. In elementum tristique mauris eu iaculis. Duis et facilisis arcu. Ut eget vehicula leo. Quisque feugiat mauris ut erat consectetur egestas. Sed ut odio pellentesque, facilisis sapien quis, malesuada nulla. Nullam convallis purus ut rutrum vehicula. Nunc fermentum magna non turpis hendrerit, nec pellentesque velit congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut luctus, orci ac congue tempus, quam ante volutpat elit, a sagittis libero nisl ac diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer semper luctus ex a euismod. Cras interdum nibh ligula, id placerat erat ullamcorper accumsan. Donec auctor nisi dui, eu sodales massa pharetra quis. Aliquam erat volutpat. Suspendisse ut vulputate sem. Nullam dignissim at metus nec hendrerit. Quisque ut finibus libero. Nunc sed accumsan elit. Nulla molestie nulla id tristique sagittis. Aenean id quam non turpis vehicula dignissim. Nam venenatis rhoncus egestas. Aenean risus odio, rutrum et feugiat eu, euismod sed arcu. Donec dignissim dictum sagittis. Cras dictum malesuada leo, eget pulvinar metus varius congue.
+
+				Proin ornare semper nibh, eu vulputate arcu feugiat volutpat. In elementum tristique mauris eu iaculis. Duis et facilisis arcu. Ut eget vehicula leo. Quisque feugiat mauris ut erat consectetur egestas. Sed ut odio pellentesque, facilisis sapien quis, malesuada nulla. Nullam convallis purus ut rutrum vehicula. Nunc fermentum magna non turpis hendrerit, nec pellentesque velit congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut luctus, orci ac congue tempus, quam ante volutpat elit, a sagittis libero nisl ac diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer semper luctus ex a euismod. Cras interdum nibh ligula, id placerat erat ullamcorper accumsan. Donec auctor nisi dui, eu sodales massa pharetra quis. Aliquam erat volutpat. Suspendisse ut vulputate sem. Nullam dignissim at metus nec hendrerit. Quisque ut finibus libero. Nunc sed accumsan elit. Nulla molestie nulla id tristique sagittis. Aenean id quam non turpis vehicula dignissim. Nam venenatis rhoncus egestas. Aenean risus odio, rutrum et feugiat eu, euismod sed arcu. Donec dignissim dictum sagittis. Cras dictum malesuada leo, eget pulvinar metus varius congue.
+
+				Proin ornare semper nibh, eu vulputate arcu feugiat volutpat. In elementum tristique mauris eu iaculis. Duis et facilisis arcu. Ut eget vehicula leo. Quisque feugiat mauris ut erat consectetur egestas. Sed ut odio pellentesque, facilisis sapien quis, malesuada nulla. Nullam convallis purus ut rutrum vehicula. Nunc fermentum magna non turpis hendrerit, nec pellentesque velit congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut luctus, orci ac congue tempus, quam ante volutpat elit, a sagittis libero nisl ac diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer semper luctus ex a euismod. Cras interdum nibh ligula, id placerat erat ullamcorper accumsan. Donec auctor nisi dui, eu sodales massa pharetra quis. Aliquam erat volutpat. Suspendisse ut vulputate sem. Nullam dignissim at metus nec hendrerit. Quisque ut finibus libero. Nunc sed accumsan elit. Nulla molestie nulla id tristique sagittis. Aenean id quam non turpis vehicula dignissim. Nam venenatis rhoncus egestas. Aenean risus odio, rutrum et feugiat eu, euismod sed arcu. Donec dignissim dictum sagittis. Cras dictum malesuada leo, eget pulvinar metus varius congue.
+
+				Proin ornare semper nibh, eu vulputate arcu feugiat volutpat. In elementum tristique mauris eu iaculis. Duis et facilisis arcu. Ut eget vehicula leo. Quisque feugiat mauris ut erat consectetur egestas. Sed ut odio pellentesque, facilisis sapien quis, malesuada nulla. Nullam convallis purus ut rutrum vehicula. Nunc fermentum magna non turpis hendrerit, nec pellentesque velit congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut luctus, orci ac congue tempus, quam ante volutpat elit, a sagittis libero nisl ac diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer semper luctus ex a euismod. Cras interdum nibh ligula, id placerat erat ullamcorper accumsan. Donec auctor nisi dui, eu sodales massa pharetra quis. Aliquam erat volutpat. Suspendisse ut vulputate sem. Nullam dignissim at metus nec hendrerit. Quisque ut finibus libero. Nunc sed accumsan elit. Nulla molestie nulla id tristique sagittis. Aenean id quam non turpis vehicula dignissim. Nam venenatis rhoncus egestas. Aenean risus odio, rutrum et feugiat eu, euismod sed arcu. Donec dignissim dictum sagittis. Cras dictum malesuada leo, eget pulvinar metus varius congue.
+
+				Proin ornare semper nibh, eu vulputate arcu feugiat volutpat. In elementum tristique mauris eu iaculis. Duis et facilisis arcu. Ut eget vehicula leo. Quisque feugiat mauris ut erat consectetur egestas. Sed ut odio pellentesque, facilisis sapien quis, malesuada nulla. Nullam convallis purus ut rutrum vehicula. Nunc fermentum magna non turpis hendrerit, nec pellentesque velit congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut luctus, orci ac congue tempus, quam ante volutpat elit, a sagittis libero nisl ac diam.		</div>
+		<div class="ui bottom attached segment" suiTabContent="2">Second tab!</div>
+		<div class="ui bottom attached segment" suiTabContent="3">Third tab!</div>
+		<div class="ui bottom attached segment" suiTabContent="4">Fourth tab!</div>
+		<div class="ui bottom attached segment" suiTabContent="5">Fifth tab!</div>
+		<div class="ui bottom attached segment" suiTabContent="6">Sixth tab!</div>
+	</sui-tabset>
 </div>

@@ -3,9 +3,8 @@
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: minmax(300px, auto);
     max-width: 1024px;
-    margin: 15px auto;
-    margin-top:60px;
-    padding: 20px;
+    margin: auto;
+    padding-top:80px !important;
     grid-gap: 40px;
     overflow-y: auto;}
     @media only screen and (max-width:480px){

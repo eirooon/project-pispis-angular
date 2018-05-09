@@ -1,9 +1,7 @@
 .content-wrapper{
     max-width: 600px;
     margin: auto;
-    margin-top:60px;
-    padding-top: 20px;
-    overflow-y: auto;}
+    padding-top: 80px;}
 section{
     background-color: white;
     padding:20px;

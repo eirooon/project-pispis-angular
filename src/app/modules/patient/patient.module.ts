@@ -18,7 +18,7 @@ import { PatientDetailsComponent } from './patient-details/patient-details.compo
         PatientRoutingModule,
         SharedModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
     ]
 })
 

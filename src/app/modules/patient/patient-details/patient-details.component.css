@@ -1,0 +1,63 @@
+.content-wrapper{
+    max-width: 1024px;
+    margin: auto;
+    padding-top:60px;
+}
+section{
+    background-color: white;
+    padding:20px;
+    /* border-radius: 3px; */
+    border: 1px solid #fafafa;
+    /* box-shadow: 0px 1px 4px #f1f1f1; */
+}
+@media only screen and (max-width:480px){
+    .content-wrapper{
+        max-width: 100%;}
+    
+    .form-subheader{
+        padding-left: 20px;
+    }
+
+    sui-tabset .menu{
+        justify-content: left !important;
+    }
+}
+
+sui-tabset .menu{
+    overflow-y: auto;
+    height: 72px;
+    justify-content: center;
+    border-bottom: transparent !important;  
+    -webkit-overflow-scrolling:touch;
+}
+
+
+.content-wrapper ::-webkit-scrollbar{
+      height: 0px;
+      width: 0px;
+      background: none;
+}
+.ui.tabular.menu .active.item{
+    border-bottom: 3px solid;
+    background: none !important;
+    border-radius: 0px !important;
+    border-color: transparent transparent #0052cc transparent;
+    color: #0052cc;
+    font-weight: 200 !important;
+    margin-bottom: 0px;
+}
+.ui.attached.segment{
+    border: transparent !important;
+}
+.ui.segment{
+    border: transparent !important;
+    background: #fff !important;
+    height: calc(100vh - 162px);
+    overflow: auto;
+    -webkit-overflow-scrolling:touch;
+}
+.ui.tabular.menu .item{
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: 3px solid transparent;
+}

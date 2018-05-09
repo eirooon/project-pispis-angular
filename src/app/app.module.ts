@@ -4,7 +4,6 @@ import { NgModule} from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-
 // Modules
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './modules/home/home.module'
@@ -19,6 +18,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
+
+import {SuiModule} from 'ng2-semantic-ui';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     ReactiveFormsModule,
     SignupModule,
     SigninModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    SuiModule
   ],
   bootstrap: [AppComponent]
 })
