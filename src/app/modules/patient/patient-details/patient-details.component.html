@@ -32,7 +32,95 @@
 				Proin ornare semper nibh, eu vulputate arcu feugiat volutpat. In elementum tristique mauris eu iaculis. Duis et facilisis arcu. Ut eget vehicula leo. Quisque feugiat mauris ut erat consectetur egestas. Sed ut odio pellentesque, facilisis sapien quis, malesuada nulla. Nullam convallis purus ut rutrum vehicula. Nunc fermentum magna non turpis hendrerit, nec pellentesque velit congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut luctus, orci ac congue tempus, quam ante volutpat elit, a sagittis libero nisl ac diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer semper luctus ex a euismod. Cras interdum nibh ligula, id placerat erat ullamcorper accumsan. Donec auctor nisi dui, eu sodales massa pharetra quis. Aliquam erat volutpat. Suspendisse ut vulputate sem. Nullam dignissim at metus nec hendrerit. Quisque ut finibus libero. Nunc sed accumsan elit. Nulla molestie nulla id tristique sagittis. Aenean id quam non turpis vehicula dignissim. Nam venenatis rhoncus egestas. Aenean risus odio, rutrum et feugiat eu, euismod sed arcu. Donec dignissim dictum sagittis. Cras dictum malesuada leo, eget pulvinar metus varius congue.
 
 				Proin ornare semper nibh, eu vulputate arcu feugiat volutpat. In elementum tristique mauris eu iaculis. Duis et facilisis arcu. Ut eget vehicula leo. Quisque feugiat mauris ut erat consectetur egestas. Sed ut odio pellentesque, facilisis sapien quis, malesuada nulla. Nullam convallis purus ut rutrum vehicula. Nunc fermentum magna non turpis hendrerit, nec pellentesque velit congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut luctus, orci ac congue tempus, quam ante volutpat elit, a sagittis libero nisl ac diam.		</div>
-		<div class="ui bottom attached segment" suiTabContent="2">Second tab!</div>
+		
+		<div class="form-subheader" suiTabContent="2">Basic Information</div>
+			<section>
+				<div class="form-inputs">
+					<div class="form-group">
+						<label>Patient Type*</label>
+						<h1>{{patient.type}}</h1>
+					</div>
+					<div class="form-group">
+						<label>First Name</label>
+						<h1>{{patient.firstname}}</h1>
+					</div>
+					<div class="form-group">
+						<label>Middle Name</label>
+						<h1>{{patient.middlename}}</h1>
+					</div>
+					<div class="form-group">
+						<label>Last Name</label>
+						<h1>{{patient.lastname}}</h1>
+					</div>
+					<div class="form-group">
+						<label>Gender</label>
+						<h1>{{patient.gender}}</h1>
+					</div>
+					<div class="form-group">
+						<label>Birthdate</label>
+						<h1>{{patient.birthdate}}</h1>
+					</div>
+
+					<div class="form-group">
+						<label>Address</label>
+						<h1>{{patient.address}}</h1>
+					</div>
+					<div class="form-group">
+						<label>Occupation</label>
+						<h1>{{patient.occupation}}</h1>
+					</div>
+					<div class="form-group">
+						<label>Landline No.</label>
+						<h1>{{patient.landline}}</h1>
+					</div>
+					<div class="form-group">
+						<label>Mobile No.</label>
+						<h1>{{patient.mobile}}</h1>
+					</div>
+					<div class="form-group">
+						<label>Email Address</label>
+						<h1>{{patient.email}}</h1>
+					</div>
+					<div class="form-group">
+						<label>Height (cm)</label>
+						<h1>{{patient.height}}</h1>
+					</div>
+					<div class="form-group">
+						<label>{{patient.weight}}</label>
+						<h1>53</h1>
+					</div>
+					<div class="form-group">
+						<label>Body Mass Index (BMI)</label>
+						<h1>{{patient.bmi}}</h1>
+					</div>
+				</div>
+			</section>
+
+
+			<div class="form-subheader">For Emergency</div>
+			<section>
+				<div class="form-group">    
+					<label for="emgy_firstname">First Name</label>
+					<h1>{{patient.emgy_firstname}}</h1>
+				</div>
+				<div class="form-group">
+					<label for="emgy_middlename">Middle Name</label>
+					<h1>{{patient.emgy_midname}}</h1>
+				</div>
+				<div class="form-group">
+					<label for="emgy_lastname">Last Name</label>
+					<h1>{{patient.emgy_lastname}}</h1>
+				</div>
+				<div class="form-group">
+					<label for="emgy_contact">Contact No.</label>
+					<h1>{{patient.emgy_contact}}</h1>
+				</div>
+				<div class="form-group">
+					<label for="emgy_email">Email Address</label>
+					<h1>{{patient.emgy_email}}</h1>
+				</div>
+				<button class="btn btn-primary btn-wide" type="submit" (click)="editPatientDetails()" routerLink="../add-patient">Edit Patient</button>    
+			</section>
 		<div class="ui bottom attached segment" suiTabContent="3">Third tab!</div>
 		<div class="ui bottom attached segment" suiTabContent="4">Fourth tab!</div>
 		<div class="ui bottom attached segment" suiTabContent="5">Fifth tab!</div>
