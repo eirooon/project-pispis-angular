@@ -20,7 +20,7 @@ export class AuthService {
     signupUser(email: string, password: string) {
         return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
             .catch(error => {
-                console.log("Error from Auth Service: " + error);
+                console.log("[AuthService] Error: " + error);
                 throw error
             })
     }
@@ -36,7 +36,7 @@ export class AuthService {
                 }
             )
             .catch(error => {
-                console.log("Error from Auth Service: " + error);
+                console.log("[AuthService] Error: " + error);
                 throw error
             });
     }
@@ -68,13 +68,12 @@ export class AuthService {
     }
 
     getUidOfCurrentDoctor() {
-        console.log("getUidOfCurrentDoctor");
         if (this.afAuth.auth.currentUser != null) {
             console.log(this.afAuth.auth.currentUser.uid);
             return this.afAuth.auth.currentUser.uid;
         }
         else {
-            console.log("null user");
+            console.log("[AuthService] User is NULL");
             return null;
         }
     }

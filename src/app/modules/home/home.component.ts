@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
           return;
       }
       window.scrollTo(0, 0)
-      console.log(this.router.url);
+      console.log('[Home] Router URL: ' + this.router.url);
 
       // this.ngProgress.start();
       // setTimeout(() => this.ngProgress.done(), 3000)

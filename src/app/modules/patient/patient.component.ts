@@ -27,29 +27,35 @@ export class PatientComponent implements OnInit {
 
   ngOnInit() {
     this.router.events.subscribe((evt) => {
-        if (!(evt instanceof NavigationEnd)) {
-            return;
-        }
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
         window.scrollTo(0, 0)
-    });
-    this.ngProgress.start();
-    this.patientService.getPatients()
-      .subscribe(patients => { 
+      });
+      this.ngProgress.start();
+      this.patientService.getPatients().subscribe(patients => { 
         if(patients.length > 0){
-          console.log('withlist');
+          console.log('[List-Patient] List retrieve successful');
           this.hasList = true;
           this.patients = patients;
-        }else{
+        } else {
           this.hasList = false;
         }
         this.ngProgress.done();
-    },
-    err => {
-      console.error('Oops:', err.message);
-      this.hasList = false;
-    },
-    
-  );
+      },
+      err => {
+        console.error('[List-Patient] Error:', err.message);
+        this.hasList = false;
+      },
+    );
+  }
+
+  getPatientDetails(event, patient){
+    this.patientService.setPatient(patient);
+  }
+
+  deletePatient(event, patient){
+    this.patientService.deletePatient(patient);
   }
 
   // loadMorePatient(){
@@ -62,16 +68,9 @@ export class PatientComponent implements OnInit {
   //       this.patients = patients;
   //   });
 
-  //   this.max = this.max + 3;
-  //   setTimeout(() => {
-  //     /** spinner ends after 5 seconds */
-  //   }, 2500);
-  // }
-
   @HostListener("window:scroll", [])
   scroll(): void {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        console.log('bottom reached 123');
        // this.loadMorePatient();
     }
   } 

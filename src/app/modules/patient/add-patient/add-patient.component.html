@@ -15,7 +15,7 @@
                     <label>Patient Type*</label>
                     <div class="form-select-wrapper">
                         <i class="mdi mdi-caret-down"></i>
-                        <select formControlName="type" name="type" class="form-control" required>
+                        <select formControlName="type" name="type" class="form-control" [(ngModel)]="patient.type" required>
                             <option value='' hidden>Select Patient Type</option>
                             <option>In-Patient</option>
                             <option>Admitted</option>
@@ -25,17 +25,20 @@
                 </div>
                 <div class="form-group">
                     <label>First Name*</label>
-                    <input formControlName="firstname" name="firstname" class="form-control" type="text" placeholder="Enter first name" />
+                    <input *ngIf="patient != null" formControlName="firstname" name="firstname" class="form-control" type="text" placeholder="Enter first name" value="{{patient.firstname}}" [(ngModel)]="patient.firstname"/>
+                    <input *ngIf="patient == null" formControlName="firstname" name="firstname" class="form-control" type="text" placeholder="Enter first name" [(ngModel)]="patient.firstname"/>
                     <control-messages [control]="ptnForm.controls.firstname"></control-messages>
                 </div>
                 <div class="form-group">
                     <label>Middle Name*</label>
-                    <input formControlName="middlename" name="middlename" class="form-control" type="text" placeholder="Enter middle name" />
+                    <input *ngIf="patient != null" formControlName="middlename" name="middlename" class="form-control" type="text" placeholder="Enter middle name" value="{{patient.middlename}}" [(ngModel)]="patient.middlename"/>
+                    <input *ngIf="patient == null" formControlName="middlename" name="middlename" class="form-control" type="text" placeholder="Enter middle name" [(ngModel)]="patient.middlename"/>
                     <control-messages [control]="ptnForm.controls.middlename"></control-messages>
                 </div>
                 <div class="form-group">
                     <label>Last Name*</label>
-                    <input formControlName="lastname" name="lastname" class="form-control" type="text" placeholder="Enter last name" />
+                    <input *ngIf="patient != null" formControlName="lastname" name="lastname" class="form-control" type="text" placeholder="Enter last name" value="{{patient.lastname}}" [(ngModel)]="patient.lastname"/>
+                    <input *ngIf="patient == null" formControlName="lastname" name="lastname" class="form-control" type="text" placeholder="Enter last name" [(ngModel)]="patient.lastname"/>
                     <control-messages [control]="ptnForm.controls.lastname"></control-messages>
                 </div>
                 <div class="form-group">
@@ -43,11 +46,11 @@
                     <div class="form-inline">
                         <div class="form-radio">
                             <div class="form-radio-item">
-                                <input formControlName="gender" type="radio" value="Male" name="gender" />
+                                <input formControlName="gender" type="radio" value="Male" name="gender" [(ngModel)]="patient.gender"/>
                                 <p>Male</p>
                             </div>
                             <div class="form-radio-item">
-                                <input formControlName="gender" type="radio" value="Female" name="gender" />
+                                <input formControlName="gender" type="radio" value="Female" name="gender" [(ngModel)]="patient.gender"/>
                                 <p>Female</p>
                             </div>
                         </div>
@@ -56,43 +59,52 @@
                 </div>
                 <div class="form-group">
                     <label>Birthdate*</label>
-                    <input formControlName="birthdate" name="birthdate" class="form-control" type="date" placeholder="Enter birthday" />
+                    <input *ngIf="patient != null" formControlName="birthdate" name="birthdate" class="form-control" type="date" placeholder="Enter birthday" value="{{patient.birthdate}}" [(ngModel)]="patient.birthdate"/>
+                    <input *ngIf="patient == null" formControlName="birthdate" name="birthdate" class="form-control" type="date" placeholder="Enter birthday" [(ngModel)]="patient.birthdate"/>
                     <control-messages [control]="ptnForm.controls.birthdate"></control-messages>
                 </div>
 
                 <div class="form-group">
                     <label>Address*</label>
-                    <input formControlName="address" name="address" class="form-control" type="text" placeholder="Enter address" />
+                    <input *ngIf="patient != null" formControlName="address" name="address" class="form-control" type="text" placeholder="Enter address" value="{{patient.address}}" [(ngModel)]="patient.address"/>
+                    <input *ngIf="patient == null" formControlName="address" name="address" class="form-control" type="text" placeholder="Enter address" [(ngModel)]="patient.address"/>
                     <control-messages [control]="ptnForm.controls.address"></control-messages>
                 </div>
                 <div class="form-group">
                     <label>Occupation</label>
-                    <input formControlName="occupation" name="occupation" class="form-control" type="text" placeholder="Enter occupation" />
+                    <input *ngIf="patient != null" formControlName="occupation" name="occupation" class="form-control" type="text" placeholder="Enter occupation" value="{{patient.occupation}}" [(ngModel)]="patient.occupation"/>
+                    <input *ngIf="patient == null" formControlName="occupation" name="occupation" class="form-control" type="text" placeholder="Enter occupation" [(ngModel)]="patient.occupation"/>
                 </div>
                 <div class="form-group">
                     <label>Landline No.</label>
-                    <input formControlName="landline" name="landline" class="form-control" type="number" placeholder="Enter landline no." />
+                    <input *ngIf="patient != null" formControlName="landline" name="landline" class="form-control" type="number" placeholder="Enter landline no." value="{{patient.landline}}" [(ngModel)]="patient.landline"/>
+                    <input *ngIf="patient == null" formControlName="landline" name="landline" class="form-control" type="number" placeholder="Enter landline no." [(ngModel)]="patient.landline"/>
                 </div>
                 <div class="form-group">
                     <label>Mobile No.*</label>
-                    <input formControlName="mobile" name="mobile" class="form-control" type="number" placeholder="Enter mobile no." />
+                    <input *ngIf="patient != null" formControlName="mobile" name="mobile" class="form-control" type="number" placeholder="Enter mobile no." value="{{patient.mobile}}" [(ngModel)]="patient.mobile"/>
+                    <input *ngIf="patient == null" formControlName="mobile" name="mobile" class="form-control" type="number" placeholder="Enter mobile no." [(ngModel)]="patient.mobile"/>
                     <control-messages [control]="ptnForm.controls.mobile"></control-messages>
                 </div>
                 <div class="form-group">
                     <label>Email Address</label>
-                    <input formControlName="email" name="email" class="form-control" type="email" placeholder="Enter email address" />
+                    <input *ngIf="patient != null" formControlName="email" name="email" class="form-control" type="email" placeholder="Enter email address" value="{{patient.email}}" [(ngModel)]="patient.email"/>
+                    <input *ngIf="patient == null" formControlName="email" name="email" class="form-control" type="email" placeholder="Enter email address" [(ngModel)]="patient.email"/>
                 </div>
                 <div class="form-group">
                     <label>Height (cm)</label>
-                    <input formControlName="height" name="height" class="form-control" type="number" placeholder="Enter height" />
+                    <input *ngIf="patient != null" formControlName="height" name="height" class="form-control" type="number" placeholder="Enter height" value="{{patient.height}}" [(ngModel)]="patient.height"/>
+                    <input *ngIf="patient == null" formControlName="height" name="height" class="form-control" type="number" placeholder="Enter height" [(ngModel)]="patient.height"/>
                 </div>
                 <div class="form-group">
                     <label>Weight (kg)</label>
-                    <input formControlName="weight" name="weight" class="form-control" type="number" placeholder="Enter weight" />
+                    <input *ngIf="patient != null" formControlName="weight" name="weight" class="form-control" type="number" placeholder="Enter weight" value="{{patient.weight}}" [(ngModel)]="patient.weight"/>
+                    <input *ngIf="patient == null" formControlName="weight" name="weight" class="form-control" type="number" placeholder="Enter weight" [(ngModel)]="patient.weight"/>
                 </div>
                 <div class="form-group">
                     <label>Body Mass Index (BMI)</label>
-                    <input formControlName="bmi" name="bmi" class="form-control" type="number" placeholder="Enter Body Mass Index (BMI)" />
+                    <input *ngIf="patient != null" formControlName="bmi" name="bmi" class="form-control" type="number" placeholder="Enter Body Mass Index (BMI)" value="{{patient.bmi}}" [(ngModel)]="patient.bmi"/>
+                    <input *ngIf="patient == null" formControlName="bmi" name="bmi" class="form-control" type="number" placeholder="Enter Body Mass Index (BMI)" [(ngModel)]="patient.bmi"/>
                 </div>
             </div>
         </section>
@@ -102,29 +114,35 @@
         <section>
             <div class="form-group">    
                 <label for="emgy_firstname">First Name*</label>
-                <input formControlName="emgy_firstname" class="form-control" type="text" placeholder="Enter first name" name="emgy_firstname" />
+                <input *ngIf="patient != null" formControlName="emgy_firstname" class="form-control" type="text" placeholder="Enter first name" name="emgy_firstname" value="{{patient.emgy_firstname}}" [(ngModel)]="patient.emgy_firstname"/>
+                <input *ngIf="patient == null" formControlName="emgy_firstname" class="form-control" type="text" placeholder="Enter first name" name="emgy_firstname" [(ngModel)]="patient.emgy_firstname"/>
                 <control-messages [control]="ptnForm.controls.emgy_firstname"></control-messages>
             </div>
             <div class="form-group">
                 <label for="emgy_middlename">Middle Name*</label>
-                <input formControlName="emgy_middlename" class="form-control" type="text" placeholder="Enter middle name" name="emgy_middlename" />
+                <input *ngIf="patient != null" formControlName="emgy_middlename" class="form-control" type="text" placeholder="Enter middle name" name="emgy_middlename" value="{{patient.emgy_middlename}}" [(ngModel)]="patient.emgy_middlename"/>
+                <input *ngIf="patient == null" formControlName="emgy_middlename" class="form-control" type="text" placeholder="Enter middle name" name="emgy_middlename" [(ngModel)]="patient.emgy_middlename"/>
                 <control-messages [control]="ptnForm.controls.emgy_middlename"></control-messages>
             </div>
             <div class="form-group">
                 <label for="emgy_lastname">Last Name*</label>
-                <input formControlName="emgy_lastname" class="form-control" type="text" placeholder="Enter last name" name="emgy_lastname" />
+                <input *ngIf="patient != null" formControlName="emgy_lastname" class="form-control" type="text" placeholder="Enter last name" name="emgy_lastname" value="{{patient.emgy_lastname}}" [(ngModel)]="patient.emgy_lastname"/>
+                <input *ngIf="patient == null" formControlName="emgy_lastname" class="form-control" type="text" placeholder="Enter last name" name="emgy_lastname" [(ngModel)]="patient.emgy_lastname"/>
                 <control-messages [control]="ptnForm.controls.emgy_lastname"></control-messages>
             </div>
             <div class="form-group">
                 <label for="emgy_contact">Contact No.*</label>
-                <input formControlName="emgy_contact" class="form-control" type="number" placeholder="Enter contact no." name="emgy_contact" />
+                <input *ngIf="patient != null" formControlName="emgy_contact" class="form-control" type="number" placeholder="Enter contact no." name="emgy_contact" value="{{patient.emgy_contact}}" [(ngModel)]="patient.emgy_contact"/>
+                <input *ngIf="patient == null" formControlName="emgy_contact" class="form-control" type="number" placeholder="Enter contact no." name="emgy_contact" [(ngModel)]="patient.emgy_contact"/>
                 <control-messages [control]="ptnForm.controls.emgy_contact"></control-messages>
             </div>
             <div class="form-group">
                 <label for="emgy_email">Email Address</label>
-                <input formControlName="emgy_email" class="form-control" type="text" placeholder="Enter email address" name="emgy_email" />
+                <input *ngIf="patient != null" formControlName="emgy_email" class="form-control" type="text" placeholder="Enter email address" name="emgy_email" value="{{patient.emgy_email}}" [(ngModel)]="patient.emgy_email"/>
+                <input *ngIf="patient == null" formControlName="emgy_email" class="form-control" type="text" placeholder="Enter email address" name="emgy_email" [(ngModel)]="patient.emgy_email"/>
             </div>
-            <button class="btn btn-primary btn-wide" type="submit" [disabled]="!this.ptnForm.valid">Add Patient</button>    
+            <button *ngIf="isEdit == false" class="btn btn-primary btn-wide" type="submit" [disabled]="!this.ptnForm.valid">Add Patient</button>
+            <button *ngIf="isEdit == true" class="btn btn-primary btn-wide" type="submit" [disabled]="!this.ptnForm.valid">Edit Patient</button>     
         </section>
     </form>
 </div>

@@ -28,16 +28,16 @@ export class ClinicComponent implements OnInit {
     this.getClinics()
       .subscribe(clinics => { 
         if(clinics.length > 0){
-          console.log('withlist');
+          console.log('[Clinic] List loaded successful');
           this.hasList = true;
           this.clinics = clinics;
-          console.log(this.clinics);
+          console.log('[Clinic] Clinic data: ' + this.clinics);
         }else{
           this.hasList = false;
         }
     },
     err => {
-      console.error('Oops:', err.message);
+      console.error('[Clinic] Error: ', err.message);
       this.hasList = false;
     },
     

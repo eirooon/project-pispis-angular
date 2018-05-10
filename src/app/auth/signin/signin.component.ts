@@ -46,7 +46,7 @@ export class SigninComponent implements OnInit {
           this.ngProgress.done();
           this.error = _error
           this.hasError = true;
-          console.log("Error from sign in component: " + this.error.message);
+          console.log("[Sign-in] Error: " + this.error.message);
         })
   }
   

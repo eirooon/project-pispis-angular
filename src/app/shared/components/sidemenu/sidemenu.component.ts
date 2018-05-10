@@ -21,6 +21,6 @@ export class SidemenuComponent implements OnInit {
   logout(){
     this.authService.logout();
     this.router.navigate(['/signin']);
-    console.log("logout has been clicked!");
+    console.log("[Sidemenu] Logout process");
   }
 }

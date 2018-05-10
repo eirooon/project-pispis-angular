@@ -39,7 +39,7 @@ export class SignupComponent implements OnInit {
       this.ngProgress.done();
       this.error = _error
       this.hasError = true;
-      console.log("Error from sign up component: " + this.error.message);
+      console.log("[Sign-up] Error: " + this.error.message);
     })
   }
 

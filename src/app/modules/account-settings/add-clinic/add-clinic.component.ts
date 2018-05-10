@@ -90,14 +90,14 @@ export class AddClinicComponent implements OnInit {
         this.clinicCollection.doc(docRef.id).update({
           prodid: docRef.id
         })
-        console.log(docRef.id);
+        console.log('[Clinic-Add] Doc Ref: ' + docRef.id);
         this.goBack();
       })
       .catch(function(error) {
           console.error("Error adding document: ", error);
       });
     }else {
-    console.log('Form is invalid');
+    console.log('[Clinic-Add] Form is invalid');
     }
   }
 }
