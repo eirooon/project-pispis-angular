@@ -52,7 +52,7 @@ sui-tabset .menu{
 .ui.segment{
     border: transparent !important;
     background: #fff !important;
-    height: calc(100vh - 162px);
+    /* height: calc(100vh - 162px); */
     overflow: auto;
     -webkit-overflow-scrolling:touch;
 }

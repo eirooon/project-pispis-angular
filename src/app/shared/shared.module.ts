@@ -16,8 +16,10 @@ import { AuthService } from '../shared/service/auth.service';
 import { SidebarJSModule, SidebarJSService } from 'ng-sidebarjs';
 import { ControlMessagesComponent } from './components/control-messages/control-messages.component';
 import { NgProgressModule } from 'ngx-progressbar';
-// import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+//Semantic UI
 import { SuiTabsModule } from 'ng2-semantic-ui';
+import { SuiModalModule } from 'ng2-semantic-ui';
 
 @NgModule({
   imports: [
@@ -25,7 +27,8 @@ import { SuiTabsModule } from 'ng2-semantic-ui';
     SidebarJSModule,
     RouterModule,
     NgProgressModule,
-    SuiTabsModule
+    SuiTabsModule,
+    SuiModalModule
   ],
   declarations: [
     HeaderComponent,
@@ -38,7 +41,8 @@ import { SuiTabsModule } from 'ng2-semantic-ui';
     CommonModule,
     ControlMessagesComponent,
     NgProgressModule,
-    SuiTabsModule
+    SuiTabsModule,
+    SuiModalModule
   ],
   providers:[
     PatientService,

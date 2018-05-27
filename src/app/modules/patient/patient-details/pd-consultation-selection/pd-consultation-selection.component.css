@@ -1,0 +1,31 @@
+.content-wrapper{
+    max-width: 1024px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-gap: 15px;
+    padding: 80px 20px 20px 20px;
+}
+.emr-item{
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #f8f8f8;
+    align-self: center;
+    text-align: center;
+    padding:20px;
+    border-radius: 3px;
+    color: #091E42;
+    
+}
+.emr-item-icon{
+    font-size: 28px;
+    padding-bottom: 10px;
+}   
+
+.emr-item:hover, :focus{
+    color: #0052cc;
+    border: 1px solid #f8f8f8;
+    cursor: pointer;
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.05);
+}

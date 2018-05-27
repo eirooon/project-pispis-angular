@@ -1,0 +1,40 @@
+<header class="header-secondary">
+    <div class="header-wrapper">
+        <div class="menu-left" (click)="goBack()">
+            <i class="mdi mdi-arrow-left"></i>
+        </div>
+        <div class="menu-title">Text</div>
+        <div class="menu-right">
+           <span (click)='cancel()'>Cancel</span>
+        </div>
+    </div>
+</header>
+<div class="content-wrapper">
+    <section class="panel-container">
+        <div class="form-group">
+            <label>Select Clinic</label>
+            <div class="form-select-wrapper">
+                <i class="mdi mdi-caret-down"></i>
+                <select name="type" class="form-control">
+                    <option value='' hidden>Select Clinic</option>
+                    <option>St. Anthony College Hospital</option>
+                    <option>Emmanuel Hospital</option>
+                    <option>Capiz Doctor's Hospital</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Date</label>
+            <input class="form-control" type="date" placeholder="Enter date" />
+        </div>
+    </section>
+    <section class="text-area">
+        <div class="form-group">
+            <label>Write notes below</label>
+            <textarea class="form-control-textarea" rows="20" cols="80" placeholder="Describe yourself here..."></textarea>
+        </div>
+        <button class="btn btn-primary btn-wide" (click)="addText()" type="submit">Add Text</button>
+
+    </section>
+
+</div>

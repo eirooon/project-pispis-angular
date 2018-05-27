@@ -28,6 +28,11 @@ textarea:focus,
 button:focus {
     outline: none;
 }
+hr{
+    border-top: 1px solid #f8f8f8;	
+    background-color: transparent;
+
+}
 /*--- ELEMENTS ---*/
 a{
     cursor: pointer;
@@ -162,6 +167,22 @@ input.form-control::placeholder{
     right: 12pt;
 }
 
+.form-control-textarea{
+    background-color: rgb(252, 252, 252);
+    border: 1px solid #f2f2f2;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    appearance: none;
+    border: 1px solid #B1B1B3;
+    box-shadow: 0 2px 2px -3px rgba(0,0,0,0.2);
+    color: #140b2f;
+    font-size: 12pt;
+    line-height: normal;
+    transition: none;
+    width: 100%;
+    padding:10px;
+}
+
 /*--- SUB-HEADER ---*/
 .sub-header{
     width: 100%;
@@ -294,6 +315,10 @@ header {
     color: #5E6C84;
 }
 
+.list-view-header{
+    background-color: #f8f8f8;
+    padding:15px 20px;
+}
 @media only screen and (max-width:480px){
     .list-view-item{
         grid-template-columns: 60px 1fr;
@@ -325,7 +350,7 @@ header {
     font-size: 10pt;
     line-height: 14pt;
     font-weight: 200;
-}
+}   
 .hasError-bar i{
     align-self: center;
     text-align: center;
@@ -341,3 +366,23 @@ header {
 input.ng-invalid.ng-touched {
     border: 1px solid #DE350B;
   }
+
+
+/* EMR Components */
+.panel-container{
+    background-color: #fff;
+    border-radius: 4px;
+    padding:20px;
+    margin: 80px auto auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+.panel-container .form-group{
+    margin-bottom: 10px !important;
+}
+@media only screen and (max-width:480px){
+    .panel-container{
+        grid-template-columns: 1fr;
+    }
+}

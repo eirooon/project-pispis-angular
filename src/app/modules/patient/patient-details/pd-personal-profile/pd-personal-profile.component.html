@@ -1,0 +1,83 @@
+<div class="form-inputs">
+  <div class="form-group">
+    <label>Patient Type*</label>
+    <input class="form-control" type="text" value="{{patient.type}}" />
+  </div>
+  <div class="form-group">
+    <label>First Name*</label>
+    <input class="form-control" type="text" value="{{patient.firstname}}" />
+  </div>
+  <div class="form-group">
+    <label>Middle Name</label>
+    <input class="form-control" type="text" value="{{patient.middlename}}" />
+  </div>
+  <div class="form-group">
+    <label>Last Name*</label>
+    <input class="form-control" type="text" value="{{patient.lastname}}" />
+  </div>
+  <div class="form-group">
+    <label>Gender</label>
+    <input class="form-control" type="text" value="{{patient.gender}}" />
+  </div>
+  <div class="form-group">
+    <label>Birthdate</label>
+    <input class="form-control" type="date" value="{{patient.birthdate}}" />
+  </div>
+  <div class="form-group">
+    <label>Address</label>
+    <input class="form-control" type="text" value="{{patient.address}}" />
+  </div>
+  <div class="form-group">
+    <label>Occupation</label>
+    <input class="form-control" type="text" value="{{patient.occupation}}" />
+  </div>
+  <div class="form-group">
+    <label>Landline</label>
+    <input class="form-control" type="text" value="{{patient.landline}}" />
+  </div>
+  <div class="form-group">
+    <label>Mobile No.</label>
+    <input class="form-control" type="text" value="{{patient.mobile}}" />
+  </div>
+  <div class="form-group">
+    <label>Email
+      <Address></Address>
+    </label>
+    <input class="form-control" type="text" value="{{patient.email}}" />
+  </div>
+  <div class="form-group">
+    <label>Height</label>
+    <input class="form-control" type="text" value="{{patient.height}}" />
+  </div>
+  <div class="form-group">
+    <label>weight</label>
+    <input class="form-control" type="text" value="{{patient.weight}}" />
+  </div>
+  <div class="form-group">
+    <label>Body Mass Index</label>
+    <input class="form-control" type="text" value="{{patient.bmi}}" />
+  </div>
+</div>
+<h5>For Emergency</h5>
+<br>
+<div class="form-group">
+  <label>First Name</label>
+  <input class="form-control" type="text" value="{{patient.emgy_firstname}}" />
+</div>
+<div class="form-group">
+  <label>Middle Name</label>
+  <input class="form-control" type="text" value="{{patient.emgy_middlename}}" />
+</div>
+<div class="form-group">
+  <label>Last Name</label>
+  <input class="form-control" type="text" value="{{patient.emgy_lastname}}" />
+</div>
+<div class="form-group">
+  <label>Contact No.</label>
+  <input class="form-control" type="text" value="{{patient.emgy_contact}}" />
+</div>
+<div class="form-group">
+  <label>Email</label>
+  <input class="form-control" type="text" value="{{patient.emgy_email}}" />
+</div>
+<button class="btn btn-primary btn-wide" type="submit" (click)="editPatientDetails()">Save</button>
