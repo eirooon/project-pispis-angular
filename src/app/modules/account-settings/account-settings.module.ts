@@ -8,13 +8,15 @@ import { AccountSettingsRoutingModule } from '../account-settings/account-settin
 import { AccountSettingsComponent } from '../account-settings/account-settings.component';
 import { ClinicComponent } from '../account-settings/clinic/clinic.component';
 import { AddClinicComponent } from '../account-settings/add-clinic/add-clinic.component';
+import { AddClinicSchedulesComponent } from '../account-settings/add-clinic-schedules/add-clinic-schedules.component';
 
 @NgModule({
 
   declarations: [
     AccountSettingsComponent,
     ClinicComponent,
-    AddClinicComponent
+    AddClinicComponent,
+    AddClinicSchedulesComponent
   ],
   imports: [
     AccountSettingsRoutingModule,

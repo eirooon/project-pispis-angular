@@ -22,8 +22,17 @@ section{
     
     .form-subheader{
         padding-left: 20px;
+        padding-right: 20px;
     }
 }
 
 input[type=date]{
     font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto !important;}
+
+.form-subheader-action{
+    display: grid;
+    grid-template-columns: 1fr 40px;
+}
+.form-subheader-title{
+    align-self: center;
+}

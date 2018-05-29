@@ -4,6 +4,7 @@ import { AuthGuard } from '../../shared/service/auth-guard.service';
 import { AccountSettingsComponent } from '../account-settings/account-settings.component';
 import { ClinicComponent } from '../account-settings/clinic/clinic.component';
 import { AddClinicComponent } from '../account-settings/add-clinic/add-clinic.component';
+import { AddClinicSchedulesComponent } from '../account-settings/add-clinic-schedules/add-clinic-schedules.component';
 
 const routes: Routes = [
   { 
@@ -11,11 +12,17 @@ const routes: Routes = [
     component: AccountSettingsComponent,
     canActivate:[AuthGuard]
   },
-  { path: 'clinic', 
+  { 
+    path: 'clinic', 
     component: ClinicComponent,
   },
-  { path: 'clinic/add-patient', 
+  { 
+    path: 'clinic/add-clinic', 
     component: AddClinicComponent,
+  },
+  { 
+    path: 'clinic/add-schedule', 
+    component: AddClinicSchedulesComponent,
   },
 ];
 

@@ -1,7 +1,7 @@
 <header class="header-primary">
     <div class="header-wrapper">
         <div class="menu-left" (click)="goBack()">
-                <i class="mdi mdi-arrow-left"></i>
+            <i class="mdi mdi-arrow-left"></i>
         </div>
         <div class="menu-title">Add New Clinic</div>
     </div>
@@ -32,10 +32,11 @@
         <section>
             <div class="form-group">
                 <label>Province</label>
-                <input type="text" placeholder="Find province" list="provinceList" id="province" formControlName="province" data-list-filter="^" class="form-control"> 
+                <input type="text" placeholder="Find province" list="provinceList" id="province" formControlName="province" data-list-filter="^"
+                    class="form-control">
                 <datalist id="provinceList">
                     <select>
-                        <option  *ngFor="let province of provinceList" value="{{province.name}}"></option>    
+                        <option *ngFor="let province of provinceList" value="{{province.name}}"></option>
                     </select>
                 </datalist>
                 <div *ngIf="province.touched && province.invalid" class="alert alert-danger hasError-text">
@@ -44,10 +45,10 @@
             </div>
             <div class="form-group">
                 <label>City</label>
-                <input type="text" placeholder="Find city" list="cityList" id="city" formControlName="city" data-list-filter="^" class="form-control"> 
+                <input type="text" placeholder="Find city" list="cityList" id="city" formControlName="city" data-list-filter="^" class="form-control">
                 <datalist id="cityList">
                     <select>
-                        <option  *ngFor="let city of cityList" value="{{city.name}}"></option>    
+                        <option *ngFor="let city of cityList" value="{{city.name}}"></option>
                     </select>
                 </datalist>
                 <div *ngIf="city.touched && city.invalid" class="alert alert-danger hasError-text">
@@ -56,12 +57,13 @@
             </div>
             <div class="form-group">
                 <label>Hospital</label>
-                <input type="text" placeholder="Find hospital" list="hospitalList" id="hospital" formControlName="hospital" data-list-filter="^" class="form-control"> 
+                <input type="text" placeholder="Find hospital" list="hospitalList" id="hospital" formControlName="hospital" data-list-filter="^"
+                    class="form-control">
                 <datalist id="hospitalList">
                     <select>
-                        <option  *ngFor="let hospital of hospitalList" value="{{hospital.name}}"></option>    
+                        <option *ngFor="let hospital of hospitalList" value="{{hospital.name}}"></option>
                     </select>
-                 
+
                 </datalist>
                 <div *ngIf="hospital.touched && hospital.invalid" class="alert alert-danger hasError-text">
                     <div *ngIf="hospital.errors.required">Hospital is required</div>
@@ -74,48 +76,41 @@
                     <div *ngIf="roomnumber.errors.required">Room number is required</div>
                 </div>
             </div>
-            
+
         </section>
 
-        <div class="form-subheader">Clinic schedule</div>
+        <div class="form-subheader form-subheader-action">
+            <div class="form-subheader-title">Clinic Schedule</div>
+            <button title="Add Patient" class="btn btn-default btn-icon" routerLink="../add-schedule">
+                <i class="mdi mdi-plus"></i>
+            </button>
+        </div>
+        <div>
+            <ul class="list-view-wrapper">
+                <li class="list-view-item" routerLink="../add-schedule">
+                    <div class="item-thumbnail"><i class="mdi mdi-calendar"></i></div>
+                    <a class="item-name text-ellipsis">Monday</a>
+                    <span class="item-desc text-ellipsis">8:00 AM - 5:00 PM | Appointment</span>
+                </li>
+                <li class="list-view-item" routerLink="../add-schedule">
+                    <div class="item-thumbnail"><i class="mdi mdi-calendar"></i></div>
+                    <a class="item-name text-ellipsis">Tuesday</a>
+                    <span class="item-desc text-ellipsis">8:00 AM - 5:00 PM  | Appointment</span>
+                </li>
+                <li class="list-view-item" routerLink="../add-schedule">
+                    <div class="item-thumbnail"><i class="mdi mdi-calendar"></i></div>
+                    <a class="item-name text-ellipsis">Wednesday</a>
+                    <span class="item-desc text-ellipsis">8:00 AM - 5:00 PM | Appointment</span>
+                </li>
+                <li class="list-view-item" routerLink="../add-schedule">
+                    <div class="item-thumbnail"><i class="mdi mdi-calendar"></i></div>
+                    <a class="item-name text-ellipsis">Saturday</a>
+                    <span class="item-desc text-ellipsis">8:00 AM - 5:00 PM | Appointment</span>
+                </li>
+            </ul>
+        </div>
         <section>
-            <div class="form-group">
-                <label>Day</label>
-                <input type="text" placeholder="Monday" list="clinicDay" id="clinic" formControlName="clinic" data-list-filter="^" class="form-control"> 
-                <datalist id="clinicDay">
-                    <select>
-                        <option value="Monday"></option>
-                        <option value="Tuesday"></option>
-                        <option value="Wednesday"></option>
-                        <option value="Thursday"></option>
-                        <option value="Friday"></option>
-                        <option value="Saturday"></option>
-                        <option value="Sunday"></option>
-                    </select>
-                </datalist>
-            </div> 
-            <div class="form-group">
-                <label>Clinic Type</label>
-                <input type="text" placeholder="No Clinic" list="clinicType" id="clinic" formControlName="clinic" data-list-filter="^" class="form-control"> 
-                <datalist id="clinicType">
-                    <select>
-                        <option value="No Clinic"></option>
-                        <option value="Appointment"></option>
-                        <option value="Walk-in"></option>
-                    </select>
-                </datalist>
-            </div> 
-            <div class="form-group">   
-                <label for="address">From</label>
-                <input type="time" placeholder="00:00" id="mondayFromTime" class="form-control">
-            </div>
-            <div class="form-group">    
-                <label for="address">To</label>
-                <input type="time" placeholder="00:00" id="mondayToTime" class="form-control">       
-            </div>
-
-            <button class="btn btn-primary" type="submit" >Add Clinic Schedule</button>
-            </section>
             <button class="btn btn-primary btn-wide" type="submit" [disabled]="!this.clinicForm.valid">Add Clinic</button>
+        </section>
     </form>
 </div>

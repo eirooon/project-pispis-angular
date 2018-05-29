@@ -1,46 +1,41 @@
-<ng-progress [positionUsing]="'marginLeft'" [minimum]="0.15" [maximum]="1"
-             [speed]="200" [showSpinner]="false" [direction]="'leftToRightIncreased'"
-             [color]="'#DE350B'" [trickleSpeed]="200" [thick]="true" [ease]="'linear'"
-></ng-progress>
+<ng-progress [positionUsing]="'marginLeft'" [minimum]="0.15" [maximum]="1" [speed]="200" [showSpinner]="false" [direction]="'leftToRightIncreased'"
+        [color]="'#DE350B'" [trickleSpeed]="200" [thick]="true" [ease]="'linear'"></ng-progress>
 <header class="header-primary">
-                <div class="header-wrapper">
-                    <div class="menu-left" (click)="goBack()"><i class="mdi mdi-arrow-left"></i></div>
-                    <div class="menu-title">My Clinics</div>
+        <div class="header-wrapper">
+                <div class="menu-left" (click)="goBack()">
+                        <i class="mdi mdi-arrow-left"></i>
                 </div>
-            </header>
+                <div class="menu-title">My Clinics</div>
+        </div>
+</header>
 <app-sidemenu></app-sidemenu>
 
 <div class="sub-header">
         <div class="subheader-wrapper">
                 <div class="search-wrapper">
-                        <a class="search-icon">
-                                <i class="mdi mdi-magnify"></i>
-                        </a>
+                        <i class="search-icon mdi mdi-magnify"></i>
                         <input class="search-bar" placeholder="Search Clinic" />
                 </div>
                 <div class="button-wrapper">
-                        <!-- <button title="Quick Filters" class="btn btn-default btn-icon">
-                                <i class="mdi mdi-filter-variant"></i>
-                        </button>
-                        <button title="Download (.pdf)" class="btn btn-default btn-icon">
-                                <i class="mdi mdi-download"></i>
-                        </button> -->
-                        <button title="Add Patient" class="btn btn-default btn-icon" routerLink="add-patient">
+
+                        <button title="Add Patient" class="btn btn-default btn-icon" routerLink="add-clinic">
                                 <i class="mdi mdi-plus"></i>
                         </button>
                 </div>
         </div>
 </div>
 <div class="content-wrapper">
-                <section>
-                                <ul class="list-view-wrapper">
-                                    <li  *ngFor="let clinic of clinics" class="list-view-item" >
-                                        <div class="item-thumbnail"><i class="mdi mdi-account"></i></div>
-                                        <a class="item-name text-ellipsis">{{clinic.clinicname}} {{clinic.hospitall}} {{clinic.roomnumber}}</a>
-                                        <span class="item-desc text-ellipsis">{{clinic.city}}</span>
-                                    </li>
-                                </ul>
-                                <!-- <ngx-spinner loadingText="Please wait" type="ball-pulse"></ngx-spinner> -->
-                                <!-- <button class="btn btn-primary btn-wide" (click)="loadMorePatient()" >Load more...</button> -->
-               </section>
+        <section>
+                <ul class="list-view-wrapper">
+                        <li *ngFor="let clinic of clinics" class="list-view-item">
+                                <div class="item-thumbnail">
+                                        <i class="mdi mdi-account"></i>
+                                </div>
+                                <a class="item-name text-ellipsis">{{clinic.clinicname}} {{clinic.hospitall}} {{clinic.roomnumber}}</a>
+                                <span class="item-desc text-ellipsis">{{clinic.city}}</span>
+                        </li>
+                </ul>
+                <!-- <ngx-spinner loadingText="Please wait" type="ball-pulse"></ngx-spinner> -->
+                <!-- <button class="btn btn-primary btn-wide" (click)="loadMorePatient()" >Load more...</button> -->
+        </section>
 </div>
