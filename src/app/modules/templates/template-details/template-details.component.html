@@ -1,0 +1,98 @@
+<header class="header-primary">
+  <div class="header-wrapper">
+      <div class="menu-left" (click)="goBack()"><i class="mdi mdi-arrow-left"></i></div>
+      <div class="menu-title">Laboratory Request Template</div>
+      <div class="menu-right" ><i class="mdi mdi-eye"></i></div>
+  </div>
+</header>
+<div class="content-wrapper">
+  <div class="form-subheader">Basic Information</div>
+  <section>
+      <div class="form-group">
+          <label>Patient Name</label>
+          <input class="form-control" type="text" placeholder="Enter patient name" />
+      </div>
+      <div class="form-group">
+          <label>Age</label>
+          <input class="form-control" type="number" placeholder="Enter age" />
+      </div>
+      <div class="form-group">
+          <label>Gender</label>
+          <div class="form-select-wrapper">
+              <i class="mdi mdi-caret-down"></i>
+              <select name="type" class="form-control">
+                  <option value='' hidden>Select Gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+              </select>
+          </div>
+      </div>
+      <div class="form-group">
+          <label>Address</label>
+          <input class="form-control" type="text" placeholder="Enter address" />
+      </div>
+
+  </section>
+  
+  <div class="form-subheader">Select Laboratory</div>
+  <section>
+      <div class="form-group">
+          <label>Hematology</label>
+          <sui-multi-select class="selection"
+                            labelField="name"
+                            [isSearchable]="searchable"
+                            [isDisabled]="disabled"
+                            [hasLabels]="!hideLabels"
+                            #multiSelect>
+                            <sui-select-option value="Option 1"></sui-select-option>
+                            <sui-select-option value="Option 2"></sui-select-option>
+                            <sui-select-option value="Option 3"></sui-select-option>
+                            <sui-select-option value="Option 4"></sui-select-option>
+          </sui-multi-select>
+      </div>
+      <div class="form-group">
+          <label>Chemistry</label>
+          <sui-multi-select class="selection"
+                            labelField="name"
+                            [isSearchable]="searchable"
+                            [isDisabled]="disabled"
+                            [hasLabels]="!hideLabels"
+                            #multiSelect>
+                            <sui-select-option value="Option 1"></sui-select-option>
+                            <sui-select-option value="Option 2"></sui-select-option>
+                            <sui-select-option value="Option 3"></sui-select-option>
+                            <sui-select-option value="Option 4"></sui-select-option>
+          </sui-multi-select>
+      </div>
+      <div class="form-group">
+          <label>Serology</label>
+          <sui-multi-select class="selection"
+                            labelField="name"
+                            [isSearchable]="searchable"
+                            [isDisabled]="disabled"
+                            [hasLabels]="!hideLabels"
+                            #multiSelect>
+                            <sui-select-option value="Option 1"></sui-select-option>
+                            <sui-select-option value="Option 2"></sui-select-option>
+                            <sui-select-option value="Option 3"></sui-select-option>
+                            <sui-select-option value="Option 4"></sui-select-option>
+          </sui-multi-select>
+      </div>
+      <div class="form-group">
+          <label>Tumor Makers</label>
+          <sui-multi-select class="selection"
+                            labelField="name"
+                            [isSearchable]="searchable"
+                            [isDisabled]="disabled"
+                            [hasLabels]="!hideLabels"
+                            #multiSelect>
+                            <sui-select-option value="Option 1"></sui-select-option>
+                            <sui-select-option value="Option 2"></sui-select-option>
+                            <sui-select-option value="Option 3"></sui-select-option>
+                            <sui-select-option value="Option 4"></sui-select-option>
+          </sui-multi-select>
+      </div>
+      <button class="btn btn-primary btn-wide" type="submit" routerLink="/templates">Download Template</button>
+
+  </section>
+</div>

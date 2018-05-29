@@ -1,0 +1,35 @@
+.content-wrapper{
+    display: block;
+    max-width: 1024px;
+    margin: auto;
+    border-radius: 4px;
+    padding-top: 120px;
+}
+    
+.subheader-wrapper{
+    display: grid;
+    max-width: 1024px;
+    margin: auto;
+    grid-template-columns: 2fr 132px;
+    grid-auto-rows: 60px;
+    grid-gap: 5px;
+    padding: auto 20px;}
+.search-wrapper{
+    align-self: center;}
+    @media only screen and (max-width:1024px){
+        .subheader-wrapper{
+            margin-left: 6px;
+            margin-right: 6px;}
+        }
+
+
+.button-wrapper{
+    display: inline-flex;
+    align-self: center;
+    position: relative;
+    justify-self: end;
+}
+
+.button-wrapper button{
+    margin: 2px;
+}

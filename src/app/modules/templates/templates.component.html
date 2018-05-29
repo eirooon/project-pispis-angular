@@ -4,3 +4,35 @@
 ></ng-progress>
 <app-header [setTitle]='myTitle'></app-header>
 <app-sidemenu></app-sidemenu>
+
+<div class="sub-header">
+    <div class="subheader-wrapper">
+        <div class="search-wrapper">
+            <i class="search-icon mdi mdi-magnify"></i>
+            <input class="search-bar" placeholder="Search Template"/>
+        </div>
+        <div class="button-wrapper">
+            <button title="Quick Filters" class="btn btn-default btn-icon"><i class="mdi mdi-filter-variant"></i></button>
+            <!-- <button title="Download (.pdf)" class="btn btn-default btn-icon"><i class="mdi mdi-download"></i></button> -->
+            <button title="Add Patient" class="btn btn-default btn-icon" routerLink="template-details"><i class="mdi mdi-plus"></i></button>
+        </div>
+    </div>
+</div>
+<div class="content-wrapper">
+    <ul class="list-view-wrapper">
+        <li class="list-view-item">
+          <div class="item-thumbnail">
+            <i class="mdi mdi-file"></i>
+          </div>
+          <a class="item-name text-ellipsis">Text RX</a>
+          <span class="item-desc text-ellipsis">File Size: 1MB</span>
+        </li>
+        <li class="list-view-item" routerLink="template-details">
+          <div class="item-thumbnail">
+            <i class="mdi mdi-file"></i>
+          </div>
+          <a class="item-name text-ellipsis">Laboratory Request Template</a>
+          <span class="item-desc text-ellipsis">File Size: 3MB</span>
+        </li>
+      </ul>
+</div>

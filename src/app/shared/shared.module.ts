@@ -19,7 +19,7 @@ import { NgProgressModule } from 'ngx-progressbar';
 
 //Semantic UI
 import { SuiTabsModule } from 'ng2-semantic-ui';
-import { SuiModalModule } from 'ng2-semantic-ui';
+import { SuiSelectModule } from 'ng2-semantic-ui';
 
 @NgModule({
   imports: [
@@ -28,7 +28,7 @@ import { SuiModalModule } from 'ng2-semantic-ui';
     RouterModule,
     NgProgressModule,
     SuiTabsModule,
-    SuiModalModule
+    SuiSelectModule
   ],
   declarations: [
     HeaderComponent,
@@ -42,7 +42,7 @@ import { SuiModalModule } from 'ng2-semantic-ui';
     ControlMessagesComponent,
     NgProgressModule,
     SuiTabsModule,
-    SuiModalModule
+    SuiSelectModule
   ],
   providers:[
     PatientService,
