@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { slideToRight, slideToLeft, fadeAnimation} from '../../../router.animations';
+import { ConsultationService } from '../../../shared/service/consultation.service';
+import { AuthService } from '../../../shared/service/auth.service';
 
 @Component({
   selector: 'app-patient-details',
@@ -14,6 +16,8 @@ export class PatientDetailsComponent implements OnInit {
 
   constructor(
     private location: Location,
+    private consultationService: ConsultationService,
+    private authService: AuthService 
   ) { }
 
   ngOnInit() {
