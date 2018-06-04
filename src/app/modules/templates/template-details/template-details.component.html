@@ -6,30 +6,36 @@
   </div>
 </header>
 <div class="content-wrapper">
+
+<form [formGroup]="tempForm">
   <div class="form-subheader">Basic Information</div>
   <section>
       <div class="form-group">
           <label>Patient Name</label>
-          <input class="form-control" type="text" placeholder="Enter patient name" />
-      </div>
+          <input class="form-control" type="text" placeholder="Enter patient name" formControlName="patientname" name="patientname"/>
+          <control-messages [control]="tempForm.controls.patientname"></control-messages>     
+        </div>
       <div class="form-group">
           <label>Age</label>
-          <input class="form-control" type="number" placeholder="Enter age" />
+          <input class="form-control" type="number" placeholder="Enter age" formControlName="age" name="age"/>
+          <control-messages [control]="tempForm.controls.age"></control-messages>     
       </div>
       <div class="form-group">
           <label>Gender</label>
           <div class="form-select-wrapper">
               <i class="mdi mdi-caret-down"></i>
-              <select name="type" class="form-control">
+              <select name="type" class="form-control" formControlName="gender" name="gender">
                   <option value='' hidden>Select Gender</option>
                   <option>Male</option>
                   <option>Female</option>
               </select>
+              <control-messages [control]="tempForm.controls.gender"></control-messages>     
           </div>
       </div>
       <div class="form-group">
           <label>Address</label>
-          <input class="form-control" type="text" placeholder="Enter address" />
+          <input class="form-control" type="text" placeholder="Enter address" formControlName="address" name="address"/>
+          <control-messages [control]="tempForm.controls.address"></control-messages>     
       </div>
 
   </section>
@@ -92,7 +98,8 @@
                             <sui-select-option value="Option 4"></sui-select-option>
           </sui-multi-select>
       </div>
-      <button class="btn btn-primary btn-wide" type="submit" routerLink="/templates">Download Template</button>
-
+      <!-- <button class="btn btn-primary btn-wide" type="submit" routerLink="/templates">Download Template</button> -->
+      <button (click)="onPreview()" class="btn btn-primary btn-wide">Preview Template</button>
   </section>
+</form>
 </div>
