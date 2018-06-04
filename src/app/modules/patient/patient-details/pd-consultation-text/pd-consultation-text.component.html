@@ -10,12 +10,16 @@
     </div>
 </header>
 <div class="content-wrapper">
+    <form [formGroup]="consultationForm" (ngSubmit)="addConsultationText()">
     <section class="panel-container">
-        <div class="form-group">
+        <div class="form-group" form>
             <label>Select Clinic</label>
             <div class="form-select-wrapper">
                 <i class="mdi mdi-caret-down"></i>
-                <select name="type" class="form-control">
+                <select name="clinicname" 
+                class="form-control"
+                formControlName="clinicname"
+                id="clinicname">
                     <option value='' hidden>Select Clinic</option>
                     <option>St. Anthony College Hospital</option>
                     <option>Emmanuel Hospital</option>
@@ -24,17 +28,26 @@
             </div>
         </div>
         <div class="form-group">
-            <label>Date</label>
-            <input class="form-control" type="date" placeholder="Enter date" />
+            <label for="username">Date</label>
+            <input 
+            class="form-control"
+            formControlName="date" 
+            id="date" 
+            type="date">
         </div>
     </section>
     <section class="text-area">
         <div class="form-group">
             <label>Write notes below</label>
-            <textarea class="form-control-textarea" rows="20" cols="80" placeholder="Describe yourself here..."></textarea>
-        </div>
-        <button class="btn btn-primary btn-wide" (click)="addText()" type="submit">Add Text</button>
-
+            <textarea rows="20" cols="80" placeholder="Describe yourself here..." 
+            class="form-control-textarea" 
+            formControlName="text" 
+            id="text" 
+            type="text"></textarea>
+        </div>      
     </section>
-
+     <section>
+        <button class="btn btn-primary btn-wide" type="submit" [disabled]="!this.consultationForm.valid">Add Text</button>
+    </section>
+</form>
 </div>

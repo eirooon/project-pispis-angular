@@ -20,6 +20,7 @@ import { NgProgressModule } from 'ngx-progressbar';
 //Semantic UI
 import { SuiTabsModule } from 'ng2-semantic-ui';
 import { SuiSelectModule } from 'ng2-semantic-ui';
+import { ConsultationService } from './service/consultation.service';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { SuiSelectModule } from 'ng2-semantic-ui';
   providers:[
     PatientService,
     AuthGuard,
-    AuthService
+    AuthService,
+    ConsultationService
   ]
 })
 export class SharedModule { 
