@@ -20,4 +20,5 @@ export interface Patient {
 	emgy_lastname?:string;
 	emgy_contact?:number;
 	emgy_email?:string;
+	dateAdded?: Date;
 }

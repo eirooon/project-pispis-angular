@@ -5,6 +5,11 @@ import { Patient } from '../../shared/models/patient';
 import { PatientService } from '../../shared/service/patient.service';
 import { NgProgress } from 'ngx-progressbar';
 
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/observable/combineLatest';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Rx';
+
 @Component({
   selector: 'app-patient',
   templateUrl: './patient.component.html',
@@ -14,16 +19,50 @@ export class PatientComponent implements OnInit {
   myTitle = "Patients"
   hasList: boolean = true;
   state: string = '';
-  patients: Patient[];
-  // max: number = 6;
+  patients1: Patient[];
   first: boolean = true;
+  firstLoad: boolean = true;
+
+  searchterm: string;
+	startAt = new Subject();
+	endAt = new Subject();
+  
+	startobs = this.startAt.asObservable();
+	endobs = this.endAt.asObservable();
+
+	patients;
+	allpatient;
 
   constructor(
       private router: Router,
       private patientService: PatientService,
-      private ngProgress: NgProgress
+      private ngProgress: NgProgress,
+      public afs: AngularFirestore
   ) { 
+    
   }
+
+  search($event) {
+    console.log('JOBERN' + $event);
+      let q = $event.target.value;
+      if (q != '') {
+        this.startAt.next(q);
+        this.endAt.next(q + "\uf8ff");
+      }
+      else {
+        this.getAllPatients().subscribe((patients) => {
+          this.patients = patients;
+        })
+      }
+	  }
+  
+	getAllPatients() {
+		return this.afs.collection('patients', ref => ref.orderBy('firstname')).valueChanges();
+	}
+
+	firequery(start, end) {
+		return this.afs.collection('patients', ref => ref.limit(4).orderBy('firstname').startAt(start).endAt(end)).valueChanges();
+	}
 
   ngOnInit() {
     this.router.events.subscribe((evt) => {
@@ -37,7 +76,7 @@ export class PatientComponent implements OnInit {
         if(patients.length > 0){
           console.log('[List-Patient] List retrieve successful');
           this.hasList = true;
-          this.patients = patients;
+          this.patients1 = patients;
         } else {
           this.hasList = false;
         }
@@ -48,6 +87,16 @@ export class PatientComponent implements OnInit {
         this.hasList = false;
       },
     );
+
+    Observable.combineLatest(this.startobs, this.endobs).subscribe((value) => {
+      this.firequery(value[0], value[1]).subscribe((patients) => {
+        this.patients = patients;
+      })
+    })
+
+    this.getAllPatients().subscribe((patients) => {
+      this.patients = patients;
+    })
   }
 
   getPatientDetails(event, patient){

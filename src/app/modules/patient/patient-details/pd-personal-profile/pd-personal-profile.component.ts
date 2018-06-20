@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 import { Patient } from '../../../../shared/models/patient';
 import { PatientService } from '../../../../shared/service/patient.service';
 
@@ -14,18 +15,26 @@ export class PdPersonalProfileComponent implements OnInit {
 
   constructor(
     private location: Location,
-    private patientService: PatientService
-  ) { }
+    private patientService: PatientService,
+    private router: Router,
+  ) { 
+    this.ngOnInit();
+
+  }
 
   ngOnInit() {
     this.patient = this.patientService.getPatient();
   }
 
   editPatientDetails(){
-    this.patientService.setIsEdit(true);
+    this.patientService.updatePatient(this.patient);
+    this.router.navigateByUrl('/patient');
+    console.log('[Add-Patient] Editing Successful');
   }
 
   goBack(){
+    this.patientService.setIsEdit(false);
+    this.patientService.setPatient(null);
     this.location.back();
   }
 

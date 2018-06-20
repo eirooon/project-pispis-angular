@@ -10,7 +10,8 @@ import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
 import { PatientService } from '../shared/service/patient.service';
 import { AuthGuard } from '../shared/service/auth-guard.service';
 import { AuthService } from '../shared/service/auth.service';
-
+import { ConsultationService } from './service/consultation.service';
+import { DoctorService } from '../shared/service/doctor.service';
 
 //3rd Party
 import { SidebarJSModule, SidebarJSService } from 'ng-sidebarjs';
@@ -20,7 +21,6 @@ import { NgProgressModule } from 'ngx-progressbar';
 //Semantic UI
 import { SuiTabsModule } from 'ng2-semantic-ui';
 import { SuiSelectModule } from 'ng2-semantic-ui';
-import { ConsultationService } from './service/consultation.service';
 
 @NgModule({
   imports: [
@@ -49,7 +49,8 @@ import { ConsultationService } from './service/consultation.service';
     PatientService,
     AuthGuard,
     AuthService,
-    ConsultationService
+    ConsultationService,
+    DoctorService
   ]
 })
 export class SharedModule { 

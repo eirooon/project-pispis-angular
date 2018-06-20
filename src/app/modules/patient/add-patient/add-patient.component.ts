@@ -17,9 +17,7 @@ import { FormsModule }   from '@angular/forms';
 export class AddPatientComponent implements OnInit {
   ptnForm: any;
 
-  isEdit: boolean = false;
   patient: Patient;
-  nameMe: string;
   
   ptnCollection: AngularFirestoreCollection<any> = this.afs.collection('patients');
   ptnObserver = this.ptnCollection.valueChanges();
@@ -33,9 +31,7 @@ export class AddPatientComponent implements OnInit {
     private patientService: PatientService
   ) {
     this.ngOnInit();
-    
     this.initializePatient();
-    this.checkIfEditState();
   }
 
   ngOnInit() {
@@ -59,6 +55,7 @@ export class AddPatientComponent implements OnInit {
       emgy_middlename: ['', Validators.required],
       emgy_contact: ['', [Validators.required, Validators.minLength(11)]],
       emgy_email: [''],
+      dateAdded: new Date(),
     });
   }
 
@@ -84,42 +81,23 @@ export class AddPatientComponent implements OnInit {
       emgy_middlename:'',
       emgy_lastname:'',
       emgy_contact:0,
-      emgy_email:''
+      emgy_email:'',
+      dateAdded: new Date()
     }
   }
 
   goBack(){
-    this.patientService.setIsEdit(false);
     this.location.back();
   }
 
-  checkIfEditState(){
-    if(this.patientService.getIsEdit()){
-      this.isEdit = true;
-      this.patient = this.patientService.getPatient();
-      console.log('[Add-Patient] Mode:EDIT');
-    } else {
-      this.isEdit = false;
-      console.log('[Add-Patient] Mode:ADD');
-    }
-  }
-
   addPatient(){
-    //If not edit perform add operation
-    if(!this.patientService.getIsEdit()){
-      //Check for valid inputs
-      if(this.ptnForm.valid){
-        this.patientService.addPatient(this.patient);
-        this.router.navigateByUrl('/patient');
-        console.log('[Add-Patient] Adding Successful');
-      } else {
-        console.log('[Add-Patient] Error: Form is invalid');
-      }
-    } else {
-      //Execute update
-      this.patientService.updatePatient(this.patient);
+    //Check for valid inputs
+    if(this.ptnForm.valid){
+      this.patientService.addPatient(this.patient);
       this.router.navigateByUrl('/patient');
-      console.log('[Add-Patient] Editing Successful');
+      console.log('[Add-Patient] Adding Successful');
+    } else {
+      console.log('[Add-Patient] Error: Form is invalid'); 
     }
   }
 }

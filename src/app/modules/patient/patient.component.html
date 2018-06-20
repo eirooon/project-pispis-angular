@@ -8,7 +8,7 @@
     <div class="subheader-wrapper">
         <div class="search-wrapper">
             <i class="search-icon mdi mdi-magnify"></i>
-            <input class="search-bar" placeholder="Search Name"/>
+            <input class="search-bar" placeholder="Search Name" [(ngModel)]="searchterm" (keyup.enter)="search($event)"/>
         </div>
         <div class="button-wrapper">
             <button title="Quick Filters" class="btn btn-default btn-icon"><i class="mdi mdi-filter-variant"></i></button>
@@ -21,7 +21,7 @@
 <div class="content-wrapper"  >
     <section>
         <ul class="list-view-wrapper">
-            <li  *ngFor="let patient of patients" class="list-view-item" (click)="getPatientDetails($event, patient)" routerLink="patient-details">
+            <li  *ngFor="let patient of patients" class="list-view-item" (click)="getPatientDetails($event, pat)" routerLink="patient-details">
                 <div class="item-thumbnail"><i class="mdi mdi-account"></i></div>
                 <a class="item-name text-ellipsis">{{patient.firstname}} {{patient.middlename}} {{patient.lastname}}</a>
                 <span class="item-desc text-ellipsis">{{patient.type}}</span>

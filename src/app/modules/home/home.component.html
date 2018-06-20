@@ -43,34 +43,11 @@
         <h3>Recently Added Patients</h3>
         <div class="description">4 newly added patients.</div>
         <ul class="list-view-wrapper">
-            <li class="list-view-item">
-                <div class="item-thumbnail">
-                    <i class="mdi mdi-account"></i>
-                </div>
-                <a class="item-name text-ellipsis">Sample Patient Name</a>
-                <span class="item-desc text-ellipsis">In-patient</span>
-            </li>
-            <li class="list-view-item">
-                <div class="item-thumbnail">
-                    <i class="mdi mdi-account"></i>
-                </div>
-                <a class="item-name text-ellipsis">Sample Patient Name</a>
-                <span class="item-desc text-ellipsis">In-patient</span>
-            </li>
-            <li class="list-view-item">
-                <div class="item-thumbnail">
-                    <i class="mdi mdi-account"></i>
-                </div>
-                <a class="item-name text-ellipsis">Sample Patient Name</a>
-                <span class="item-desc text-ellipsis">In-patient</span>
-            </li>
-            <li class="list-view-item">
-                <div class="item-thumbnail">
-                    <i class="mdi mdi-account"></i>
-                </div>
-                <a class="item-name text-ellipsis">Sample Patient Name</a>
-                <span class="item-desc text-ellipsis">In-patient</span>
-            </li>
+            <li  *ngFor="let patient of patients" class="list-view-item">
+                <div class="item-thumbnail"><i class="mdi mdi-account"></i></div>
+                <a class="item-name text-ellipsis">{{patient.firstname}} {{patient.middlename}} {{patient.lastname}}</a>
+                <span class="item-desc text-ellipsis">{{patient.type}}</span>
+             </li>
         </ul>
         <div class="more-actions-wrapper">
             <button class="btn btn-secondary btn-wide" routerLink="/patient">Show more...</button>
@@ -168,9 +145,9 @@
         </ul>
     </section>    
     <section class="overview-profile">
-        <div class="overview-profile-wrapper">
+        <div class="overview-profile-wrapper" *ngFor="let doctor of doctors">
             <p>Welcome</p>
-            <h1>Doctor Name!</h1>
+            <h1>Dr. {{doctor.name}}!</h1>
         </div>
     </section>
 </div>

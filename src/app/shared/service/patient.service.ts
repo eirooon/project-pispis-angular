@@ -27,10 +27,24 @@ export class PatientService {
 				});
 
 			});
-		}
-  
+	}
+
 	getPatients(){
 		this.patientsCollection = this.afs.collection('patients', ref => ref.where('idDoc','==', localStorage.getItem("UID")));
+		this.patients = this.patientsCollection.snapshotChanges()
+			.map(changes => {
+				return changes.map(a => {
+					const data = a.payload.doc.data() as Patient;
+					data.id = a.payload.doc.id;
+					return data;
+				})
+			});
+		return this.patients;
+	}
+
+	getRecentAddedPatients(){
+		//TimeStamp is still not available. We should add timestamp when adding.
+		this.patientsCollection = this.afs.collection('patients', ref => ref.where('idDoc','==', localStorage.getItem("UID")).limit(4).orderBy('dateAdded'));
 		this.patients = this.patientsCollection.snapshotChanges()
 			.map(changes => {
 				return changes.map(a => {
@@ -65,7 +79,7 @@ export class PatientService {
 	}
 
 	setPatient(patient: Patient){
-    this.patient = patient;
+		this.patient = patient;
 	}
 
 	getPatient(){
