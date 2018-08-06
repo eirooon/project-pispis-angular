@@ -11,6 +11,7 @@ import { ClinicScheduleModel } from '../../../shared/models/clinicScheduleModel'
 export class AddClinicSchedulesComponent implements OnInit {
 
   clinicScheduleModel: ClinicScheduleModel;
+  localList=[];
   constructor(
     private location: Location
   ) { }
@@ -56,20 +57,25 @@ export class AddClinicSchedulesComponent implements OnInit {
     console.log("addClinicSchedule");
     if(this.clinicScheduleForm.valid){
       console.log("addClinicSchedule");
+      this.clinicScheduleForm.value.clinicDay;
+      this.clinicScheduleForm.value.clinicType;
+      this.clinicScheduleForm.value.startTime;
+      this.clinicScheduleForm.value.endTime;
 
       this.clinicScheduleModel.clinicDay = this.clinicScheduleForm.value.clinicDay;
       this.clinicScheduleModel.clinicType =  this.clinicScheduleForm.value.clinicType;
       this.clinicScheduleModel.startTime =  this.clinicScheduleForm.value.startTime;
       this.clinicScheduleModel.endTime = this.clinicScheduleForm.value.endTime;
-      
       //check if object is in storage
       var stored = [];
       stored = JSON.parse(localStorage.getItem('testObject'));
-      stored.push(this.clinicScheduleModel);
+      this.localList.push(this.clinicScheduleModel); 
+      stored =  this.localList;
+      //stored.push(this.clinicScheduleModel);
 
       // Put the object into storage
       localStorage.setItem('testObject', JSON.stringify(stored));
-      console.log("addClinicSchedule successful" + this.clinicScheduleModel.clinicDay);
+      console.log("addClinicSchedule" + this.clinicScheduleForm.value.clinicDay);
       this.location.back();
   }
 }

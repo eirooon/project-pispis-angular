@@ -26,6 +26,7 @@ export class AddClinicComponent implements OnInit {
 
 
   clinicCollection: AngularFirestoreCollection<any> = this.afs.collection('clinics');
+
   ptnObserver = this.clinicCollection.valueChanges();
 
   clinicForm = new FormGroup({
@@ -82,6 +83,8 @@ export class AddClinicComponent implements OnInit {
   }
 
   addClinic(){
+    
+
     console.error(this.clinicForm.value.province);
     if(this.clinicForm.valid){
       this.clinicCollection.add({
@@ -96,6 +99,11 @@ export class AddClinicComponent implements OnInit {
         this.clinicCollection.doc(docRef.id).update({
           prodid: docRef.id
         })
+
+        this.afs.collection('clinics').doc(docRef.id).collection('clinicSchedule').add({
+          clinicDay:  this.clinicSchedulesList
+        })
+        console.log('Clinic schedule list:' + this.clinicSchedulesList);
         console.log('[Clinic-Add] Doc Ref: ' + docRef.id);
         this.goBack();
       })
@@ -105,11 +113,15 @@ export class AddClinicComponent implements OnInit {
     }else {
     console.log('[Clinic-Add] Form is invalid');
     }
+
+    
+  }
+
+  addClinicSchedule(){
+
   }
 
   getClinicSchedule(){
-  
-
     console.log("getClinicSchedule()");
     var retrievedObject = localStorage.getItem('testObject');
     this.clinicSchedulesList = JSON.parse(retrievedObject);
