@@ -7,43 +7,46 @@
   </div>
 </header>
 <div class="content-wrapper">
-  <section>
-    <div class="form-group">
-      <label>Day</label>
-      <input type="text" placeholder="Monday" list="clinicDay" id="clinic" formControlName="clinic" data-list-filter="^" class="form-control">
-      <datalist id="clinicDay">
-        <select>
-          <option value="Monday"></option>
-          <option value="Tuesday"></option>
-          <option value="Wednesday"></option>
-          <option value="Thursday"></option>
-          <option value="Friday"></option>
-          <option value="Saturday"></option>
-          <option value="Sunday"></option>
-        </select>
-      </datalist>
-    </div>
-    <div class="form-group">
-      <label>Clinic Type</label>
-      <input type="text" placeholder="No Clinic" list="clinicType" id="clinic" formControlName="clinic" data-list-filter="^" class="form-control">
-      <datalist id="clinicType">
-        <select>
-          <option value="No Clinic"></option>
-          <option value="Appointment"></option>
-          <option value="Walk-in"></option>
-        </select>
-      </datalist>
-    </div>
-    <div class="form-group">
-      <label for="address">From</label>
-      <input type="time" placeholder="00:00" id="mondayFromTime" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="address">To</label>
-      <input type="time" placeholder="00:00" id="mondayToTime" class="form-control">
-    </div>
-  </section>
-  <section>
-      <button class="btn btn-primary btn-wide" type="submit" (click)="goBack()">Add Clinic Schedule</button>
-  </section>
+  <form [formGroup]="clinicScheduleForm" (ngSubmit)="addClinicSchedule()">
+    <section>
+      <div class="form-group">
+        <label>Day</label>
+        <input type="text" placeholder="Monday" list="clinicDayList" id="clinicDay" formControlName="clinicDay" data-list-filter="^" class="form-control">
+        <datalist id="clinicDayList">
+          <select>
+            <option value="Monday"></option>
+            <option value="Tuesday"></option>
+            <option value="Wednesday"></option>
+            <option value="Thursday"></option>
+            <option value="Friday"></option>
+            <option value="Saturday"></option>
+            <option value="Sunday"></option>
+          </select>
+        </datalist>
+      </div>
+      <div class="form-group">
+        <label>Clinic Type</label>
+        <input type="text" placeholder="No Clinic" 
+        list="clinicTypeList" 
+        id="clinicType" 
+        formControlName="clinicType" data-list-filter="^" class="form-control">
+        <datalist id="clinicTypeList">
+          <select>
+            <option value="No Clinic"></option>
+            <option value="Appointment"></option>
+            <option value="Walk-in"></option>
+          </select>
+        </datalist>
+      </div>
+      <div class="form-group">
+        <label for="address">From</label>
+        <input type="time" placeholder="00:00" id="startTime"  formControlName="startTime" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="address">To</label>
+        <input type="time" placeholder="00:00" id="endTime"  formControlName="endTime" class="form-control">
+      </div>
+        <button class="btn btn-primary btn-wide" type="submit" [disabled]="!this.clinicScheduleForm.valid">Add Clinic Schedule</button> <!--[disabled]="!this.clinicScheduleForm.valid"-->
+    </section>
+  </form>
 </div>

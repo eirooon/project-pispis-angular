@@ -7,6 +7,8 @@ import { AllProvince } from '../../../shared/constantValues/provinceConstants';
 import { AllCity } from '../../../shared/constantValues/cityConstants';
 import { AllHospitals } from '../../../shared/constantValues/hospitalConstants';
 import { Router } from '@angular/router';
+import { ClinicScheduleModel} from '../../../shared/models/clinicScheduleModel';
+
 
 @Component({
   selector: 'app-clinic',
@@ -19,6 +21,10 @@ export class AddClinicComponent implements OnInit {
   provinceList = AllProvince;
   cityList = AllCity;
   hospitalList = AllHospitals;
+  clinicScheduleModel: ClinicScheduleModel;
+  clinicSchedules:any={};
+  clinicSchedulesList : ClinicScheduleModel[];
+
 
   clinicCollection: AngularFirestoreCollection<any> = this.afs.collection('clinics');
   ptnObserver = this.clinicCollection.valueChanges();
@@ -45,6 +51,7 @@ export class AddClinicComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    this.getClinicSchedule();
   }
 
   get clinicname(){
@@ -98,6 +105,28 @@ export class AddClinicComponent implements OnInit {
       });
     }else {
     console.log('[Clinic-Add] Form is invalid');
+    }
+  }
+
+  getClinicSchedule(){
+  
+
+    console.log("getClinicSchedule()");
+    var retrievedObject = localStorage.getItem('testObject');
+    console.log('retrievedObject: ', JSON.parse(retrievedObject));
+
+    var ul = document.getElementById("scheduleList");
+    var li = document.createElement("li");
+    var archive = [],
+    keys = Object.keys(localStorage),
+    i = 0, key;
+
+    for (; key = keys[i]; i++) {
+      if(localStorage.hasOwnProperty("clinicDay")){
+        console.log("retrieved object:" + key);
+        this.clinicSchedulesList[i]= this.clinicSchedules[key];
+        console.log("this loop array:" + this.clinicSchedulesList[i]);
+      }
     }
   }
 }
