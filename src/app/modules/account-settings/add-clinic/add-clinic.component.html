@@ -88,37 +88,11 @@
         <div>
                 
             <ul class="list-view-wrapper" id="scheduleList">
-                    <li class="list-view-item" *ngFor="let clinicSchedule of clinicSchedulesList">
-                            {{ clinicSchedule }}
-                        </li>
-                        <li *ngFor="let clinic of loopArray" class="list-view-item">
-                                <div class="item-thumbnail">
-                                        <i class="mdi mdi-account"></i>
-                                </div>
-                                <a class="item-name text-ellipsis">{{clinic.clinicname}} {{clinic.hospitall}} {{clinic.roomnumber}}</a>
-                                <span class="item-desc text-ellipsis">{{clinic.city}}</span>
-                        </li>
-
-                <!--<li class="list-view-item" routerLink="../add-schedule">
+                <li class="list-view-item" *ngFor="let clinicSchedule of clinicSchedulesList">
                     <div class="item-thumbnail"><i class="mdi mdi-calendar"></i></div>
-                    <a class="item-name text-ellipsis">Monday</a>
-                    <span class="item-desc text-ellipsis">8:00 AM - 5:00 PM | Appointment</span>
+                    <a class="item-name text-ellipsis"> {{ clinicSchedule.clinicDay }}</a>
+                    <span class="item-desc text-ellipsis">{{ clinicSchedule.startTime }} - {{ clinicSchedule.endTime}}| {{ clinicSchedule.clinicType }}</span>
                 </li>
-                <li class="list-view-item" routerLink="../add-schedule">
-                    <div class="item-thumbnail"><i class="mdi mdi-calendar"></i></div>
-                    <a class="item-name text-ellipsis">Tuesday</a>
-                    <span class="item-desc text-ellipsis">8:00 AM - 5:00 PM  | Appointment</span>
-                </li>
-                <li class="list-view-item" routerLink="../add-schedule">
-                    <div class="item-thumbnail"><i class="mdi mdi-calendar"></i></div>
-                    <a class="item-name text-ellipsis">Wednesday</a>
-                    <span class="item-desc text-ellipsis">8:00 AM - 5:00 PM | Appointment</span>
-                </li>
-                <li class="list-view-item" routerLink="../add-schedule">
-                    <div class="item-thumbnail"><i class="mdi mdi-calendar"></i></div>
-                    <a class="item-name text-ellipsis">Saturday</a>
-                    <span class="item-desc text-ellipsis">8:00 AM - 5:00 PM | Appointment</span>
-                </li>-->
             </ul>
         </div>
         <section>

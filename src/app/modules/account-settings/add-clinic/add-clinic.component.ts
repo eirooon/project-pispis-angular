@@ -21,7 +21,6 @@ export class AddClinicComponent implements OnInit {
   provinceList = AllProvince;
   cityList = AllCity;
   hospitalList = AllHospitals;
-  clinicScheduleModel: ClinicScheduleModel;
   clinicSchedules:any={};
   clinicSchedulesList : ClinicScheduleModel[];
 
@@ -113,20 +112,7 @@ export class AddClinicComponent implements OnInit {
 
     console.log("getClinicSchedule()");
     var retrievedObject = localStorage.getItem('testObject');
+    this.clinicSchedulesList = JSON.parse(retrievedObject);
     console.log('retrievedObject: ', JSON.parse(retrievedObject));
-
-    var ul = document.getElementById("scheduleList");
-    var li = document.createElement("li");
-    var archive = [],
-    keys = Object.keys(localStorage),
-    i = 0, key;
-
-    for (; key = keys[i]; i++) {
-      if(localStorage.hasOwnProperty("clinicDay")){
-        console.log("retrieved object:" + key);
-        this.clinicSchedulesList[i]= this.clinicSchedules[key];
-        console.log("this loop array:" + this.clinicSchedulesList[i]);
-      }
-    }
   }
 }

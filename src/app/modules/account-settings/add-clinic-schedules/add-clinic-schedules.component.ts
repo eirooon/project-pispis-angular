@@ -16,6 +16,12 @@ export class AddClinicSchedulesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.clinicScheduleModel = {
+      clinicDay:'',
+      clinicType:'',
+      startTime:'',
+      endTime:''
+    }
   }
 
   clinicScheduleForm = new FormGroup({
@@ -50,32 +56,20 @@ export class AddClinicSchedulesComponent implements OnInit {
     console.log("addClinicSchedule");
     if(this.clinicScheduleForm.valid){
       console.log("addClinicSchedule");
-      this.clinicScheduleForm.value.clinicDay;
-      this.clinicScheduleForm.value.clinicType;
-      this.clinicScheduleForm.value.startTime;
-      this.clinicScheduleForm.value.endTime;
 
-      //this.clinicScheduleModel.clinicScheduleList.
-      var clinicScheduleObject = [{
-        'clinicDay': this.clinicScheduleForm.value.clinicDay, 
-        'clinicType': this.clinicScheduleForm.value.clinicType, 
-        'startTime': this.clinicScheduleForm.value.startTime,
-        'endTime': this.clinicScheduleForm.value.endTime
-        }
-      ];
+      this.clinicScheduleModel.clinicDay = this.clinicScheduleForm.value.clinicDay;
+      this.clinicScheduleModel.clinicType =  this.clinicScheduleForm.value.clinicType;
+      this.clinicScheduleModel.startTime =  this.clinicScheduleForm.value.startTime;
+      this.clinicScheduleModel.endTime = this.clinicScheduleForm.value.endTime;
+      
       //check if object is in storage
       var stored = [];
       stored = JSON.parse(localStorage.getItem('testObject'));
-      stored.push({
-        'clinicDay': this.clinicScheduleForm.value.clinicDay, 
-        'clinicType': this.clinicScheduleForm.value.clinicType, 
-        'startTime': this.clinicScheduleForm.value.startTime,
-        'endTime': this.clinicScheduleForm.value.endTime
-        });
+      stored.push(this.clinicScheduleModel);
 
       // Put the object into storage
       localStorage.setItem('testObject', JSON.stringify(stored));
-      console.log("addClinicSchedule" + this.clinicScheduleForm.value.clinicDay);
+      console.log("addClinicSchedule successful" + this.clinicScheduleModel.clinicDay);
       this.location.back();
   }
 }
