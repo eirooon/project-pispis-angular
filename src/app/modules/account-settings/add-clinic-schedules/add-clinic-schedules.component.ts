@@ -69,9 +69,13 @@ export class AddClinicSchedulesComponent implements OnInit {
       //check if object is in storage
       var stored = [];
       stored = JSON.parse(localStorage.getItem('testObject'));
-      this.localList.push(this.clinicScheduleModel); 
-      stored =  this.localList;
-      //stored.push(this.clinicScheduleModel);
+      if(stored == null){     
+        this.localList.push(this.clinicScheduleModel); 
+        stored =  this.localList;
+      }
+      else{
+        stored.push(this.clinicScheduleModel);
+      }
 
       // Put the object into storage
       localStorage.setItem('testObject', JSON.stringify(stored));
