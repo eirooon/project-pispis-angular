@@ -35,13 +35,12 @@ export class AddClinicComponent implements OnInit {
       Validators.minLength(3)
     ]),
 
-    phone: new FormControl(),
-    mobile: new FormControl(),
+    phone: new FormControl('', Validators.required),
+    mobile: new FormControl('', Validators.required),
     province: new FormControl('', Validators.required),
     city: new FormControl('',Validators.required),
     hospital: new FormControl('', Validators.required),
     roomnumber: new FormControl('', Validators.required),
-    clinic: new FormControl('', Validators.required)
   });
 
   constructor(
@@ -99,10 +98,13 @@ export class AddClinicComponent implements OnInit {
         this.clinicCollection.doc(docRef.id).update({
           prodid: docRef.id
         })
-
-        this.afs.collection('clinics').doc(docRef.id).collection('clinicSchedule').add({
-          clinicDay:  this.clinicSchedulesList
-        })
+        this.clinicSchedulesList.forEach(element => {
+          console.log('Add Clinic Schedule element:' + element);
+          this.afs.collection('clinics').doc(docRef.id).collection('clinicSchedule').add({
+            clinicSchedule:  element
+          })
+        });
+      
         console.log('Clinic schedule list:' + this.clinicSchedulesList);
         console.log('[Clinic-Add] Doc Ref: ' + docRef.id);
         this.goBack();
