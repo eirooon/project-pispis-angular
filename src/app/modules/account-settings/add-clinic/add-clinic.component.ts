@@ -8,6 +8,7 @@ import { AllCity } from '../../../shared/constantValues/cityConstants';
 import { AllHospitals } from '../../../shared/constantValues/hospitalConstants';
 import { Router } from '@angular/router';
 import { ClinicScheduleModel} from '../../../shared/models/clinicScheduleModel';
+import {Clinic} from '../../../shared/models/clinicModel';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class AddClinicComponent implements OnInit {
   hospitalList = AllHospitals;
   clinicSchedules:any={};
   clinicSchedulesList : ClinicScheduleModel[];
-
+  clinic: Clinic;
 
   clinicCollection: AngularFirestoreCollection<any> = this.afs.collection('clinics');
 
@@ -50,7 +51,18 @@ export class AddClinicComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    console.log(this.router)
+    this.clinic = {
+      idDoc:'',
+      clinicname:'',
+      province:'',
+      city:'',
+      hospital:'',
+      roomnumber:'',
+    }
     this.getClinicSchedule();
+    this.loadClinicDetailsFromStorage();
+
   }
 
   get clinicname(){
@@ -98,12 +110,14 @@ export class AddClinicComponent implements OnInit {
         this.clinicCollection.doc(docRef.id).update({
           prodid: docRef.id
         })
+        if(this.clinicSchedulesList){
         this.clinicSchedulesList.forEach(element => {
           console.log('Add Clinic Schedule element:' + element);
           this.afs.collection('clinics').doc(docRef.id).collection('clinicSchedule').add({
             clinicSchedule:  element
           })
         });
+      }
       
         console.log('Clinic schedule list:' + this.clinicSchedulesList);
         console.log('[Clinic-Add] Doc Ref: ' + docRef.id);
@@ -120,9 +134,36 @@ export class AddClinicComponent implements OnInit {
   }
 
   addClinicSchedule(){
-
+    console.log("addClinicSchedule()");
+    this.temporaryStoreClinicDetailsToStorage();
+    this.router.navigate(['/account-settings/clinic/add-schedule']);
   }
 
+  loadClinicDetailsFromStorage(){
+     //check if object is in storage
+     console.log("loadClinicDetailsFromStorage()");
+     var retrievedObject = localStorage.getItem('temporaryStoreClinicDetailsToStorage');
+     this.clinic = JSON.parse(retrievedObject);
+     console.log('temporaryStoreClinicDetailsToStorage: ', JSON.parse(retrievedObject));
+     this.clinicForm.get('clinicname').setValue(this.clinic.clinicname);
+     this.clinicForm.get('province').setValue (this.clinic.province);
+     this.clinicForm.get('city').setValue(this.clinic.city);
+     this.clinicForm.get('hospital').setValue (this.clinic.hospital);
+     this.clinicForm.get('roomnumber').setValue (this.clinic.roomnumber);
+  }
+
+  temporaryStoreClinicDetailsToStorage(){
+    //check if object is in storage
+    this.clinic.clinicname= this.clinicForm.value.clinicname,
+    this.clinic.province= this.clinicForm.value.province,
+    this.clinic.city= this.clinicForm.value.city,
+    this.clinic.hospital= this.clinicForm.value.hospital,
+    this.clinic.roomnumber=this.clinicForm.value.roomnumber,
+    // Put the object into storage
+    localStorage.setItem('temporaryStoreClinicDetailsToStorage', JSON.stringify( this.clinic));
+    console.log("temporaryStoreClinicDetailsToStorage" + this.clinic);
+  }
+  
   getClinicSchedule(){
     console.log("getClinicSchedule()");
     var retrievedObject = localStorage.getItem('testObject');
