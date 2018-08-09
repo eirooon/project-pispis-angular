@@ -104,7 +104,7 @@
 <ng-template class="customModal" let-context let-modal="modal" #addClinicScheduleModal>
     <div class="header">Add Schedule</div>
     <div class="content">
-        <form >
+        <form [formGroup]="clinicScheduleForm" (ngSubmit)="addClinicSchedule()">
               <div class="form-group">
                 <label>Day</label>
                 <input type="text" placeholder="Monday" list="clinicDayList" id="clinicDay" formControlName="clinicDay" data-list-filter="^" class="form-control">

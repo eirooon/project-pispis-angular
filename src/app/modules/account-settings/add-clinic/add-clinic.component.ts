@@ -1,4 +1,4 @@
-import { Component, OnInit, Pipe, PipeTransform, Injectable, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup,  FormControl , Validators} from '@angular/forms';
 import { Location } from '@angular/common';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
@@ -6,7 +6,7 @@ import { AuthService } from '../../../shared/service/auth.service';
 import { AllProvince } from '../../../shared/constantValues/provinceConstants';
 import { AllCity } from '../../../shared/constantValues/cityConstants';
 import { AllHospitals } from '../../../shared/constantValues/hospitalConstants';
-import { Router , RouterEvent, NavigationEnd } from '@angular/router';
+import { Router} from '@angular/router';
 import { ClinicScheduleModel} from '../../../shared/models/clinicScheduleModel';
 import {Clinic} from '../../../shared/models/clinicModel';
 import {SuiModalService, TemplateModalConfig, ModalTemplate} from 'ng2-semantic-ui';
@@ -32,8 +32,9 @@ export class AddClinicComponent implements OnInit {
   clinicSchedulesList : ClinicScheduleModel[];
   clinic: Clinic;
   
-  private previousUrl: string = undefined;
-  private currentUrl: string = undefined;
+  
+  clinicScheduleModel: ClinicScheduleModel;
+  localList=[];
 
 
   clinicCollection: AngularFirestoreCollection<any> = this.afs.collection('clinics');
@@ -54,6 +55,15 @@ export class AddClinicComponent implements OnInit {
     roomnumber: new FormControl('', Validators.required),
   });
 
+  clinicScheduleForm = new FormGroup({
+    clinicDay : new FormControl('', Validators.required),
+    clinicType : new FormControl('', Validators.required),
+    startTime : new FormControl('', Validators.required),
+    endTime: new FormControl('', Validators.required)
+  }
+);
+
+
   constructor(
     private location: Location,
     private afs: AngularFirestore,
@@ -62,18 +72,6 @@ export class AddClinicComponent implements OnInit {
     public modalService:SuiModalService) { }
 
   ngOnInit() {
-  
-
-    this.currentUrl = this.router.url;
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {        
-        this.previousUrl = this.currentUrl;
-        this.currentUrl = event.url;
-        console.log('Previous URL' + this.previousUrl);
-      };
-    });
-    
-
     this.clinic = {
       idDoc:'',
       clinicname:'',
@@ -82,9 +80,13 @@ export class AddClinicComponent implements OnInit {
       hospital:'',
       roomnumber:'',
     }
-    this.getClinicSchedule();
-    this.loadClinicDetailsFromStorage();
 
+    this.clinicScheduleModel = {
+      clinicDay:'',
+      clinicType:'',
+      startTime:'',
+      endTime:''
+    }
   }
 
   get clinicname(){
@@ -114,6 +116,23 @@ export class AddClinicComponent implements OnInit {
   goBack(){
     this.location.back();
   }
+
+  get clinicDay(){
+    return this.clinicScheduleForm.get('clinicDay');
+  }
+
+  get clinicType(){
+    return this.clinicScheduleForm.get('clinicType');
+  }
+
+  get startType(){
+    return this.clinicScheduleForm.get('startTime');
+  }
+
+  get endTime(){
+    return this.clinicScheduleForm.get('endTime');
+  }
+
 
   addClinic(){
      console.error('addClinic()');
@@ -153,60 +172,7 @@ export class AddClinicComponent implements OnInit {
     
   }
 
-  // addClinicSchedule(){
-  //   console.log("addClinicSchedule()");
-  //   this.temporaryStoreClinicDetailsToStorage();
-  //   this.router.navigate(['/account-settings/clinic/add-schedule']);
-  // }
-
-  loadClinicDetailsFromStorage(){
-     //check if object is in storage
-     console.log("loadClinicDetailsFromStorage()");
-     var retrievedObject = localStorage.getItem('temporaryStoreClinicDetailsToStorage');
-     this.clinic = JSON.parse(retrievedObject);
-     console.log('temporaryStoreClinicDetailsToStorage: ', JSON.parse(retrievedObject));
-     if(this.clinic!=null){
-      this.clinicForm.get('clinicname').setValue(this.clinic.clinicname);
-      this.clinicForm.get('province').setValue (this.clinic.province);
-      this.clinicForm.get('city').setValue(this.clinic.city);
-      this.clinicForm.get('hospital').setValue (this.clinic.hospital);
-      this.clinicForm.get('roomnumber').setValue (this.clinic.roomnumber);
-     }
-  }
-
-  temporaryStoreClinicDetailsToStorage(){
-    this.clinic = {
-      idDoc:'',
-      clinicname:'',
-      province:'',
-      city:'',
-      hospital:'',
-      roomnumber:'',
-    }
-    //check if object is in storage
-    if(this.clinicForm.value.clinicname)
-      this.clinic.clinicname = this.clinicForm.value.clinicname;
-    if(this.clinicForm.value.province)
-      this.clinic.province= this.clinicForm.value.province;
-    if(this.clinicForm.value.city)
-      this.clinic.city= this.clinicForm.value.city;
-    if(this.clinicForm.value.hospital)
-      this.clinic.hospital= this.clinicForm.value.hospital;
-    if(this.clinicForm.value.roomnumber)
-     this.clinic.roomnumber=this.clinicForm.value.roomnumber;
-    // Put the object into storage
-    localStorage.setItem('temporaryStoreClinicDetailsToStorage', JSON.stringify( this.clinic));
-    console.log("temporaryStoreClinicDetailsToStorage" + this.clinic);
-  }
-  
-  getClinicSchedule(){
-    console.log("getClinicSchedule()");
-    var retrievedObject = localStorage.getItem('testObject');
-    this.clinicSchedulesList = JSON.parse(retrievedObject);
-    console.log('retrievedObject: ', JSON.parse(retrievedObject));
-  }
-
-  
+ 
   public openClinicSchedule() {
     const config = new TemplateModalConfig<IContext, string, string>(this.modalTemplate);
 
@@ -216,9 +182,25 @@ export class AddClinicComponent implements OnInit {
         .open(config)
         .onApprove(result => { 
           console.log("OK");
+          this.addClinicSchedule();
         })
         .onDeny(result => { 
           console.log("Cancel");
         });
-}
+  }
+
+  addClinicSchedule(){
+    console.log("addClinicSchedule");
+    if(this.clinicScheduleForm.valid){
+      //check if object is in storage
+      var stored = [];
+      console.log("addClinicSchedule");
+      this.clinicScheduleModel.clinicDay = this.clinicScheduleForm.value.clinicDay;
+      this.clinicScheduleModel.clinicType =  this.clinicScheduleForm.value.clinicType;
+      this.clinicScheduleModel.startTime =  this.clinicScheduleForm.value.startTime;
+      this.clinicScheduleModel.endTime = this.clinicScheduleForm.value.endTime;
+      this.localList.push(this.clinicScheduleModel);
+      this.clinicSchedulesList = this.localList;
+    }
+  }
 }
