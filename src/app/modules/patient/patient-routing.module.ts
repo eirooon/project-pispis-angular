@@ -24,11 +24,13 @@ const routes: Routes = [
   },
   { 
     path: 'consultation-selection', 
-    component: PdConsultationSelectionComponent
+    component: PdConsultationSelectionComponent,
+    canActivate:[AuthGuard]
   },
   { 
     path: 'consultation-text', 
-    component: PdConsultationTextComponent
+    component: PdConsultationTextComponent,
+    canActivate:[AuthGuard]
   }  
 ];
 

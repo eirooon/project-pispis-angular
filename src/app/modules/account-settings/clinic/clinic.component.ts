@@ -12,7 +12,7 @@ import { Clinic } from '../../../shared/models/clinicModel';
 export class ClinicComponent implements OnInit {
 
   clinicsCollection: AngularFirestoreCollection<Clinic>;
-	clinic: Observable<Clinic[]>;
+  clinic: Observable<Clinic[]>;
   clinicsDoc: AngularFirestoreDocument<Clinic>;
   hasList: boolean = true;
   state: string = '';
@@ -26,42 +26,40 @@ export class ClinicComponent implements OnInit {
 
   ngOnInit() {
     this.getClinics()
-      .subscribe(clinics => { 
-        if(clinics.length > 0){
+      .subscribe(clinics => {
+        if (clinics.length > 0) {
           console.log('[Clinic] List loaded successful');
           this.hasList = true;
           this.clinics = clinics;
           console.log('[Clinic] Clinic data: ' + this.clinics);
-        }else{
+        } else {
           this.hasList = false;
         }
-    },
-    err => {
-      console.error('[Clinic] Error: ', err.message);
-      this.hasList = false;
-    },
-    
-  );
+      },
+        err => {
+          console.error('[Clinic] Error: ', err.message);
+          this.hasList = false;
+        },
+    );
   }
 
-
-  getClinics(){
+  getClinics() {
     console.log("UID DOCTOR: [" + localStorage.getItem("UID") + "]");
-    this.clinicsCollection = this.afs.collection('clinics', ref => ref.where('idDoc','==', localStorage.getItem("UID")));
+    this.clinicsCollection = this.afs.collection('clinics', ref => ref.where('idDoc', '==', localStorage.getItem("UID")));
     this.clinic = this.clinicsCollection.snapshotChanges()
       .map(changes => {
-      return changes.map(a => {
-        const data = a.payload.doc.data() as Clinic;
-        data.id = a.payload.doc.id;
-        console.log(data);
-        return data;
-      })
-  });
-  console.log(this.clinic);
+        return changes.map(a => {
+          const data = a.payload.doc.data() as Clinic;
+          data.id = a.payload.doc.id;
+          console.log(data);
+          return data;
+        })
+      });
+    console.log(this.clinic);
     return this.clinic;
   }
 
-  goBack(){
+  goBack() {
     this.location.back();
   }
 }

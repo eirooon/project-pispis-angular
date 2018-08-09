@@ -5,6 +5,7 @@ import { AccountSettingsComponent } from '../account-settings/account-settings.c
 import { ClinicComponent } from '../account-settings/clinic/clinic.component';
 import { AddClinicComponent } from '../account-settings/add-clinic/add-clinic.component';
 import { AddClinicSchedulesComponent } from '../account-settings/add-clinic-schedules/add-clinic-schedules.component';
+import { DoctorsProfileComponent } from './doctors-profile/doctors-profile.component';
 
 const routes: Routes = [
   { 
@@ -15,14 +16,22 @@ const routes: Routes = [
   { 
     path: 'clinic', 
     component: ClinicComponent,
+    canActivate:[AuthGuard]
   },
   { 
     path: 'clinic/add-clinic', 
     component: AddClinicComponent,
+    canActivate:[AuthGuard]
   },
   { 
     path: 'clinic/add-schedule', 
     component: AddClinicSchedulesComponent,
+    canActivate:[AuthGuard]
+  },
+  { 
+    path: 'doctors-profile', 
+    component: DoctorsProfileComponent,
+    canActivate:[AuthGuard]
   },
 ];
 
