@@ -109,9 +109,7 @@ export class AddClinicComponent implements OnInit {
   }
 
   addClinic(){
-    
-
-    console.error(this.clinicForm.value.province);
+     console.error('addClinic()');
     if(this.clinicForm.valid){
       this.clinicCollection.add({
         idDoc: this.authService.getUidOfCurrentDoctor(),
