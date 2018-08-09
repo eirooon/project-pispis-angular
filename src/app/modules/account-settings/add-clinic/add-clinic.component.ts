@@ -1,4 +1,4 @@
-import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup,  FormControl , Validators} from '@angular/forms';
 import { Location } from '@angular/common';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
@@ -6,9 +6,14 @@ import { AuthService } from '../../../shared/service/auth.service';
 import { AllProvince } from '../../../shared/constantValues/provinceConstants';
 import { AllCity } from '../../../shared/constantValues/cityConstants';
 import { AllHospitals } from '../../../shared/constantValues/hospitalConstants';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router';
 import { ClinicScheduleModel} from '../../../shared/models/clinicScheduleModel';
+import {Clinic} from '../../../shared/models/clinicModel';
+import {SuiModalService, TemplateModalConfig, ModalTemplate} from 'ng2-semantic-ui';
 
+export interface IContext {
+  data:string;
+}
 
 @Component({
   selector: 'app-clinic',
@@ -17,18 +22,25 @@ import { ClinicScheduleModel} from '../../../shared/models/clinicScheduleModel';
 })
 
 export class AddClinicComponent implements OnInit {
+  @ViewChild('addClinicScheduleModal')
+  public modalTemplate:ModalTemplate<IContext, string, string>
 
   provinceList = AllProvince;
   cityList = AllCity;
   hospitalList = AllHospitals;
   clinicSchedules:any={};
   clinicSchedulesList : ClinicScheduleModel[];
+  clinic: Clinic;
+  
+  
+  clinicScheduleModel: ClinicScheduleModel;
+  localList=[];
 
 
   clinicCollection: AngularFirestoreCollection<any> = this.afs.collection('clinics');
 
   ptnObserver = this.clinicCollection.valueChanges();
-
+  
   clinicForm = new FormGroup({
     clinicname: new FormControl('', [
       Validators.required,
@@ -43,14 +55,38 @@ export class AddClinicComponent implements OnInit {
     roomnumber: new FormControl('', Validators.required),
   });
 
+  clinicScheduleForm = new FormGroup({
+    clinicDay : new FormControl('', Validators.required),
+    clinicType : new FormControl('', Validators.required),
+    startTime : new FormControl('', Validators.required),
+    endTime: new FormControl('', Validators.required)
+  }
+);
+
+
   constructor(
     private location: Location,
     private afs: AngularFirestore,
     private authService: AuthService,
-    private router: Router) { }
+    private router: Router,
+    public modalService:SuiModalService) { }
 
   ngOnInit() {
-    this.getClinicSchedule();
+    this.clinic = {
+      idDoc:'',
+      clinicname:'',
+      province:'',
+      city:'',
+      hospital:'',
+      roomnumber:'',
+    }
+
+    this.clinicScheduleModel = {
+      clinicDay:'',
+      clinicType:'',
+      startTime:'',
+      endTime:''
+    }
   }
 
   get clinicname(){
@@ -81,10 +117,25 @@ export class AddClinicComponent implements OnInit {
     this.location.back();
   }
 
-  addClinic(){
-    
+  get clinicDay(){
+    return this.clinicScheduleForm.get('clinicDay');
+  }
 
-    console.error(this.clinicForm.value.province);
+  get clinicType(){
+    return this.clinicScheduleForm.get('clinicType');
+  }
+
+  get startType(){
+    return this.clinicScheduleForm.get('startTime');
+  }
+
+  get endTime(){
+    return this.clinicScheduleForm.get('endTime');
+  }
+
+
+  addClinic(){
+     console.error('addClinic()');
     if(this.clinicForm.valid){
       this.clinicCollection.add({
         idDoc: this.authService.getUidOfCurrentDoctor(),
@@ -98,12 +149,14 @@ export class AddClinicComponent implements OnInit {
         this.clinicCollection.doc(docRef.id).update({
           prodid: docRef.id
         })
+        if(this.clinicSchedulesList){
         this.clinicSchedulesList.forEach(element => {
           console.log('Add Clinic Schedule element:' + element);
           this.afs.collection('clinics').doc(docRef.id).collection('clinicSchedule').add({
             clinicSchedule:  element
           })
         });
+      }
       
         console.log('Clinic schedule list:' + this.clinicSchedulesList);
         console.log('[Clinic-Add] Doc Ref: ' + docRef.id);
@@ -119,14 +172,35 @@ export class AddClinicComponent implements OnInit {
     
   }
 
-  addClinicSchedule(){
+ 
+  public openClinicSchedule() {
+    const config = new TemplateModalConfig<IContext, string, string>(this.modalTemplate);
 
+    config.closeResult = "closed!";
+    
+    this.modalService
+        .open(config)
+        .onApprove(result => { 
+          console.log("OK");
+          this.addClinicSchedule();
+        })
+        .onDeny(result => { 
+          console.log("Cancel");
+        });
   }
 
-  getClinicSchedule(){
-    console.log("getClinicSchedule()");
-    var retrievedObject = localStorage.getItem('testObject');
-    this.clinicSchedulesList = JSON.parse(retrievedObject);
-    console.log('retrievedObject: ', JSON.parse(retrievedObject));
+  addClinicSchedule(){
+    console.log("addClinicSchedule");
+    if(this.clinicScheduleForm.valid){
+      //check if object is in storage
+      var stored = [];
+      console.log("addClinicSchedule");
+      this.clinicScheduleModel.clinicDay = this.clinicScheduleForm.value.clinicDay;
+      this.clinicScheduleModel.clinicType =  this.clinicScheduleForm.value.clinicType;
+      this.clinicScheduleModel.startTime =  this.clinicScheduleForm.value.startTime;
+      this.clinicScheduleModel.endTime = this.clinicScheduleForm.value.endTime;
+      this.localList.push(this.clinicScheduleModel);
+      this.clinicSchedulesList = this.localList;
+    }
   }
 }

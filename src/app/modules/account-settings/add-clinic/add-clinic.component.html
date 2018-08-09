@@ -81,7 +81,7 @@
 
         <div class="form-subheader form-subheader-action">
             <div class="form-subheader-title">Clinic Schedule</div>
-            <button title="Add Patient" class="btn btn-default btn-icon" routerLink="../add-schedule">
+            <button title="Add Patient" class="btn btn-default btn-icon" (click)="openClinicSchedule()">
                 <i class="mdi mdi-plus"></i>
             </button>
         </div>
@@ -100,3 +100,52 @@
         </section>
     </form>
 </div>
+
+<ng-template class="customModal" let-context let-modal="modal" #addClinicScheduleModal>
+    <div class="header">Add Schedule</div>
+    <div class="content">
+        <form [formGroup]="clinicScheduleForm" (ngSubmit)="addClinicSchedule()">
+              <div class="form-group">
+                <label>Day</label>
+                <input type="text" placeholder="Monday" list="clinicDayList" id="clinicDay" formControlName="clinicDay" data-list-filter="^" class="form-control">
+                <datalist id="clinicDayList">
+                  <select>
+                    <option value="Monday"></option>
+                    <option value="Tuesday"></option>
+                    <option value="Wednesday"></option>
+                    <option value="Thursday"></option>
+                    <option value="Friday"></option>
+                    <option value="Saturday"></option>
+                    <option value="Sunday"></option>
+                  </select>
+                </datalist>
+              </div>
+              <div class="form-group">
+                <label>Clinic Type</label>
+                <input type="text" placeholder="No Clinic" 
+                list="clinicTypeList" 
+                id="clinicType" 
+                formControlName="clinicType" data-list-filter="^" class="form-control">
+                <datalist id="clinicTypeList">
+                  <select>
+                    <option value="No Clinic"></option>
+                    <option value="Appointment"></option>
+                    <option value="Walk-in"></option>
+                  </select>
+                </datalist>
+              </div>
+              <div class="form-group">
+                <label for="address">From</label>
+                <input type="time" placeholder="00:00" id="startTime"  formControlName="startTime" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="address">To</label>
+                <input type="time" placeholder="00:00" id="endTime"  formControlName="endTime" class="form-control">
+              </div>
+          </form>
+    </div>
+    <div class="actions">
+        <button class="ui  button" (click)="modal.deny('denied')">Cancel</button>
+        <button class="ui green button" (click)="modal.approve('approved')" autofocus>Add New Schedule</button>
+    </div>
+</ng-template>

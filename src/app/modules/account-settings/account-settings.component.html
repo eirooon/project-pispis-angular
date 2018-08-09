@@ -5,9 +5,26 @@
 <app-header [setTitle]='myTitle'></app-header>
 <app-sidemenu></app-sidemenu>
 <div class="content-wrapper">
-    <section>
-      <ul>
-        <li routerLink="clinic">My Clinic</li>
-      </ul>
-    </section>
+    
+  <section class="account-greetings">
+    <h3>Welcome, Dr. House!</h3>
+    <div class="description">Hoping you're having a good day!</div>
+   
+  </section>  <br>
+  <section class="overview-schedules">
+    <ul class="list-view-wrapper">
+        <li class="account-settings-item" >
+            <div class="item-thumbnail">
+                <i class="mdi mdi-account"></i>
+            </div>
+            <a class="item-name text-ellipsis">My Profile</a>
+        </li>
+        <li class="account-settings-item" routerLink="clinic">
+            <div class="item-thumbnail">
+                <i class="mdi mdi-hospital-building"></i>
+            </div>
+            <a class="item-name text-ellipsis">My Clinic</a>
+        </li>
+    </ul>
+  </section>  
 </div>

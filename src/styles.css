@@ -386,3 +386,9 @@ input.ng-invalid.ng-touched {
         grid-template-columns: 1fr;
     }
 }
+
+/* Semantic UI Overrides */
+
+.ui.modal > * {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto !important;
+}
