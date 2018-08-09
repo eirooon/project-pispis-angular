@@ -1,4 +1,4 @@
-import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform, Injectable } from '@angular/core';
 import { FormGroup,  FormControl , Validators} from '@angular/forms';
 import { Location } from '@angular/common';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
@@ -6,7 +6,7 @@ import { AuthService } from '../../../shared/service/auth.service';
 import { AllProvince } from '../../../shared/constantValues/provinceConstants';
 import { AllCity } from '../../../shared/constantValues/cityConstants';
 import { AllHospitals } from '../../../shared/constantValues/hospitalConstants';
-import { Router } from '@angular/router';
+import { Router , RouterEvent, NavigationEnd } from '@angular/router';
 import { ClinicScheduleModel} from '../../../shared/models/clinicScheduleModel';
 import {Clinic} from '../../../shared/models/clinicModel';
 
@@ -25,6 +25,10 @@ export class AddClinicComponent implements OnInit {
   clinicSchedules:any={};
   clinicSchedulesList : ClinicScheduleModel[];
   clinic: Clinic;
+  
+  private previousUrl: string = undefined;
+  private currentUrl: string = undefined;
+
 
   clinicCollection: AngularFirestoreCollection<any> = this.afs.collection('clinics');
 
@@ -51,7 +55,18 @@ export class AddClinicComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    console.log(this.router)
+  
+
+    this.currentUrl = this.router.url;
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {        
+        this.previousUrl = this.currentUrl;
+        this.currentUrl = event.url;
+        console.log('Previous URL' + this.previousUrl);
+      };
+    });
+    
+
     this.clinic = {
       idDoc:'',
       clinicname:'',
@@ -145,20 +160,35 @@ export class AddClinicComponent implements OnInit {
      var retrievedObject = localStorage.getItem('temporaryStoreClinicDetailsToStorage');
      this.clinic = JSON.parse(retrievedObject);
      console.log('temporaryStoreClinicDetailsToStorage: ', JSON.parse(retrievedObject));
-     this.clinicForm.get('clinicname').setValue(this.clinic.clinicname);
-     this.clinicForm.get('province').setValue (this.clinic.province);
-     this.clinicForm.get('city').setValue(this.clinic.city);
-     this.clinicForm.get('hospital').setValue (this.clinic.hospital);
-     this.clinicForm.get('roomnumber').setValue (this.clinic.roomnumber);
+     if(this.clinic!=null){
+      this.clinicForm.get('clinicname').setValue(this.clinic.clinicname);
+      this.clinicForm.get('province').setValue (this.clinic.province);
+      this.clinicForm.get('city').setValue(this.clinic.city);
+      this.clinicForm.get('hospital').setValue (this.clinic.hospital);
+      this.clinicForm.get('roomnumber').setValue (this.clinic.roomnumber);
+     }
   }
 
   temporaryStoreClinicDetailsToStorage(){
+    this.clinic = {
+      idDoc:'',
+      clinicname:'',
+      province:'',
+      city:'',
+      hospital:'',
+      roomnumber:'',
+    }
     //check if object is in storage
-    this.clinic.clinicname= this.clinicForm.value.clinicname,
-    this.clinic.province= this.clinicForm.value.province,
-    this.clinic.city= this.clinicForm.value.city,
-    this.clinic.hospital= this.clinicForm.value.hospital,
-    this.clinic.roomnumber=this.clinicForm.value.roomnumber,
+    if(this.clinicForm.value.clinicname)
+      this.clinic.clinicname = this.clinicForm.value.clinicname;
+    if(this.clinicForm.value.province)
+      this.clinic.province= this.clinicForm.value.province;
+    if(this.clinicForm.value.city)
+      this.clinic.city= this.clinicForm.value.city;
+    if(this.clinicForm.value.hospital)
+      this.clinic.hospital= this.clinicForm.value.hospital;
+    if(this.clinicForm.value.roomnumber)
+     this.clinic.roomnumber=this.clinicForm.value.roomnumber;
     // Put the object into storage
     localStorage.setItem('temporaryStoreClinicDetailsToStorage', JSON.stringify( this.clinic));
     console.log("temporaryStoreClinicDetailsToStorage" + this.clinic);
