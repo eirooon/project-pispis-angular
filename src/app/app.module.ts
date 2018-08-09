@@ -10,6 +10,7 @@ import { HomeModule } from './modules/home/home.module'
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { SignupModule } from './auth/signup/signup.module';
 import { SigninModule } from './auth/signin/signin.module';
+import { TestBackendModule } from './modules/a-testbackend/a-testbackend.module';
 
 //Firestore
 import { AngularFireModule } from 'angularfire2';
@@ -39,6 +40,7 @@ import {SuiModule} from 'ng2-semantic-ui';
     ReactiveFormsModule,
     SignupModule,
     SigninModule,
+    TestBackendModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     SuiModule
   ],

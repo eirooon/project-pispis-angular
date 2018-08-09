@@ -7,14 +7,17 @@ import { Doctor } from '../models/doctor';
 export class DoctorService {
 
   doctorsCollection: AngularFirestoreCollection<Doctor>;
+  doctorsDocument: AngularFirestoreDocument<Doctor>;
   doctors: Observable<Doctor[]>;
   doctor: Doctor;
 
   constructor(
     public afs: AngularFirestore
-  ) { }
+  ) { 
+	this.doctorsCollection = this.afs.collection('doctors');
+  }
 
-  getDoctorsName(){
+  	getDoctorsName(){
 		this.doctorsCollection = this.afs.collection('doctors', ref => ref.where('uid','==', localStorage.getItem("UID")));
 		this.doctors = this.doctorsCollection.snapshotChanges()
 			.map(changes => {
@@ -26,4 +29,21 @@ export class DoctorService {
       });
 		return this.doctors;
 	}
+
+	addDoctor(doctor: Doctor){
+		console.log(doctor);
+		// this.doctorsCollection.add(doctor);
+		this.doctorsCollection.doc(doctor.id).set(doctor);
+  	}
+  
+  	deleteDoctor(doctor: Doctor){
+    	this.doctorsDocument = this.afs.doc(`patients/${doctor.id}`);
+		this.doctorsDocument.delete();
+	}
+
+	updateDoctor(doctor: Doctor){
+		this.doctorsDocument = this.afs.doc(`patients/${doctor.id}`);
+		this.doctorsDocument.update(doctor);
+	}
+
 }
