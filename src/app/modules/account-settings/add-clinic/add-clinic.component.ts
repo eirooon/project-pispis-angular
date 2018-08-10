@@ -10,8 +10,8 @@ import { Router} from '@angular/router';
 import { ClinicScheduleModel} from '../../../shared/models/clinicScheduleModel';
 import {Clinic} from '../../../shared/models/clinicModel';
 import {SuiModalService, TemplateModalConfig, ModalTemplate} from 'ng2-semantic-ui';
-
-export interface IContext {
+import { AllDaysOfTheWeek } from '../../../shared/constantValues/daysOfTheWeekConstants';
+export interface IContext { 
   data:string;
 }
 
@@ -25,13 +25,14 @@ export class AddClinicComponent implements OnInit {
   @ViewChild('addClinicScheduleModal')
   public modalTemplate:ModalTemplate<IContext, string, string>
 
+  
   provinceList = AllProvince;
   cityList = AllCity;
   hospitalList = AllHospitals;
   clinicSchedules:any={};
   clinicSchedulesList : ClinicScheduleModel[];
   clinic: Clinic;
-  
+  daysOfTheWeekList = AllDaysOfTheWeek;
   
   clinicScheduleModel: ClinicScheduleModel;
   localList=[];
@@ -40,6 +41,8 @@ export class AddClinicComponent implements OnInit {
   clinicCollection: AngularFirestoreCollection<any> = this.afs.collection('clinics');
 
   ptnObserver = this.clinicCollection.valueChanges();
+
+  
   
   clinicForm = new FormGroup({
     clinicname: new FormControl('', [
@@ -87,6 +90,7 @@ export class AddClinicComponent implements OnInit {
       startTime:'',
       endTime:''
     }
+    this.daysOfTheWeekList = AllDaysOfTheWeek;
   }
 
   get clinicname(){
@@ -135,7 +139,7 @@ export class AddClinicComponent implements OnInit {
 
 
   addClinic(){
-     console.error('addClinic()');
+    console.log('addClinic()');
     if(this.clinicForm.valid){
       this.clinicCollection.add({
         idDoc: this.authService.getUidOfCurrentDoctor(),
@@ -195,12 +199,35 @@ export class AddClinicComponent implements OnInit {
       //check if object is in storage
       var stored = [];
       console.log("addClinicSchedule");
+      this.clinicScheduleModel = {
+        clinicDay:'',
+        clinicType:'',
+        startTime:'',
+        endTime:''
+      }
       this.clinicScheduleModel.clinicDay = this.clinicScheduleForm.value.clinicDay;
       this.clinicScheduleModel.clinicType =  this.clinicScheduleForm.value.clinicType;
       this.clinicScheduleModel.startTime =  this.clinicScheduleForm.value.startTime;
       this.clinicScheduleModel.endTime = this.clinicScheduleForm.value.endTime;
       this.localList.push(this.clinicScheduleModel);
       this.clinicSchedulesList = this.localList;
+      console.log(this.clinicSchedulesList);
+      this.removeDocument( this.clinicScheduleModel.clinicDay);
+      this.resetForm();
     }
   }
+
+  removeDocument(doc){
+    console.log(doc);
+    this.daysOfTheWeekList.forEach( (item, index) => {
+      if(item.day == doc) {
+        this.daysOfTheWeekList.splice(index,1);
+      }
+    });
+ }
+
+ resetForm(){
+   console.log("resetForm()");
+  this.clinicScheduleForm.reset();
+ }
 }

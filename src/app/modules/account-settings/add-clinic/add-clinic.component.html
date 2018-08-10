@@ -104,10 +104,10 @@
 <ng-template class="customModal" let-context let-modal="modal" #addClinicScheduleModal>
     <div class="header">Add Schedule</div>
     <div class="content">
-        <form [formGroup]="clinicScheduleForm" (ngSubmit)="addClinicSchedule()">
+        <form [formGroup]="clinicScheduleForm" id="clinicScheduleFormID" (ngSubmit)="addClinicSchedule()">
               <div class="form-group">
                 <label>Day</label>
-                <input type="text" placeholder="Monday" list="clinicDayList" id="clinicDay" formControlName="clinicDay" data-list-filter="^" class="form-control">
+                <!--<input type="text" placeholder="Monday" list="clinicDayList" id="clinicDay" formControlName="clinicDay" data-list-filter="^" class="form-control">
                 <datalist id="clinicDayList">
                   <select>
                     <option value="Monday"></option>
@@ -118,6 +118,15 @@
                     <option value="Saturday"></option>
                     <option value="Sunday"></option>
                   </select>
+                </datalist>-->
+
+                <input type="text" placeholder="Choose Day" list="daysOfTheWeekList" id="clinicDay" formControlName="clinicDay" data-list-filter="^"
+                    class="form-control">
+                <datalist id="daysOfTheWeekList">
+                    <select>
+                        <option *ngFor="let clinicDay of daysOfTheWeekList" value="{{clinicDay.day}}"></option>
+                    </select>
+
                 </datalist>
               </div>
               <div class="form-group">
