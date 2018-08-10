@@ -175,14 +175,10 @@ export class AddClinicComponent implements OnInit {
  
   public openClinicSchedule() {
     const config = new TemplateModalConfig<IContext, string, string>(this.modalTemplate);
-
-    config.closeResult = "closed!";
-    
     this.modalService
         .open(config)
         .onApprove(result => { 
-          console.log("OK");
-          this.addClinicSchedule();
+          // this.addClinicSchedule();
         })
         .onDeny(result => { 
           console.log("Cancel");

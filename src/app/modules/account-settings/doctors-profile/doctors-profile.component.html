@@ -1,3 +1,44 @@
-<p>
-  doctors-profile works!
-</p>
+<header class="header-primary">
+  <div class="header-wrapper">
+    <div class="menu-left" (click)="goBack()">
+      <i class="mdi mdi-arrow-left"></i>
+    </div>
+    <div class="menu-title">My Profile</div>
+  </div>
+</header>
+
+<div class="content-wrapper">
+  <div class="form-subheader">Basic Information</div>
+  <section>
+    <div class="form-inputs">
+      <div class="form-group">
+        <label>Patient Type*</label>
+        <div class="form-select-wrapper">
+          <i class="mdi mdi-caret-down"></i>
+          <select  name="type" class="form-control">
+            <option value='' hidden>Select Patient Type</option>
+            <option>In-Patient</option>
+            <option>Admitted</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="form-subheader">Your Specialty</div>
+  <section>
+    <div class="form-inputs">
+      <div class="form-group">
+        <label>Patient Type*</label>
+        <div class="form-select-wrapper">
+          <i class="mdi mdi-caret-down"></i>
+          <select  name="type" class="form-control">
+            <option value='' hidden>Select Patient Type</option>
+            <option>In-Patient</option>
+            <option>Admitted</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+  
