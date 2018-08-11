@@ -1,6 +1,6 @@
 export interface ConsultationTextModel{
     id?:string;
-    idDoc?: string;
+    idPatient?: string;
     clinicname?: string;
     date?: string;
     text?: string;

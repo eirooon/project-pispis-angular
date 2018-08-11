@@ -12,6 +12,7 @@ import { AuthGuard } from '../shared/service/auth-guard.service';
 import { AuthService } from '../shared/service/auth.service';
 import { ConsultationService } from './service/consultation.service';
 import { DoctorService } from '../shared/service/doctor.service';
+import { ClinicService } from './service/clinic.service';
 
 //3rd Party
 import { SidebarJSModule, SidebarJSService } from 'ng-sidebarjs';
@@ -23,6 +24,7 @@ import { SuiTabsModule,
          SuiSelectModule,
          SuiModalModule
  } from 'ng2-semantic-ui';
+
 
 @NgModule({
   imports: [
@@ -54,7 +56,8 @@ import { SuiTabsModule,
     AuthGuard,
     AuthService,
     ConsultationService,
-    DoctorService
+    DoctorService,
+    ClinicService
   ]
 })
 export class SharedModule { 

@@ -172,8 +172,6 @@ export class AddClinicComponent implements OnInit {
     }else {
     console.log('[Clinic-Add] Form is invalid');
     }
-
-    
   }
 
  

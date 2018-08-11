@@ -85,4 +85,9 @@ export class PatientService {
 	getPatient(){
 		return this.patient;
 	}
+
+	getPatientId(){
+		return this.patient.id;
+	}
+
 }

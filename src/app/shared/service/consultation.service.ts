@@ -20,6 +20,11 @@ export class ConsultationService{
 		}
 
     addConsultationText(consultation: ConsultationTextModel){
-        this.consultationTextCollection.add(consultation);
+		console.log(consultation);
+		console.log("addConsultationText() from Service");
+		this.consultationTextCollection.add(consultation);
+		
+		//this.consultationTextCollection = this.afs.collection('clinics', ref => ref.where('idDoc', '==', localStorage.getItem("UID")));
+		//this.afs.collection('clinics').doc(consultation.id).collection('clinicSchedule').add({
     }
 }

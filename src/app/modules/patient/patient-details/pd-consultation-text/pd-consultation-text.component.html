@@ -14,18 +14,13 @@
     <section class="panel-container">
         <div class="form-group" form>
             <label>Select Clinic</label>
-            <div class="form-select-wrapper">
-                <i class="mdi mdi-caret-down"></i>
-                <select name="clinicname" 
-                class="form-control"
-                formControlName="clinicname"
-                id="clinicname">
-                    <option value='' hidden>Select Clinic</option>
-                    <option>St. Anthony College Hospital</option>
-                    <option>Emmanuel Hospital</option>
-                    <option>Capiz Doctor's Hospital</option>
-                </select>
-            </div>
+            <input type="text" placeholder="Select Clinic" list="clinicsList" id="clinics" formControlName="clinicname" data-list-filter="^"
+                    class="form-control">
+                <datalist id="clinicsList">
+                    <select>
+                        <option *ngFor="let clinic of clinicsList" value="{{clinic.clinicname}}"></option>
+                    </select>
+                </datalist>  
         </div>
         <div class="form-group">
             <label for="username">Date</label>
