@@ -7,7 +7,7 @@
     </div>
 </header>
 <div class="content-wrapper">
-    <form [formGroup]="clinicForm" (ngSubmit)="addClinic()">
+    <form [formGroup]="clinicForm" >
         <div class="form-subheader">Basic Information</div>
         <section>
             <div class="form-group">
@@ -96,7 +96,7 @@
             </ul>
         </div>
         <section>
-            <button class="btn btn-primary btn-wide" type="submit" [disabled]="!this.clinicForm.valid">Add Clinic</button>
+            <button class="btn btn-primary btn-wide" (click)="addClinic()" [disabled]="!this.clinicForm.valid">Add Clinic</button>
         </section>
     </form>
 </div>
