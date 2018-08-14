@@ -121,7 +121,7 @@
                 </datalist>-->
 
                 <input type="text" placeholder="Choose Day" list="daysOfTheWeekList" id="clinicDay" formControlName="clinicDay" data-list-filter="^"
-                    class="form-control">
+                    class="form-control" autofocus>
                 <datalist id="daysOfTheWeekList">
                     <select>
                         <option *ngFor="let clinicDay of daysOfTheWeekList" value="{{clinicDay.day}}"></option>

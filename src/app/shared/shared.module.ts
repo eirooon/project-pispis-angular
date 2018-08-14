@@ -23,6 +23,7 @@ import { NgProgressModule } from 'ngx-progressbar';
 import { SuiTabsModule, 
          SuiSelectModule,
          SuiModalModule,
+         SuiAccordionModule
  } from 'ng2-semantic-ui';
 
 
@@ -34,7 +35,8 @@ import { SuiTabsModule,
     NgProgressModule,
     SuiTabsModule,
     SuiSelectModule,
-    SuiModalModule
+    SuiModalModule,
+    SuiAccordionModule
   ],
   declarations: [
     HeaderComponent,
@@ -50,6 +52,7 @@ import { SuiTabsModule,
     SuiTabsModule,
     SuiSelectModule,
     SuiModalModule,
+    SuiAccordionModule
   ],
   providers:[
     PatientService,

@@ -11,6 +11,7 @@ import { PdConsultationSelectionComponent } from './patient-details/pd-consultat
 import { PdConsultationComponent } from './patient-details/pd-consultation/pd-consultation.component';
 import { PdConsultationTextComponent } from './patient-details/pd-consultation-text/pd-consultation-text.component';
 import { PdPersonalProfileComponent } from './patient-details/pd-personal-profile/pd-personal-profile.component';
+import { PdConsultationPrescriptionComponent } from './patient-details/pd-consultation-prescription/pd-consultation-prescription.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { PdPersonalProfileComponent } from './patient-details/pd-personal-profil
         PdConsultationSelectionComponent,
         PdConsultationComponent,
         PdConsultationTextComponent,
-        PdPersonalProfileComponent
+        PdPersonalProfileComponent,
+        PdConsultationPrescriptionComponent
     ],
     imports: [
         PatientRoutingModule,

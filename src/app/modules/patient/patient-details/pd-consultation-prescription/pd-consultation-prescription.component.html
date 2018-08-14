@@ -1,0 +1,174 @@
+<header class="header-secondary">
+  <div class="header-wrapper">
+    <div class="menu-left" (click)="goBack()">
+      <i class="mdi mdi-arrow-left"></i>
+    </div>
+    <div class="menu-title">Prescription</div>
+    <div class="menu-right">
+      <span (click)='cancel()'>Cancel</span>
+    </div>
+  </div>
+</header>
+<div class="content-wrapper">
+  <form (ngSubmit)="addConsultationPrescription()">
+    <section class="panel-container">
+      <div class="form-group" form>
+        <label>Select Clinic</label>
+        <input type="text" placeholder="Select Clinic" list="clinicsList" id="clinics" data-list-filter="^" class="form-control">
+        <datalist id="clinicsList">
+          <select>
+            <option *ngFor="let clinic of clinicsList" value="sample"></option>
+          </select>
+        </datalist>
+      </div>
+      <div class="form-group">
+        <label for="username">Date</label>
+        <input class="form-control" id="date" type="date">
+      </div>
+    </section>
+    <section class="section-container">
+      <div class="add-new-prescription-wrapper">
+        <h3>Add new prescription</h3>
+        <button title="New Prescription" class="btn btn-default btn-icon" (click)="openAddPrescriptionModal()">
+          <i class="mdi mdi-plus"></i>
+        </button>
+      </div>
+      <div class="prescription-list-wrapper">
+        <ul class="list-view-wrapper">
+          <li class="list-view-item">
+            <div class="item-thumbnail">
+              <i class="mdi mdi-pill"></i>
+            </div>
+            <a class="item-name text-ellipsis">Sample Prescription 001</a>
+            <span class="item-desc text-ellipsis">Description....</span>
+          </li>
+          <li class="list-view-item">
+            <div class="item-thumbnail">
+              <i class="mdi mdi-pill"></i>
+            </div>
+            <a class="item-name text-ellipsis">Sample Prescription 001</a>
+            <span class="item-desc text-ellipsis">Description...</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="section-container ">
+
+      <div class="form-group">
+        <label for="username">Date</label>
+        <input class="form-control" id="date" type="date">
+      </div>
+      <div class="form-group">
+        <label>Remarks</label>
+        <textarea rows="20" cols="80" placeholder="Describe yourself here..." class="form-control-textarea" id="text" type="text"></textarea>
+      </div>
+      <button class="btn btn-primary btn-wide" type="submit">Add Prescription</button>
+
+    </section>
+  </form>
+</div>
+
+
+<ng-template class="customModal" let-context let-modal="modal" #addPrescriptionModal>
+  <div class="header">Add New Prescription Item</div>
+  <div class="content">
+    <form>
+      <div class="form-group">
+        <label>Select medicine from library</label>
+        <div class="form-select-wrapper">
+          <i class="mdi mdi-caret-down"></i>
+          <select name="type" class="form-control" autofocus>
+            <option value='' hidden>Select medicine</option>
+            <option>Medicine 001</option>
+            <option>Medicine 001</option>
+            <option>Medicine 001</option>
+            <option>Medicine 001</option>
+            <option>Medicine 001</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="address">Brand Name</label>
+        <input type="text" placeholder="Brand Name" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="address">Generic Name</label>
+        <input type="text" placeholder="Generic Name" class="form-control">
+      </div>
+      <div class="split-container">
+        <div class="form-group">
+          <label for="address">Dose</label>
+          <input type="text" placeholder="Dose" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Form</label>
+          <div class="form-select-wrapper">
+            <i class="mdi mdi-caret-down"></i>
+            <select name="type" class="form-control">
+              <option value='' hidden>Select medicine</option>
+              <option>Medicine 001</option>
+              <option>Medicine 001</option>
+              <option>Medicine 001</option>
+              <option>Medicine 001</option>
+              <option>Medicine 001</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="split-container">
+        <div class="form-group">
+          <label for="address">Quantity</label>
+          <input type="number" placeholder="0" class="form-control">
+        </div>
+      </div>
+      <br>
+      <hr>
+      <h3>Sig</h3>
+      <br>
+      <div class="form-group">
+        <label>Notes</label>
+        <textarea rows="5" cols="80" placeholder="Put your notes here..." class="form-control-textarea" type="text"></textarea>
+      </div>
+      <sui-accordion [closeOthers]="false">
+        <sui-accordion-panel [isOpen]="false">
+          <div title>
+            <i class="dropdown icon"></i>
+            Advance Sig
+          </div>
+          <div content>
+            <div class="split-container">
+              <div class="form-group">
+                <label>Frequency</label>
+                <div class="form-select-wrapper">
+                  <i class="mdi mdi-caret-down"></i>
+                  <select name="type" class="form-control">
+                    <option value='' hidden>Select frequency</option>
+                    <option>Frequency 001</option>
+                    <option>Frequency 001</option>
+                    <option>Frequency 001</option>
+                    <option>Frequency 001</option>
+                    <option>Frequency 001</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="split-container">
+              <div class="form-group">
+                <label for="username">Start Date</label>
+                <input class="form-control" id="date" type="date">
+              </div>
+              <div class="form-group">
+                <label for="username">End Date</label>
+                <input class="form-control" id="date" type="date">
+              </div>
+            </div>
+          </div>
+        </sui-accordion-panel>
+      </sui-accordion>
+    </form>
+  </div>
+  <div class="actions">
+    <button class="ui  button" (click)="modal.deny('denied')">Cancel</button>
+    <button class="ui green button" (click)="modal.approve('approved')" autofocus>Add New Schedule</button>
+  </div>
+</ng-template>

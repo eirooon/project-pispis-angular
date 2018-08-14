@@ -6,6 +6,7 @@ import { PatientDetailsComponent } from './patient-details/patient-details.compo
 import { PdConsultationSelectionComponent } from './patient-details/pd-consultation-selection/pd-consultation-selection.component';
 import { AuthGuard } from '../../shared/service/auth-guard.service';
 import { PdConsultationTextComponent } from './patient-details/pd-consultation-text/pd-consultation-text.component';
+import { PdConsultationPrescriptionComponent } from './patient-details/pd-consultation-prescription/pd-consultation-prescription.component';
 
 const routes: Routes = [
   { 
@@ -30,6 +31,11 @@ const routes: Routes = [
   { 
     path: 'consultation-text', 
     component: PdConsultationTextComponent,
+    canActivate:[AuthGuard]
+  },
+  { 
+    path: 'consultation-prescription', 
+    component: PdConsultationPrescriptionComponent,
     canActivate:[AuthGuard]
   }  
 ];
