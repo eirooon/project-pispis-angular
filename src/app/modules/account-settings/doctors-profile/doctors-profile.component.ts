@@ -8,6 +8,7 @@ import { Location } from '@angular/common';
 })
 export class DoctorsProfileComponent implements OnInit {
 
+  
   constructor(
     private location: Location
   ) { }

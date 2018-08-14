@@ -22,7 +22,7 @@ import { NgProgressModule } from 'ngx-progressbar';
 //Semantic UI
 import { SuiTabsModule, 
          SuiSelectModule,
-         SuiModalModule
+         SuiModalModule,
  } from 'ng2-semantic-ui';
 
 
