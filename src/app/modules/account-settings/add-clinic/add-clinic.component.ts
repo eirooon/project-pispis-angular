@@ -180,7 +180,7 @@ export class AddClinicComponent implements OnInit {
     this.modalService
         .open(config)
         .onApprove(result => { 
-          // this.addClinicSchedule();
+          this.addClinicSchedule();
         })
         .onDeny(result => { 
           console.log("Cancel");
