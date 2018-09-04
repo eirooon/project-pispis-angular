@@ -4,6 +4,7 @@ import { slideToRight, slideToLeft, fadeAnimation} from '../../../router.animati
 import { ConsultationService } from '../../../shared/service/consultation.service';
 import { AuthService } from '../../../shared/service/auth.service';
 import { PatientService } from '../../../shared/service/patient.service';
+import { ConsultationTextModel } from '../../../shared/models/consulationModel';
 
 @Component({
   selector: 'app-patient-details',
@@ -19,10 +20,11 @@ export class PatientDetailsComponent implements OnInit {
     private location: Location,
     private consultationService: ConsultationService,
     private authService: AuthService,
-    private patientService: PatientService 
+    private patientService: PatientService
   ) { }
 
   ngOnInit() {
+    
   }
 
 

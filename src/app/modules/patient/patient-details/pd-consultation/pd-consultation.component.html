@@ -5,27 +5,19 @@
   </button>
 </div>
 <div>
-  <div class="list-view-header">
-    <h5>January 20, 2018</h5>
-    <span>St. Anthony College Hospital</span>
-  </div>
   <ul class="list-view-wrapper">
-    <li class="list-view-item">
-      <div class="item-thumbnail">
-        <i class="mdi mdi-file"></i>
-      </div>
-      <a class="item-name text-ellipsis">Text RX</a>
-      <span class="item-desc text-ellipsis">Description....</span>
-    </li>
-    <li class="list-view-item">
-      <div class="item-thumbnail">
-        <i class="mdi mdi-file"></i>
-      </div>
-      <a class="item-name text-ellipsis">Laboratory Records</a>
-      <span class="item-desc text-ellipsis">Description...</span>
-    </li>
-  </ul>
-
+      <li *ngFor="let consultation of consultations" class="list-view-item">
+          <div class="item-thumbnail">
+              <i class="mdi mdi-file"></i>
+            </div>
+            
+            <div class="list-view-header">
+              <h5>{{consultation.date}}</h5>
+              <span>{{consultation.clinicname}}</span>
+            </div>
+            <a class="item-name text-ellipsis">{{consultation.text}} </a> 
+      </li>
+</ul>
   <div class="list-view-header">
     <h5>January 18, 2018</h5>
     <span>St. Anthony College Hospital</span>

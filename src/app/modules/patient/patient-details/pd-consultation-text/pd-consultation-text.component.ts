@@ -93,12 +93,13 @@ export class PdConsultationTextComponent implements OnInit {
   addConsultationText(){
     if(this.consultationForm.valid){
       console.log("addConsultationText" + this.clinicname);
-      //this.consultationText.idPatient =  this.patient.id;//this.authService.getUidOfCurrentDoctor(),
+      this.consultationText.idPatient =  this.patient.id;//this.authService.getUidOfCurrentDoctor(),
       this.consultationText.clinicname = this.consultationForm.value.clinicname,
       this.consultationText.date =  this.consultationForm.value.date;
       this.consultationText.text = this.consultationForm.value.text;
       this.consultationService.addConsultationText(this.consultationText);
-      this.router.navigateByUrl('/patient');
+      //this.router.navigateByUrl('/patient');
+      this.location.back();
       console.log('[Add Consultation]] Adding Successful');
     }else {
     console.log('[Add Consultation] Error: Form is invalid');
