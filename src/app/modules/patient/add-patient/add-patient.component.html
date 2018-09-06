@@ -84,15 +84,15 @@
                 </div>
                 <div class="form-group">
                     <label>Height (cm)</label>
-                    <input formControlName="height" name="height" class="form-control" type="number" placeholder="Enter height" [(ngModel)]="patient.height"/>
+                    <input formControlName="height" name="height" class="form-control" type="number" placeholder="Enter height" [(ngModel)]="patient.height" (keyup)="calculate($event)"/>
                 </div>
                 <div class="form-group">
                     <label>Weight (kg)</label>
-                    <input formControlName="weight" name="weight" class="form-control" type="number" placeholder="Enter weight" [(ngModel)]="patient.weight"/>
+                    <input formControlName="weight" name="weight" class="form-control" type="number" placeholder="Enter weight" [(ngModel)]="patient.weight" (keyup)="calculate($event)"/>
                 </div>
                 <div class="form-group">
                     <label>Body Mass Index (BMI)</label>
-                    <input formControlName="bmi" name="bmi" class="form-control" type="number" placeholder="Enter Body Mass Index (BMI)" [(ngModel)]="patient.bmi"/>
+                    <input formControlName="bmi" name="bmi" class="form-control" type="number" placeholder="Enter Body Mass Index (BMI)" [(ngModel)]="patient.bmi" disabled/>
                 </div>
             </div>
         </section>
