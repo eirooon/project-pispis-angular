@@ -29,7 +29,7 @@ export class PdPersonalProfileComponent implements OnInit {
   editPatientDetails(){
     this.patientService.updatePatient(this.patient);
     this.router.navigateByUrl('/patient');
-    console.log('[Add-Patient] Editing Successful');
+    console.log('[Personal-Profile][OK] Patient Profile Edited.');
   }
 
   goBack(){

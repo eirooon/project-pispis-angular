@@ -37,9 +37,9 @@ export class HomeComponent implements OnInit {
          window.scrollTo(0, 0)
       });
       this.ngProgress.start();
-      this.patientService.getRecentAddedPatients().subscribe(patients => { 
+      this.patientService.loadRecentAddedPatients().subscribe(patients => { 
         if(patients.length > 0){
-          console.log('[List-Patient] List retrieve successful');
+          console.log('[Home][OK] Patient list retrieved.');
           this.patients = patients;
         } else {
           //do nothing.
@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
         this.ngProgress.done();
       },
       err => {
-        console.error('[List-Patient] Error:', err.message);
+        console.error('[List-Patient][Error]', err.message);
       },
     );
   }
@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
   getDoctorsName(){
     this.doctorService.getDoctorsName().subscribe(doctors => { 
         if(doctors.length > 0){
-          console.log('[Doctor] List retrieve successful');
+          console.log('[Home][OK] Doctor name retrieved.');
           this.doctors = doctors;
         } else {
           //do nothing.

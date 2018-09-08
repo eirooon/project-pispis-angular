@@ -13,24 +13,33 @@ export class PatientService {
 
   	constructor(
 	  	public afs: AngularFirestore
-		) { 
-			//this.patients = this.afs.collection('patients').valueChanges();
-			
-			this.patientsCollection = this.afs.collection('patients', x => x.orderBy('firstname', 'asc'));
-			this.patients = this.patientsCollection.snapshotChanges().map(
-			changes => {
-				return changes.map(
-				a => {
+		) {
+			this.patientsCollection = this.afs.collection('patients', ref => ref.where('idDoc','==', localStorage.getItem("UID")));
+			this.patients = this.patientsCollection.snapshotChanges()
+			.map(changes => {
+				return changes.map(a => {
 					const data = a.payload.doc.data() as Patient;
 					data.id = a.payload.doc.id;
 					return data;
-				});
-
+				})
 			});
 	}
 
 	getPatients(){
 		this.patientsCollection = this.afs.collection('patients', ref => ref.where('idDoc','==', localStorage.getItem("UID")));
+			this.patients = this.patientsCollection.snapshotChanges()
+			.map(changes => {
+				return changes.map(a => {
+					const data = a.payload.doc.data() as Patient;
+					data.id = a.payload.doc.id;
+					return data;
+				})
+			});
+		return this.patients;
+	}
+
+	loadRecentAddedPatients(){
+		this.patientsCollection = this.afs.collection('patients', ref => ref.where('idDoc','==', localStorage.getItem("UID")).limit(4));
 		this.patients = this.patientsCollection.snapshotChanges()
 			.map(changes => {
 				return changes.map(a => {
@@ -42,9 +51,8 @@ export class PatientService {
 		return this.patients;
 	}
 
-	getRecentAddedPatients(){
-		//TimeStamp is still not available. We should add timestamp when adding.
-		this.patientsCollection = this.afs.collection('patients', ref => ref.where('idDoc','==', localStorage.getItem("UID")).limit(4).orderBy('dateAdded'));
+	loadSearchPatients(start, end){
+		this.patientsCollection = this.afs.collection('patients', ref => ref.limit(4).orderBy('firstname').startAt(start).endAt(end));
 		this.patients = this.patientsCollection.snapshotChanges()
 			.map(changes => {
 				return changes.map(a => {
@@ -85,9 +93,4 @@ export class PatientService {
 	getPatient(){
 		return this.patient;
 	}
-
-	getPatientId(){
-		return this.patient.id;
-	}
-
 }

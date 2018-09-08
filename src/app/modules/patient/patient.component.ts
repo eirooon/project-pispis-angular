@@ -18,20 +18,13 @@ import { Observable } from 'rxjs/Rx';
 export class PatientComponent implements OnInit {
   myTitle = "Patients"
   hasList: boolean = true;
-  state: string = '';
-  patients1: Patient[];
-  first: boolean = true;
-  firstLoad: boolean = true;
+  patients: Patient[];
 
-  searchterm: string;
 	startAt = new Subject();
 	endAt = new Subject();
   
 	startobs = this.startAt.asObservable();
 	endobs = this.endAt.asObservable();
-
-	patients;
-	allpatient;
 
   constructor(
       private router: Router,
@@ -42,28 +35,6 @@ export class PatientComponent implements OnInit {
     
   }
 
-  search($event) {
-    console.log('JOBERN' + $event);
-      let q = $event.target.value;
-      if (q != '') {
-        this.startAt.next(q);
-        this.endAt.next(q + "\uf8ff");
-      }
-      else {
-        this.getAllPatients().subscribe((patients) => {
-          this.patients = patients;
-        })
-      }
-	  }
-  
-	getAllPatients() {
-		return this.afs.collection('patients', ref => ref.orderBy('firstname')).valueChanges();
-	}
-
-	firequery(start, end) {
-		return this.afs.collection('patients', ref => ref.limit(4).orderBy('firstname').startAt(start).endAt(end)).valueChanges();
-	}
-
   ngOnInit() {
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
@@ -72,11 +43,12 @@ export class PatientComponent implements OnInit {
         window.scrollTo(0, 0)
       });
       this.ngProgress.start();
-      this.patientService.getPatients().subscribe(patients => { 
+      
+      this.patientService.getPatients().subscribe(patients => {
         if(patients.length > 0){
           console.log('[List-Patient] List retrieve successful');
           this.hasList = true;
-          this.patients1 = patients;
+          this.patients = patients;
         } else {
           this.hasList = false;
         }
@@ -90,32 +62,35 @@ export class PatientComponent implements OnInit {
 
     Observable.combineLatest(this.startobs, this.endobs).subscribe((value) => {
       this.firequery(value[0], value[1]).subscribe((patients) => {
-        this.patients = patients;
+             this.patients = patients;
       })
-    })
-
-    this.getAllPatients().subscribe((patients) => {
-      this.patients = patients;
     })
   }
 
-  getPatientDetails(event, patient){
+  search($event) {
+    let q = $event.target.value;
+    if (q != '') {
+      this.startAt.next(q);
+      this.endAt.next(q + "\uf8ff");
+    }
+    else {
+      this.patientService.getPatients().subscribe(patients => { 
+        this.patients = patients;
+      })
+    }
+  }
+
+  firequery(start, end) {
+    return this.patientService.loadSearchPatients(start, end);
+  }
+
+  setPatientDetails(event, patient){
     this.patientService.setPatient(patient);
   }
 
   deletePatient(event, patient){
     this.patientService.deletePatient(patient);
   }
-
-  // loadMorePatient(){
-  //   if(this.first){
-  //     this.max = this.max + 2;
-  //     this.first = false;
-  //   }
-  //   this.patientService.getPatients(this.max).subscribe(patients => { 
-  //       //console.log(patients);
-  //       this.patients = patients;
-  //   });
 
   @HostListener("window:scroll", [])
   scroll(): void {

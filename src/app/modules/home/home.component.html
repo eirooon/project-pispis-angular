@@ -5,6 +5,12 @@
 <app-header [setTitle]='myTitle'></app-header>
 <app-sidemenu></app-sidemenu>
 <div class="content-wrapper">
+    <section class="overview-profile">
+        <div class="overview-profile-wrapper" *ngFor="let doctor of doctors">
+            <p>Welcome</p>
+            <h1>Dr. {{doctor.name}}!</h1>
+        </div>
+    </section>
     <section class="overview-schedules">
         <h3>Appointment Schedules</h3>
         <div class="description">8 patients scheduled for appointment today.</div>
@@ -45,7 +51,7 @@
         <ul class="list-view-wrapper">
             <li  *ngFor="let patient of patients" class="list-view-item">
                 <div class="item-thumbnail"><i class="mdi mdi-account"></i></div>
-                <a class="item-name text-ellipsis">{{patient.firstname}} {{patient.middlename}} {{patient.lastname}}</a>
+                <a class="item-name text-ellipsis">{{patient.lastname}}, {{patient.firstname}} {{patient.middlename}}</a>
                 <span class="item-desc text-ellipsis">{{patient.type}}</span>
              </li>
         </ul>
@@ -93,61 +99,6 @@
                 <a class="item-name text-ellipsis">Sample Template Name</a>
                 <span class="item-desc text-ellipsis">File size: 1MB</span>
             </li>
-            <li class="list-view-item">
-                <div class="item-thumbnail">
-                    <i class="mdi mdi-file"></i>
-                </div>
-                <a class="item-name text-ellipsis">Sample Template Name</a>
-                <span class="item-desc text-ellipsis">File size: 1MB</span>
-            </li>
-            <li class="list-view-item">
-                <div class="item-thumbnail">
-                    <i class="mdi mdi-file"></i>
-                </div>
-                <a class="item-name text-ellipsis">Sample Template Name</a>
-                <span class="item-desc text-ellipsis">File size: 1MB</span>
-            </li>
-            <li class="list-view-item">
-                <div class="item-thumbnail">
-                    <i class="mdi mdi-file"></i>
-                </div>
-                <a class="item-name text-ellipsis">Sample Template Name</a>
-                <span class="item-desc text-ellipsis">File size: 1MB</span>
-            </li>
-            <li class="list-view-item">
-                <div class="item-thumbnail">
-                    <i class="mdi mdi-file"></i>
-                </div>
-                <a class="item-name text-ellipsis">Sample Template Name</a>
-                <span class="item-desc text-ellipsis">File size: 1MB</span>
-            </li>
-            <li class="list-view-item">
-                <div class="item-thumbnail">
-                    <i class="mdi mdi-file"></i>
-                </div>
-                <a class="item-name text-ellipsis">Sample Template Name</a>
-                <span class="item-desc text-ellipsis">File size: 1MB</span>
-            </li>
-            <li class="list-view-item">
-                <div class="item-thumbnail">
-                    <i class="mdi mdi-file"></i>
-                </div>
-                <a class="item-name text-ellipsis">Sample Template Name</a>
-                <span class="item-desc text-ellipsis">File size: 1MB</span>
-            </li>
-            <li class="list-view-item">
-                <div class="item-thumbnail">
-                    <i class="mdi mdi-file"></i>
-                </div>
-                <a class="item-name text-ellipsis">Sample Template Name</a>
-                <span class="item-desc text-ellipsis">File size: 1MB</span>
-            </li>
         </ul>
-    </section>    
-    <section class="overview-profile">
-        <div class="overview-profile-wrapper" *ngFor="let doctor of doctors">
-            <p>Welcome</p>
-            <h1>Dr. {{doctor.name}}!</h1>
-        </div>
     </section>
 </div>
