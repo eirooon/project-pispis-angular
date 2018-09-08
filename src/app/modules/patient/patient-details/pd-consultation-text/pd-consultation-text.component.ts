@@ -10,6 +10,7 @@ import { Clinic } from '../../../../shared/models/clinicModel';
 import { Patient } from '../../../../shared/models/patient';
 import { PatientService } from '../../../../shared/service/patient.service';
 
+
 @Component({
   selector: 'app-pd-consultation-text',
   templateUrl: './pd-consultation-text.component.html',
@@ -42,10 +43,7 @@ export class PdConsultationTextComponent implements OnInit {
   })
   
 
-  ngOnInit() {
-    
-    
-   
+  ngOnInit() {   
     this.initializeConsultation();
     this.clinicService.getClinics().subscribe(clinics => {
       if (clinics.length > 0) {
@@ -87,23 +85,30 @@ export class PdConsultationTextComponent implements OnInit {
       idPatient: '',
       clinicname: '',
       text:'',
-      date:''
+      date:'',
+      type:''
     }
   }
+
+  // Add consultation of type Text with specific Patient ID
   addConsultationText(){
-    if(this.consultationForm.valid){
-      console.log("addConsultationText" + this.clinicname);
-      //this.consultationText.idPatient =  this.patient.id;//this.authService.getUidOfCurrentDoctor(),
-      this.consultationText.clinicname = this.consultationForm.value.clinicname,
-      this.consultationText.date =  this.consultationForm.value.date;
-      this.consultationText.text = this.consultationForm.value.text;
-      this.consultationService.addConsultationText(this.consultationText);
-      this.router.navigateByUrl('/patient');
-      console.log('[Add Consultation]] Adding Successful');
-    }else {
-    console.log('[Add Consultation] Error: Form is invalid');
+      if(this.consultationForm.valid){
+        console.log("addConsultationText" + this.clinicname);
+        this.consultationText.type = "Text";
+        this.consultationText.idPatient =  this.patient.id;
+        this.consultationText.clinicname = this.consultationForm.value.clinicname,
+        this.consultationText.date =  this.consultationForm.value.date;
+        this.consultationText.text = this.consultationForm.value.text;
+        this.consultationService.addConsultationText(this.consultationText);
+        this.location.back();
+        console.log('[Add Consultation]] Adding Successful');
+      }else {
+      console.log('[Add Consultation] Error: Form is invalid');
+    }  
   }
-    
+
+  addConsultationPrescription(){
+    // add code here
   }
 
   

@@ -21,12 +21,17 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 import {SuiModule} from 'ng2-semantic-ui';
+import { HttpModule } from '@angular/http';
+import { ConsultationService } from './shared/service/consultation.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    HttpModule,
+    HttpClientModule,
     BrowserModule.withServerTransition({ appId: 'my-app' }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
@@ -42,8 +47,12 @@ import {SuiModule} from 'ng2-semantic-ui';
     SigninModule,
     TestBackendModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
-    SuiModule
+    SuiModule,
+   
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers:[
+    ConsultationService
+  ]
 })
 export class AppModule {}

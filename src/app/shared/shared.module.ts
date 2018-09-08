@@ -60,7 +60,7 @@ import { SuiTabsModule,
     AuthService,
     ConsultationService,
     DoctorService,
-    ClinicService
+    ClinicService,
   ]
 })
 export class SharedModule { 

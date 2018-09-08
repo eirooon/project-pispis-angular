@@ -107,19 +107,6 @@
         <form [formGroup]="clinicScheduleForm" id="clinicScheduleFormID" (ngSubmit)="addClinicSchedule()">
               <div class="form-group">
                 <label>Day</label>
-                <!--<input type="text" placeholder="Monday" list="clinicDayList" id="clinicDay" formControlName="clinicDay" data-list-filter="^" class="form-control">
-                <datalist id="clinicDayList">
-                  <select>
-                    <option value="Monday"></option>
-                    <option value="Tuesday"></option>
-                    <option value="Wednesday"></option>
-                    <option value="Thursday"></option>
-                    <option value="Friday"></option>
-                    <option value="Saturday"></option>
-                    <option value="Sunday"></option>
-                  </select>
-                </datalist>-->
-
                 <input type="text" placeholder="Choose Day" list="daysOfTheWeekList" id="clinicDay" formControlName="clinicDay" data-list-filter="^"
                     class="form-control" autofocus>
                 <datalist id="daysOfTheWeekList">

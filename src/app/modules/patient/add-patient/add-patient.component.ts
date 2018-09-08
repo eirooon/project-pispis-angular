@@ -16,8 +16,9 @@ import { FormsModule }   from '@angular/forms';
 })
 export class AddPatientComponent implements OnInit {
   ptnForm: any;
-
   patient: Patient;
+
+  bmi_val: number;
   
   ptnCollection: AngularFirestoreCollection<any> = this.afs.collection('patients');
   ptnObserver = this.ptnCollection.valueChanges();
@@ -75,7 +76,7 @@ export class AddPatientComponent implements OnInit {
       email:'',
       height:'',
       weight:'',
-      bmi:'',
+      bmi: '',
       type:'',
       emgy_firstname:'',
       emgy_middlename:'',
@@ -99,5 +100,11 @@ export class AddPatientComponent implements OnInit {
     } else {
       console.log('[Add-Patient] Error: Form is invalid'); 
     }
+  }
+
+  calculate(event: any){
+    this.bmi_val = +this.patient.weight / ( ( +this.patient.height / 3.28 ) * ( +this.patient.height / 3.28));
+    this.patient.bmi = ""+Math.round(this.bmi_val * 100) / 100;
+    console.log(this.bmi_val);
   }
 }

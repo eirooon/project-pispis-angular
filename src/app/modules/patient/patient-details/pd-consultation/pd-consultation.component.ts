@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ConsultationService } from '../../../../shared/service/consultation.service';
+import { ConsultationTextModel } from '../../../../shared/models/consulationModel';
+import { ClinicService } from '../../../../shared/service/clinic.service';
+import { PatientService } from '../../../../shared/service/patient.service';
+import { Patient } from '../../../../shared/models/patient';
 
 @Component({
   selector: 'pd-consultation',
@@ -7,9 +12,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PdConsultationComponent implements OnInit {
 
-  constructor() { }
+  hasList:Boolean;
+  consultations: ConsultationTextModel[];
+  patient: Patient;
+  constructor(private consultationService: ConsultationService, private patientService: PatientService) { 
+    this.patient = patientService.getPatient();
+  }
 
-  ngOnInit() {
+  ngOnInit( ) {
+    this.consultationService.getConsultationText(this.patient.id)
+    .subscribe(consultations => {
+      if (consultations.length > 0) {
+        console.log('[Clinic] List loaded successful');
+        this.hasList = true;
+        this.consultations = consultations;
+        console.log('[Clinic] Clinic data: ' + this.consultations);
+      } else {  
+        this.hasList = false;
+      }
+    },
+      err => {
+        console.error('[consultations] Error: ', err.message);
+        this.hasList = false;
+      },
+  );
   }
 
 }
