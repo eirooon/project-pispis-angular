@@ -103,7 +103,8 @@ export class AddPatientComponent implements OnInit {
   }
 
   calculate(event: any){
-    this.bmi_val = +this.patient.weight / ( ( +this.patient.height / 3.28 ) * ( +this.patient.height / 3.28));
+    // this.bmi_val = +this.patient.weight / ( ( +this.patient.height / 3.28 ) * ( +this.patient.height / 3.28));
+    this.bmi_val = +this.patient.weight / ( ( +this.patient.height / 100 ) * ( +this.patient.height / 100 ) );
     this.patient.bmi = ""+Math.round(this.bmi_val * 100) / 100;
     console.log(this.bmi_val);
   }
