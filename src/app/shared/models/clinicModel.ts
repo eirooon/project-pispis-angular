@@ -1,3 +1,5 @@
+import { ClinicScheduleModel } from "./clinicScheduleModel";
+
 export interface Clinic {
 	idDoc:string;
 	id?:string;

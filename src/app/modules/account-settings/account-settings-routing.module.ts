@@ -6,6 +6,7 @@ import { ClinicComponent } from '../account-settings/clinic/clinic.component';
 import { AddClinicComponent } from '../account-settings/add-clinic/add-clinic.component';
 import { AddClinicSchedulesComponent } from '../account-settings/add-clinic-schedules/add-clinic-schedules.component';
 import { DoctorsProfileComponent } from './doctors-profile/doctors-profile.component';
+import { ViewClinicSchedulesComponent } from './view-clinic-schedules/view-clinic-schedules.component';
 
 const routes: Routes = [
   { 
@@ -33,6 +34,11 @@ const routes: Routes = [
     component: DoctorsProfileComponent,
     canActivate:[AuthGuard]
   },
+  {
+    path: 'clinic/view-clinic-schedules',
+    component: ViewClinicSchedulesComponent,
+    canActivate:[AuthGuard]
+  }
 ];
 
 @NgModule({
