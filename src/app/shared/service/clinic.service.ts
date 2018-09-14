@@ -13,10 +13,12 @@ export class ClinicService{
 
     clinic: Observable<Clinic[]>;
     clinicSchedule: Observable<ClinicScheduleModel[]>;
+
     hasList: boolean = true;
     state: string = '';
+    
     clinics: Clinic[];
-
+    idClinic: string;
 
     constructor(
         private location: Location,
@@ -50,11 +52,13 @@ export class ClinicService{
       }
 
 
-      getClinicsSchedule(clinincIDparam:string) {
-        console.log("getClinics() from Service");
-        console.log("UID DOCTOR: [" + localStorage.getItem("UID") + "]");
-
-        this.clinicScheduleCollection = this.afs.collection('clinics').doc(clinincIDparam).collection('clinicSchedule');
+      getClinicsSchedule() {
+        console.log("getClinicsSchedule() from Service" , this.idClinic);
+        this.clinicsCollection = this.afs.collection('clinics', ref => ref.where('idDoc', '==', localStorage.getItem("UID")));
+        console.log(this.clinicsCollection);
+        //this.clinicScheduleCollection = this.afs.collection('clinics').doc(this.idClinic).collection('clinicSchedule');
+        this.clinicScheduleCollection =  this.clinicsCollection.doc(this.idClinic).collection('clinicSchedule');
+        console.log("getClinicsSchedule() from Service", this.clinicScheduleCollection);
         this.clinicSchedule = this.clinicScheduleCollection.snapshotChanges()
           .map(changes => {
             return changes.map(a => {
@@ -66,6 +70,16 @@ export class ClinicService{
           });
         console.log(this.clinic);
         return this.clinic;
+      }
+
+      setClinicID(id: string){
+        console.log("[ClinicService]",  id);
+        this.idClinic =id;
+      }
+
+      getClinicID(){
+        console.log("[getClinicID]", this.idClinic);
+        return this.idClinic;
       }
 
 

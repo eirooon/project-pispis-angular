@@ -48,4 +48,9 @@ export class ClinicComponent implements OnInit {
   goBack() {
     this.location.back();
   }
+
+  setSelectedClinic(idClinic: Clinic){
+    console.log("[ClinicComponent]" ,  idClinic);
+    this.clinicService.setClinicID(idClinic.id);
+  }
 }

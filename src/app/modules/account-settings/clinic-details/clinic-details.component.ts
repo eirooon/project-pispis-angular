@@ -1,23 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ClinicService } from '../../../shared/service/clinic.service';
-import { ClinicScheduleModel } from '../../../shared/models/clinicScheduleModel';
 import { AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { ClinicScheduleModel } from '../../../shared/models/clinicScheduleModel';
 import { Observable } from '@firebase/util';
+import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-view-clinic-schedules',
-  templateUrl: './view-clinic-schedules.component.html',
-  styleUrls: ['./view-clinic-schedules.component.css']
+  selector: 'app-clinic-details',
+  templateUrl: './clinic-details.component.html',
+  styleUrls: ['./clinic-details.component.css']
 })
-export class ViewClinicSchedulesComponent implements OnInit {
+export class ClinicDetailsComponent implements OnInit {
 
-
+ 
   clinicsScheduleCollection: AngularFirestoreCollection<ClinicScheduleModel>;
   clinicSchedule: Observable<ClinicScheduleModel[]>;
   clinicsScheduleDoc: AngularFirestoreDocument<ClinicScheduleModel>;
   hasList: boolean = true;
   state: string = '';
-  clinicsSchedule: ClinicScheduleModel[];
+  clinicsSchedules: ClinicScheduleModel[];
 
   constructor(
     private location: Location,
@@ -25,19 +26,20 @@ export class ViewClinicSchedulesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.clinicService.getClinicsSchedule("")
+    console.log('[ClinicDetailsComponent] this.ngOnInit');
+    this.clinicService.getClinicsSchedule()
     .subscribe(clinics => {
       if (clinics.length > 0) {
-        console.log('[ClinicSchedule] List loaded successful');
+        console.log('[ClinicDetailsComponent] List loaded successful');
         this.hasList = true;
-        this.clinicsSchedule = clinics;
-        console.log('[ClinicSchedule] Clinic data: ' + this.clinicsSchedule);
+        this.clinicsSchedules = clinics;
+        console.log('[ClinicDetailsComponent] Clinic schedule data: ' + this.clinicsSchedules);
       } else {
         this.hasList = false;
       }
     },
       err => {
-        console.error('[ClinicSchedule] Error: ', err.message);
+        console.error('[ClinicDetailsComponent] Error: ', err.message);
         this.hasList = false;
       },
   );

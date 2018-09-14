@@ -1,0 +1,16 @@
+<p>
+  clinic-details works!</p>
+  <ul class="list-view-wrapper">
+    <li *ngFor="let clinicsSchedule of clinicsSchedules" class="list-view-item">
+        <div class="item-thumbnail">
+            <i class="mdi mdi-file"></i>
+          </div>
+          
+          <div class="list-view-header">
+            <h5>{{clinicsSchedule.clinicDay}}</h5>
+            <span>{{clinicsSchedule.startTime}}</span>
+          </div>
+          <a class="item-name text-ellipsis">{{clinicsSchedule.endTime}} </a> 
+    </li>
+</ul>
+
