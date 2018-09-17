@@ -12,3 +12,55 @@
 h3{
     align-self: center;
 }
+
+
+/*--- LIST-VIEW ---*/
+.consultation-list-view-item{
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    border-bottom: 2px solid #FAFBFC;
+    padding: 15px;
+    outline: none;
+    font-size: 12pt;
+    font-weight: 200;
+    background-color: #fff;
+    
+}
+.consulation-list-view-item:active{
+    background-color:#FAFBFC;
+}
+.consulation-list-view-item:hover{
+    background-color:#FAFBFC;
+    cursor: pointer;
+}
+.item-details{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    vertical-align: middle;
+    height: 40px;
+}
+.item-date{
+    font-size: 10px;
+}
+
+@media only screen and (max-width:480px){
+    .item-thumbnail{
+        grid-row: 1/3;
+    }
+    .item-name{
+        align-self:end;
+    }
+    .item-desc{
+        padding-top:5px;
+        align-self: start;
+        /* grid-column: 2/3;
+        grid-row: 2/3; */
+    }
+
+    .item-details{
+        grid-template-columns: 1fr;
+        height: inherit;
+    }
+
+    
+}

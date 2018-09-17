@@ -6,21 +6,23 @@
 </div>
 <div>
   <div class="consultation-wrapper">
-    <div class="list-view-header">
+    <!-- <div class="list-view-header">
       <h5>January 20, 2018</h5>
       <span>St. Anthony College Hospital</span>
-    </div>
+    </div> -->
     <ul class="list-view-wrapper">
-      <li *ngFor="let consultation of consultations" class="list-view-item">
+      <li *ngFor="let consultation of consultations" class="consultation-list-view-item">
         <div class="item-thumbnail">
           <i class="mdi mdi-file"></i>
         </div>
-        <h5>{{consultation.date}}</h5>
-        <a class="item-name text-ellipsis">{{consultation.type}}</a>
-        <span class="item-desc text-ellipsis">{{consultation.text}}</span>
+        <div class="item-details">
+            <a class="item-name text-ellipsis">{{consultation.type}}</a>
+            <div class="item-desc text-ellipsis">{{consultation.text}}</div>
+            <div class="item-desc text-ellipsis">{{consultation.date}}</div>
+        </div>
       </li>
     </ul>
-    <div class="list-view-header">
+    <!-- <div class="list-view-header">
       <h5>January 18, 2018</h5>
       <span>St. Anthony College Hospital</span>
     </div>
@@ -39,5 +41,5 @@
         <a class="item-name text-ellipsis">Laboratory Records</a>
         <span class="item-desc text-ellipsis">Description...</span>
       </li>
-    </ul>
+    </ul> -->
   </div>
