@@ -30,6 +30,12 @@ export class DoctorService {
 		return this.doctors;
 	}
 
+	getDoctor(){
+		this.doctors = this.afs.collection('doctors', ref => ref.where('uid','==', localStorage.getItem("UID"))).valueChanges();
+		// this.doctor = this.doctors[0];
+		return this.doctors;
+	}
+
 	addDoctor(doctor: Doctor){
 		console.log(doctor);
 		// this.doctorsCollection.add(doctor);
