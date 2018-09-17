@@ -12,30 +12,37 @@ import { Patient } from '../../../../shared/models/patient';
 })
 export class PdConsultationComponent implements OnInit {
 
-  hasList:Boolean;
+  hasList: Boolean;
   consultations: ConsultationTextModel[];
   patient: Patient;
-  constructor(private consultationService: ConsultationService, private patientService: PatientService) { 
+
+  constructor(private consultationService: ConsultationService, private patientService: PatientService) {
     this.patient = patientService.getPatient();
   }
 
-  ngOnInit( ) {
+  ngOnInit() {
     this.consultationService.getConsultationText(this.patient.id)
-    .subscribe(consultations => {
-      if (consultations.length > 0) {
-        console.log('[Clinic] List loaded successful');
-        this.hasList = true;
-        this.consultations = consultations;
-        console.log('[Clinic] Clinic data: ' + this.consultations);
-      } else {  
-        this.hasList = false;
-      }
-    },
-      err => {
-        console.error('[consultations] Error: ', err.message);
-        this.hasList = false;
+      .subscribe(consultations => {
+        if (consultations.length > 0) {
+          console.log('[Clinic] List loaded successful');
+          this.hasList = true;
+          this.consultations = consultations;
+          console.log('[Clinic] Clinic data: ' + this.consultations);
+        } else {
+          this.hasList = false;
+        }
       },
-  );
+        err => {
+          console.error('[consultations] Error: ', err.message);
+          this.hasList = false;
+        },
+      );
+
+    // for (var x = 0; x < this.consultations.length; x++) {
+    //   var secondIndex = x + 1;
+    //   if (secondIndex < this.consultations.length && this.consultations[x].date == this.consultations[secondIndex].date)
+    //     this.consultations[secondIndex].date = "";
+    // }
   }
 
 }

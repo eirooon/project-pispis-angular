@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClinicService } from '../../../shared/service/clinic.service';
 import { AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestore } from 'angularfire2/firestore';
 import { ClinicScheduleModel } from '../../../shared/models/clinicScheduleModel';
-import { Observable } from '@firebase/util';
+import { Observable, forEach } from '@firebase/util';
 import { Location } from '@angular/common';
 
 @Component({

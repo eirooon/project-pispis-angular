@@ -1,0 +1,61 @@
+<header class="header-secondary">
+  <div class="header-wrapper">
+      <div class="menu-left" (click)="goBack()">
+          <i class="mdi mdi-arrow-left"></i>
+      </div>
+      <div class="menu-title">Allergy</div>
+  </div>
+</header>
+<div class="content-wrapper">
+  
+    <form [formGroup]="ptnForm" (ngSubmit)="addPatient()">
+        <section>
+            <div class="form-inputs">
+                <div class="form-group">
+                    <label>Allergy Type*</label>
+                    <div class="form-select-wrapper">
+                        <i class="mdi mdi-caret-down"></i>
+                        <select name="type" class="form-control" required>
+                            <option value='' hidden>Select Allergy Type</option>
+                            <option>Food</option>
+                            <option>Drug</option>
+                            <option>Environmental</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Allergy*</label>
+                    <div class="form-select-wrapper">
+                        <i class="mdi mdi-caret-down"></i>
+                        <select name="type" class="form-control" required>
+                            <option value='' hidden>Select Allergy</option>
+                            <option>Allergy 1</option>
+                            <option>Allergy 2</option>
+                            <option>Allergy 3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Severity</label>
+                    <div class="form-select-wrapper">
+                        <i class="mdi mdi-caret-down"></i>
+                        <select name="type" class="form-control" required>
+                            <option value='' hidden>Select Severity</option>
+                            <option>Mild</option>
+                            <option>Moderate</option>
+                            <option>Severe</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Reaction</label>
+                    <input formControlName="address" name="address" class="form-control" type="text" placeholder="Enter address" [(ngModel)]="patient.address"/>
+                    <control-messages [control]="ptnForm.controls.address"></control-messages>
+                </div>
+              </div>
+            </section>
+            <section>
+                <button class="btn btn-primary btn-wide" type="submit" >Add Allergy</button>     
+            </section>
+    </form>
+</div>

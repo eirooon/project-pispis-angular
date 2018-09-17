@@ -13,7 +13,9 @@ label{
 
 /*--- MISC ---*/
 *{
-    box-sizing: border-box;}
+    box-sizing: border-box;
+    /* font-family: -apple-system, BlinkMacSystemFont, sans-serif !important; */
+}
 .text-ellipsis{
     text-overflow: ellipsis;
     white-space: nowrap;
