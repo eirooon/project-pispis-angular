@@ -58,7 +58,6 @@ export class ClinicService{
         console.log(this.clinicsCollection);
         //this.clinicScheduleCollection = this.afs.collection('clinics').doc(this.idClinic).collection('clinicSchedule');
         this.clinicScheduleCollection =  this.clinicsCollection.doc(this.idClinic).collection('clinicSchedule');
-        console.log("getClinicsSchedule() from Service", this.clinicScheduleCollection);
         this.clinicSchedule = this.clinicScheduleCollection.snapshotChanges()
           .map(changes => {
             return changes.map(a => {
@@ -68,8 +67,8 @@ export class ClinicService{
               return data;
             })
           });
-        console.log(this.clinic);
-        return this.clinic;
+        console.log(this.clinicSchedule);
+        return this.clinicSchedule;
       }
 
       setClinicID(id: string){
