@@ -12,15 +12,25 @@
 <div class="content-wrapper">
     <form [formGroup]="consultationForm" (ngSubmit)="addConsultationText()">
     <section class="panel-container">
+        <div class="form-group">
+            <label>Patient Type*</label>
+            <div class="form-select-wrapper">
+                <i class="mdi mdi-caret-down"></i>
+                <select name="type" class="form-control" required>
+                    <option value='' hidden>Select Patient Type</option>
+                    <option>Admitted</option>
+                    <option>In-Patient</option>
+                </select>
+            </div>
+        </div>
         <div class="form-group" form>
             <label>Select Clinic</label>
-            <input type="text" placeholder="Select Clinic" list="clinicsList" id="clinics" formControlName="clinicname" data-list-filter="^"
-                    class="form-control">
-                <datalist id="clinicsList">
-                    <select>
-                        <option *ngFor="let clinic of clinicsList" value="{{clinic.clinicname}}"></option>
-                    </select>
-                </datalist>  
+            <input type="text" placeholder="Select Clinic" list="clinicsList" id="clinics" formControlName="clinicname" data-list-filter="^" class="form-control">
+            <datalist id="clinicsList">
+                <select>
+                    <option *ngFor="let clinic of clinicsList" value="{{clinic.clinicname}}"></option>
+                </select>
+            </datalist>  
         </div>
         <div class="form-group">
             <label for="username">Date</label>

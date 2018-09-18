@@ -15,6 +15,7 @@ import { PdConsultationPrescriptionComponent } from './patient-details/pd-consul
 import { PdHealthProfileComponent } from './patient-details/pd-health-profile/pd-health-profile.component';
 import { PdHealthProfileSelectionComponent } from './patient-details/pd-health-profile-selection/pd-health-profile-selection.component';
 import { PdHealthProfileAllergyComponent } from './patient-details/pd-health-profile-allergy/pd-health-profile-allergy.component';
+import { PdConsultationVitalsComponent } from './patient-details/pd-consultation-vitals/pd-consultation-vitals.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import { PdHealthProfileAllergyComponent } from './patient-details/pd-health-pro
         PdConsultationPrescriptionComponent,
         PdHealthProfileComponent,
         PdHealthProfileSelectionComponent,
-        PdHealthProfileAllergyComponent
+        PdHealthProfileAllergyComponent,
+        PdConsultationVitalsComponent
     ],
     imports: [
         PatientRoutingModule,
