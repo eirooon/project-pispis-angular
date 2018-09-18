@@ -30,10 +30,10 @@ export class ClinicComponent implements OnInit {
     this.clinicService.getClinics()
       .subscribe(clinics => {
         if (clinics.length > 0) {
-          console.log('[Clinic] List loaded successful');
+          console.log('[Clinic-View] List loaded successful');
           this.hasList = true;
           this.clinics = clinics;
-          console.log('[Clinic] Clinic data: ' , this.clinics);
+          console.log('[Clinic-View] Clinic data: ' , this.clinics);
         } else {
           this.hasList = false;
         }
@@ -50,7 +50,7 @@ export class ClinicComponent implements OnInit {
   }
 
   setSelectedClinic(idClinic: Clinic){
-    console.log("[ClinicComponent]" ,  idClinic);
+    console.log("[Clinic]" ,  idClinic);
     this.clinicService.setClinicID(idClinic.id);
   }
 }

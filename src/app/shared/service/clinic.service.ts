@@ -33,10 +33,11 @@ export class ClinicService{
         
     }
 
-
+    /**
+     * This method will get a list of clinics based on a specific doctor ID.
+     */
     getClinics() {
-        console.log("getClinics() from Service");
-        console.log("UID DOCTOR: [" + localStorage.getItem("UID") + "]");
+        console.log("[Clinic-Get] UID DOCTOR: [" + localStorage.getItem("UID") + "]");
         this.clinicsCollection = this.afs.collection('clinics', ref => ref.where('idDoc', '==', localStorage.getItem("UID")));
         this.clinic = this.clinicsCollection.snapshotChanges()
           .map(changes => {
@@ -52,41 +53,32 @@ export class ClinicService{
       }
 
 
+      /**
+       * This method will get a list of clinic schedules based on a specific clinic ID.
+       */
       getClinicsSchedule() {
-        console.log("getClinicsSchedule() from Service" , this.idClinic);
+        console.log("[ClinicSchedule-Get]" , this.idClinic);
         this.clinicScheduleCollection = this.afs.collection('clinics', ref => ref.where('idDoc', '==', localStorage.getItem("UID"))).doc(this.idClinic).collection('clinicSchedule');
-        //this.clinicScheduleCollection =  this.clinicsCollection.doc(this.idClinic).collection('clinicSchedule');
-        //this.clinicScheduleCollection = this.afs.collection('clinics').doc(this.idClinic).collection('clinicSchedule');
-        //this.clinicsCollection = this.afs.collection('clinics', ref => ref.where('idDoc', '==', localStorage.getItem("UID")));
-        /*return this.clinicSchedule = this.clinicScheduleCollection.snapshotChanges()
+          this.clinicSchedule = this.clinicScheduleCollection.snapshotChanges()
           .map(changes => {
             return changes.map(a => {
               const data = a.payload.doc.data() as ClinicScheduleModel;
               data.id = a.payload.doc.id;
-              console.log(data);
-              return data;
-            })
-          });*/
-          return this.clinicScheduleCollection.snapshotChanges()
-          .map(changes => {
-            return changes.map(a => {
-              const data = a.payload.doc.data() as ClinicScheduleModel;
-              data.id = a.payload.doc.id;
-              console.log(data);
+              console.log("[ClinicSchedule-Get]", data);
               return data;
             })
           });
-        //console.log(this.clinicSchedule);
-        //return this.clinicSchedule;
+        console.log("[ClinicSchedule-Get]", this.clinicSchedule);
+        return this.clinicSchedule;
       }
 
       setClinicID(id: string){
-        console.log("[ClinicService]",  id);
+        console.log("[ClinicID-Set]",  id);
         this.idClinic =id;
       }
 
       getClinicID(){
-        console.log("[getClinicID]", this.idClinic);
+        console.log("[ClinicID-Get]", this.idClinic);
         return this.idClinic;
       }
 

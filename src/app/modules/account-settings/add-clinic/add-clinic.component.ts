@@ -139,7 +139,7 @@ export class AddClinicComponent implements OnInit {
 
 
   addClinic(){
-    console.log('addClinic()');
+    console.log('[Clinic-Add]');
     if(this.clinicForm.valid){
       this.clinicCollection.add({
         idDoc: this.authService.getUidOfCurrentDoctor(),
@@ -154,20 +154,17 @@ export class AddClinicComponent implements OnInit {
           prodid: docRef.id
         })
         if(this.clinicSchedulesList){
-        this.clinicSchedulesList.forEach(element => {
-          console.log('Add Clinic Schedule element:' + element);
           this.afs.collection('clinics').doc(docRef.id).collection('clinicSchedule').add({
-            clinicSchedule:  element
+            clinicSchedule:  this.clinicSchedulesList
           })
-        });
       }
       
-        console.log('Clinic schedule list:' + this.clinicSchedulesList);
+        console.log('[Clinic-Add] Clinic schedule list:' , this.clinicSchedulesList);
         console.log('[Clinic-Add] Doc Ref: ' + docRef.id);
         this.goBack();
       })
       .catch(function(error) {
-          console.error("Error adding document: ", error);
+          console.error("[Clinic-Add]Error adding document: ", error);
       });
     }else {
     console.log('[Clinic-Add] Form is invalid');
@@ -176,6 +173,7 @@ export class AddClinicComponent implements OnInit {
 
  
   public openClinicSchedule() {
+    console.log("[ClinicSchedule-Open]");
     const config = new TemplateModalConfig<IContext, string, string>(this.modalTemplate);
     this.modalService
         .open(config)
@@ -188,11 +186,9 @@ export class AddClinicComponent implements OnInit {
   }
 
   addClinicSchedule(){
-    console.log("addClinicSchedule");
+    console.log("[ClinicSchedule-Add]");
     if(this.clinicScheduleForm.valid){
       //check if object is in storage
-      var stored = [];
-      console.log("addClinicSchedule");
       this.clinicScheduleModel = {
         clinicDay:'',
         clinicType:'',
