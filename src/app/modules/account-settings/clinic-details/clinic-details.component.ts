@@ -1,24 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { ClinicService } from '../../../shared/service/clinic.service';
-import { AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestore } from 'angularfire2/firestore';
-import { ClinicScheduleModel } from '../../../shared/models/clinicScheduleModel';
-import { Observable, forEach } from '@firebase/util';
+import { Component, OnInit, Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { Location } from '@angular/common';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { ClinicService } from '../../../shared/service/clinic.service';
+import { ClinicScheduleModel } from '../../../shared/models/clinicScheduleModel';
 
 @Component({
   selector: 'app-clinic-details',
   templateUrl: './clinic-details.component.html',
   styleUrls: ['./clinic-details.component.css']
 })
+
 export class ClinicDetailsComponent implements OnInit {
 
  
   clinicScheduleCollection: AngularFirestoreCollection<ClinicScheduleModel>;
   clinicSchedule: Observable<ClinicScheduleModel[]>;
   clinicScheduleDoc: AngularFirestoreDocument<ClinicScheduleModel>;
-  hasList: boolean = true;
+  hasList: boolean = false;
   state: string = '';
-  clinicSchedules: ClinicScheduleModel[];
+  clinicScheduleList: ClinicScheduleModel[];
+  clinicScheduleItem : ClinicScheduleModel;
 
   myTitle = "Clinic"
   constructor(
@@ -28,24 +30,24 @@ export class ClinicDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('[ClinicDetailsComponent] this.ngOnInit');
     this.clinicService.getClinicsSchedule()
-      .subscribe(clinicSchedules => {
-        if (clinicSchedules.length > 0) {
-          console.log('[ClinicDetailsComponent] List loaded successful');
+      .subscribe(item => {
+        if (item.length > 0) {
+          console.log('[ClinicSchedule] List loaded successful');
           this.hasList = true;
-          this.clinicSchedules = clinicSchedules;
-          console.log('[ClinicDetailsComponent] Clinic data: ',  this.clinicSchedules);
+          this.clinicScheduleList = item;
+          console.log('[ClinicSchedule] ClinicSchedule data: ', this.clinicScheduleList);
         } else {
           this.hasList = false;
         }
       },
         err => {
-          console.error('[ClinicDetailsComponent] Error: ', err.message);
+          console.error('[ClinicSchedule] Error: ', err.message);
           this.hasList = false;
         },
     );
   }
+
 
   goBack() {
     this.location.back();

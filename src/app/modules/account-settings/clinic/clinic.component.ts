@@ -33,7 +33,7 @@ export class ClinicComponent implements OnInit {
           console.log('[Clinic] List loaded successful');
           this.hasList = true;
           this.clinics = clinics;
-          console.log('[Clinic] Clinic data: ' + this.clinics);
+          console.log('[Clinic] Clinic data: ' , this.clinics);
         } else {
           this.hasList = false;
         }

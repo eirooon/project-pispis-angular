@@ -54,11 +54,20 @@ export class ClinicService{
 
       getClinicsSchedule() {
         console.log("getClinicsSchedule() from Service" , this.idClinic);
-        this.clinicsCollection = this.afs.collection('clinics', ref => ref.where('idDoc', '==', localStorage.getItem("UID")));
-        console.log(this.clinicsCollection);
+        this.clinicScheduleCollection = this.afs.collection('clinics', ref => ref.where('idDoc', '==', localStorage.getItem("UID"))).doc(this.idClinic).collection('clinicSchedule');
+        //this.clinicScheduleCollection =  this.clinicsCollection.doc(this.idClinic).collection('clinicSchedule');
         //this.clinicScheduleCollection = this.afs.collection('clinics').doc(this.idClinic).collection('clinicSchedule');
-        this.clinicScheduleCollection =  this.clinicsCollection.doc(this.idClinic).collection('clinicSchedule');
-        this.clinicSchedule = this.clinicScheduleCollection.snapshotChanges()
+        //this.clinicsCollection = this.afs.collection('clinics', ref => ref.where('idDoc', '==', localStorage.getItem("UID")));
+        /*return this.clinicSchedule = this.clinicScheduleCollection.snapshotChanges()
+          .map(changes => {
+            return changes.map(a => {
+              const data = a.payload.doc.data() as ClinicScheduleModel;
+              data.id = a.payload.doc.id;
+              console.log(data);
+              return data;
+            })
+          });*/
+          return this.clinicScheduleCollection.snapshotChanges()
           .map(changes => {
             return changes.map(a => {
               const data = a.payload.doc.data() as ClinicScheduleModel;
@@ -67,8 +76,8 @@ export class ClinicService{
               return data;
             })
           });
-        console.log(this.clinicSchedule);
-        return this.clinicSchedule;
+        //console.log(this.clinicSchedule);
+        //return this.clinicSchedule;
       }
 
       setClinicID(id: string){

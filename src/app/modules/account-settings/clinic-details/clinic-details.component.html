@@ -9,20 +9,19 @@
         </div>
 </header>
 <app-sidemenu></app-sidemenu>
+
 <div class="content-wrapper">
         <section>
-                <ul class="list-view-wrapper">
-                        <li class="list-view-item" *ngFor="let clinicSchedule of clinicSchedules">
-                                <div class="item-thumbnail">
-                                        <i class="mdi mdi-file"></i>
-                                </div>
-
-                                <h5>SAMPLE{{clinicSchedule.clinicType}}</h5>
-                                <!-- <span>{{clinicSchedule.startTime}}</span>
-                                <a class="item-name text-ellipsis">{{clinicSchedule.endTime}} </a> -->
-                        </li>
+                <ul *ngIf="clinicScheduleList" class="list-view-wrapper">
+                        <li *ngFor="let clinicScheduleItem of clinicScheduleList " class="list-view-item" >
+                            <div class="item-thumbnail">
+                               <i class="mdi mdi-hospital-building"></i>
+                            </div>
+                            <a class="item-name text-ellipsis" >{{clinicScheduleItem.clinicSchedule.clinicDay}} </a> 
+                            <a class="item-name text-ellipsis" >{{clinicScheduleItem.clinicSchedule.clinicType}} </a> 
+                            <br>
+                            <span class="item-desc text-ellipsis" >{{clinicScheduleItem.clinicSchedule.startTime}} - {{clinicScheduleItem.clinicSchedule.endTime}} </span> 
+                        </li>   
                 </ul>
-                <!-- <ngx-spinner loadingText="Please wait" type="ball-pulse"></ngx-spinner> -->
-                <!-- <button class="btn btn-primary btn-wide" (click)="loadMorePatient()" >Load more...</button> -->
         </section>
 </div>
