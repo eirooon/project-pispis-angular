@@ -13,7 +13,9 @@ label{
 
 /*--- MISC ---*/
 *{
-    box-sizing: border-box;}
+    box-sizing: border-box;
+    /* font-family: -apple-system, BlinkMacSystemFont, sans-serif !important; */
+}
 .text-ellipsis{
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -294,14 +296,14 @@ header {
     background-color: #EBF3FE;
     border-radius: 50%;
     position: relative;
-    align-self: center;
+    align-self: flex-start;
+
 }
 .item-thumbnail i{
     margin: 10px;
     font-size: 20px;
     position: absolute;
     color: #0052CC;
-
 }
 .item-name{
     align-self: center;

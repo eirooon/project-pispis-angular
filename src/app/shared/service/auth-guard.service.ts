@@ -22,9 +22,11 @@ export class AuthGuard implements CanActivate{
                 return true;
             }
             else{
-                console.log("Auth guard FALSE");
+                console.log("Auth guard FALSE! Need to sign in again.");
                 this.router.navigate(['/signin']);
                 return false;
             }
+
+            
     }
 }

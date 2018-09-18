@@ -31,7 +31,7 @@ export class ConsultationService{
 	getConsultationText(idPatient:String){
 		console.log("getConsultationText() from Service");
 		if(idPatient!=null){
-			this.consultationTextCollection = this.afs.collection('consultation', ref => ref.where('idPatient', '==', idPatient));
+			this.consultationTextCollection = this.afs.collection('consultation', ref => ref.where('idPatient', '==', idPatient).orderBy('date','desc'));
 			this.consultationTexts = this.consultationTextCollection.snapshotChanges()
 				.map(changes => {
 					return  changes.map(a => {

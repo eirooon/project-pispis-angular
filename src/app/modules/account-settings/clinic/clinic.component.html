@@ -27,7 +27,7 @@
 <div class="content-wrapper">
         <section>
                 <ul class="list-view-wrapper">
-                        <li *ngFor="let clinic of clinics" class="list-view-item">
+                        <li *ngFor="let clinic of clinics" class="list-view-item" (click)="setSelectedClinic(clinic)" routerLink="clinic-details">
                                 <div class="item-thumbnail">
                                         <i class="mdi mdi-hospital-building"></i>
                                 </div>

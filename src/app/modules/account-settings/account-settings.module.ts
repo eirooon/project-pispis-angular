@@ -10,6 +10,7 @@ import { ClinicComponent } from '../account-settings/clinic/clinic.component';
 import { AddClinicComponent } from '../account-settings/add-clinic/add-clinic.component';
 import { AddClinicSchedulesComponent } from '../account-settings/add-clinic-schedules/add-clinic-schedules.component';
 import { DoctorsProfileComponent } from './doctors-profile/doctors-profile.component';
+import { ClinicDetailsComponent } from './clinic-details/clinic-details.component';
 
 @NgModule({
 
@@ -18,7 +19,8 @@ import { DoctorsProfileComponent } from './doctors-profile/doctors-profile.compo
     ClinicComponent,
     AddClinicComponent,
     AddClinicSchedulesComponent,
-    DoctorsProfileComponent
+    DoctorsProfileComponent,
+    ClinicDetailsComponent,
   ],
   imports: [
     AccountSettingsRoutingModule,

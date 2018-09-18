@@ -1,42 +1,45 @@
 <div class="tab-subheader">
-  <h3>Consultation Activity</h3>
+  <h3>Add new consultation</h3>
   <button title="New Consultation" class="btn btn-default btn-icon" routerLink="../consultation-selection">
     <i class="mdi mdi-plus"></i>
   </button>
 </div>
 <div>
-  <ul class="list-view-wrapper">
-      <li *ngFor="let consultation of consultations" class="list-view-item">
-          <div class="item-thumbnail">
-              <i class="mdi mdi-file"></i>
-            </div>
-            
-            <div class="list-view-header">
-              <h5>{{consultation.date}}</h5>
-              <span>{{consultation.clinicname}}</span>
-            </div>
-            <a class="item-name text-ellipsis">{{consultation.type}} </a> 
+  <div class="consultation-wrapper">
+    <!-- <div class="list-view-header">
+      <h5>January 20, 2018</h5>
+      <span>St. Anthony College Hospital</span>
+    </div> -->
+    <ul class="list-view-wrapper">
+      <li *ngFor="let consultation of consultations" class="consultation-list-view-item">
+        <div class="item-thumbnail">
+          <i class="mdi mdi-file"></i>
+        </div>
+        <div class="item-details">
+            <a class="item-name text-ellipsis">{{consultation.type}}</a>
+            <div class="item-desc text-ellipsis">{{consultation.text}}</div>
+            <div class="item-desc text-ellipsis">{{consultation.date}}</div>
+        </div>
       </li>
-</ul>
-  <div class="list-view-header">
-    <h5>January 18, 2018</h5>
-    <span>St. Anthony College Hospital</span>
+    </ul>
+    <!-- <div class="list-view-header">
+      <h5>January 18, 2018</h5>
+      <span>St. Anthony College Hospital</span>
+    </div>
+    <ul class="list-view-wrapper">
+      <li class="list-view-item">
+        <div class="item-thumbnail">
+          <i class="mdi mdi-file"></i>
+        </div>
+        <a class="item-name text-ellipsis">Text RX</a>
+        <span class="item-desc text-ellipsis">Description....</span>
+      </li>
+      <li class="list-view-item">
+        <div class="item-thumbnail">
+          <i class="mdi mdi-file"></i>
+        </div>
+        <a class="item-name text-ellipsis">Laboratory Records</a>
+        <span class="item-desc text-ellipsis">Description...</span>
+      </li>
+    </ul> -->
   </div>
-  <ul class="list-view-wrapper">
-    <li class="list-view-item">
-      <div class="item-thumbnail">
-        <i class="mdi mdi-file"></i>
-      </div>
-      <a class="item-name text-ellipsis">Text RX</a>
-      <span class="item-desc text-ellipsis">Description....</span>
-    </li>
-    <li class="list-view-item">
-      <div class="item-thumbnail">
-        <i class="mdi mdi-file"></i>
-      </div>
-      <a class="item-name text-ellipsis">Laboratory Records</a>
-      <span class="item-desc text-ellipsis">Description...</span>
-    </li>
-  </ul>
-
-</div>

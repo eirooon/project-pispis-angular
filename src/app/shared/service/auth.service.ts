@@ -26,6 +26,8 @@ export class AuthService {
     }
 
     signinUser(email: string, password: string) {
+        console.log("signinUser()");
+        this.afAuth.auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
         return this.afAuth.auth.signInWithEmailAndPassword(email, password)
             .then(
                 response => {
@@ -33,6 +35,7 @@ export class AuthService {
                         .then(
                             (token: string) => this.token = token
                         )
+                        console.log("token: " + this.token);
                 }
             )
             .catch(error => {
@@ -41,33 +44,51 @@ export class AuthService {
             });
     }
 
+
     getToken() {
+        console.log("getToken()");
         this.afAuth.auth.currentUser.getIdToken()
             .then(
                 (token: string) => this.token = token
             )
+        console.log("token: " + this.token);
         return this.token;
     }
 
     isAuthenticated() {
-        console.log("Token from firebase: " + this.token);
-        const userKey = Object.keys(window.localStorage)
-            .filter(it => it.startsWith('firebase:authUser'))[0];
-        const user = userKey ? JSON.parse(localStorage.getItem(userKey)) : undefined;
-        console.log("Token from storage: " + user);
-        if (user != undefined)
-            return true;
-        else
-            return false;
+        console.log("isAuthenticated()");
+        // const userKey = Object.keys(window.localStorage)
+        //     .filter(it => it.startsWith('firebase:authUser'))[0];
+        // const user = userKey ? JSON.parse(localStorage.getItem(userKey)) : undefined;
+        // console.log("Token from storage: " + user);
+        // if (user != undefined)
+        //     return true;
+        // else
+        //     return false;
+    
+        //check if user is already logged in
+        return this.afAuth.authState
+            .take(1)
+            .map(user => !!user)
+            .do(loggedIn => {
+              if (!loggedIn) {
+               return false;
+              }
+              else{
+                  return true;
+              }
+        })
     }
 
     logout() {
+        console.log("logout()");
         localStorage.removeItem('firebase:authUser');
         this.afAuth.auth.signOut();
         this.token = null;
     }
 
     getUidOfCurrentDoctor() {
+        console.log("getUidOfCurrentDoctor()");
         if (this.afAuth.auth.currentUser != null) {
             console.log(this.afAuth.auth.currentUser.uid);
             return this.afAuth.auth.currentUser.uid;

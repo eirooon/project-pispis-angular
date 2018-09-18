@@ -1,0 +1,28 @@
+<ng-progress [positionUsing]="'marginLeft'" [minimum]="0.15" [maximum]="1" [speed]="200" [showSpinner]="false"
+        [direction]="'leftToRightIncreased'" [color]="'#DE350B'" [trickleSpeed]="200" [thick]="true" [ease]="'linear'"></ng-progress>
+<header class="header-primary">
+        <div class="header-wrapper">
+                <div class="menu-left" (click)="goBack()">
+                        <i class="mdi mdi-arrow-left"></i>
+                </div>
+                <div class="menu-title">Clinic Details</div>
+        </div>
+</header>
+<app-sidemenu></app-sidemenu>
+<div class="content-wrapper">
+        <section>
+                <ul class="list-view-wrapper">
+                        <li class="list-view-item" *ngFor="let clinicSchedule of clinicSchedules">
+                                <div class="item-thumbnail">
+                                        <i class="mdi mdi-file"></i>
+                                </div>
+
+                                <h5>SAMPLE{{clinicSchedule.clinicType}}</h5>
+                                <!-- <span>{{clinicSchedule.startTime}}</span>
+                                <a class="item-name text-ellipsis">{{clinicSchedule.endTime}} </a> -->
+                        </li>
+                </ul>
+                <!-- <ngx-spinner loadingText="Please wait" type="ball-pulse"></ngx-spinner> -->
+                <!-- <button class="btn btn-primary btn-wide" (click)="loadMorePatient()" >Load more...</button> -->
+        </section>
+</div>
