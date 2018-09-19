@@ -11,6 +11,7 @@ import { ClinicScheduleModel} from '../../../shared/models/clinicScheduleModel';
 import {Clinic} from '../../../shared/models/clinicModel';
 import {SuiModalService, TemplateModalConfig, ModalTemplate} from 'ng2-semantic-ui';
 import { AllDaysOfTheWeek } from '../../../shared/constantValues/daysOfTheWeekConstants';
+
 export interface IContext { 
   data:string;
 }
@@ -20,6 +21,7 @@ export interface IContext {
   templateUrl: './add-clinic.component.html',
   styleUrls: ['./add-clinic.component.css'],
 })
+
 
 export class AddClinicComponent implements OnInit {
   @ViewChild('addClinicScheduleModal')

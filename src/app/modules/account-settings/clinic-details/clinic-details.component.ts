@@ -1,9 +1,14 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Location } from '@angular/common';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { ClinicService } from '../../../shared/service/clinic.service';
 import { ClinicScheduleModel } from '../../../shared/models/clinicScheduleModel';
+import { SuiModalService, TemplateModalConfig, ModalTemplate } from 'ng2-semantic-ui';
+
+export interface IContext { 
+  data:string;
+}
 
 @Component({
   selector: 'app-clinic-details',
@@ -12,7 +17,8 @@ import { ClinicScheduleModel } from '../../../shared/models/clinicScheduleModel'
 })
 
 export class ClinicDetailsComponent implements OnInit {
-
+  @ViewChild('addClinicScheduleModalFromDetails')
+  public modalTemplate:ModalTemplate<IContext, string, string>
  
   clinicScheduleCollection: AngularFirestoreCollection<ClinicScheduleModel>;
   clinicSchedule: Observable<ClinicScheduleModel[]>;
@@ -27,6 +33,7 @@ export class ClinicDetailsComponent implements OnInit {
     private location: Location,
     public afs: AngularFirestore,
     private clinicService: ClinicService,
+    public modalService:SuiModalService
   ) { }
 
   ngOnInit() {
@@ -53,4 +60,21 @@ export class ClinicDetailsComponent implements OnInit {
     this.location.back();
   }
 
+  public openClinicScheduleFromDetails() {
+    console.log("OPEN CLINIC FROM DETAILS");
+    const config = new TemplateModalConfig<IContext, string, string>(this.modalTemplate);
+    config.closeResult = "closed!";
+    this.modalService
+        .open(config)
+        .onApprove(result => { 
+          this.addClinicSchedule();
+        })
+        .onDeny(result => { 
+          console.log("Cancel");
+        });
+  }
+
+  addClinicSchedule(){
+    console.log("Approve");  
+  }
 }

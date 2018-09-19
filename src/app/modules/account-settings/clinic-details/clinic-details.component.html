@@ -8,20 +8,153 @@
                 <div class="menu-title">Clinic Details</div>
         </div>
 </header>
-<app-sidemenu></app-sidemenu>
-
 <div class="content-wrapper">
-        <section>
-                <ul *ngIf="clinicScheduleList" class="list-view-wrapper">
-                        <li *ngFor="let clinicScheduleItem of clinicScheduleList " class="list-view-item" >
-                            <div class="item-thumbnail">
-                               <i class="mdi mdi-hospital-building"></i>
-                            </div>
-                            <a class="item-name text-ellipsis" >{{clinicScheduleItem.clinicSchedule.clinicDay}} </a> 
-                            <a class="item-name text-ellipsis" >{{clinicScheduleItem.clinicSchedule.clinicType}} </a> 
-                            <br>
-                            <span class="item-desc text-ellipsis" >{{clinicScheduleItem.clinicSchedule.startTime}} - {{clinicScheduleItem.clinicSchedule.endTime}} </span> 
-                        </li>   
-                </ul>
-        </section>
+        
+    <form>
+                <div class="form-subheader">Basic Information</div>
+                <section>
+                    <div class="form-group">
+                        <label >Clinic Name</label>
+                        <input id="clinicname" type="text" class="form-control">
+                        <!-- <div *ngIf="clinicname.touched && clinicname.invalid" class="alert alert-danger hasError-text">
+                            <div *ngIf="clinicname.errors.required">Clinic name is required</div>
+                            <div *ngIf="clinicname.errors.minlength">Clinic should be minimum {{clinicname.errors.minlength.requiredLength}} </div>
+                        </div> -->
+        
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Phone</label>
+                        <input  id="phone" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Mobile</label>
+                        <input id="mobile" type="text" class="form-control">
+                    </div>
+                </section>
+                <div class="form-subheader">Address</div>
+                <section>
+                    <div class="form-group">
+                        <label>Province</label>
+                        <input type="text" placeholder="Find province" list="provinceList" id="province" data-list-filter="^" class="form-control">
+                        <datalist id="provinceList">
+                            <select>
+                                <option value="sample"></option>
+                                <option value="sample"></option>
+                            </select>
+                        </datalist>
+                        <!-- <div *ngIf="province.touched && province.invalid" class="alert alert-danger hasError-text">
+                            <div *ngIf="province.errors.required">Province is required</div>
+                        </div> -->
+                    </div>
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" placeholder="Find city" list="cityList" id="city" data-list-filter="^" class="form-control">
+                        <datalist id="cityList">
+                            <select>
+                                <option value="sample"></option>
+                                <option value="sample"></option>
+                            </select>
+                        </datalist>
+                        <!-- <div *ngIf="city.touched && city.invalid" class="alert alert-danger hasError-text">
+                            <div *ngIf="city.errors.required">City is required</div>
+                        </div> -->
+                    </div>
+                    <div class="form-group">
+                        <label>Hospital</label>
+                        <input type="text" placeholder="Find hospital" list="hospitalList" id="hospital" data-list-filter="^" class="form-control">
+                        <datalist id="hospitalList">
+                                <select>
+                                        <option value="sample"></option>
+                                        <option value="sample"></option>
+                                </select>
+        
+                        </datalist>
+                        <!-- <div *ngIf="hospital.touched && hospital.invalid" class="alert alert-danger hasError-text">
+                            <div *ngIf="hospital.errors.required">Hospital is required</div>
+                        </div> -->
+                    </div>
+                    <div class="form-group">
+                        <label for="roomnumber">Room number</label>
+                        <input id="roomnumber" type="text" class="form-control">
+                        <!-- <div *ngIf="roomnumber.touched && roomnumber.invalid" class="alert alert-danger hasError-text">
+                            <div *ngIf="roomnumber.errors.required">Room number is required</div>
+                        </div> -->
+                    </div>
+        
+                </section>
+        
+                <div class="form-subheader form-subheader-action">
+                    <div class="form-subheader-title">Clinic Schedule</div>
+                    <button title="Add Clinic Schedule" class="btn btn-default btn-icon" (click)="openClinicScheduleFromDetails()">
+                        <i class="mdi mdi-plus"></i>
+                    </button>
+                </div>
+                <div>
+                        <ul *ngIf="clinicScheduleList" class="list-view-wrapper">
+                                <li *ngFor="let clinicScheduleItem of clinicScheduleList " class="clinic-details-list-view-item" >
+                                    <div class="item-thumbnail">
+                                       <i class="mdi mdi-hospital-building"></i>
+                                    </div>
+                                    <div class="list-details">
+                                        <a class="item-name text-ellipsis" >{{clinicScheduleItem.clinicSchedule.clinicDay}} </a> 
+                                        <a class="item-desc text-ellipsis" >{{clinicScheduleItem.clinicSchedule.clinicType}} </a> 
+                                        <div class="item-desc text-ellipsis" >{{clinicScheduleItem.clinicSchedule.startTime}} - {{clinicScheduleItem.clinicSchedule.endTime}} </div> 
+                                    </div>
+                                   
+                                </li>   
+                        </ul>
+                </div>
+                <section>
+                    <button class="btn btn-primary btn-wide" (click)="updateClinic()" >Update Clinic</button>
+                </section>
+        </form>
 </div>
+
+
+<ng-template class="customModal" let-context let-modal="modal" #addClinicScheduleModalFromDetails>
+    <div class="header">Add Schedule</div>
+    <div class="content">
+        <form  id="clinicScheduleFormID">
+                <div class="form-group">
+                <label>Day</label>
+                <input type="text" placeholder="Choose Day" list="daysOfTheWeekList" id="clinicDay" data-list-filter="^"
+                    class="form-control" autofocus>
+                <datalist id="daysOfTheWeekList">
+                    <select>
+                            <option>Sample</option>
+                            <option>Sample</option>
+                            <option>Sample</option>
+                        <!-- <option *ngFor="let clinicDay of daysOfTheWeekList" value="{{clinicDay.day}}"></option> -->
+                    </select>
+
+                </datalist>
+                </div>
+                <div class="form-group">
+                <label>Clinic Type</label>
+                <input type="text" placeholder="No Clinic" 
+                list="clinicTypeList" 
+                id="clinicType" 
+                    data-list-filter="^" class="form-control">
+                <datalist id="clinicTypeList">
+                    <select>
+                    <option value="No Clinic"></option>
+                    <option value="Appointment"></option>
+                    <option value="Walk-in"></option>
+                    </select>
+                </datalist>
+                </div>
+                <div class="form-group">
+                <label for="address">From</label>
+                <input type="time" placeholder="00:00" id="startTime"  class="form-control">
+                </div>
+                <div class="form-group">
+                <label for="address">To</label>
+                <input type="time" placeholder="00:00" id="endTime"   class="form-control">
+                </div>
+            </form>
+    </div>
+    <div class="actions">
+        <button class="ui  button">Cancel</button>
+        <button class="ui green button"  autofocus>Add New Schedule</button>
+    </div>
+</ng-template>
