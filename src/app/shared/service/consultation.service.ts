@@ -20,8 +20,7 @@ export class ConsultationService{
 		}
 
     addConsultationText(consultation: ConsultationTextModel){
-		console.log(consultation);
-		console.log("addConsultationText() from Service");
+		console.log("[Consultation-Add]", consultation);
 		this.consultationTextCollection.add(consultation);
 		
 		//this.consultationTextCollection = this.afs.collection('clinics', ref => ref.where('idDoc', '==', localStorage.getItem("UID")));
@@ -29,7 +28,7 @@ export class ConsultationService{
 	}
 	  
 	getConsultationText(idPatient:String){
-		console.log("getConsultationText() from Service");
+		console.log("[Consultation-View] from Service");
 		if(idPatient!=null){
 			this.consultationTextCollection = this.afs.collection('consultation', ref => ref.where('idPatient', '==', idPatient).orderBy('date','desc'));
 			this.consultationTexts = this.consultationTextCollection.snapshotChanges()

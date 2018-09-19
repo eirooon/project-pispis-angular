@@ -40,6 +40,7 @@ export class PdConsultationTextComponent implements OnInit {
     clinicname: new FormControl("", Validators.required),
     date: new FormControl("", Validators.required),
     text: new FormControl("", Validators.required),
+    patientType: new FormControl("", Validators.required)
   })
   
 
@@ -79,6 +80,10 @@ export class PdConsultationTextComponent implements OnInit {
     return this.consultationForm.get("text");
   }
 
+  get patientType(){
+    return this.consultationForm.get("patientType")
+  }
+
   initializeConsultation(){
     this.consultationText = {
       id:'',
@@ -86,7 +91,8 @@ export class PdConsultationTextComponent implements OnInit {
       clinicname: '',
       text:'',
       date:'',
-      type:''
+      type:'',
+      patientType:''
     }
   }
 
@@ -99,6 +105,7 @@ export class PdConsultationTextComponent implements OnInit {
         this.consultationText.clinicname = this.consultationForm.value.clinicname,
         this.consultationText.date =  this.consultationForm.value.date;
         this.consultationText.text = this.consultationForm.value.text;
+        this.consultationText.patientType = this.consultationForm.value.patientType;
         this.consultationService.addConsultationText(this.consultationText);
         this.location.back();
         console.log('[Add Consultation]] Adding Successful');
