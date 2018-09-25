@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Doctor } from '../../../shared/models/doctor';
 import { DoctorService } from '../../../shared/service/doctor.service';
+import { Logger } from '../../../shared/service/logger.service';
 
 @Component({
   selector: 'app-doctors-profile',
@@ -9,34 +10,50 @@ import { DoctorService } from '../../../shared/service/doctor.service';
   styleUrls: ['./doctors-profile.component.css']
 })
 export class DoctorsProfileComponent implements OnInit {
+
+  CLASSNAME: string = this.constructor.name;
   doctors: Doctor[];
   doctor: Doctor;
+
   constructor(
     private location: Location,
     private docService: DoctorService,
+    private logger: Logger
   ) { }
 
+  /**
+   * Method: ngOnInit
+   * Description: Load upon initialization
+   * @return void
+   */
   ngOnInit() {
     this.loadDoctor();
   }
 
-  loadDoctor(){
-    console.log(this.docService.getDoctor()); 
+  /**
+   * Method: loadDoctor
+   * Description: Load doctor
+   * @return void
+   */
+  loadDoctor() {
+    this.logger.info(this.CLASSNAME, "ngOnInit", "Doctor: " + this.docService.getDoctor());
     this.docService.getDoctor().subscribe(ret => {
       setTimeout(() => {
-        // returren(ret);
-        console.log('display');
         this.setDoctor(ret[0]);
       }, 500);
-      console.log(ret);
+      this.logger.info(this.CLASSNAME, "ngOnInit", "Ret: " + ret);
       this.doctors = ret;
-      // this.doctor = ret;
     });
-    
+
   }
 
-  setDoctor(_doc: Doctor){
-
+  /**
+   * Method: setDoctor
+   * Description: Set doctor
+   * @param _doc 
+   * @return void
+   */
+  setDoctor(_doc: Doctor) {
     this.doctor = {
       name: _doc.name,
       email: _doc.email,
@@ -45,9 +62,12 @@ export class DoctorsProfileComponent implements OnInit {
 
   }
 
-
-  goBack(){
-    console.log(this.doctor);
+  /**
+   * Method: goBack
+   * Description: Go back to previous page
+   * @return void
+   */
+  goBack() {
     // this.location.back();
   }
 }

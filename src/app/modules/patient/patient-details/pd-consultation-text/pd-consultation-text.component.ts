@@ -9,6 +9,7 @@ import { ClinicService } from '../../../../shared/service/clinic.service';
 import { Clinic } from '../../../../shared/models/clinicModel';
 import { Patient } from '../../../../shared/models/patient';
 import { PatientService } from '../../../../shared/service/patient.service';
+import { Logger } from '../../../../shared/service/logger.service';
 
 
 @Component({
@@ -18,6 +19,7 @@ import { PatientService } from '../../../../shared/service/patient.service';
 })
 export class PdConsultationTextComponent implements OnInit {
 
+  CLASSNAME: string = this.constructor.name;
   consultationText: ConsultationTextModel;
   clinicsList: Clinic[];
   patient: Patient;
@@ -29,12 +31,11 @@ export class PdConsultationTextComponent implements OnInit {
     private authService: AuthService,
     private clinicService: ClinicService,
     private patientService: PatientService,
+    private logger: Logger
   ) {
-    console.log("PdConsultationTextComponent");
+    this.logger.info(this.CLASSNAME, "ngOnInit", "Initial Load");
     this.patient = this.patientService.getPatient();
-    console.log(this.patient);
-   }
-
+  }
 
   consultationForm = new FormGroup({
     clinicname: new FormControl("", Validators.required),
@@ -42,81 +43,135 @@ export class PdConsultationTextComponent implements OnInit {
     text: new FormControl("", Validators.required),
     patientType: new FormControl("", Validators.required)
   })
-  
 
-  ngOnInit() {   
+  /**
+   * Method: ngOnInit
+   * Description: Load upon initialization
+   * @return void
+   */
+  ngOnInit() {
     this.initializeConsultation();
     this.clinicService.getClinics().subscribe(clinics => {
       if (clinics.length > 0) {
-        console.log('[Clinic] List loaded successful');
         this.clinicsList = clinics;
-        console.log('[Clinic] Clinic data: ' + this.clinicsList);
+        this.logger.info(this.CLASSNAME, "ngOnInit", "Clinic data: " + this.clinicsList);
       }
     },
       err => {
-        console.error('[Clinic] Error: ', err.message);
+        this.logger.error(this.CLASSNAME, "ngOnInit", "Error: " + err.message);
       },
-  );
+    );
   }
-  cancel(){
-    this.router.navigateByUrl('/patient/patient-details');
-  }
-  goBack(){
-    this.location.back();
-  }
-  addText(){
+
+  /**
+   * Method: cancel
+   * Description: Execute Cancel
+   * @return void
+   */
+  cancel() {
     this.router.navigateByUrl('/patient/patient-details');
   }
 
-  get clinicname(){
+  /**
+   * Method: goBack
+   * Description: Go back to previous page
+   * @return void
+   */
+  goBack() {
+    this.location.back();
+  }
+
+  /**
+   * Method: addText
+   * Description: Navigate to patient details
+   * @return void
+   */
+  addText() {
+    this.router.navigateByUrl('/patient/patient-details');
+  }
+
+  /**
+   * Method: clinicname
+   * Description: Get clinic name
+   * @return clinicname
+   */
+  get clinicname() {
     return this.consultationForm.get("clinicname");
   }
 
-  get date(){
+  /**
+   * Method: date
+   * Description: Get date
+   * @return date
+   */
+  get date() {
     return this.consultationForm.get("date");
   }
 
-  get text(){
+  /**
+   * Method: text
+   * Description: Get text
+   * @return text
+   */
+  get text() {
     return this.consultationForm.get("text");
   }
 
-  get patientType(){
+  /**
+   * Method: patientType
+   * Description: Get patient type
+   * @return patientType
+   */
+  get patientType() {
     return this.consultationForm.get("patientType")
   }
 
-  initializeConsultation(){
+  /**
+   * Method: initializeConsultation
+   * Description: Initialize Consulation
+   * @return void
+   */
+  initializeConsultation() {
     this.consultationText = {
-      id:'',
+      id: '',
       idPatient: '',
       clinicname: '',
-      text:'',
-      date:'',
-      type:'',
-      patientType:''
+      text: '',
+      date: '',
+      type: '',
+      patientType: ''
     }
   }
 
-  // Add consultation of type Text with specific Patient ID
-  addConsultationText(){
-      if(this.consultationForm.valid){
-        console.log("addConsultationText" + this.clinicname);
-        this.consultationText.type = "Text";
-        this.consultationText.idPatient =  this.patient.id;
-        this.consultationText.clinicname = this.consultationForm.value.clinicname,
-        this.consultationText.date =  this.consultationForm.value.date;
-        this.consultationText.text = this.consultationForm.value.text;
-        this.consultationText.patientType = this.consultationForm.value.patientType;
-        this.consultationService.addConsultationText(this.consultationText);
-        this.location.back();
-        console.log('[Add Consultation]] Adding Successful');
-      }else {
-      console.log('[Add Consultation] Error: Form is invalid');
-    }  
+  /**
+   * Method: addConsultationText
+   * Description: Add consultation of type Text with specific Patient ID
+   * @return void
+   */
+  addConsultationText() {
+    if (this.consultationForm.valid) {
+      this.consultationText.type = "Text";
+      this.consultationText.idPatient = this.patient.id;
+      this.consultationText.clinicname = this.consultationForm.value.clinicname,
+        this.consultationText.date = this.consultationForm.value.date;
+      this.consultationText.text = this.consultationForm.value.text;
+      this.consultationText.patientType = this.consultationForm.value.patientType;
+      this.consultationService.addConsultationText(this.consultationText);
+      this.location.back();
+      this.logger.info(this.CLASSNAME, "addConsultationText", "Clinic name: [" + this.clinicname + "] Adding Consulation done.");
+    } else {
+      this.logger.error(this.CLASSNAME, "addConsultationText", "Error: Form is invalid");
+    }
   }
 
-  addConsultationPrescription(){
+  /**
+   * Method: addConsultationPrescription
+   * Description: Add consultation Prescription
+   * @return void
+   */
+  addConsultationPrescription() {
     // add code here
   }
 
-  
+
 }

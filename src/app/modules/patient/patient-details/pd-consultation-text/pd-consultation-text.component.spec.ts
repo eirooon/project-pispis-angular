@@ -8,9 +8,9 @@ describe('PdConsultationTextComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PdConsultationTextComponent ]
+      declarations: [PdConsultationTextComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

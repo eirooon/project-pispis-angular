@@ -7,7 +7,8 @@ import { AuthService } from '../../../shared/service/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidationService } from '../../../shared/service/validation.service';
 import { PatientService } from '../../../shared/service/patient.service';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { Logger } from '../../../shared/service/logger.service';
 
 @Component({
   selector: 'app-add-patient',
@@ -15,11 +16,12 @@ import { FormsModule }   from '@angular/forms';
   styleUrls: ['./add-patient.component.css']
 })
 export class AddPatientComponent implements OnInit {
+
+  CLASSNAME: string = this.constructor.name;
   ptnForm: any;
   patient: Patient;
-
   bmi_val: number;
-  
+
   ptnCollection: AngularFirestoreCollection<any> = this.afs.collection('patients');
   ptnObserver = this.ptnCollection.valueChanges();
 
@@ -29,28 +31,34 @@ export class AddPatientComponent implements OnInit {
     private afs: AngularFirestore,
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private patientService: PatientService
+    private patientService: PatientService,
+    private logger: Logger
   ) {
     this.ngOnInit();
     this.initializePatient();
   }
 
+  /**
+   * Method: ngOnInit
+   * Description: Load upon initialization
+   * @return void
+   */
   ngOnInit() {
     this.ptnForm = this.formBuilder.group({
-      type:['', Validators.required],
-      firstname:['', Validators.required],
-      middlename:['', Validators.required],
-      lastname:['', Validators.required],
-      gender:['', Validators.required],
-      birthdate:['', Validators.required],
-      address:['', Validators.required],
-      occupation:[''],
-      landline:[''],
-      mobile:['', [Validators.required, Validators.minLength(11)]],
-      email:[''],
-      height:[''],
-      weight:[''],
-      bmi:[''],
+      type: ['', Validators.required],
+      firstname: ['', Validators.required],
+      middlename: ['', Validators.required],
+      lastname: ['', Validators.required],
+      gender: ['', Validators.required],
+      birthdate: ['', Validators.required],
+      address: ['', Validators.required],
+      occupation: [''],
+      landline: [''],
+      mobile: ['', [Validators.required, Validators.minLength(11)]],
+      email: [''],
+      height: [''],
+      weight: [''],
+      bmi: [''],
       emgy_firstname: ['', Validators.required],
       emgy_lastname: ['', Validators.required],
       emgy_middlename: ['', Validators.required],
@@ -60,52 +68,73 @@ export class AddPatientComponent implements OnInit {
     });
   }
 
-  initializePatient(){
+  /**
+   * Method: initializePatient
+   * Description: Initialize patient model
+   * @return void
+   */
+  initializePatient() {
     this.patient = {
-      id:'',
+      id: '',
       idDoc: this.authService.getUidOfCurrentDoctor(),
-      firstname:'',
-      middlename:'',
-      lastname:'',
-      gender:'',
-      birthdate:'',
-      address:'',
-      occupation:'',
-      landline:0,
-      mobile:0,
-      email:'',
-      height:'',
-      weight:'',
+      firstname: '',
+      middlename: '',
+      lastname: '',
+      gender: '',
+      birthdate: '',
+      address: '',
+      occupation: '',
+      landline: 0,
+      mobile: 0,
+      email: '',
+      height: '',
+      weight: '',
       bmi: '',
-      type:'',
-      emgy_firstname:'',
-      emgy_middlename:'',
-      emgy_lastname:'',
-      emgy_contact:0,
-      emgy_email:'',
+      type: '',
+      emgy_firstname: '',
+      emgy_middlename: '',
+      emgy_lastname: '',
+      emgy_contact: 0,
+      emgy_email: '',
       dateAdded: new Date()
     }
   }
 
-  goBack(){
+  /**
+   * Method: goBack
+   * Description: Go back to previous page
+   * @return void
+   */
+  goBack() {
     this.location.back();
   }
 
-  addPatient(){
+  /**
+   * Method: addPatient
+   * Description: Add new patient
+   * @return void
+   */
+  addPatient() {
     //Check for valid inputs
-    if(this.ptnForm.valid){
+    if (this.ptnForm.valid) {
       this.patientService.addPatient(this.patient);
       this.router.navigateByUrl('/patient');
-      console.log('[Add-Patient] Adding Successful');
+      this.logger.info(this.CLASSNAME, "ngOnInit", "Patient ID: [" + this.patient.id + "] Adding done");
     } else {
-      console.log('[Add-Patient] Error: Form is invalid'); 
+      this.logger.error(this.CLASSNAME, "ngOnInit", "Error: Form is invalid");
     }
   }
 
-  calculate(event: any){
+  /**
+   * Method: calculate
+   * Description: Calculate BMI
+   * @param event 
+   * @return void
+   */
+  calculate(event: any) {
     // this.bmi_val = +this.patient.weight / ( ( +this.patient.height / 3.28 ) * ( +this.patient.height / 3.28));
-    this.bmi_val = +this.patient.weight / ( ( +this.patient.height / 100 ) * ( +this.patient.height / 100 ) );
-    this.patient.bmi = ""+Math.round(this.bmi_val * 100) / 100;
-    console.log(this.bmi_val);
+    this.bmi_val = +this.patient.weight / ((+this.patient.height / 100) * (+this.patient.height / 100));
+    this.patient.bmi = "" + Math.round(this.bmi_val * 100) / 100;
+    this.logger.info(this.CLASSNAME, "ngOnInit", "Patient ID: [" + this.patient.id + "] BMI: [" + this.bmi_val + "]");
   }
 }

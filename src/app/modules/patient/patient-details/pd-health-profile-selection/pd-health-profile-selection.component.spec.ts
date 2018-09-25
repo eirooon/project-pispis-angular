@@ -8,9 +8,9 @@ describe('PdHealthProfileSelectionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PdHealthProfileSelectionComponent ]
+      declarations: [PdHealthProfileSelectionComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

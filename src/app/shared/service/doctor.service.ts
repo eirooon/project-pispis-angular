@@ -2,23 +2,33 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Doctor } from '../models/doctor';
+import { Logger } from './logger.service';
 
 @Injectable()
 export class DoctorService {
 
-  doctorsCollection: AngularFirestoreCollection<Doctor>;
-  doctorsDocument: AngularFirestoreDocument<Doctor>;
-  doctors: Observable<Doctor[]>;
-  doctor: Doctor;
+	doctorsCollection: AngularFirestoreCollection<Doctor>;
+	doctorsDocument: AngularFirestoreDocument<Doctor>;
+	doctors: Observable<Doctor[]>;
+	doctor: Doctor;
 
-  constructor(
-    public afs: AngularFirestore
-  ) { 
-	this.doctorsCollection = this.afs.collection('doctors');
-  }
+	CLASSNAME: string = this.constructor.name;
 
-  	getDoctorsName(){
-		this.doctorsCollection = this.afs.collection('doctors', ref => ref.where('uid','==', localStorage.getItem("UID")));
+	constructor(
+		public afs: AngularFirestore,
+		private logger: Logger
+	) {
+		this.doctorsCollection = this.afs.collection('doctors');
+	}
+
+	/**
+	 * Method: getDoctorsName
+	 * Description: Retrieve Doctors name
+	 * @return doctors
+	 */
+	getDoctorsName() {
+		this.logger.info(this.CLASSNAME, "getDoctorsName", "Retrieve Doctors name");
+		this.doctorsCollection = this.afs.collection('doctors', ref => ref.where('uid', '==', localStorage.getItem("UID")));
 		this.doctors = this.doctorsCollection.snapshotChanges()
 			.map(changes => {
 				return changes.map(a => {
@@ -26,28 +36,52 @@ export class DoctorService {
 					data.id = a.payload.doc.id;
 					return data;
 				})
-      });
+			});
 		return this.doctors;
 	}
 
-	getDoctor(){
-		this.doctors = this.afs.collection('doctors', ref => ref.where('uid','==', localStorage.getItem("UID"))).valueChanges();
-		// this.doctor = this.doctors[0];
+	/**
+	 * Method: getDoctor
+	 * Description: Retrieve Doctor Informations
+	 * @return doctors
+	 */
+	getDoctor() {
+		this.logger.info(this.CLASSNAME, "getDoctor", "Retrieve Doctor Information");
+		this.doctors = this.afs.collection('doctors', ref => ref.where('uid', '==', localStorage.getItem("UID"))).valueChanges();
 		return this.doctors;
 	}
 
-	addDoctor(doctor: Doctor){
-		console.log(doctor);
-		// this.doctorsCollection.add(doctor);
+	/**
+	 * Method: addDoctor
+	 * Description: Adds Doctor Informations
+	 * @param doctor
+	 * @return void
+	 */
+	addDoctor(doctor: Doctor) {
+		this.logger.info(this.CLASSNAME, "addDoctor", "Doctor ID: " + doctor.id);
 		this.doctorsCollection.doc(doctor.id).set(doctor);
-  	}
-  
-  	deleteDoctor(doctor: Doctor){
-    	this.doctorsDocument = this.afs.doc(`patients/${doctor.id}`);
+	}
+
+	/**
+	 * Method: deleteDoctor
+	 * Description: Removes Doctor Informations
+	 * @param doctor
+	 * @return void
+	 */
+	deleteDoctor(doctor: Doctor) {
+		this.logger.info(this.CLASSNAME, "deleteDoctor", "Doctor ID: " + doctor.id);
+		this.doctorsDocument = this.afs.doc(`patients/${doctor.id}`);
 		this.doctorsDocument.delete();
 	}
 
-	updateDoctor(doctor: Doctor){
+	/**
+	 * Method: updateDoctor
+	 * Description: Updates Doctor Informations
+	 * @param doctor
+	 * @return void
+	 */
+	updateDoctor(doctor: Doctor) {
+		this.logger.info(this.CLASSNAME, "updateDoctor", "Doctor ID: " + doctor.id);
 		this.doctorsDocument = this.afs.doc(`patients/${doctor.id}`);
 		this.doctorsDocument.update(doctor);
 	}

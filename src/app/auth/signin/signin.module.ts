@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { SigninRoutingModule } from './signin-routing.module';
 import { SigninComponent } from './signin.component';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -17,4 +17,4 @@ import { SharedModule } from '../../shared/shared.module';
     ],
 })
 
-export class SigninModule{}
+export class SigninModule { }

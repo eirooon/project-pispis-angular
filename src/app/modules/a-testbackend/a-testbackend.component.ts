@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Logger } from '../../shared/service/logger.service';
 
 @Component({
   selector: 'app-a-testbackend',
@@ -6,17 +7,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./a-testbackend.component.css']
 })
 export class ATestbackendComponent implements OnInit {
+
+  CLASSNAME: string = this.constructor.name;
+
   weight: number;
   height: number;
   bmi: number;
   bmi_category: string;
-  constructor() { 
+
+  constructor(
+    private logger: Logger
+  ) { 
     
   }
 
+  /**
+   * Method: ngOnInit
+   * Description: Load upon initialization
+   * @return void
+   */
   ngOnInit() {
+
   }
 
+  /**
+   * Method: calculate
+   * Description: Calculate BMI
+   * @return void
+   */
   calculate(){
     this.bmi = this.weight / ( ( this.height / 3.28 ) * (this.height / 3.28));
     console.log(this.bmi);
@@ -29,7 +47,7 @@ export class ATestbackendComponent implements OnInit {
     } else if ( this.bmi >= 30 ){
       this.bmi_category = 'Obesity';
     } else {
-      console.log('ERR: Out of scope');
+      this.logger.error(this.CLASSNAME, "addClinic", "Out of Scope");
     }
   }
 }

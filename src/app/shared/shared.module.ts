@@ -13,6 +13,7 @@ import { AuthService } from '../shared/service/auth.service';
 import { ConsultationService } from './service/consultation.service';
 import { DoctorService } from '../shared/service/doctor.service';
 import { ClinicService } from './service/clinic.service';
+import { Logger } from './service/logger.service';
 
 //3rd Party
 import { SidebarJSModule, SidebarJSService } from 'ng-sidebarjs';
@@ -20,11 +21,12 @@ import { ControlMessagesComponent } from './components/control-messages/control-
 import { NgProgressModule } from 'ngx-progressbar';
 
 //Semantic UI
-import { SuiTabsModule, 
-         SuiSelectModule,
-         SuiModalModule,
-         SuiAccordionModule
- } from 'ng2-semantic-ui';
+import {
+  SuiTabsModule,
+  SuiSelectModule,
+  SuiModalModule,
+  SuiAccordionModule
+} from 'ng2-semantic-ui';
 
 
 @NgModule({
@@ -54,16 +56,17 @@ import { SuiTabsModule,
     SuiModalModule,
     SuiAccordionModule
   ],
-  providers:[
+  providers: [
     PatientService,
     AuthGuard,
     AuthService,
     ConsultationService,
     DoctorService,
     ClinicService,
+    Logger,
   ]
 })
-export class SharedModule { 
+export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,

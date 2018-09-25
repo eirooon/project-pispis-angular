@@ -7,8 +7,8 @@
   </div>
 </header>
 <div class="content-wrapper">
-  
-    <form [formGroup]="ptnForm" (ngSubmit)="addPatient()">
+
+    <form>
         <section>
             <div class="form-inputs">
                 <div class="form-group">
@@ -49,13 +49,13 @@
                 </div>
                 <div class="form-group">
                     <label>Reaction</label>
-                    <input formControlName="address" name="address" class="form-control" type="text" placeholder="Enter address" [(ngModel)]="patient.address"/>
-                    <control-messages [control]="ptnForm.controls.address"></control-messages>
+                    <!-- <input formControlName="address" name="address" class="form-control" type="text" placeholder="Enter address"/> -->
+                    <!-- <control-messages [control]="ptnForm.controls.address"></control-messages> -->
                 </div>
               </div>
             </section>
             <section>
-                <button class="btn btn-primary btn-wide" type="submit" >Add Allergy</button>     
+                <button class="btn btn-primary btn-wide" (click)="sampppppp()">Add HAHA</button>     
             </section>
     </form>
 </div>

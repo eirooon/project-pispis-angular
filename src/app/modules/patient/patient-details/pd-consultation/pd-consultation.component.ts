@@ -4,6 +4,7 @@ import { ConsultationTextModel } from '../../../../shared/models/consulationMode
 import { ClinicService } from '../../../../shared/service/clinic.service';
 import { PatientService } from '../../../../shared/service/patient.service';
 import { Patient } from '../../../../shared/models/patient';
+import { Logger } from '../../../../shared/service/logger.service';
 
 @Component({
   selector: 'pd-consultation',
@@ -12,31 +13,41 @@ import { Patient } from '../../../../shared/models/patient';
 })
 export class PdConsultationComponent implements OnInit {
 
+  CLASSNAME: string = this.constructor.name;
   hasList: Boolean;
   consultations: ConsultationTextModel[];
   patient: Patient;
 
-  constructor(private consultationService: ConsultationService, private patientService: PatientService) {
+  constructor(
+    private consultationService: ConsultationService,
+    private patientService: PatientService,
+    private logger: Logger
+  ) {
     this.patient = patientService.getPatient();
+    this.ngOnInit();
   }
 
+  /**
+   * Method: ngOnInit
+   * Description: Load upon initialization
+   * @return void
+   */
   ngOnInit() {
     this.consultationService.getConsultationText(this.patient.id)
       .subscribe(consultations => {
         if (consultations.length > 0) {
-          console.log('[Clinic] List loaded successful');
           this.hasList = true;
           this.consultations = consultations;
-          console.log('[Clinic] Clinic data: ' + this.consultations);
+          this.logger.info(this.CLASSNAME, "ngOnInit", "Clinic data: [" + this.consultations + "] List Loaded");
         } else {
           this.hasList = false;
         }
       },
         err => {
-          console.error('[consultations] Error: ', err.message);
+          this.logger.info(this.CLASSNAME, "ngOnInit", "Error: " + err.message);
           this.hasList = false;
         },
-      );
+    );
 
     // for (var x = 0; x < this.consultations.length; x++) {
     //   var secondIndex = x + 1;

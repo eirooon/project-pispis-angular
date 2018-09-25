@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { Logger } from '../../../../shared/service/logger.service';
 
 @Component({
   selector: 'app-pd-consultation-selection',
@@ -9,15 +10,31 @@ import { Router } from '@angular/router';
 })
 export class PdConsultationSelectionComponent implements OnInit {
 
+  CLASSNAME: string = this.constructor.name;
+
   constructor(
     private location: Location,
-    private router: Router
-  ) { }
-
-  ngOnInit() {
+    private router: Router,
+    private logger: Logger
+  ) {
+    this.ngOnInit();
   }
 
-  goBack(){
+  /**
+   * Method: ngOnInit
+   * Description: Load upon initialization
+   * @return void
+   */
+  ngOnInit() {
+    this.logger.info(this.CLASSNAME, "ngOnInit", "Initial Load");
+  }
+
+  /**
+   * Method: goBack
+   * Description: Go back to previous page
+   * @return void
+   */
+  goBack() {
     this.location.back();
   }
 }
