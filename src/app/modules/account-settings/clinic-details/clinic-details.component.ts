@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Location } from '@angular/common';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
@@ -20,10 +20,10 @@ export interface IContext {
 })
 
 export class ClinicDetailsComponent implements OnInit {
-  @ViewChild('addClinicScheduleModalFromDetails')
-  public modalTemplate: ModalTemplate<IContext, string, string>
+  @ViewChild('clinicScheduleModalFromDetails') 
+  public cinicScheduleModalTemplate: ModalTemplate<IContext, string, string>
 
-  myTitle = "Clinic"
+  myTitle = "Clinic";
   CLASSNAME: string = this.constructor.name;
 
   clinicScheduleCollection: AngularFirestoreCollection<ClinicScheduleModel>;
@@ -34,6 +34,8 @@ export class ClinicDetailsComponent implements OnInit {
   clinicScheduleList: ClinicScheduleModel[];
   clinicScheduleItem: ClinicScheduleModel;
   selectedClinic : Clinic;
+  isAddSelected: boolean = false;
+  modalTitle: string = "";
 
   constructor(
     private location: Location,
@@ -222,9 +224,18 @@ export class ClinicDetailsComponent implements OnInit {
    * Description: Open and view clinic schedules
    * @return void
    */
-  public openClinicScheduleFromDetails() {
-    console.log("OPEN CLINIC FROM DETAILS");
-    const config = new TemplateModalConfig<IContext, string, string>(this.modalTemplate);
+  public openClinicScheduleFromDetails(isAddSelected:boolean) {
+    console.log("OPEN ADD CLINIC SCHEDULE FROM DETAILS");
+    const config = new TemplateModalConfig<IContext, string, string>(this.cinicScheduleModalTemplate);
+
+    if(isAddSelected){
+      console.log('Add Selected');
+      this.modalTitle = "Add Clinic Schedule";
+    }else{
+      console.log('Edit Selected');
+      this.modalTitle = "Edit Clinic Schedule";
+    }
+    
     config.closeResult = "closed!";
     this.modalService
       .open(config)
@@ -244,6 +255,12 @@ export class ClinicDetailsComponent implements OnInit {
   addClinicSchedule() {
 
   }
+<<<<<<< Updated upstream
 
   
+=======
+  editClinicSchedule() {
+
+  }
+>>>>>>> Stashed changes
 }

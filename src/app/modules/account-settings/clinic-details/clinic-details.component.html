@@ -84,13 +84,13 @@
         
                 <div class="form-subheader form-subheader-action">
                     <div class="form-subheader-title">Clinic Schedule</div>
-                    <button title="Add Clinic Schedule" class="btn btn-default btn-icon" (click)="openClinicScheduleFromDetails()">
+                    <button title="Add Clinic Schedule" class="btn btn-default btn-icon" (click)="openClinicScheduleFromDetails(true)">
                         <i class="mdi mdi-plus"></i>
                     </button>
                 </div>
                 <div>
                         <ul *ngIf="clinicScheduleList" class="list-view-wrapper">
-                                <li *ngFor="let clinicScheduleItem of clinicScheduleList " class="clinic-details-list-view-item" >
+                                <li *ngFor="let clinicScheduleItem of clinicScheduleList " class="clinic-details-list-view-item" (click)="openClinicScheduleFromDetails(false)">
                                     <div class="item-thumbnail">
                                        <i class="mdi mdi-hospital-building"></i>
                                     </div>
@@ -110,14 +110,14 @@
 </div>
 
 
-<ng-template class="customModal" let-context let-modal="modal" #addClinicScheduleModalFromDetails>
-    <div class="header">Add Schedule</div>
+<ng-template class="customModal" let-context let-modal="modal" #clinicScheduleModalFromDetails>
+    <div class="header">{{ modalTitle }}</div>
     <div class="content">
         <form  id="clinicScheduleFormID">
                 <div class="form-group">
                 <label>Day</label>
                 <input type="text" placeholder="Choose Day" list="daysOfTheWeekList" id="clinicDay" data-list-filter="^"
-                    class="form-control" autofocus>
+                    class="form-control">
                 <datalist id="daysOfTheWeekList">
                     <select>
                             <option>Sample</option>
@@ -153,7 +153,7 @@
             </form>
     </div>
     <div class="actions">
-        <button class="ui  button">Cancel</button>
-        <button class="ui green button"  autofocus>Add New Schedule</button>
+        <button class="ui  button" (click)="modal.deny('denied')">Cancel</button>
+        <button class="ui green button"  (click)="modal.approve('approved')" autofocus>Add New Schedule</button>
     </div>
 </ng-template>

@@ -29,6 +29,7 @@ h3{
     font-weight: 200;
     background-color: #fff;
     position: relative;
+    grid-gap: 20px;
 }
 .hp-allergy-list-view-item > span{
     padding: 5px;

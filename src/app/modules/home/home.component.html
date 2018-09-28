@@ -5,10 +5,11 @@
 <app-header [setTitle]='myTitle'></app-header>
 <app-sidemenu></app-sidemenu>
 <div class="content-wrapper">
+
     <section class="overview-profile">
         <div class="overview-profile-wrapper" *ngFor="let doctor of doctors">
-            <p>Welcome</p>
-            <h1>Dr. {{doctor.name}}!</h1>
+            <h3>Welcome, Dr. {{doctor.name}}!</h3>
+            <span>Today is Monday, September 20, 2018</span>
         </div>
     </section>
     <section class="overview-schedules">

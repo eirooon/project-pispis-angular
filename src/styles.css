@@ -105,8 +105,8 @@ h1, h2, h3, h4, h5, h6{
     border-radius: 3px;
     -webkit-appearance: none;
     appearance: none;
-    border: 1px solid #B1B1B3;
-    box-shadow: 0 2px 2px -3px rgba(0,0,0,0.2);
+    /* border: 1px solid #B1B1B3; */
+    /* box-shadow: 0 2px 2px -3px rgba(0,0,0,0.2); */
     color: #140b2f;
     font-size: 12pt;
     line-height: normal;
@@ -146,7 +146,7 @@ input.form-control::placeholder{
 }
 .form-radio-item p{
     padding-left: 10px;   
-    padding-top: 5px;
+    /* padding-top: 5px; */
     font-weight: 200;
 }
 .form-radio-item input[type="radio"]{
@@ -241,7 +241,7 @@ header {
 }
 .header-secondary{
     background-color: #fff;
-    border-bottom: 1px solid #EDE9E9;
+    border-bottom: 1px solid #f7f7f7;
     color: #091E42;
 }
 .header-wrapper{
