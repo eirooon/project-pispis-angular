@@ -6,6 +6,8 @@ import { ClinicService } from '../../../shared/service/clinic.service';
 import { ClinicScheduleModel } from '../../../shared/models/clinicScheduleModel';
 import { SuiModalService, TemplateModalConfig, ModalTemplate } from 'ng2-semantic-ui';
 import { Logger } from '../../../shared/service/logger.service';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { Clinic } from '../../../shared/models/clinicModel';
 
 export interface IContext {
   data: string;
@@ -31,6 +33,7 @@ export class ClinicDetailsComponent implements OnInit {
   state: string = '';
   clinicScheduleList: ClinicScheduleModel[];
   clinicScheduleItem: ClinicScheduleModel;
+  selectedClinic : Clinic;
 
   constructor(
     private location: Location,
@@ -40,12 +43,45 @@ export class ClinicDetailsComponent implements OnInit {
     private logger: Logger
   ) { }
 
+  clinicForm = new FormGroup({
+    clinicname: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3)
+    ]),
+
+    phone: new FormControl('', Validators.required),
+    mobile: new FormControl('', Validators.required),
+    province: new FormControl('', Validators.required),
+    city: new FormControl('', Validators.required),
+    hospital: new FormControl('', Validators.required),
+    roomnumber: new FormControl('', Validators.required),
+  });
+
+  clinicScheduleForm = new FormGroup({
+    clinicDay: new FormControl('', Validators.required),
+    clinicType: new FormControl('', Validators.required),
+    startTime: new FormControl('', Validators.required),
+    endTime: new FormControl('', Validators.required)
+  }
+  );
+
   /**
    * Method: ngOnInit
    * Description: Load upon initialization
    * @return void
    */
   ngOnInit() {
+    this.selectedClinic  = this.clinicService.getSelectedClinic();
+    if(this.selectedClinic){
+      this.clinicname.setValue(this.selectedClinic.clinicname);
+      this.phone.setValue(this.selectedClinic.phone);
+      this.mobile.setValue(this.selectedClinic.mobile);
+      this.province.setValue(this.selectedClinic.province);
+      this.city.setValue(this.selectedClinic.city);
+      this.hospital.setValue(this.selectedClinic.hospital);
+      this.roomnumber.setValue(this.selectedClinic.roomnumber);
+      this.logger.info(this.CLASSNAME, "ngOnInit", "clinicname" + this.selectedClinic.clinicname);
+    }
     this.clinicService.getClinicsSchedule()
       .subscribe(item => {
         if (item.length > 0) {
@@ -61,6 +97,115 @@ export class ClinicDetailsComponent implements OnInit {
           this.hasList = false;
         },
     );
+  }
+
+  
+  /**
+   * Method: clinicDay
+   * Description: Get clinic day
+   * @return clinicDay
+   */
+  get clinicname() {
+    return this.clinicForm.get('clinicname');
+  }
+
+  /**
+   * Method: phone
+   * Description: Get clinic phone
+   * @return phone
+   */
+  get phone() {
+    return this.clinicForm.get('phone');
+  }
+
+  /**
+   * Method: mobile
+   * Description: Get clinic mobile
+   * @return mobile
+   */
+  get mobile() {
+    return this.clinicForm.get('mobile');
+  }
+
+  /**
+   * Method: address
+   * Description: Get address
+   * @return address
+   */
+  get address() {
+    return this.clinicForm.get('address');
+  }
+
+  /**
+   * Method: province
+   * Description: Get province
+   * @return province
+   */
+  get province() {
+    return this.clinicForm.get('province');
+  }
+
+  /**
+   * Method: city
+   * Description: Get city
+   * @return city
+   */
+  get city() {
+    return this.clinicForm.get('city');
+  }
+
+  /**
+   * Method: hospital
+   * Description: Get hospital
+   * @return hospital
+   */
+  get hospital() {
+    return this.clinicForm.get('hospital');
+  }
+
+  /**
+   * Method: roomnumber
+   * Description: Get roomnumber
+   * @return roomnumber
+   */
+  get roomnumber() {
+    return this.clinicForm.get('roomnumber');
+  }
+
+  /**
+   * Method: clinicDay
+   * Description: Get clinicDay
+   * @return clinicDay
+   */
+  get clinicDay() {
+    return this.clinicScheduleForm.get('clinicDay');
+  }
+
+  /**
+   * Method: clinicType
+   * Description: Get clinicType
+   * @return clinicType
+   */
+  get clinicType() {
+    return this.clinicScheduleForm.get('clinicType');
+  }
+
+  /**
+   * Method: startType
+   * Description: Get startTime
+   * @return startTime
+   */
+  get startType() {
+    return this.clinicScheduleForm.get('startTime');
+  }
+
+  /**
+   * Method: endTime
+   * Description: Get endTime
+   * @return endTime
+   */
+  get endTime() {
+    return this.clinicScheduleForm.get('endTime');
   }
 
   /**
@@ -99,4 +244,6 @@ export class ClinicDetailsComponent implements OnInit {
   addClinicSchedule() {
 
   }
+
+  
 }

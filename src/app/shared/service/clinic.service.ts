@@ -20,7 +20,7 @@ export class ClinicService {
 
   clinics: Clinic[];
   idClinic: string;
-
+  selectedClinic: Clinic;
   CLASSNAME: string = this.constructor.name;
 
   constructor(
@@ -106,6 +106,22 @@ export class ClinicService {
   getClinicID() {
     this.logger.info(this.CLASSNAME, "getClinicID", "Clinic ID: " + this.idClinic);
     return this.idClinic;
+  }
+
+  /**
+   * Description: Sets currently selected Clinic
+   * @param clinic 
+   */
+  setSelectedClinic(clinic: Clinic){
+      this.selectedClinic = clinic;
+  }
+
+  /**
+   * Description: Gets currently selected Clinic
+   * @return selectedClinic 
+   */
+  getSelectedClinic(){
+    return this.selectedClinic;
   }
 
 

@@ -70,5 +70,6 @@ export class ClinicComponent implements OnInit {
   setSelectedClinic(idClinic: Clinic) {
     this.logger.info(this.CLASSNAME, "ngOnInit", "Clinic ID: " + idClinic.id);
     this.clinicService.setClinicID(idClinic.id);
+    this.clinicService.setSelectedClinic(idClinic);
   }
 }

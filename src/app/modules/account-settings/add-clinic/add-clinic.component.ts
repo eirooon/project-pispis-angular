@@ -83,6 +83,8 @@ export class AddClinicComponent implements OnInit {
     this.clinic = {
       idDoc: '',
       clinicname: '',
+      phone:'',
+      mobile:'',
       province: '',
       city: '',
       hospital: '',
@@ -207,6 +209,8 @@ export class AddClinicComponent implements OnInit {
       this.clinicCollection.add({
         idDoc: this.authService.getUidOfCurrentDoctor(),
         clinicname: this.clinicForm.value.clinicname,
+        phone:this.clinicForm.value.phone,
+        mobile:this.clinicForm.value.mobile,
         province: this.clinicForm.value.province,
         city: this.clinicForm.value.city,
         hospital: this.clinicForm.value.hospital,
@@ -216,11 +220,18 @@ export class AddClinicComponent implements OnInit {
           this.clinicCollection.doc(docRef.id).update({
             prodid: docRef.id
           })
-          if (this.clinicSchedulesList) {
+          /*if (this.clinicSchedulesList) {
             this.afs.collection('clinics').doc(docRef.id).collection('clinicSchedule').add({
               clinicSchedule: this.clinicSchedulesList
             })
-          }
+          }*/
+
+          this.clinicSchedulesList.forEach(element => {
+            console.log('Add Clinic Schedule element:' + element);
+            this.afs.collection('clinics').doc(docRef.id).collection('clinicSchedule').add({
+              clinicSchedule:  element
+            })
+          });
 
           this.logger.info(this.CLASSNAME, "addClinic", "Clinic schedule list: " + this.clinicSchedulesList);
           this.logger.info(this.CLASSNAME, "addClinic", "Doc Ref: " + docRef.id);

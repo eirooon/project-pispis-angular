@@ -10,75 +10,74 @@
 </header>
 <div class="content-wrapper">
         
-    <form>
+    <form [formGroup]="clinicForm" >
                 <div class="form-subheader">Basic Information</div>
                 <section>
                     <div class="form-group">
-                        <label >Clinic Name</label>
-                        <input id="clinicname" type="text" class="form-control">
-                        <!-- <div *ngIf="clinicname.touched && clinicname.invalid" class="alert alert-danger hasError-text">
+                        <label for="username">Clinic Name</label>
+                        <input formControlName="clinicname" id="clinicname" type="text" class="form-control">
+                        <div *ngIf="clinicname.touched && clinicname.invalid" class="alert alert-danger hasError-text">
                             <div *ngIf="clinicname.errors.required">Clinic name is required</div>
                             <div *ngIf="clinicname.errors.minlength">Clinic should be minimum {{clinicname.errors.minlength.requiredLength}} </div>
-                        </div> -->
+                        </div>
         
                     </div>
                     <div class="form-group">
                         <label for="username">Phone</label>
-                        <input  id="phone" type="text" class="form-control">
+                        <input formControlName="phone" id="phone" type="text" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="username">Mobile</label>
-                        <input id="mobile" type="text" class="form-control">
+                        <input formControlName="mobile" id="mobile" type="text" class="form-control">
                     </div>
                 </section>
                 <div class="form-subheader">Address</div>
                 <section>
                     <div class="form-group">
                         <label>Province</label>
-                        <input type="text" placeholder="Find province" list="provinceList" id="province" data-list-filter="^" class="form-control">
+                        <input type="text" placeholder="Find province" list="provinceList" id="province" formControlName="province" data-list-filter="^"
+                            class="form-control">
                         <datalist id="provinceList">
                             <select>
-                                <option value="sample"></option>
-                                <option value="sample"></option>
+                                <option *ngFor="let province of provinceList" value="{{province.name}}"></option>
                             </select>
                         </datalist>
-                        <!-- <div *ngIf="province.touched && province.invalid" class="alert alert-danger hasError-text">
+                        <div *ngIf="province.touched && province.invalid" class="alert alert-danger hasError-text">
                             <div *ngIf="province.errors.required">Province is required</div>
-                        </div> -->
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>City</label>
-                        <input type="text" placeholder="Find city" list="cityList" id="city" data-list-filter="^" class="form-control">
+                        <input type="text" placeholder="Find city" list="cityList" id="city" formControlName="city" data-list-filter="^" class="form-control">
                         <datalist id="cityList">
                             <select>
-                                <option value="sample"></option>
-                                <option value="sample"></option>
+                                <option *ngFor="let city of cityList" value="{{city.name}}"></option>
                             </select>
                         </datalist>
-                        <!-- <div *ngIf="city.touched && city.invalid" class="alert alert-danger hasError-text">
+                        <div *ngIf="city.touched && city.invalid" class="alert alert-danger hasError-text">
                             <div *ngIf="city.errors.required">City is required</div>
-                        </div> -->
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Hospital</label>
-                        <input type="text" placeholder="Find hospital" list="hospitalList" id="hospital" data-list-filter="^" class="form-control">
+                        <input type="text" placeholder="Find hospital" list="hospitalList" id="hospital" formControlName="hospital" data-list-filter="^"
+                        class="form-control">
                         <datalist id="hospitalList">
-                                <select>
-                                        <option value="sample"></option>
-                                        <option value="sample"></option>
-                                </select>
+                            <select>
+                                <option *ngFor="let hospital of hospitalList" value="{{hospital.name}}"></option>
+                            </select>
         
                         </datalist>
-                        <!-- <div *ngIf="hospital.touched && hospital.invalid" class="alert alert-danger hasError-text">
+                        <div *ngIf="hospital.touched && hospital.invalid" class="alert alert-danger hasError-text">
                             <div *ngIf="hospital.errors.required">Hospital is required</div>
-                        </div> -->
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="roomnumber">Room number</label>
-                        <input id="roomnumber" type="text" class="form-control">
-                        <!-- <div *ngIf="roomnumber.touched && roomnumber.invalid" class="alert alert-danger hasError-text">
+                        <input formControlName="roomnumber" id="roomnumber" type="text" class="form-control">
+                        <div *ngIf="roomnumber.touched && roomnumber.invalid" class="alert alert-danger hasError-text">
                             <div *ngIf="roomnumber.errors.required">Room number is required</div>
-                        </div> -->
+                        </div>
                     </div>
         
                 </section>
