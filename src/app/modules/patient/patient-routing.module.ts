@@ -13,7 +13,9 @@ import { PdHealthProfileComponent } from './patient-details/pd-health-profile/pd
 import { PdHealthProfileSelectionComponent } from './patient-details/pd-health-profile-selection/pd-health-profile-selection.component';
 import { PdHealthProfileAllergyComponent } from './patient-details/pd-health-profile-allergy/pd-health-profile-allergy.component';
 import { PdConsultationVitalsComponent } from './patient-details/pd-consultation-vitals/pd-consultation-vitals.component';
-
+import { PdVitalSignsComponent } from './patient-details/pd-vital-signs/pd-vital-signs.component';
+import { PdVitalSignsWeightComponent } from './patient-details/pd-vital-signs-weight/pd-vital-signs-weight.component';
+import { PdVitalSignsAllComponent } from './patient-details/pd-vital-signs-all/pd-vital-signs-all.component';
 
 const routes: Routes = [
   { 
@@ -63,6 +65,21 @@ const routes: Routes = [
   { 
     path: 'consultation-vitals', 
     component: PdConsultationVitalsComponent,
+    canActivate:[AuthGuard]
+  },
+  { 
+    path: 'vital-signs', 
+    component: PdVitalSignsComponent,
+    canActivate:[AuthGuard]
+  },
+  { 
+    path: 'vital-signs-weight', 
+    component: PdVitalSignsWeightComponent,
+    canActivate:[AuthGuard]
+  },
+  { 
+    path: 'vital-signs-all', 
+    component: PdVitalSignsAllComponent,
     canActivate:[AuthGuard]
   } 
 ];

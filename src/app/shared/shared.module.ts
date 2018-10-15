@@ -1,6 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 //Components
 import { HeaderComponent } from './components/header/header.component';
@@ -14,6 +15,7 @@ import { ConsultationService } from './service/consultation.service';
 import { DoctorService } from '../shared/service/doctor.service';
 import { ClinicService } from './service/clinic.service';
 import { Logger } from './service/logger.service';
+import { VitalSignsService } from './service/vital-signs.service';
 
 //3rd Party
 import { SidebarJSModule, SidebarJSService } from 'ng-sidebarjs';
@@ -38,7 +40,8 @@ import {
     SuiTabsModule,
     SuiSelectModule,
     SuiModalModule,
-    SuiAccordionModule
+    SuiAccordionModule,
+    HttpClientModule
   ],
   declarations: [
     HeaderComponent,
@@ -54,7 +57,8 @@ import {
     SuiTabsModule,
     SuiSelectModule,
     SuiModalModule,
-    SuiAccordionModule
+    SuiAccordionModule,
+    HttpClientModule
   ],
   providers: [
     PatientService,
@@ -64,6 +68,7 @@ import {
     DoctorService,
     ClinicService,
     Logger,
+    VitalSignsService
   ]
 })
 export class SharedModule {

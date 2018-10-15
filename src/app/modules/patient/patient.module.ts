@@ -16,6 +16,9 @@ import { PdHealthProfileComponent } from './patient-details/pd-health-profile/pd
 import { PdHealthProfileSelectionComponent } from './patient-details/pd-health-profile-selection/pd-health-profile-selection.component';
 import { PdHealthProfileAllergyComponent } from './patient-details/pd-health-profile-allergy/pd-health-profile-allergy.component';
 import { PdConsultationVitalsComponent } from './patient-details/pd-consultation-vitals/pd-consultation-vitals.component';
+import { PdVitalSignsComponent } from './patient-details/pd-vital-signs/pd-vital-signs.component';
+import { PdVitalSignsWeightComponent } from './patient-details/pd-vital-signs-weight/pd-vital-signs-weight.component';
+import { PdVitalSignsAllComponent } from './patient-details/pd-vital-signs-all/pd-vital-signs-all.component';
 
 @NgModule({
     declarations: [
@@ -30,7 +33,10 @@ import { PdConsultationVitalsComponent } from './patient-details/pd-consultation
         PdHealthProfileComponent,
         PdHealthProfileSelectionComponent,
         PdHealthProfileAllergyComponent,
-        PdConsultationVitalsComponent
+        PdConsultationVitalsComponent,
+        PdVitalSignsComponent,
+        PdVitalSignsWeightComponent,
+        PdVitalSignsAllComponent
     ],
     imports: [
         PatientRoutingModule,

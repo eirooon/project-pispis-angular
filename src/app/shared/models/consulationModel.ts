@@ -18,4 +18,6 @@ export interface ConsultationTextModel{
     headCircumference?: string;
     capillaryBloodGlucose?: string;
 
+    //
+
 }

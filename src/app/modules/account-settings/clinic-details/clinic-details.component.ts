@@ -255,12 +255,8 @@ export class ClinicDetailsComponent implements OnInit {
   addClinicSchedule() {
 
   }
-<<<<<<< Updated upstream
 
-  
-=======
   editClinicSchedule() {
 
   }
->>>>>>> Stashed changes
 }

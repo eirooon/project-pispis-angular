@@ -1,0 +1,38 @@
+
+.vitals-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+}
+.vitals-chart-wrapper{
+    border: 1px solid #eeeeee;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+.vitals-chart-header{
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    margin-bottom: 10px;
+}
+.vitals-chart-header a{
+    justify-self: flex-end;
+}
+
+.tab-subheader{
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    border-bottom: 1px solid #f8f8f8;
+    padding-bottom: 15px;
+}
+.btn{
+    justify-self: right;
+}
+h3{
+    align-self: center;
+}
+@media only screen and (max-width: 420px){
+    .vitals-wrapper{
+        display: block;
+    }
+}

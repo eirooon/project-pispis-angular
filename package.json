@@ -42,6 +42,7 @@
     "ng2-semantic-ui": "^0.9.7",
     "ngx-progressbar": "^2.1.1",
     "npm": "^5.8.0",
+    "plotly.js": "^1.41.3",
     "rxjs": "^5.5.6",
     "sidebarjs": "^5.1.0",
     "ts-loader": "3.5.0",
