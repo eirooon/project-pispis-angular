@@ -33,7 +33,7 @@ export class PdConsultationComponent implements OnInit {
    * @return void
    */
   ngOnInit() {
-    this.consultationService.getConsultationText(this.patient.id)
+    this.consultationService.getConsultationText(localStorage.getItem("ptId"))
       .subscribe(consultations => {
         if (consultations.length > 0) {
           this.hasList = true;

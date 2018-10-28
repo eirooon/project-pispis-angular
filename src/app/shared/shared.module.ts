@@ -14,6 +14,7 @@ import { AuthService } from '../shared/service/auth.service';
 import { ConsultationService } from './service/consultation.service';
 import { DoctorService } from '../shared/service/doctor.service';
 import { ClinicService } from './service/clinic.service';
+import { AllergyService } from './service/allergy.service';
 import { Logger } from './service/logger.service';
 import { VitalSignsService } from './service/vital-signs.service';
 
@@ -67,6 +68,7 @@ import {
     ConsultationService,
     DoctorService,
     ClinicService,
+    AllergyService,
     Logger,
     VitalSignsService
   ]

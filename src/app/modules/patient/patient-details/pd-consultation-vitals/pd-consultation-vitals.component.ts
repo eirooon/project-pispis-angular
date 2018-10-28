@@ -164,7 +164,7 @@ export class PdConsultationVitalsComponent implements OnInit {
   addConsultationVitals(){
     if (this.vitalsForm.valid) {
       this.consultationText.type = "Vitals";
-      this.consultationText.idPatient = this.patient.id;
+      this.consultationText.idPatient = localStorage.getItem("ptId");
       this.consultationText.clinicname = this.vitalsForm.value.clinicname,
       this.consultationText.date = this.vitalsForm.value.date;
       this.consultationText.patientType = this.vitalsForm.value.patientType;

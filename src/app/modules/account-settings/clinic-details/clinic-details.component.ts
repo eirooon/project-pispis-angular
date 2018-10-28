@@ -255,7 +255,6 @@ export class ClinicDetailsComponent implements OnInit {
   addClinicSchedule() {
 
   }
-
   editClinicSchedule() {
 
   }

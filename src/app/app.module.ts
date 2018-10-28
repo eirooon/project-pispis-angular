@@ -20,7 +20,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 
-import {SuiModule} from 'ng2-semantic-ui';
+import { SuiModule } from 'ng2-semantic-ui';
 import { HttpModule } from '@angular/http';
 import { ConsultationService } from './shared/service/consultation.service';
 import { HttpClientModule } from '@angular/common/http';

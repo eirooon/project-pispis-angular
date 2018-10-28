@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Patient } from '../../../../shared/models/patient';
 import { PatientService } from '../../../../shared/service/patient.service';
 import { Logger } from '../../../../shared/service/logger.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'pd-personal-profile',
@@ -12,6 +13,7 @@ import { Logger } from '../../../../shared/service/logger.service';
 })
 export class PdPersonalProfileComponent implements OnInit {
 
+  patients: Observable<Patient[]>;;
   patient: Patient;
 
   CLASSNAME: string = this.constructor.name;
@@ -32,7 +34,7 @@ export class PdPersonalProfileComponent implements OnInit {
    */
   ngOnInit() {
     this.logger.info(this.CLASSNAME, "ngOnInit", "Patient Personal Profile Load");
-    this.patient = this.patientService.getPatient();
+    //this.patient = this.patientService.getPatientById(localStorage.getItem("ptId"));
   }
 
   /**
