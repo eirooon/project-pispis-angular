@@ -35,6 +35,7 @@ export class PatientDetailsComponent implements OnInit {
    */
   ngOnInit() {
     this.logger.info(this.CLASSNAME, "ngOnInit", "Patient Details Load");
+    localStorage.setItem("ptId", this.patientService.getPatient().id);
   }
 
   /**

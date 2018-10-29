@@ -17,6 +17,7 @@ export class PdHealthProfileAllergyComponent implements OnInit {
 
   allergy: Allergy;
   ptnForm: any;
+  isEdit: boolean;
 
   constructor(
     private allergyService: AllergyService,
@@ -27,6 +28,17 @@ export class PdHealthProfileAllergyComponent implements OnInit {
   ) {
     this.ngOnInit();
     this.initializeAllergy();
+    this.isEdit = allergyService.getIsEdit();
+    if(this.isEdit) {
+      this.allergy = this.allergyService.getAllergy();
+
+      this.logger.error(this.CLASSNAME, "JOBERN", "TYPE: " + this.allergy.allergyType);
+      this.logger.error(this.CLASSNAME, "JOBERN", "KIND: " + this.allergy.allergyKind);
+      this.logger.error(this.CLASSNAME, "JOBERN", "REACTION: " + this.allergy.allergyReaction);
+      this.logger.error(this.CLASSNAME, "JOBERN", "SEVERITY: " + this.allergy.allergySeverity);
+      this.logger.error(this.CLASSNAME, "JOBERN", "PATIENT ID: " + this.allergy.patientId);
+      this.logger.error(this.CLASSNAME, "JOBERN", "ID: " + this.allergy.id);
+    }
   }
 
   /**
@@ -62,6 +74,7 @@ export class PdHealthProfileAllergyComponent implements OnInit {
    */
   goBack() {
     this.location.back();
+    this.allergyService.setIsEdit(false);
   }
 
   /**
@@ -73,6 +86,17 @@ export class PdHealthProfileAllergyComponent implements OnInit {
     //Check for valid inputs
     this.allergyService.addAllergy(this.allergy);
     this.logger.info(this.CLASSNAME, "addAllergy", "Allergy ID: [" + this.allergy.id + "] Adding done");
+    this.goBack();
+  }
+
+  /**
+   * Method: editAllergy
+   * Description: Updates existing patient allergy
+   * @return void
+   */
+  editAllergy() {
+    this.allergyService.updateAllergy(this.allergy);
+    this.logger.info(this.CLASSNAME, "updateAllergy", "Allergy ID: [" + this.allergy.id + "] Update done");
     this.goBack();
   }
 }

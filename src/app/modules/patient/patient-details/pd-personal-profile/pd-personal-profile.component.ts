@@ -55,7 +55,6 @@ export class PdPersonalProfileComponent implements OnInit {
    * @return void
    */
   goBack() {
-    this.patientService.setIsEdit(false);
     this.location.back();
   }
 

@@ -22,7 +22,7 @@
           <span class="item-desc text-ellipsis">{{allergy.allergySeverity}}</span>
           <span class="item-desc text-ellipsis">{{allergy.Reaction}}</span>
       </div>
-      <div class="ic-action-wrapper"><i class="mdi mdi-pencil"></i></div>
+      <div class="ic-action-wrapper"><i (click)="setAllergyDetails($event, allergy)" routerLink="../health-profile-allergy" class="mdi mdi-pencil"></i></div>
     </li>
   </ul>
 </div>

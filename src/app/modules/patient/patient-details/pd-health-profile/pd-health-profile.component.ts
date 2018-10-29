@@ -39,4 +39,8 @@ export class PdHealthProfileComponent implements OnInit {
     );
   }
 
+  setAllergyDetails(event, allergy: Allergy){
+    this.allergyService.setAllergy(allergy);
+  }
+
 }

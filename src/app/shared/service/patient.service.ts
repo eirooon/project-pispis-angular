@@ -10,7 +10,6 @@ export class PatientService {
 	patientDoc: AngularFirestoreDocument<Patient>;
 	patients: Observable<Patient[]>;
 	patient: Patient;
-	isEdit: boolean = false;
 
 	CLASSNAME: string = this.constructor.name;
 
@@ -27,6 +26,16 @@ export class PatientService {
 					return data;
 				})
 			});
+	}
+
+	setPatient(patient: Patient) {
+		this.logger.info(this.CLASSNAME, "setPatient", "Patient: " + patient.id);
+		this.patient = patient;
+	}
+
+	getPatient() {
+		this.logger.info(this.CLASSNAME, "getPatient", "Patient: " + this.patient.id);
+		return this.patient;
 	}
 
 	/**
@@ -121,27 +130,6 @@ export class PatientService {
 		this.logger.info(this.CLASSNAME, "updatePatient", "Patient Id: " + patient.id);
 		this.patientDoc = this.afs.doc(`patients/${patient.id}`);
 		this.patientDoc.update(patient);
-	}
-
-	/**
-	 * Method: setIsEdit
-	 * Description: Set edit to true=edit_mode false=not_edit_mode
-	 * @param flag
-	 * @return void
-	 */
-	setIsEdit(flag: boolean) {
-		this.logger.info(this.CLASSNAME, "setIsEdit", "Flag: " + flag);
-		this.isEdit = flag;
-	}
-
-	/**
-	 * Method: getIsEdit
-	 * Description: Get edit true=edit_mode false=not_edit_mode
-	 * @return isEdit
-	 */
-	getIsEdit() {
-		this.logger.info(this.CLASSNAME, "getIsEdit", "Flag: " + this.isEdit);
-		return this.isEdit;
 	}
 
 	getPatientById() {

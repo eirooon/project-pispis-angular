@@ -11,6 +11,7 @@ export class AllergyService {
 	allergyDocument: AngularFirestoreDocument<Allergy>;
 	allergies: Observable<Allergy[]>;
 	allergy: Allergy;
+	isEdit: boolean;
 
 	CLASSNAME: string = this.constructor.name;
 
@@ -54,6 +55,7 @@ export class AllergyService {
 		this.logger.info(this.CLASSNAME, "updateAllergy", "Allergy Id: " + allergy.id);
 		this.allergyDocument = this.afs.doc(`allergy/${allergy.id}`);
 		this.allergyDocument.update(allergy);
+		this.isEdit = false;
 	}
 
 	/**
@@ -75,4 +77,31 @@ export class AllergyService {
 		return this.allergies;
 	}
 
+	/**
+	 * Method: setAllergy
+	 * Description: Set patient allergy
+	 */
+	setAllergy(allergy: Allergy){
+		this.logger.info(this.CLASSNAME, "setAllergy", "Allergy: " + allergy.id);
+		this.allergy = allergy;
+		this.isEdit = true;
+	}
+
+	/**
+	 * Method: getAllergy
+	 * Description: Get patient allergy
+	 * @return allergy
+	 */
+	getAllergy(){
+		this.logger.info(this.CLASSNAME, "getAllergy", "Allergy: " + this.allergy.id);
+		return this.allergy;
+	}
+
+	getIsEdit(){
+		return this.isEdit;
+	}
+
+	setIsEdit(flag: boolean){
+		this.isEdit = flag;
+	}
 }
