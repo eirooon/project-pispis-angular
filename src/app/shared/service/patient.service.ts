@@ -10,7 +10,6 @@ export class PatientService {
 	patientDoc: AngularFirestoreDocument<Patient>;
 	patients: Observable<Patient[]>;
 	patient: Patient;
-	patient2: Observable<Patient>;
 	isEdit: boolean = false;
 
 	CLASSNAME: string = this.constructor.name;
@@ -145,69 +144,16 @@ export class PatientService {
 		return this.isEdit;
 	}
 
-	/**
-	 * Method: setPatient
-	 * Description: Set patient information
-	 * @param patient
-	 * @return void
-	 */
-	setPatient(patient: Patient) {
-		this.logger.info(this.CLASSNAME, "setPatient", "Patient: " + patient.id);
-		this.patient = patient;
-	}
-
-	/**
-	 * Method: getPatient
-	 * Description: Get patient information
-	 * @return patient
-	 */
-	getPatient() {
-		this.logger.info(this.CLASSNAME, "getPatient", "Patient: " + this.patient);
-		return this.patient;
-	}
-
-	getPatientById(id: string) {
-
-		this.logger.warn(this.CLASSNAME, "HAHA","FIRST:" + id);
-		this.afs.collection('patients', ref => ref.where('idDoc', '==', localStorage.getItem("UID"))).doc(id).ref.get().then((doc) => {
+	getPatientById() {
+		this.afs.collection('patients', ref => ref.where('idDoc', '==', localStorage.getItem("UID"))).doc(localStorage.getItem("ptId")).ref.get().then((doc) => {
 			if (doc.exists) {
 				this.patient = doc.data() as Patient;
-				this.logger.warn(this.CLASSNAME, "HAHA","Document dataQ:" + this.patient.id);
-				this.logger.warn(this.CLASSNAME, "HAHA","Document data:" + this.patient.birthdate);
 			} else {
-				this.logger.warn(this.CLASSNAME, "HAHA","No such document!");
+				this.logger.warn(this.CLASSNAME, "getPatientById", "No such document!");
 			}
-		  }).catch(function(error) {
-			this.logger.warn(this.CLASSNAME, "HAHA","Error getting document:");
-		  });
-
-
-
-		
-		// // this.logger.warn(this.CLASSNAME, "getPatient", "jobern111");
-		// // this.patient = this.afs.collection('patients', ref => ref.where('id', '==', id)).ref;
-		// // // this.patients = this.patientsCollection.snapshotChanges()
-		// // // 	.map(changes => {
-		// // // 		return changes.map(a => {
-		// // // 			const data = a.payload.doc.data() as Patient;
-		// // // 			data.id = a.payload.doc.id;
-		// // // 			return data;
-		// // // 		})
-		// // // 	});
-		// // return this.patient;
-		// this.logger.warn(this.CLASSNAME, "HHAHA2", "id" + id);
-		// this.patientDoc = this.afs.collection('patients').doc(id);
-		// this.patientDoc.ref.get().then((doc) => {
-		// 	if (doc.exists) {
-		// 		this.patient = doc.data() as Patient;
-		// 	} else {
-		// 		this.logger.warn(this.CLASSNAME, "HAHA", "HUHU");
-		// 	}
-		// }).catch(function(error) {
-
-		// });
-
-		//this.logger.warn(this.CLASSNAME, "HAHA", "reached!" + this.patient.emgy_lastname);
+		}).catch(function (error) {
+			this.logger.warn(this.CLASSNAME, "getPatientById", "Error getting document!");
+		});
 		return this.patient;
 	}
 }

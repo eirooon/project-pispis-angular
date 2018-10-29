@@ -28,7 +28,7 @@ export class PdConsultationVitalsComponent implements OnInit {
     private consultationService: ConsultationService,
     private patientService: PatientService,) {    
      this.logger.info(this.CLASSNAME, "ngOnInit", "Initial Load");
-    this.patient = this.patientService.getPatient();
+    this.patient = this.patientService.getPatientById();
   }
 
   vitalsForm = new FormGroup({
@@ -164,7 +164,7 @@ export class PdConsultationVitalsComponent implements OnInit {
   addConsultationVitals(){
     if (this.vitalsForm.valid) {
       this.consultationText.type = "Vitals";
-      this.consultationText.idPatient = localStorage.getItem("ptId");
+      this.consultationText.idPatient = this.patient.id;
       this.consultationText.clinicname = this.vitalsForm.value.clinicname,
       this.consultationText.date = this.vitalsForm.value.date;
       this.consultationText.patientType = this.vitalsForm.value.patientType;

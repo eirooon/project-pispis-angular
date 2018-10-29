@@ -29,7 +29,7 @@ export class PdVitalSignsAllComponent implements OnInit {
     private consultationService: ConsultationService,
     private patientService: PatientService,) {    
      this.logger.info(this.CLASSNAME, "ngOnInit", "Initial Load");
-    this.patient = this.patientService.getPatient();
+    this.patient = this.patientService.getPatientById();
   }
 
   vitalsForm = new FormGroup({

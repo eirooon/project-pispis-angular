@@ -3,8 +3,8 @@ import { Location } from '@angular/common';
 import { Logger } from '../../../../shared/service/logger.service';
 import { Allergy } from '../../../../shared/models/allergyModel';
 import { AllergyService } from '../../../../shared/service/allergy.service';
+import { PatientService } from '../../../../shared/service/patient.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pd-health-profile-allergy',
@@ -20,10 +20,11 @@ export class PdHealthProfileAllergyComponent implements OnInit {
 
   constructor(
     private allergyService: AllergyService,
+    private patientService: PatientService,
     private location: Location,
     private logger: Logger,
     private formBuilder: FormBuilder
-  ) { 
+  ) {
     this.ngOnInit();
     this.initializeAllergy();
   }
@@ -50,7 +51,7 @@ export class PdHealthProfileAllergyComponent implements OnInit {
       allergyKind: '',
       allergySeverity: '',
       allergyReaction: '',
-      patientId: ''
+      patientId: localStorage.getItem("ptId"),
     }
   }
 
@@ -72,5 +73,6 @@ export class PdHealthProfileAllergyComponent implements OnInit {
     //Check for valid inputs
     this.allergyService.addAllergy(this.allergy);
     this.logger.info(this.CLASSNAME, "addAllergy", "Allergy ID: [" + this.allergy.id + "] Adding done");
+    this.goBack();
   }
 }

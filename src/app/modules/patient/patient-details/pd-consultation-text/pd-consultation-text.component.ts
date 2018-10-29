@@ -34,7 +34,7 @@ export class PdConsultationTextComponent implements OnInit {
     private logger: Logger
   ) {
     this.logger.info(this.CLASSNAME, "ngOnInit", "Initial Load");
-    this.patient = this.patientService.getPatient();
+    this.patient = this.patientService.getPatientById();
   }
 
   consultationForm = new FormGroup({

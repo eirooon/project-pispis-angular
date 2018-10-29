@@ -23,7 +23,7 @@ export class PdConsultationComponent implements OnInit {
     private patientService: PatientService,
     private logger: Logger
   ) {
-    this.patient = patientService.getPatient();
+    this.patient = patientService.getPatientById();
     this.ngOnInit();
   }
 
@@ -33,7 +33,7 @@ export class PdConsultationComponent implements OnInit {
    * @return void
    */
   ngOnInit() {
-    this.consultationService.getConsultationText(localStorage.getItem("ptId"))
+    this.consultationService.getConsultationText(this.patient.id)
       .subscribe(consultations => {
         if (consultations.length > 0) {
           this.hasList = true;

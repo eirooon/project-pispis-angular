@@ -24,7 +24,7 @@ export class PdPersonalProfileComponent implements OnInit {
     private router: Router,
     private logger: Logger
   ) {
-    this.ngOnInit();
+    
   }
 
   /**
@@ -34,7 +34,8 @@ export class PdPersonalProfileComponent implements OnInit {
    */
   ngOnInit() {
     this.logger.info(this.CLASSNAME, "ngOnInit", "Patient Personal Profile Load");
-    //this.patient = this.patientService.getPatientById(localStorage.getItem("ptId"));
+    // this.logger.info(this.CLASSNAME, "JOBERN LORETIZO", "Patient: " + localStorage.getItem("ptId"));
+    this.patient =  this.patientService.getPatientById();
   }
 
   /**
@@ -55,7 +56,6 @@ export class PdPersonalProfileComponent implements OnInit {
    */
   goBack() {
     this.patientService.setIsEdit(false);
-    this.patientService.setPatient(null);
     this.location.back();
   }
 

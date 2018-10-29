@@ -15,30 +15,12 @@
     </button>
   </div>
   <ul class="list-view-wrapper">
-    <li class="hp-allergy-list-view-item">
+    <li *ngFor="let allergy of allergies" class="hp-allergy-list-view-item">
       <span>1</span>
       <div class="list-details">
-          <a class="item-name text-ellipsis">Fish/Shellfish (Food)</a>
-          <span class="item-desc text-ellipsis">Mild</span>
-          <span class="item-desc text-ellipsis">Reaction Description</span>
-      </div>
-      <div class="ic-action-wrapper"><i class="mdi mdi-pencil"></i></div>
-    </li>
-    <li class="hp-allergy-list-view-item">
-      <span>2</span>
-      <div class="list-details">
-          <a class="item-name text-ellipsis">Fish/Shellfish (Food)</a>
-          <span class="item-desc text-ellipsis">Mild</span>
-          <span class="item-desc text-ellipsis">Reaction Description</span>
-      </div>
-      <div class="ic-action-wrapper"><i class="mdi mdi-pencil"></i></div>
-    </li>
-    <li class="hp-allergy-list-view-item">
-      <span>3</span>
-      <div class="list-details">
-          <a class="item-name text-ellipsis">Fish/Shellfish (Food)</a>
-          <span class="item-desc text-ellipsis">Mild</span>
-          <span class="item-desc text-ellipsis">Reaction Description</span>
+          <a class="item-name text-ellipsis">{{allergy.allergyKind}} ({{allergy.allergyType}})</a>
+          <span class="item-desc text-ellipsis">{{allergy.allergySeverity}}</span>
+          <span class="item-desc text-ellipsis">{{allergy.Reaction}}</span>
       </div>
       <div class="ic-action-wrapper"><i class="mdi mdi-pencil"></i></div>
     </li>

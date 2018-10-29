@@ -112,9 +112,9 @@ export class PatientComponent implements OnInit {
    * @return void
    */
   setPatientDetails(event, patient: Patient) {
-    //this.patientService.setPatient(patient);
+    localStorage.removeItem("ptId");
     localStorage.setItem("ptId", patient.id);
-    this.patientService.getPatientById(localStorage.getItem("ptId"))
+    //this.patientService.getPatientById();
   }
 
   /**

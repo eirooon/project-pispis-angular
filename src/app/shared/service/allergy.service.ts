@@ -51,7 +51,7 @@ export class AllergyService {
 	 * @return void
 	 */
 	updateAllergy(allergy: Allergy) {
-		this.logger.info(this.CLASSNAME, "updateAllergy", "Patient Id: " + allergy.id);
+		this.logger.info(this.CLASSNAME, "updateAllergy", "Allergy Id: " + allergy.id);
 		this.allergyDocument = this.afs.doc(`allergy/${allergy.id}`);
 		this.allergyDocument.update(allergy);
 	}

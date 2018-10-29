@@ -66,9 +66,9 @@ export class HomeComponent implements OnInit {
    * @param patient 
    * @return void
    */
-  getPatientDetailsHome(event, patient) {
-    this.patientService.setPatient(patient);
-  }
+  // getPatientDetailsHome(event, patient) {
+  //   this.patientService.setPatient(patient);
+  // }
 
   /**
    * Method: getDoctorsName
