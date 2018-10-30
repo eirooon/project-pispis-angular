@@ -8,7 +8,7 @@
     <div class="subheader-wrapper">
         <div class="search-wrapper">
             <i class="search-icon mdi mdi-magnify"></i>
-            <input class="search-bar" placeholder="Search Name" [(ngModel)]="searchterm" (keyup.enter)="search($event)"/>
+            <input class="search-bar" placeholder="Search Name" [(ngModel)]="searchterm" (keydown)="search($event)" (keyup)="search($event)"/>
         </div>
         <div class="button-wrapper">
             <button title="Quick Filters" class="btn btn-default btn-icon"><i class="mdi mdi-filter-variant"></i></button>

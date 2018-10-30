@@ -15,7 +15,7 @@
                     <label>Allergy Type*</label>
                     <div class="form-select-wrapper">
                         <i class="mdi mdi-caret-down"></i>
-                        <select name="type" class="form-control" value="{{allergy.allergyType}}" [(ngModel)]="allergy.allergyType" required>
+                        <select name="Allergy Type" class="form-control" value="{{allergy.allergyType}}" [(ngModel)]="allergy.allergyType" required>
                             <option value='' hidden>Select Allergy Type</option>
                             <option>Food</option>
                             <option>Drug</option>
@@ -27,7 +27,7 @@
                     <label>Allergy*</label>
                     <div class="form-select-wrapper">
                         <i class="mdi mdi-caret-down"></i>
-                        <select name="type" class="form-control" value="{{allergy.allergyKind}}" [(ngModel)]="allergy.allergyKind" required>
+                        <select name="Allergy Kind" class="form-control" value="{{allergy.allergyKind}}" [(ngModel)]="allergy.allergyKind" required>
                             <option value='' hidden>Select Allergy</option>
                             <option>Allergy 1</option>
                             <option>Allergy 2</option>
@@ -39,7 +39,7 @@
                     <label>Severity</label>
                     <div class="form-select-wrapper">
                         <i class="mdi mdi-caret-down"></i>
-                        <select name="type" class="form-control" value="{{allergy.allergySeverity}}" [(ngModel)]="allergy.allergySeverity" required>
+                        <select name="Allergy Severity" class="form-control" value="{{allergy.allergySeverity}}" [(ngModel)]="allergy.allergySeverity" required>
                             <option value='' hidden>Select Severity</option>
                             <option>Mild</option>
                             <option>Moderate</option>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="form-group">
                     <label>Reaction</label>
-                    <!-- <input formControlName="address" name="address" class="form-control" type="text" placeholder="Enter address"/> -->
+                    <input name="Allergy Reaction" class="form-control" type="text" placeholder="Enter Reaction" value="{{allergy.allergyReaction}}" [(ngModel)]="allergy.allergyReaction"/>
                     <!-- <control-messages [control]="ptnForm.controls.address"></control-messages> -->
                 </div>
               </div>

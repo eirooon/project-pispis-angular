@@ -31,13 +31,6 @@ export class PdHealthProfileAllergyComponent implements OnInit {
     this.isEdit = allergyService.getIsEdit();
     if(this.isEdit) {
       this.allergy = this.allergyService.getAllergy();
-
-      this.logger.error(this.CLASSNAME, "JOBERN", "TYPE: " + this.allergy.allergyType);
-      this.logger.error(this.CLASSNAME, "JOBERN", "KIND: " + this.allergy.allergyKind);
-      this.logger.error(this.CLASSNAME, "JOBERN", "REACTION: " + this.allergy.allergyReaction);
-      this.logger.error(this.CLASSNAME, "JOBERN", "SEVERITY: " + this.allergy.allergySeverity);
-      this.logger.error(this.CLASSNAME, "JOBERN", "PATIENT ID: " + this.allergy.patientId);
-      this.logger.error(this.CLASSNAME, "JOBERN", "ID: " + this.allergy.id);
     }
   }
 

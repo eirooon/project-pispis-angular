@@ -97,10 +97,20 @@ export class AllergyService {
 		return this.allergy;
 	}
 
+	/**
+	 * Method: getIsEdit
+	 * Description: Get if Update is Active
+	 * @return boolean
+	 */
 	getIsEdit(){
 		return this.isEdit;
 	}
 
+	/**
+	 * Method: setIsEdit
+	 * Description: Set allergy state if edit
+	 * @return boolean
+	 */
 	setIsEdit(flag: boolean){
 		this.isEdit = flag;
 	}
