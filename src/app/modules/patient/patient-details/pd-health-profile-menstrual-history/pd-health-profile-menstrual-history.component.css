@@ -1,0 +1,15 @@
+.content-wrapper{
+    max-width: 600px;
+    margin: auto;
+    padding-top: 80px;}
+section{
+    background-color: white;
+    padding:20px;
+    border: 1px solid #fafafa;
+}
+.text-area{
+    background-color: #fff;
+    border-radius: 4px;
+    padding:20px;
+    margin: 20px auto;
+}

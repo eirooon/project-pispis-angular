@@ -19,6 +19,7 @@ import { PdConsultationVitalsComponent } from './patient-details/pd-consultation
 import { PdVitalSignsComponent } from './patient-details/pd-vital-signs/pd-vital-signs.component';
 import { PdVitalSignsWeightComponent } from './patient-details/pd-vital-signs-weight/pd-vital-signs-weight.component';
 import { PdVitalSignsAllComponent } from './patient-details/pd-vital-signs-all/pd-vital-signs-all.component';
+import { PdHealthProfileMenstrualHistoryComponent } from './patient-details/pd-health-profile-menstrual-history/pd-health-profile-menstrual-history.component';
 
 @NgModule({
     declarations: [
@@ -36,7 +37,8 @@ import { PdVitalSignsAllComponent } from './patient-details/pd-vital-signs-all/p
         PdConsultationVitalsComponent,
         PdVitalSignsComponent,
         PdVitalSignsWeightComponent,
-        PdVitalSignsAllComponent
+        PdVitalSignsAllComponent,
+        PdHealthProfileMenstrualHistoryComponent
     ],
     imports: [
         PatientRoutingModule,

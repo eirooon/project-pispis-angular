@@ -16,6 +16,7 @@ import { PdConsultationVitalsComponent } from './patient-details/pd-consultation
 import { PdVitalSignsComponent } from './patient-details/pd-vital-signs/pd-vital-signs.component';
 import { PdVitalSignsWeightComponent } from './patient-details/pd-vital-signs-weight/pd-vital-signs-weight.component';
 import { PdVitalSignsAllComponent } from './patient-details/pd-vital-signs-all/pd-vital-signs-all.component';
+import { PdHealthProfileMenstrualHistoryComponent } from './patient-details/pd-health-profile-menstrual-history/pd-health-profile-menstrual-history.component';
 
 const routes: Routes = [
   { 
@@ -55,6 +56,11 @@ const routes: Routes = [
   { 
     path: 'health-profile-selection', 
     component: PdHealthProfileSelectionComponent,
+    canActivate:[AuthGuard]
+  },
+  { 
+    path: 'health-profile-menstrual-history', 
+    component: PdHealthProfileMenstrualHistoryComponent,
     canActivate:[AuthGuard]
   },
   { 

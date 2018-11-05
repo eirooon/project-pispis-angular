@@ -56,6 +56,9 @@ h3{
     color: #0052cc;
 }
 
+.hp-form-wrapper{
+    padding: 20px 15px;
+}
 @media only screen and (max-width: 420px){
     .list-details{
         grid-template-columns: 1fr;

@@ -1,0 +1,100 @@
+<header class="header-secondary">
+    <div class="header-wrapper">
+        <div class="menu-left" (click)="goBack()">
+            <i class="mdi mdi-arrow-left"></i>
+        </div>
+        <div class="menu-title">Menstrual History</div>
+    </div>
+  </header>
+  <div class="content-wrapper">
+    <form>
+      <section>
+        <div class="form-inputs">
+            <div class="form-group">
+                <label>Menarche (Age of First Menstruation)</label>
+                <input class="form-control" type="text" placeholder="Enter Menarche (Age of First Menstruation)" />
+            </div>
+            <div class="form-group">
+                <label>Average Days Duration</label>
+                <input class="form-control" type="text" placeholder="Enter Average Days Duration" />
+            </div>
+            <div class="form-group">
+                <label>Interval</label>
+                <div class="form-select-wrapper">
+                  <sui-select class="selection form-control"
+                      [isSearchable]="searchable"
+                      [isDisabled]="true">
+                      <sui-select-option value="Regular"></sui-select-option>
+                      <sui-select-option value="Irregular"></sui-select-option>
+                      <sui-select-option value="Unknown"></sui-select-option>
+                  </sui-select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Dysmenorrhea</label>
+                <div class="form-select-wrapper">
+                  <sui-select class="selection form-control"
+                      [isSearchable]="searchable">
+                      <sui-select-option value="With"></sui-select-option>
+                      <sui-select-option value="Without"></sui-select-option>
+                      <sui-select-option value="Unknown"></sui-select-option>
+                  </sui-select>
+                </div>
+            </div>
+            <div class="form-group">
+              <label>Cycle Duration</label>
+              <input class="form-control" type="text" placeholder="Enter Cycle Duration" />
+            </div>
+            <div class="form-group">
+              <label>Average Amount of Napkins/Diapers/Cheeseclothe</label>
+              <input class="form-control" type="text" placeholder="Enter Average Amount of Napkins/Diapers/Cheeseclothe" />
+            </div>
+            <div class="form-group">
+                <label for="">Last Menstruation Period</label>
+                <div class="ui left icon input">
+                    <i class="calendar icon"></i>
+                    <input suiDatepicker
+                            [pickerMode]="date"
+                            [pickerFirstDayOfWeek]="firstDayOfWeek"
+                            [pickerUseNativeOnMobile]="false"
+                            placeholder="From">
+                </div>
+                <br>
+                <div class="ui left icon input">
+                    <i class="calendar icon"></i>
+                    <input suiDatepicker
+                            [pickerMode]="date"
+                            [pickerUseNativeOnMobile]="false"
+                            placeholder="To">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Previous  Normal Menstruation Period</label>
+                <div class="ui left icon input">
+                    <i class="calendar icon"></i>
+                    <input suiDatepicker
+                            [pickerMode]="date"
+                            [pickerFirstDayOfWeek]="firstDayOfWeek"
+                            [pickerUseNativeOnMobile]="false"
+                            placeholder="From">
+                </div>
+                <br>
+                <div class="ui left icon input">
+                    <i class="calendar icon"></i>
+                    <input suiDatepicker
+                            [pickerMode]="date"
+                            [pickerUseNativeOnMobile]="false"
+                            placeholder="To">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Age of Menopause</label>
+                <input class="form-control" type="text" placeholder="Enter Age of Menopause" />
+            </div>
+        </div>
+      </section>
+      <section>
+          <button class="btn btn-primary btn-wide">Save Menstrual History</button>     
+      </section>
+    </form>
+  </div>

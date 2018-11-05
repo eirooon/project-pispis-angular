@@ -28,7 +28,8 @@ import {
   SuiTabsModule,
   SuiSelectModule,
   SuiModalModule,
-  SuiAccordionModule
+  SuiAccordionModule,
+  SuiDatepickerModule
 } from 'ng2-semantic-ui';
 
 
@@ -42,7 +43,8 @@ import {
     SuiSelectModule,
     SuiModalModule,
     SuiAccordionModule,
-    HttpClientModule
+    HttpClientModule,
+    SuiDatepickerModule
   ],
   declarations: [
     HeaderComponent,
@@ -59,7 +61,8 @@ import {
     SuiSelectModule,
     SuiModalModule,
     SuiAccordionModule,
-    HttpClientModule
+    HttpClientModule,
+    SuiDatepickerModule
   ],
   providers: [
     PatientService,
