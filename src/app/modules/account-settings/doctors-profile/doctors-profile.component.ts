@@ -28,6 +28,7 @@ export class DoctorsProfileComponent implements OnInit {
    */
   ngOnInit() {
     this.loadDoctor();
+
   }
 
   /**
@@ -68,6 +69,6 @@ export class DoctorsProfileComponent implements OnInit {
    * @return void
    */
   goBack() {
-    // this.location.back();
+    this.location.back();
   }
 }

@@ -82,13 +82,14 @@
 
 <ng-template class="customModal" let-context let-modal="modal" #addPrescriptionModal>
   <div class="header">Add New Prescription Item</div>
+  <form [formGroup]="medicineForm" (ngSubmit)="addMedicine()">
   <div class="content">
-    <form>
+
       <div class="form-group">
         <label>Select medicine from library</label>
         <div class="form-select-wrapper">
           <i class="mdi mdi-caret-down"></i>
-          <select name="type" class="form-control" autofocus>
+          <select formControlName="medicineName" name="medicineName"  class="form-control" autofocus required>
             <option value='' hidden>Select medicine</option>
             <option>Medicine 001</option>
             <option>Medicine 001</option>
@@ -176,10 +177,11 @@
           </div>
         </sui-accordion-panel>
       </sui-accordion>
-    </form>
+
   </div>
   <div class="actions">
     <button class="ui  button" (click)="modal.deny('denied')">Cancel</button>
     <button class="ui green button" (click)="modal.approve('approved')" autofocus>Add New Schedule</button>
   </div>
+</form>
 </ng-template>
