@@ -100,7 +100,7 @@ h1, h2, h3, h4, h5, h6{
     font-weight: 200;
     }
 .form-control{
-    background-color: rgb(252, 252, 252);
+    /* background-color: rgb(252, 252, 252); */
     border: 1px solid #f2f2f2;
     border-radius: 3px;
     -webkit-appearance: none;
@@ -119,7 +119,8 @@ input.form-control, select{
     padding: 0px 12px;}
 input.form-control:focus{
     outline: none;
-    border: 1px solid rgba(0, 82, 204, 0.521);
+    /* border: 1px solid rgba(0, 82, 204, 0.521); */
+    border: 1px solid #96c8da;
     box-shadow: none;}
 input.form-control::placeholder{
     color: #D2D2D2;

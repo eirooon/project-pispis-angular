@@ -11,7 +11,7 @@
 
         <!-- Still Need to Add Modal -->
         <h3>New weight reading</h3> 
-        <button title="New Consultation" class="btn btn-default btn-icon">
+        <button title="New Consultation" class="btn btn-default btn-icon" (click)="openAddNewWeightModal(true)">
           <i class="mdi mdi-plus"></i>
         </button>
       </div>
@@ -40,3 +40,21 @@
         </ul>
     </section>
 </div>
+
+
+
+<ng-template class="customModal" let-context let-modal="modal" #addNewWeightModal>
+    <div class="header">Add New Weight</div>
+    <div class="content">
+        <form>
+            <div class="form-group">
+                <label for="username">Weight (kg)</label>
+                <input type="text" class="form-control">
+            </div>
+        </form>
+    </div>
+    <div class="actions">
+        <button class="ui  button" (click)="modal.deny('denied')">Cancel</button>
+        <button class="ui green button"  (click)="modal.approve('approved')" autofocus>Add New Schedule</button>
+    </div>
+</ng-template>

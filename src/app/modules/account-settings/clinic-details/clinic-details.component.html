@@ -35,6 +35,13 @@
                 <section>
                     <div class="form-group">
                         <label>Province</label>
+
+                        <!-- <div class="form-select-wrapper">
+                                <sui-select class="selection form-control"
+                                    [isSearchable]="false" id="province" formControlName="province" >
+                                    <sui-select-option *ngFor="let province of provinceList" value="{{province.name}}"></sui-select-option>
+                                </sui-select>
+                        </div> -->
                         <input type="text" placeholder="Find province" list="provinceList" id="province" formControlName="province" data-list-filter="^"
                             class="form-control">
                         <datalist id="provinceList">
