@@ -15,7 +15,6 @@ import { PdConsultationPrescriptionComponent } from './patient-details/pd-consul
 import { PdHealthProfileComponent } from './patient-details/pd-health-profile/pd-health-profile.component';
 import { PdHealthProfileSelectionComponent } from './patient-details/pd-health-profile-selection/pd-health-profile-selection.component';
 import { PdHealthProfileAllergyComponent } from './patient-details/pd-health-profile-allergy/pd-health-profile-allergy.component';
-import { PdConsultationVitalsComponent } from './patient-details/pd-consultation-vitals/pd-consultation-vitals.component';
 import { PdVitalSignsComponent } from './patient-details/pd-vital-signs/pd-vital-signs.component';
 import { PdVitalSignsWeightComponent } from './patient-details/pd-vital-signs-weight/pd-vital-signs-weight.component';
 import { PdVitalSignsAllComponent } from './patient-details/pd-vital-signs-all/pd-vital-signs-all.component';
@@ -34,7 +33,6 @@ import { PdHealthProfileMenstrualHistoryComponent } from './patient-details/pd-h
         PdHealthProfileComponent,
         PdHealthProfileSelectionComponent,
         PdHealthProfileAllergyComponent,
-        PdConsultationVitalsComponent,
         PdVitalSignsComponent,
         PdVitalSignsWeightComponent,
         PdVitalSignsAllComponent,

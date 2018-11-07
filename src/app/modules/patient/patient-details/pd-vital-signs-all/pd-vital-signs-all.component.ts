@@ -9,6 +9,8 @@ import { ConsultationTextModel } from '../../../../shared/models/consulationMode
 import { ConsultationService } from '../../../../shared/service/consultation.service';
 import { Patient } from '../../../../shared/models/patient';
 import { PatientService } from '../../../../shared/service/patient.service';
+import { VitalsModel } from '../../../../shared/models/vitalsModel';
+import { VitalSignsService } from '../../../../shared/service/vital-signs.service';
 
 @Component({
   selector: 'app-pd-vital-signs-all',
@@ -19,32 +21,30 @@ export class PdVitalSignsAllComponent implements OnInit {
 
   
   CLASSNAME: string = this.constructor.name;
-  consultationText: ConsultationTextModel;
+  vitals: VitalsModel;
   patient: Patient;
 
   constructor(
     private location: Location,
     private router: Router,
     private logger: Logger,
-    private consultationService: ConsultationService,
+    private vitalsService: VitalSignsService,
     private patientService: PatientService,) {    
      this.logger.info(this.CLASSNAME, "ngOnInit", "Initial Load");
     this.patient = this.patientService.getPatientById();
   }
 
   vitalsForm = new FormGroup({
-    clinicname: new FormControl("", Validators.required),
-    date: new FormControl("", Validators.required),
-    patientType: new FormControl("", Validators.required),
-    weight: new FormControl("", Validators.required),
-    height: new FormControl("", Validators.required),
-    bloodPressure: new FormControl("", Validators.required),
-    oxygenSaturation: new FormControl("", Validators.required),
-    respiratoryRate: new FormControl("", Validators.required),
-    heartRate: new FormControl("", Validators.required),
-    bodyTemperature: new FormControl("", Validators.required),
-    headCircumference: new FormControl("", Validators.required),
-    capillaryBloodGlucose: new FormControl("", Validators.required),
+    date: new FormControl(""),
+    weight: new FormControl(""),
+    height: new FormControl(""),
+    bloodPressure: new FormControl(""),
+    oxygenSaturation: new FormControl(""),
+    respiratoryRate: new FormControl(""),
+    heartRate: new FormControl(""),
+    bodyTemperature: new FormControl(""),
+    headCircumference: new FormControl(""),
+    capillaryBloodGlucose: new FormControl(""),
   })
 
   /**
@@ -64,15 +64,6 @@ export class PdVitalSignsAllComponent implements OnInit {
    */
   cancel() {
     this.router.navigateByUrl('/patient/patient-details');
-  }
-
-  /**
-   * Method: clinicname
-   * Description: Get clinic name
-   * @return clinicname
-   */
-  get clinicname() {
-    return this.vitalsForm.get("clinicname");
   }
 
   /**
@@ -141,14 +132,10 @@ export class PdVitalSignsAllComponent implements OnInit {
    * @return void
    */
   initializeVitals() {
-    this.consultationText = {
+    this.vitals = {
       id: '',
       idPatient: '',
-      clinicname: '',
-      text: '',
       date: '',
-      type: '',
-      patientType: '',
       weight:'',
       height:'',
       bloodPressure:'',
@@ -162,26 +149,23 @@ export class PdVitalSignsAllComponent implements OnInit {
   }
 
 
-  addConsultationVitals(){
+  addVitals(){
     if (this.vitalsForm.valid) {
-      this.consultationText.type = "Vitals";
-      this.consultationText.idPatient = this.patient.id;
-      this.consultationText.clinicname = this.vitalsForm.value.clinicname,
-      this.consultationText.date = this.vitalsForm.value.date;
-      this.consultationText.patientType = this.vitalsForm.value.patientType;
+      this.vitals.idPatient = this.patient.id;
+      this.vitals.date = this.vitalsForm.value.date;
 
-      this.consultationText.weight = this.vitalsForm.value.weight;
-      this.consultationText.height = this.vitalsForm.value.height;
-      this.consultationText.bloodPressure= this.vitalsForm.value.bloodPressure;
-      this.consultationText.oxygenSaturation= this.vitalsForm.value.oxygenSaturation;
-      this.consultationText.respiratoryRate= this.vitalsForm.value.respiratoryRate;
-      this.consultationText.heartRate= this.vitalsForm.value.heartRate;
-      this.consultationText.bodyTemperature= this.vitalsForm.value.bodyTemperature;
-      this.consultationText.headCircumference= this.vitalsForm.value.headCircumference;
-      this.consultationText.capillaryBloodGlucose= this.vitalsForm.value.capillaryBloodGlucose;
-      this.consultationService.addConsultationText(this.consultationText);
+      this.vitals.weight = this.vitalsForm.value.weight;
+      this.vitals.height = this.vitalsForm.value.height;
+      this.vitals.bloodPressure= this.vitalsForm.value.bloodPressure;
+      this.vitals.oxygenSaturation= this.vitalsForm.value.oxygenSaturation;
+      this.vitals.respiratoryRate= this.vitalsForm.value.respiratoryRate;
+      this.vitals.heartRate= this.vitalsForm.value.heartRate;
+      this.vitals.bodyTemperature= this.vitalsForm.value.bodyTemperature;
+      this.vitals.headCircumference= this.vitalsForm.value.headCircumference;
+      this.vitals.capillaryBloodGlucose= this.vitalsForm.value.capillaryBloodGlucose;
+      this.vitalsService.addVitals(this.vitals);
       this.location.back();
-      this.logger.info(this.CLASSNAME, "addVitals", "Clinic name: [" + this.clinicname + "] Adding Consulation done.");
+      //this.logger.info(this.CLASSNAME, "addVitals", "Patient name: [" + this.idPatient + "] Adding Consulation done.");
     } else {
       this.logger.error(this.CLASSNAME, "addVitals", "Error: Form is invalid");
     }
