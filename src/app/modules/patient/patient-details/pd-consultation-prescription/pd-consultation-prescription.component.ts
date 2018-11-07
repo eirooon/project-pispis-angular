@@ -36,7 +36,10 @@ export class PdConsultationPrescriptionComponent implements OnInit {
     private logger: Logger,
     private patientService: PatientService,
   ) {
-    this.ngOnInit();
+    //this.ngOnInit();
+    this.patient = this.patientService.getPatientById(); //THIS PART ANG GA ERROR.
+    console.log("Patient id: " + this.patient.id);
+    this.logger.info(this.CLASSNAME, "constructor", "" );
   }
 
   prescriptionForm = new FormGroup({
