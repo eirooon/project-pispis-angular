@@ -14,31 +14,25 @@
     <section class="panel-container">
         <div class="form-group">
             <label>Patient Type*</label>
-            <div class="form-select-wrapper">
-                <i class="mdi mdi-caret-down"></i>
-                <select name="type" class="form-control"  formControlName="patientType" name="patientType"  required>
-                    <option value='' hidden>Select Patient Type</option>
-                    <option>Admitted</option>
-                    <option>In-Patient</option>
-                </select>
-            </div>
+            <sui-select class="selection form-control"
+            [isSearchable]="false" formControlName="type" [(ngModel)]="patient.type" required>
+                <sui-select-option value="In-Patient"></sui-select-option>
+                <sui-select-option value="Out-Patient"></sui-select-option>
+            </sui-select>
         </div>
-        <div class="form-group" form>
+        <div class="form-group">
             <label>Select Clinic</label>
-            <input type="text" placeholder="Select Clinic" list="clinicsList" id="clinics" formControlName="clinicname" data-list-filter="^" class="form-control">
-            <datalist id="clinicsList">
-                <select>
-                    <option *ngFor="let clinic of clinicsList" value="{{clinic.clinicname}}"></option>
-                </select>
-            </datalist>  
+            <sui-select class="selection form-control"
+                [isSearchable]="false" id="clinics" formControlName="clinicname" >
+                <sui-select-option *ngFor="let clinic of clinicsList" value="{{clinic.clinicname}}"></sui-select-option>
+            </sui-select>
         </div>
         <div class="form-group">
             <label for="username">Date</label>
-            <input 
-            class="form-control"
-            formControlName="date" 
-            id="date" 
-            type="date">
+            <div class="ui left icon input">
+                <i class="calendar icon"></i>
+                <input suiDatepicker pickerMode="date" formControlName="date" name="date" class="form-control" type="date" placeholder="Enter Date" id="date">
+            </div>
         </div>
     </section>
     <section class="text-area">

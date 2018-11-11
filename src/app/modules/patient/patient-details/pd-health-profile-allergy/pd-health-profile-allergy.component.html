@@ -12,19 +12,22 @@
             <div class="form-inputs">
                 <div class="form-group">
                     <label>Allergy Type*</label>
-                    <div class="form-select-wrapper">
-                        <i class="mdi mdi-caret-down"></i>
-                        <select name="Allergy Type" class="form-control" value="{{allergy.allergyType}}" [(ngModel)]="allergy.allergyType" required>
-                            <option value='' hidden>Select Allergy Type</option>
-                            <option>Food</option>
-                            <option>Drug</option>
-                            <option>Environmental</option>
-                        </select>
-                    </div>
+                    <sui-select class="selection form-control" [isSearchable]="false" name="Allergy Type" [(ngModel)]="allergy.allergyType" required>
+                        <sui-select-option value="Food"></sui-select-option>
+                        <sui-select-option value="Drug"></sui-select-option>
+                        <sui-select-option value="Environmental"></sui-select-option>
+                    </sui-select>
+
+                    <!-- value="{{allergy.allergyType}}"  -->
                 </div>
                 <div class="form-group">
                     <label>Allergy*</label>
-                    <div class="form-select-wrapper">
+                    <sui-select class="selection form-control" [isSearchable]="false" name="Allergy Kind" [(ngModel)]="allergy.allergyKind" required>
+                        <sui-select-option value="Allergy 1"></sui-select-option>
+                        <sui-select-option value="Allergy 2"></sui-select-option>
+                        <sui-select-option value="Allergy 3"></sui-select-option>
+                    </sui-select>
+                    <!-- <div class="form-select-wrapper">
                         <i class="mdi mdi-caret-down"></i>
                         <select name="Allergy Kind" class="form-control" value="{{allergy.allergyKind}}" [(ngModel)]="allergy.allergyKind" required>
                             <option value='' hidden>Select Allergy</option>
@@ -32,11 +35,16 @@
                             <option>Allergy 2</option>
                             <option>Allergy 3</option>
                         </select>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label>Severity</label>
-                    <div class="form-select-wrapper">
+                    <sui-select class="selection form-control" [isSearchable]="false" name="Allergy Severity" [(ngModel)]="allergy.allergySeverity" required>
+                        <sui-select-option value="Mild"></sui-select-option>
+                        <sui-select-option value="Moderate"></sui-select-option>
+                        <sui-select-option value="Severe"></sui-select-option>
+                    </sui-select>
+                    <!-- <div class="form-select-wrapper">
                         <i class="mdi mdi-caret-down"></i>
                         <select name="Allergy Severity" class="form-control" value="{{allergy.allergySeverity}}" [(ngModel)]="allergy.allergySeverity" required>
                             <option value='' hidden>Select Severity</option>
@@ -44,7 +52,7 @@
                             <option>Moderate</option>
                             <option>Severe</option>
                         </select>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="form-group">
                     <label>Reaction</label>

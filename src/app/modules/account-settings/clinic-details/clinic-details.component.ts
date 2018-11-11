@@ -9,6 +9,10 @@ import { Logger } from '../../../shared/service/logger.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Clinic } from '../../../shared/models/clinicModel';
 
+import { AllProvince } from '../../../shared/constantValues/provinceConstants';
+import { AllCity } from '../../../shared/constantValues/cityConstants';
+import { AllHospitals } from '../../../shared/constantValues/hospitalConstants';
+
 export interface IContext {
   data: string;
 }
@@ -26,6 +30,10 @@ export class ClinicDetailsComponent implements OnInit {
   myTitle = "Clinic";
   CLASSNAME: string = this.constructor.name;
 
+  provinceList = AllProvince;
+  cityList = AllCity;
+  hospitalList = AllHospitals;
+  
   clinicScheduleCollection: AngularFirestoreCollection<ClinicScheduleModel>;
   clinicSchedule: Observable<ClinicScheduleModel[]>;
   clinicScheduleDoc: AngularFirestoreDocument<ClinicScheduleModel>;

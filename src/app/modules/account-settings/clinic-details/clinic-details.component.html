@@ -35,46 +35,51 @@
                 <section>
                     <div class="form-group">
                         <label>Province</label>
-
-                        <!-- <div class="form-select-wrapper">
-                                <sui-select class="selection form-control"
-                                    [isSearchable]="false" id="province" formControlName="province" >
-                                    <sui-select-option *ngFor="let province of provinceList" value="{{province.name}}"></sui-select-option>
-                                </sui-select>
-                        </div> -->
-                        <input type="text" placeholder="Find province" list="provinceList" id="province" formControlName="province" data-list-filter="^"
+                        <sui-select class="selection form-control"
+                            [isSearchable]="false" id="province" formControlName="province" >
+                            <sui-select-option *ngFor="let province of provinceList" value="{{province.name}}"></sui-select-option>
+                        </sui-select>
+                        <!-- <input type="text" placeholder="Find province" list="provinceList" id="province" formControlName="province" data-list-filter="^"
                             class="form-control">
                         <datalist id="provinceList">
                             <select>
                                 <option *ngFor="let province of provinceList" value="{{province.name}}"></option>
                             </select>
-                        </datalist>
+                        </datalist> -->
                         <div *ngIf="province.touched && province.invalid" class="alert alert-danger hasError-text">
                             <div *ngIf="province.errors.required">Province is required</div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>City</label>
-                        <input type="text" placeholder="Find city" list="cityList" id="city" formControlName="city" data-list-filter="^" class="form-control">
+                        <sui-select class="selection form-control"
+                            [isSearchable]="false" id="city" formControlName="city" >
+                            <sui-select-option *ngFor="let province of cityList" value="{{province.name}}"></sui-select-option>
+                        </sui-select>
+                        <!-- <input type="text" placeholder="Find city" list="cityList" id="city" formControlName="city" data-list-filter="^" class="form-control">
                         <datalist id="cityList">
                             <select>
                                 <option *ngFor="let city of cityList" value="{{city.name}}"></option>
                             </select>
-                        </datalist>
+                        </datalist> -->
                         <div *ngIf="city.touched && city.invalid" class="alert alert-danger hasError-text">
                             <div *ngIf="city.errors.required">City is required</div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Hospital</label>
-                        <input type="text" placeholder="Find hospital" list="hospitalList" id="hospital" formControlName="hospital" data-list-filter="^"
+                        <sui-select class="selection form-control"
+                            [isSearchable]="true" id="hospital" formControlName="hospital" >
+                            <sui-select-option *ngFor="let hospital of hospitalList" value="{{hospital.name}}"></sui-select-option>
+                        </sui-select>
+                        <!-- <input type="text" placeholder="Find hospital" list="hospitalList" id="hospital" formControlName="hospital" data-list-filter="^"
                         class="form-control">
                         <datalist id="hospitalList">
                             <select>
                                 <option *ngFor="let hospital of hospitalList" value="{{hospital.name}}"></option>
                             </select>
         
-                        </datalist>
+                        </datalist> -->
                         <div *ngIf="hospital.touched && hospital.invalid" class="alert alert-danger hasError-text">
                             <div *ngIf="hospital.errors.required">Hospital is required</div>
                         </div>

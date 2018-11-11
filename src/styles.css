@@ -40,7 +40,7 @@ a{
     cursor: pointer;
 }
 span{
-    font-size: 10pt;
+    font-size: 16px;
     color: #474747;}
 h1, h2, h3, h4, h5, h6{
     color: #091E42;
@@ -90,7 +90,7 @@ h1, h2, h3, h4, h5, h6{
 }
 /*--- FORMS ---*/
 .form-group{
-    display: grid;
+    display: grid !important;
     grid-auto-columns: 100%;
     margin-bottom: 15px;}
 .form-group label{
@@ -108,7 +108,7 @@ h1, h2, h3, h4, h5, h6{
     /* border: 1px solid #B1B1B3; */
     /* box-shadow: 0 2px 2px -3px rgba(0,0,0,0.2); */
     color: #140b2f;
-    font-size: 12pt;
+    font-size: 16px;
     line-height: normal;
     transition: none;
     width: 100%;
