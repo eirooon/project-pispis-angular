@@ -53,38 +53,24 @@
                 <label for="">Last Menstruation Period</label>
                 <div class="ui left icon input">
                     <i class="calendar icon"></i>
-                    <input suiDatepicker
-                            [pickerMode]="date"
-                            [pickerFirstDayOfWeek]="firstDayOfWeek"
-                            [pickerUseNativeOnMobile]="false"
-                            placeholder="From">
-                </div>
-                <br>
-                <div class="ui left icon input">
-                    <i class="calendar icon"></i>
-                    <input suiDatepicker
-                            [pickerMode]="date"
-                            [pickerUseNativeOnMobile]="false"
-                            placeholder="To">
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Previous  Normal Menstruation Period</label>
-                <div class="ui left icon input">
-                    <i class="calendar icon"></i>
-                    <input suiDatepicker
-                            [pickerMode]="date"
-                            [pickerFirstDayOfWeek]="firstDayOfWeek"
-                            [pickerUseNativeOnMobile]="false"
-                            placeholder="From">
-                </div>
-                <br>
-                <div class="ui left icon input">
-                    <i class="calendar icon"></i>
-                    <input suiDatepicker
-                            [pickerMode]="date"
-                            [pickerUseNativeOnMobile]="false"
-                            placeholder="To">
+                    <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="datetime" placeholder="From">
+                    </div>
+                    <br>
+                    <div class="ui left icon input">
+                        <i class="calendar icon"></i>
+                        <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="datetime" placeholder="To">
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Previous Normal Menstruation Period</label>
+                        <div class="ui left icon input">
+                            <i class="calendar icon"></i>
+                            <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="datetime" placeholder="From">
+                        </div>
+                        <br>
+                        <div class="ui left icon input">
+                            <i class="calendar icon"></i>
+                            <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="datetime" placeholder="To">
                 </div>
             </div>
             <div class="form-group">

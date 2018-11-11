@@ -15,7 +15,7 @@
         <div class="form-group">
             <label>Patient Type*</label>
             <sui-select class="selection form-control"
-            [isSearchable]="false" formControlName="type" [(ngModel)]="patient.type" required>
+            [isSearchable]="false" formControlName="patientType" required>
                 <sui-select-option value="In-Patient"></sui-select-option>
                 <sui-select-option value="Out-Patient"></sui-select-option>
             </sui-select>
@@ -31,7 +31,7 @@
             <label for="username">Date</label>
             <div class="ui left icon input">
                 <i class="calendar icon"></i>
-                <input suiDatepicker pickerMode="date" formControlName="date" name="date" class="form-control" type="date" placeholder="Enter Date" id="date">
+                <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="datetime" formControlName="date" name="date" class="form-control" type="date" placeholder="Enter Date" id="date">
             </div>
         </div>
     </section>

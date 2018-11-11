@@ -14,11 +14,10 @@
     <section class="panel-container">
         <div class="form-group">
             <label for="username">Date</label>
-            <input 
-            class="form-control"
-            formControlName="date" 
-            id="date" 
-            type="date">
+            <div class="ui left icon input">
+                <i class="calendar icon"></i>
+                <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="datetime" formControlName="date" name="date" class="form-control" type="date" placeholder="Enter Date" id="date">
+            </div>
         </div>
     </section>
     <section class="details-area">

@@ -158,7 +158,7 @@ export class PdConsultationTextComponent implements OnInit {
       this.consultationText.patientType = this.consultationForm.value.patientType;
       this.consultationService.addConsultationText(this.consultationText);
       this.logger.info(this.CLASSNAME, "addConsultationText", "Clinic name: [" + this.clinicname + "] Adding Consulation done.");
-      this.router.navigateByUrl['/patient/patient-details'];
+      this.router.navigateByUrl['../patient/patient-details'];
     } else {
       this.logger.error(this.CLASSNAME, "addConsultationText", "Error: Form is invalid");
     }
