@@ -15,6 +15,7 @@ import { ConsultationService } from './service/consultation.service';
 import { DoctorService } from '../shared/service/doctor.service';
 import { ClinicService } from './service/clinic.service';
 import { AllergyService } from './service/allergy.service';
+import { MenstrualService } from './service/menstrual.service';
 import { Logger } from './service/logger.service';
 import { VitalSignsService } from './service/vital-signs.service';
 
@@ -72,6 +73,7 @@ import {
     DoctorService,
     ClinicService,
     AllergyService,
+    MenstrualService,
     Logger,
     VitalSignsService
   ]

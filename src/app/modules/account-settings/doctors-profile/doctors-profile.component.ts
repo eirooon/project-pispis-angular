@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { Doctor } from '../../../shared/models/doctor';
+import { Doctor } from '../../../shared/models/doctorModel';
 import { DoctorService } from '../../../shared/service/doctor.service';
 import { Logger } from '../../../shared/service/logger.service';
 

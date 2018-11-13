@@ -5,8 +5,8 @@ import { NgProgress } from 'ngx-progressbar';
 import { PatientService } from '../../shared/service/patient.service';
 import { DoctorService } from '../../shared/service/doctor.service';
 import { Logger } from '../../shared/service/logger.service';
-import { Patient } from '../../shared/models/patient';
-import { Doctor } from '../../shared/models/doctor';
+import { Patient } from '../../shared/models/patientModel';
+import { Doctor } from '../../shared/models/doctorModel';
 
 @Component({
   selector: 'app-home',

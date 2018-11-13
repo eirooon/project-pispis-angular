@@ -5,7 +5,7 @@ import { AuthService } from '../../shared/service/auth.service';
 import { DoctorService } from '../../shared/service/doctor.service';
 import { Logger } from '../../shared/service/logger.service';
 import { NgProgress } from 'ngx-progressbar';
-import { Doctor } from '../../shared/models/doctor';
+import { Doctor } from '../../shared/models/doctorModel';
 
 @Component({
   selector: 'app-signup',
