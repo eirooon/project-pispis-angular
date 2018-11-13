@@ -14,6 +14,8 @@ import { ConsultationTextModel } from '../../../../shared/models/consulationMode
 import { MedicineModel } from '../../../../shared/models/medicineModel';
 import { Clinic } from '../../../../shared/models/clinicModel';
 
+import { Patient } from '../../../../shared/models/patientModel';
+>>>>>>> 84ff4eb3b750f0749e892f3a01e11b3530762bcc
 export interface IContext {
   data: string;
 }

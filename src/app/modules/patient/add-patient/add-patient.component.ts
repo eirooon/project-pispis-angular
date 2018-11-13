@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
-import { Patient } from '../../../shared/models/patient';
+import { Patient } from '../../../shared/models/patientModel';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { AuthService } from '../../../shared/service/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Logger } from '../../../../shared/service/logger.service';
+import { MenstrualService } from '../../../../shared/service/menstrual.service';
+import { Menstrual } from '../../../../shared/models/menstrualModel';
 
 @Component({
   selector: 'app-pd-health-profile-selection',
@@ -11,10 +13,12 @@ import { Logger } from '../../../../shared/service/logger.service';
 export class PdHealthProfileSelectionComponent implements OnInit {
 
   CLASSNAME: string = this.constructor.name;
+  menstrual: Menstrual;
 
   constructor(
     private location: Location,
-    private logger: Logger
+    private logger: Logger,
+    private menstrualService: MenstrualService,
   ) {
     this.ngOnInit();
   }
@@ -35,5 +39,10 @@ export class PdHealthProfileSelectionComponent implements OnInit {
    */
   goBack() {
     this.location.back();
+  }
+
+  setMenstrualDetails(event){
+    // this.menstrual = this.menstrualService.getMenstrualInformationByPatientId();
+    // this.menstrualService.setMenstrual(this.menstrual);
   }
 }
