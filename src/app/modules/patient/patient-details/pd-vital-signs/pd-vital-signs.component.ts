@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 import { VitalsModel } from '../../../../shared/models/vitalsModel';
 import { Logger } from '../../../../shared/service/logger.service';
 import { PatientService } from '../../../../shared/service/patient.service';
-import { Patient } from '../../../../shared/models/patient';
+import { Patient } from '../../../../shared/models/patientModel';
 
 @Component({
   selector: 'pd-vital-signs',

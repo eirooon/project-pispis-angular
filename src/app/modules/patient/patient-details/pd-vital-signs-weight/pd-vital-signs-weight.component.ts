@@ -3,11 +3,11 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { SuiModalService, TemplateModalConfig, ModalTemplate } from 'ng2-semantic-ui';
 import { VitalsModel } from '../../../../shared/models/vitalsModel';
-import { Patient } from '../../../../shared/models/patient';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { VitalSignsService } from '../../../../shared/service/vital-signs.service';
 import { PatientService } from '../../../../shared/service/patient.service';
 import { Logger } from '../../../../shared/service/logger.service';
+import { Patient } from '../../../../shared/models/patientModel';
 
 export interface IContext {
   data: string;
@@ -47,7 +47,7 @@ export class PdVitalSignsWeightComponent implements OnInit {
   ngOnInit() {
     this.initializeVitals();
     this.logger.info(this.CLASSNAME, "ngOnInit", "Vitals Load");
-    
+
     this.vitalsService.getVitals(localStorage.getItem("ptId"))
       .subscribe(consultations => {
         if (consultations.length > 0) {
