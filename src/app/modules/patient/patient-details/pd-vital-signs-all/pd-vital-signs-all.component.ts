@@ -19,7 +19,6 @@ import { VitalSignsService } from '../../../../shared/service/vital-signs.servic
 })
 export class PdVitalSignsAllComponent implements OnInit {
 
-  
   CLASSNAME: string = this.constructor.name;
   vitals: VitalsModel;
   patient: Patient;
@@ -29,8 +28,8 @@ export class PdVitalSignsAllComponent implements OnInit {
     private router: Router,
     private logger: Logger,
     private vitalsService: VitalSignsService,
-    private patientService: PatientService,) {    
-     this.logger.info(this.CLASSNAME, "ngOnInit", "Initial Load");
+    private patientService: PatientService) {
+    this.logger.info(this.CLASSNAME, "ngOnInit", "Initial Load");
     this.patient = this.patientService.getPatientById();
   }
 
@@ -126,43 +125,43 @@ export class PdVitalSignsAllComponent implements OnInit {
     this.location.back();
   }
 
-   /**
-   * Method: initializeConsultation
-   * Description: Initialize Consulation
-   * @return void
-   */
+  /**
+  * Method: initializeConsultation
+  * Description: Initialize Consulation
+  * @return void
+  */
   initializeVitals() {
     this.vitals = {
       id: '',
       idPatient: '',
       date: '',
-      weight:'',
-      height:'',
-      bloodPressure:'',
-      oxygenSaturation:'',
-      respiratoryRate:'',
-      heartRate:'',
-      bodyTemperature:'',
-      headCircumference:'',
-      capillaryBloodGlucose:'',
+      weight: '',
+      height: '',
+      bloodPressure: '',
+      oxygenSaturation: '',
+      respiratoryRate: '',
+      heartRate: '',
+      bodyTemperature: '',
+      headCircumference: '',
+      capillaryBloodGlucose: '',
     }
   }
 
 
-  addVitals(){
+  addVitals() {
     if (this.vitalsForm.valid) {
       this.vitals.idPatient = this.patient.id;
       this.vitals.date = this.vitalsForm.value.date;
 
       this.vitals.weight = this.vitalsForm.value.weight;
       this.vitals.height = this.vitalsForm.value.height;
-      this.vitals.bloodPressure= this.vitalsForm.value.bloodPressure;
-      this.vitals.oxygenSaturation= this.vitalsForm.value.oxygenSaturation;
-      this.vitals.respiratoryRate= this.vitalsForm.value.respiratoryRate;
-      this.vitals.heartRate= this.vitalsForm.value.heartRate;
-      this.vitals.bodyTemperature= this.vitalsForm.value.bodyTemperature;
-      this.vitals.headCircumference= this.vitalsForm.value.headCircumference;
-      this.vitals.capillaryBloodGlucose= this.vitalsForm.value.capillaryBloodGlucose;
+      this.vitals.bloodPressure = this.vitalsForm.value.bloodPressure;
+      this.vitals.oxygenSaturation = this.vitalsForm.value.oxygenSaturation;
+      this.vitals.respiratoryRate = this.vitalsForm.value.respiratoryRate;
+      this.vitals.heartRate = this.vitalsForm.value.heartRate;
+      this.vitals.bodyTemperature = this.vitalsForm.value.bodyTemperature;
+      this.vitals.headCircumference = this.vitalsForm.value.headCircumference;
+      this.vitals.capillaryBloodGlucose = this.vitalsForm.value.capillaryBloodGlucose;
       this.vitalsService.addVitals(this.vitals);
       this.location.back();
       //this.logger.info(this.CLASSNAME, "addVitals", "Patient name: [" + this.idPatient + "] Adding Consulation done.");
