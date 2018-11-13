@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import { Patient } from '../models/patient';
+import { Patient } from '../models/patientModel';
 import { Logger } from './logger.service';
 
 @Injectable()
@@ -28,11 +28,20 @@ export class PatientService {
 			});
 	}
 
+	/**
+	 * Method: setPatient
+	 * Description: Set patient information
+	 */
 	setPatient(patient: Patient) {
 		this.logger.info(this.CLASSNAME, "setPatient", "Patient: " + patient.id);
 		this.patient = patient;
 	}
 
+	/**
+	 * Method: getPatient
+	 * Description: Get patient information
+	 * @return patient
+	 */
 	getPatient() {
 		this.logger.info(this.CLASSNAME, "getPatient", "Patient: " + this.patient.id);
 		return this.patient;
@@ -132,6 +141,11 @@ export class PatientService {
 		this.patientDoc.update(patient);
 	}
 
+	/**
+	 * Method: getPatientById
+	 * Description: Get Patient Information by Id
+	 * @return patient
+	 */
 	getPatientById() {
 		this.afs.collection('patients', ref => ref.where('idDoc', '==', localStorage.getItem("UID"))).doc(localStorage.getItem("ptId")).ref.get().then((doc) => {
 			if (doc.exists) {

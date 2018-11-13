@@ -7,7 +7,7 @@ import { ValueTransformer } from '@angular/compiler/src/util';
 import { validateArgCount } from '@firebase/util';
 import { ConsultationTextModel } from '../../../../shared/models/consulationModel';
 import { ConsultationService } from '../../../../shared/service/consultation.service';
-import { Patient } from '../../../../shared/models/patient';
+import { Patient } from '../../../../shared/models/patientModel';
 import { PatientService } from '../../../../shared/service/patient.service';
 import { VitalsModel } from '../../../../shared/models/vitalsModel';
 import { VitalSignsService } from '../../../../shared/service/vital-signs.service';

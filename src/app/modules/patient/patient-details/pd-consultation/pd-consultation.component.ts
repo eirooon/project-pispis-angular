@@ -3,7 +3,7 @@ import { ConsultationService } from '../../../../shared/service/consultation.ser
 import { ConsultationTextModel } from '../../../../shared/models/consulationModel';
 import { ClinicService } from '../../../../shared/service/clinic.service';
 import { PatientService } from '../../../../shared/service/patient.service';
-import { Patient } from '../../../../shared/models/patient';
+import { Patient } from '../../../../shared/models/patientModel';
 import { Logger } from '../../../../shared/service/logger.service';
 
 @Component({

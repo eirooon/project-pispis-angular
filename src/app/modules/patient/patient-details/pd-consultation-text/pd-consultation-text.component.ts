@@ -7,7 +7,7 @@ import { ConsultationService } from '../../../../shared/service/consultation.ser
 import { AuthService } from '../../../../shared/service/auth.service';
 import { ClinicService } from '../../../../shared/service/clinic.service';
 import { Clinic } from '../../../../shared/models/clinicModel';
-import { Patient } from '../../../../shared/models/patient';
+import { Patient } from '../../../../shared/models/patientModel';
 import { PatientService } from '../../../../shared/service/patient.service';
 import { Logger } from '../../../../shared/service/logger.service';
 

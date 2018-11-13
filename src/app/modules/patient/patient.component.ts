@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 import { Router, NavigationEnd } from '@angular/router';
-import { Patient } from '../../shared/models/patient';
+import { Patient } from '../../shared/models/patientModel';
 import { PatientService } from '../../shared/service/patient.service';
 import { Logger } from '../../shared/service/logger.service';
 import { NgProgress } from 'ngx-progressbar';
