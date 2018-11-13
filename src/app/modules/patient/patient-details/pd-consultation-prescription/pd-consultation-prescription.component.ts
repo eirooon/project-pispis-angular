@@ -5,11 +5,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Logger } from '../../../../shared/service/logger.service';
 import { SuiModalService, TemplateModalConfig, ModalTemplate } from 'ng2-semantic-ui';
 
-import { Patient } from '../../../../shared/models/patient';
 import { PatientService } from '../../../../shared/service/patient.service';
 
 import { ConsultationTextModel } from '../../../../shared/models/consulationModel';
 import { MedicineModel } from '../../../../shared/models/medicineModel';
+import { Patient } from '../../../../shared/models/patientModel';
 export interface IContext {
   data: string;
 }
