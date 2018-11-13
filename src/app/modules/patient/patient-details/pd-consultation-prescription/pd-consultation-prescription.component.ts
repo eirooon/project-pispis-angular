@@ -11,12 +11,9 @@ import { ClinicService } from '../../../../shared/service/clinic.service';
 
 import { ConsultationTextModel } from '../../../../shared/models/consulationModel';
 import { MedicineModel } from '../../../../shared/models/medicineModel';
-<<<<<<< HEAD
 import { Clinic } from '../../../../shared/models/clinicModel';
 
-=======
 import { Patient } from '../../../../shared/models/patientModel';
->>>>>>> 84ff4eb3b750f0749e892f3a01e11b3530762bcc
 export interface IContext {
   data: string;
 }
