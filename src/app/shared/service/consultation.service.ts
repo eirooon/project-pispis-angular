@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core"; import { Component, OnInit } from '@
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { ConsultationTextModel } from '../models/consulationModel';
+import { MedicineModel } from '../models/medicineModel';
 import { Logger } from './logger.service';
 
 @Injectable()
@@ -33,6 +34,30 @@ export class ConsultationService {
 		this.logger.info(this.CLASSNAME, "addConsultationText", "Consulation: " + consultation.id);
 		this.consultationTextCollection.add(consultation);
 	}
+
+	/**
+	 * Method: addPrescription
+	 * Description: Adds new consultation text
+	 * @param consultation 
+	 * @return void
+	 */
+	addPrescription(consultation: ConsultationTextModel, medicineList: MedicineModel[]) {
+		this.logger.info(this.CLASSNAME, "addPrescription", "Consulation: " + consultation.id);
+		this.consultationTextCollection.add(consultation).then((docRef) => {
+			medicineList.forEach(element => {
+				console.log('Add Medicine element:' + element);
+
+				this.consultationTextCollection.doc(docRef.id).collection('medicine').add({
+					medicine: element
+				})
+			});
+			this.logger.info(this.CLASSNAME, "addPrescription", "Medicine list: " + medicineList);
+          	this.logger.info(this.CLASSNAME, "addPrescription", "Doc Ref: " + docRef.id);
+		}).catch(function (error) {
+			this.logger.error(this.CLASSNAME, "addPrescription", "Error: " + error);
+		});
+	}
+
 
 	/**
 	 * Method: getConsultationText

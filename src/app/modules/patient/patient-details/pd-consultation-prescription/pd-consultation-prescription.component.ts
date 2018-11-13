@@ -7,9 +7,13 @@ import { SuiModalService, TemplateModalConfig, ModalTemplate } from 'ng2-semanti
 
 import { Patient } from '../../../../shared/models/patient';
 import { PatientService } from '../../../../shared/service/patient.service';
+import { ConsultationService } from '../../../../shared/service/consultation.service';
+import { ClinicService } from '../../../../shared/service/clinic.service';
 
 import { ConsultationTextModel } from '../../../../shared/models/consulationModel';
 import { MedicineModel } from '../../../../shared/models/medicineModel';
+import { Clinic } from '../../../../shared/models/clinicModel';
+
 export interface IContext {
   data: string;
 }
@@ -29,12 +33,16 @@ export class PdConsultationPrescriptionComponent implements OnInit {
   medicineModel: MedicineModel[] = [];
   patient: Patient;
 
+  clinicsList: Clinic[];
+
   constructor(
     private location: Location,
     private router: Router,
     public modalService: SuiModalService,
     private logger: Logger,
     private patientService: PatientService,
+    private consultationService: ConsultationService,
+    private clinicService: ClinicService,
   ) {
     //this.ngOnInit();
     this.patient = this.patientService.getPatientById(); //THIS PART ANG GA ERROR.
@@ -69,7 +77,29 @@ export class PdConsultationPrescriptionComponent implements OnInit {
    */
   ngOnInit() {
     this.logger.info(this.CLASSNAME, "ngOnInit", "Initial Load");
-    this.patient = this.patientService.getPatientById(); //THIS PART ANG GA ERROR.
+
+    this.consultationText = {
+      id: '',
+      idPatient: '',
+      clinicname: '',
+      text: '',
+      date: '',
+      type: '',
+      patientType: ''
+    }
+
+    this.patient = this.patientService.getPatientById(); 
+
+    this.clinicService.getClinics().subscribe(clinics => {
+      if (clinics.length > 0) {
+        this.clinicsList = clinics;
+        this.logger.info(this.CLASSNAME, "ngOnInit", "Clinic data: " + this.clinicsList);
+      }
+    },
+      err => {
+        this.logger.error(this.CLASSNAME, "ngOnInit", "Error: " + err.message);
+      },
+    );
   }
 
   /**
@@ -78,8 +108,7 @@ export class PdConsultationPrescriptionComponent implements OnInit {
    * @return void
    */
   goBack() {
-    // this.location.back();
-    console.log(this.medicineModel);
+    this.location.back();    
   }
 
   /**
@@ -96,6 +125,7 @@ export class PdConsultationPrescriptionComponent implements OnInit {
       })
       .onDeny(result => {
         this.logger.info(this.CLASSNAME, "openAddPrescriptionModal", "Cancel");
+        this.medicineForm.reset();
       });
   }
 
@@ -124,29 +154,32 @@ export class PdConsultationPrescriptionComponent implements OnInit {
                 this.medicineForm.value.note,
                 this.medicineForm.value.frequency,
                 this.medicineForm.value.startDate);
+    this.medicineForm.reset();
   }
 
   addConsultationPrescription(){
-    console.log('DPUTA KA');
-    // if (this.prescriptionForm.valid) {
+    if (this.prescriptionForm.valid) {
+      this.consultationText.type = "Prescription";
+      this.consultationText.idPatient = this.patient.id;
+      this.consultationText.clinicname = this.prescriptionForm.value.clinicname,
+      this.consultationText.date = this.prescriptionForm.value.date;
+      this.consultationText.text = this.prescriptionForm.value.text;
+      this.consultationText.patientType = this.prescriptionForm.value.patientType;
 
-    // } else {
-    //   this.logger.error(this.CLASSNAME, "addConsultationText", "Error: Form is invalid");
-    // }
-    // this.consultationText.type = "Prescription";
-    // this.consultationText.idPatient = this.patient.id;
-    // this.consultationText.clinicname = this.prescriptionForm.value.clinicname,
-    // this.consultationText.date = this.prescriptionForm.value.date;
-    // this.consultationText.text = this.prescriptionForm.value.text;
-    // this.consultationText.patientType = this.prescriptionForm.value.patientType;
-    // this.consultationService.addConsultationText(this.consultationText);
-    // this.logger.info(this.CLASSNAME, "addConsultationText", "Clinic name: [" + this.clinicname + "] Adding Consulation done.");
-    // this.router.navigateByUrl['/patient/patient-details'];
-    console.log("Prescription",
-                this.patient.id,
-                this.prescriptionForm.value.clinicname,
-                this.prescriptionForm.value.date,
-                this.prescriptionForm.value.text,
-                this.prescriptionForm.value.patientType);
+      // this.consultationService.addPrescription(this.consultationText, this.medicineModel); 
+      this.logger.info(this.CLASSNAME, "addConsultationPrescription", "Clinic name: [" + this.prescriptionForm.value.clinicname + "] Adding Prescription done.");
+      // console.log(this.consultationText);
+      // this.router.navigateByUrl('/patient/patient-details');
+    } else {
+      this.logger.error(this.CLASSNAME, "addConsultationPrescription", "Error: Form is invalid");
+    }
+
+    // console.log("Prescription",
+    //             this.patient.id,
+    //             this.prescriptionForm.value.clinicname,
+    //             this.prescriptionForm.value.date,
+    //             this.prescriptionForm.value.text,
+    //             this.prescriptionForm.value.patientType);
+    
   }
 }

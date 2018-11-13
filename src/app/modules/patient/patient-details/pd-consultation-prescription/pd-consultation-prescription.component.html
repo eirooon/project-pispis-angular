@@ -15,7 +15,7 @@
       <div class="form-group">
           <label>Patient Type*</label>
           <sui-select class="selection form-control"
-          [isSearchable]="false" formControlName="patienttype"  required>
+          [isSearchable]="false" formControlName="patientType"  required>
               <sui-select-option value="In-Patient"></sui-select-option>
               <sui-select-option value="Out-Patient"></sui-select-option>
           </sui-select>
@@ -23,8 +23,8 @@
       <div class="form-group" form>
         <label>Select Clinic</label>
         <sui-select class="selection form-control"
-          [isSearchable]="false" id="clinicname" formControlName="clinicname" >
-          <sui-select-option *ngFor="let clinic of clinicsList" value="{{clinic.name}}"></sui-select-option>
+            [isSearchable]="false" id="clinics" formControlName="clinicname" >
+            <sui-select-option *ngFor="let clinic of clinicsList" value="{{clinic.clinicname}}"></sui-select-option>
         </sui-select>
         <!-- <input formControlName="clinicname" name="clinicname" type="text" placeholder="Select Clinic" list="clinicsList" id="clinicname" data-list-filter="^" class="form-control">
         <datalist id="clinicsList">
@@ -128,7 +128,7 @@
           <label>Form</label>
           <div class="form-select-wrapper">
             <i class="mdi mdi-caret-down"></i>
-            <select formControlName="form" name="form" name="type" class="form-control">
+            <select formControlName="form" name="form" class="form-control">
               <option value='' hidden>Select medicine</option>
               <option>Medicine 001</option>
               <option>Medicine 001</option>
@@ -165,7 +165,7 @@
                 <label>Frequency</label>
                 <div class="form-select-wrapper">
                   <i class="mdi mdi-caret-down"></i>
-                  <select formControlName="frequency" name="frequency" name="type" class="form-control">
+                  <select formControlName="frequency" name="frequency" class="form-control">
                     <option value='' hidden>Select frequency</option>
                     <option>Frequency 001</option>
                     <option>Frequency 001</option>
