@@ -65,4 +65,8 @@ export class PdHealthProfileComponent implements OnInit {
     this.allergyService.setAllergy(allergy);
   }
 
+  setMenstrualDetails(event, menstrual: Menstrual) {
+    this.menstrualService.setMenstrual(menstrual);
+  }
+
 }

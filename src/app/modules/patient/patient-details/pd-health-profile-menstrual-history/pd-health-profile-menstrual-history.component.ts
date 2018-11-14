@@ -26,14 +26,11 @@ export class PdHealthProfileMenstrualHistoryComponent implements OnInit {
   ) {
     this.ngOnInit();
     this.initializeMenstrual();
+
     this.isEdit = menstrualService.getIsEdit();
-    //if(this.isEdit) {
-    //this.menstrual = this.menstrualService.getMenstrualInformationByPatientId();
-    //}
-    // setTimeout(() => {
-    //   this.clickMe();
-    // },
-    //   10000);
+    if (this.isEdit) {
+      this.menstrual = this.menstrualService.getMenstrual();
+    }
   }
 
   /**
@@ -75,8 +72,8 @@ export class PdHealthProfileMenstrualHistoryComponent implements OnInit {
    * @return void
    */
   goBack() {
-    this.location.back();
     this.menstrualService.setIsEdit(false);
+    this.location.back();
   }
 
   /**
@@ -85,9 +82,14 @@ export class PdHealthProfileMenstrualHistoryComponent implements OnInit {
    * @return void
    */
   addMenstrual() {
-    this.menstrualService.addMenstrual(this.menstrual);
-    this.logger.info(this.CLASSNAME, "addMenstrual", "Menstrual ID: [" + this.menstrual.id + "] Adding done");
-    this.goBack();
+    if (!this.isEdit) {
+      this.menstrualService.addMenstrual(this.menstrual);
+      this.logger.info(this.CLASSNAME, "addMenstrual", "Menstrual ID: [" + this.menstrual.id + "] Adding done");
+      this.goBack();
+    } else {
+      this.editMenstrual();
+    }
+
   }
 
   /**
@@ -100,9 +102,4 @@ export class PdHealthProfileMenstrualHistoryComponent implements OnInit {
     this.logger.info(this.CLASSNAME, "editMenstrual", "Menstrual ID: [" + this.menstrual.id + "] Update done");
     this.goBack();
   }
-
-  clickMe() {
-    this.menstrual = this.menstrualService.getMenstrualInformationByPatientId();
-  }
-
 }
