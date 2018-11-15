@@ -12,18 +12,19 @@
         <div class="form-inputs">
             <div class="form-group">
                 <label>Menarche (Age of First Menstruation)</label>
-                <input class="form-control" type="text" placeholder="Enter Menarche (Age of First Menstruation)" />
+                <input class="form-control" type="text" placeholder="Enter Menarche (Age of First Menstruation)" [(ngModel)]="menstrual.menarche" [ngModelOptions]="{standalone: true}"/>
             </div>
             <div class="form-group">
                 <label>Average Days Duration</label>
-                <input class="form-control" type="text" placeholder="Enter Average Days Duration" />
+                <input class="form-control" type="text" placeholder="Enter Average Days Duration" [(ngModel)]="menstrual.avgduration" [ngModelOptions]="{standalone: true}"/>
             </div>
             <div class="form-group">
                 <label>Interval</label>
                 <div class="form-select-wrapper">
                   <sui-select class="selection form-control"
                       [isSearchable]="searchable"
-                      [isDisabled]="true">
+                      [(ngModel)]="menstrual.interval" 
+                      [ngModelOptions]="{standalone: true}">
                       <sui-select-option value="Regular"></sui-select-option>
                       <sui-select-option value="Irregular"></sui-select-option>
                       <sui-select-option value="Unknown"></sui-select-option>
@@ -34,7 +35,9 @@
                 <label>Dysmenorrhea</label>
                 <div class="form-select-wrapper">
                   <sui-select class="selection form-control"
-                      [isSearchable]="searchable">
+                      [isSearchable]="searchable"
+                      [(ngModel)]="menstrual.dysmenorrhea" 
+                      [ngModelOptions]="{standalone: true}">
                       <sui-select-option value="With"></sui-select-option>
                       <sui-select-option value="Without"></sui-select-option>
                       <sui-select-option value="Unknown"></sui-select-option>
@@ -43,44 +46,44 @@
             </div>
             <div class="form-group">
               <label>Cycle Duration</label>
-              <input class="form-control" type="text" placeholder="Enter Cycle Duration" />
+              <input class="form-control" type="text" placeholder="Enter Cycle Duration" [(ngModel)]="menstrual.cycleduration" [ngModelOptions]="{standalone: true}"/>
             </div>
             <div class="form-group">
               <label>Average Amount of Napkins/Diapers/Cheeseclothe</label>
-              <input class="form-control" type="text" placeholder="Enter Average Amount of Napkins/Diapers/Cheeseclothe" />
+              <input class="form-control" type="text" placeholder="Enter Average Amount of Napkins/Diapers/Cheeseclothe" [(ngModel)]="menstrual.avgnapkins" [ngModelOptions]="{standalone: true}"/>
             </div>
             <div class="form-group">
                 <label for="">Last Menstruation Period</label>
                 <div class="ui left icon input">
                     <i class="calendar icon"></i>
-                    <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="datetime" placeholder="From">
+                    <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="datetime" placeholder="From" [(ngModel)]="menstrual.lastperiodfrom" [ngModelOptions]="{standalone: true}">
                     </div>
                     <br>
                     <div class="ui left icon input">
                         <i class="calendar icon"></i>
-                        <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="datetime" placeholder="To">
+                        <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="datetime" placeholder="To" [(ngModel)]="menstrual.lastperiodto" [ngModelOptions]="{standalone: true}">
                     </div>
                     </div>
                     <div class="form-group">
                         <label>Previous Normal Menstruation Period</label>
                         <div class="ui left icon input">
                             <i class="calendar icon"></i>
-                            <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="datetime" placeholder="From">
+                            <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="datetime" placeholder="From" [(ngModel)]="menstrual.prevperiodfrom" [ngModelOptions]="{standalone: true}">
                         </div>
                         <br>
                         <div class="ui left icon input">
                             <i class="calendar icon"></i>
-                            <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="datetime" placeholder="To">
+                            <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="datetime" placeholder="To" [(ngModel)]="menstrual.prevperiodto" [ngModelOptions]="{standalone: true}">
                 </div>
             </div>
             <div class="form-group">
                 <label>Age of Menopause</label>
-                <input class="form-control" type="text" placeholder="Enter Age of Menopause" />
+                <input class="form-control" type="text" placeholder="Enter Age of Menopause" [(ngModel)]="menstrual.agemenopause" [ngModelOptions]="{standalone: true}"/>
             </div>
         </div>
       </section>
       <section>
-          <button class="btn btn-primary btn-wide">Save Menstrual History</button>     
+          <button class="btn btn-primary btn-wide" (click)="addMenstrual()">Save Menstrual History</button>     
       </section>
     </form>
   </div>

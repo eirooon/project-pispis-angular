@@ -20,7 +20,26 @@ export class MenstrualService {
 		public afs: AngularFirestore,
 		private logger: Logger
 	) {
-		this.menstrualCollection = this.afs.collection('menstrual');
+		this.menstrualCollection = this.afs.collection('menstrual', ref => ref.where('patientId', '==', localStorage.getItem("ptId")));
+	}
+
+	/**
+	 * Method: getMenstruals
+	 * Description: Get menstrual information of patient
+	 * @return patients
+	 */
+	getMenstruals() {
+		this.logger.info(this.CLASSNAME, "getMenstruals", "Get patients menstrual information");
+		this.menstrualCollection = this.afs.collection('menstrual', ref => ref.where('patientId', '==', localStorage.getItem("ptId")))
+		this.menstruals = this.menstrualCollection.snapshotChanges()
+			.map(changes => {
+				return changes.map(a => {
+					const data = a.payload.doc.data() as Menstrual;
+					data.id = a.payload.doc.id;
+					return data;
+				})
+			});
+		return this.menstruals;
 	}
 
 	/**

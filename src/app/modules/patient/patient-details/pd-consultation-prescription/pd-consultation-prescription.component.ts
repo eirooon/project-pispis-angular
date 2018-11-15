@@ -4,11 +4,9 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Logger } from '../../../../shared/service/logger.service';
 import { SuiModalService, TemplateModalConfig, ModalTemplate } from 'ng2-semantic-ui';
-
 import { PatientService } from '../../../../shared/service/patient.service';
 import { ConsultationService } from '../../../../shared/service/consultation.service';
 import { ClinicService } from '../../../../shared/service/clinic.service';
-
 import { ConsultationTextModel } from '../../../../shared/models/consulationModel';
 import { MedicineModel } from '../../../../shared/models/medicineModel';
 import { Clinic } from '../../../../shared/models/clinicModel';
