@@ -8,7 +8,7 @@
   <div class="hp-item" routerLink="../health-profile-allergy">
     Allergy
   </div>
-  <div class="hp-item" routerLink="../health-profile-menstrual-history">
+  <div *ngIf="isMenstrualNull" class="hp-item" routerLink="../health-profile-menstrual-history">
     Menstrual History
   </div>
   <div class="hp-item">

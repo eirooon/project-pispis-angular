@@ -13,7 +13,7 @@ import { Menstrual } from '../../../../shared/models/menstrualModel';
 export class PdHealthProfileSelectionComponent implements OnInit {
 
   CLASSNAME: string = this.constructor.name;
-  menstrual: Menstrual;
+  isMenstrualNull: boolean;
 
   constructor(
     private location: Location,
@@ -21,6 +21,17 @@ export class PdHealthProfileSelectionComponent implements OnInit {
     private menstrualService: MenstrualService,
   ) {
     this.ngOnInit();
+    this.menstrualService.getMenstruals().subscribe(menstruals => {
+      if (menstruals.length > 0) {
+        this.isMenstrualNull = false;
+      } else {
+        this.isMenstrualNull = true;
+      }
+    },
+      err => {
+        this.logger.error(this.CLASSNAME, "loadMenstrualOfPatient", "Error: " + err.message);
+      },
+    );
   }
 
   /**
@@ -39,10 +50,5 @@ export class PdHealthProfileSelectionComponent implements OnInit {
    */
   goBack() {
     this.location.back();
-  }
-
-  setMenstrualDetails(event){
-    // this.menstrual = this.menstrualService.getMenstrualInformationByPatientId();
-    // this.menstrualService.setMenstrual(this.menstrual);
   }
 }

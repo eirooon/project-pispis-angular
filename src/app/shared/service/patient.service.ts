@@ -94,7 +94,7 @@ export class PatientService {
 	 */
 	loadSearchPatients(start, end) {
 		this.logger.info(this.CLASSNAME, "loadSearchPatients", "Start: [" + start + "] End: [" + end + "]");
-		this.patientsCollection = this.afs.collection('patients', ref => ref.limit(4).orderBy('firstname').startAt(start).endAt(end));
+		this.patientsCollection = this.afs.collection('patients', ref => ref.where('idDoc', '==', localStorage.getItem("UID")).limit(4).orderBy('firstname').startAt(start).endAt(end));
 		this.patients = this.patientsCollection.snapshotChanges()
 			.map(changes => {
 				return changes.map(a => {
