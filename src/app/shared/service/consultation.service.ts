@@ -38,7 +38,7 @@ export class ConsultationService {
 	/**
 	 * Method: addPrescription
 	 * Description: Adds new consultation text
-	 * @param consultation 
+	 * @param consultation
 	 * @return void
 	 */
 	addPrescription(consultation: ConsultationTextModel, medicineList: MedicineModel[]) {

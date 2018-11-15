@@ -44,7 +44,7 @@
     <section class="section-container">
       <div class="add-new-prescription-wrapper">
         <h3>Add new prescription</h3>
-        <button title="New Prescription" class="btn btn-default btn-icon" (click)="openAddPrescriptionModal()">
+        <button type="button" title="New Prescription" class="btn btn-default btn-icon" (click)="openAddPrescriptionModal()">
           <i class="mdi mdi-plus"></i>
         </button>
       </div>
@@ -95,8 +95,7 @@
 <ng-template class="customModal" let-context let-modal="modal" #addPrescriptionModal>
   <div class="header">Add New Prescription Item</div>
   <form [formGroup]="medicineForm" (ngSubmit)="addMedicine()">
-  <div class="content">
-
+  <div class="content">    
       <div class="form-group">
         <label>Select medicine from library</label>
         <div class="form-select-wrapper">
@@ -191,9 +190,11 @@
       </sui-accordion>
 
   </div>
+  </form>
   <div class="actions">
-    <button class="ui  button" (click)="modal.deny('denied')">Cancel</button>
-    <button class="ui green button" (click)="modal.approve('approved')" autofocus>Add New Schedule</button>
+    <button class="ui  button" (click)="modal.deny('denied')">Back</button>
+    <!-- <button class="ui green button" (click)="modal.approve('approved')" autofocus>Add New Schedule</button> -->
+    <button class="ui green button" (click)="addMedicine()" autofocus>Add New Medicine</button>
   </div>
-</form>
+
 </ng-template>

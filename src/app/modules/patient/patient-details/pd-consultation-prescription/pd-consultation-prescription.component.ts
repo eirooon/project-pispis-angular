@@ -12,8 +12,8 @@ import { ClinicService } from '../../../../shared/service/clinic.service';
 import { ConsultationTextModel } from '../../../../shared/models/consulationModel';
 import { MedicineModel } from '../../../../shared/models/medicineModel';
 import { Clinic } from '../../../../shared/models/clinicModel';
-
 import { Patient } from '../../../../shared/models/patientModel';
+
 export interface IContext {
   data: string;
 }
@@ -122,6 +122,7 @@ export class PdConsultationPrescriptionComponent implements OnInit {
     this.modalService
       .open(config)
       .onApprove(result => {
+        
       })
       .onDeny(result => {
         this.logger.info(this.CLASSNAME, "openAddPrescriptionModal", "Cancel");
@@ -130,6 +131,7 @@ export class PdConsultationPrescriptionComponent implements OnInit {
   }
 
   addMedicine(){
+    const config = new TemplateModalConfig<IContext, string, string>(this.modalTemplate);
     if (this.medicineForm.valid) {
       this.medicineModel.push({
         medicine: this.medicineForm.value.medicineName, 
@@ -142,19 +144,20 @@ export class PdConsultationPrescriptionComponent implements OnInit {
         frequency: this.medicineForm.value.frequency,
         startDate: this.medicineForm.value.startDate,
         endDate: this.medicineForm.value.endDate});
+        this.medicineForm.reset();
     } else {
       this.logger.error(this.CLASSNAME, "addMedicine", "Error: Form is invalid");
     }
-    console.log(this.medicineForm.value.medicineName, 
-                this.medicineForm.value.brandName, 
-                this.medicineForm.value.genericName, 
-                this.medicineForm.value.dose,
-                this.medicineForm.value.form,
-                this.medicineForm.value.qty,
-                this.medicineForm.value.note,
-                this.medicineForm.value.frequency,
-                this.medicineForm.value.startDate);
-    this.medicineForm.reset();
+    // console.log(this.medicineForm.value.medicineName, 
+    //             this.medicineForm.value.brandName, 
+    //             this.medicineForm.value.genericName, 
+    //             this.medicineForm.value.dose,
+    //             this.medicineForm.value.form,
+    //             this.medicineForm.value.qty,
+    //             this.medicineForm.value.note,
+    //             this.medicineForm.value.frequency,
+    //             this.medicineForm.value.startDate);
+
   }
 
   addConsultationPrescription(){
@@ -166,10 +169,10 @@ export class PdConsultationPrescriptionComponent implements OnInit {
       this.consultationText.text = this.prescriptionForm.value.text;
       this.consultationText.patientType = this.prescriptionForm.value.patientType;
 
-      // this.consultationService.addPrescription(this.consultationText, this.medicineModel); 
+      this.consultationService.addPrescription(this.consultationText, this.medicineModel); 
       this.logger.info(this.CLASSNAME, "addConsultationPrescription", "Clinic name: [" + this.prescriptionForm.value.clinicname + "] Adding Prescription done.");
       // console.log(this.consultationText);
-      // this.router.navigateByUrl('/patient/patient-details');
+      this.router.navigateByUrl('/patient/patient-details');
     } else {
       this.logger.error(this.CLASSNAME, "addConsultationPrescription", "Error: Form is invalid");
     }

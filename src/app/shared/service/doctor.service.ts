@@ -82,7 +82,7 @@ export class DoctorService {
 	 */
 	updateDoctor(doctor: Doctor) {
 		this.logger.info(this.CLASSNAME, "updateDoctor", "Doctor ID: " + doctor.id);
-		this.doctorsDocument = this.afs.doc(`patients/${doctor.id}`);
+		this.doctorsDocument = this.afs.doc(`doctors/${doctor.id}`);
 		this.doctorsDocument.update(doctor);
 	}
 
