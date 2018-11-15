@@ -46,7 +46,7 @@ export class DoctorService {
 	 * @return doctors
 	 */
 	getDoctor() {
-		this.logger.info(this.CLASSNAME, "getDoctor", "Retrieve Doctor Information");
+		this.logger.info(this.CLASSNAME, "getDoctor", "Retrieve Doctor Information DoctorID:["+localStorage.getItem("UID")+"]");
 		this.doctors = this.afs.collection('doctors', ref => ref.where('uid', '==', localStorage.getItem("UID"))).valueChanges();
 		return this.doctors;
 	}

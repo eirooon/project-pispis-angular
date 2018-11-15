@@ -58,6 +58,11 @@ export class SignupComponent implements OnInit {
           email: form.value.email,
           name: form.value.email.substring(0, form.value.email.lastIndexOf("@")),
           professionalRate: 0,
+          middlename: '',
+          lastname: '',
+          birthdate: '',
+          contact: 0,
+          address: '',
         }
         this.docService.addDoctor(this.doctor);
         this.ngProgress.done();
