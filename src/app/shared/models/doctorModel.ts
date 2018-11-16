@@ -1,5 +1,5 @@
 export interface Doctor {
-	id?:string;
+	uid?:string;
 	email?:string;
 	name?:string;
 	professionalRate?:number;

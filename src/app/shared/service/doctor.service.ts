@@ -33,7 +33,7 @@ export class DoctorService {
 			.map(changes => {
 				return changes.map(a => {
 					const data = a.payload.doc.data() as Doctor;
-					data.id = a.payload.doc.id;
+					data.uid = a.payload.doc.id;
 					return data;
 				})
 			});
@@ -58,8 +58,8 @@ export class DoctorService {
 	 * @return void
 	 */
 	addDoctor(doctor: Doctor) {
-		this.logger.info(this.CLASSNAME, "addDoctor", "Doctor ID: " + doctor.id);
-		this.doctorsCollection.doc(doctor.id).set(doctor);
+		this.logger.info(this.CLASSNAME, "addDoctor", "Doctor ID: " + doctor.uid);
+		this.doctorsCollection.doc(doctor.uid).set(doctor);
 	}
 
 	/**
@@ -69,8 +69,8 @@ export class DoctorService {
 	 * @return void
 	 */
 	deleteDoctor(doctor: Doctor) {
-		this.logger.info(this.CLASSNAME, "deleteDoctor", "Doctor ID: " + doctor.id);
-		this.doctorsDocument = this.afs.doc(`patients/${doctor.id}`);
+		this.logger.info(this.CLASSNAME, "deleteDoctor", "Doctor ID: " + doctor.uid);
+		this.doctorsDocument = this.afs.doc(`patients/${doctor.uid}`);
 		this.doctorsDocument.delete();
 	}
 
@@ -81,8 +81,8 @@ export class DoctorService {
 	 * @return void
 	 */
 	updateDoctor(doctor: Doctor) {
-		this.logger.info(this.CLASSNAME, "updateDoctor", "Doctor ID: " + doctor.id);
-		this.doctorsDocument = this.afs.doc(`doctors/${doctor.id}`);
+		this.logger.info(this.CLASSNAME, "updateDoctor", "Doctor ID: " + doctor.uid);
+		this.doctorsDocument = this.afs.doc(`doctors/${doctor.uid}`);
 		this.doctorsDocument.update(doctor);
 	}
 

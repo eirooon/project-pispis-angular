@@ -44,7 +44,7 @@ export class DoctorsProfileComponent implements OnInit {
    */
   ngOnInit() {
     this.doctor = {
-      id: localStorage.getItem("UID"),
+      uid: localStorage.getItem("UID"),
       name: '',
       email: '',
       professionalRate: 0,
@@ -122,7 +122,7 @@ export class DoctorsProfileComponent implements OnInit {
       this.doctor.professionalRate = this.profileForm.value.specialty;
 
       this.docService.updateDoctor(this.doctor);
-      this.logger.info(this.CLASSNAME, "updateProfile", "Doctor ID: [" + this.doctor.id + "] updated done.");
+      this.logger.info(this.CLASSNAME, "updateProfile", "Doctor ID: [" + this.doctor.uid + "] updated done.");
       // console.log(this.consultationText);
       this.router.navigateByUrl('/account-settings');
     } else {

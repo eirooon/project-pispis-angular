@@ -54,7 +54,7 @@ export class SignupComponent implements OnInit {
       .then(res => {
         //Set doctor info
         this.doctor = {
-          id: res.uid,
+          uid: res.uid,
           email: form.value.email,
           name: form.value.email.substring(0, form.value.email.lastIndexOf("@")),
           professionalRate: 0,
