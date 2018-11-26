@@ -24,7 +24,6 @@
         "styles.css"
       ],
       "scripts": [
-        "../node_modules/plotly.js/dist/plotly.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
