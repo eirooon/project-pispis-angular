@@ -39,8 +39,8 @@ export class PdVitalSignsComponent implements OnInit {
         this.hasList = true;
         this.vitalsCollection = consultations;
         this.logger.info(this.CLASSNAME, "ngOnInit", "Vitals data: [" + this.vitalsCollection + "] List Loaded");
-        this.initWeightChart();
-        this.initHeightChart();
+        // this.initWeightChart();
+        // this.initHeightChart();
       } else {
         this.hasList = false;
       }
@@ -53,66 +53,67 @@ export class PdVitalSignsComponent implements OnInit {
     
   }
 
-  initWeightChart(){
-    const weight = this.weight.nativeElement;
-    var dateTime = [];
-    var weightData = [];
-    for(let vitalsWeight of this.vitalsCollection){
-      dateTime.push(vitalsWeight.date)
-      weightData.push(vitalsWeight.weight);
-      console.log(vitalsWeight.date );
-      console.log(vitalsWeight.weight);
-    }
+  // initWeightChart(){
+  //   const weight = this.weight.nativeElement;
+  //   var dateTime = [];
+  //   var weightData = [];
+  //   for(let vitalsWeight of this.vitalsCollection){
+  //     dateTime.push(vitalsWeight.date)
+  //     weightData.push(vitalsWeight.weight);
+  //     console.log(vitalsWeight.date );
+  //     console.log(vitalsWeight.weight);
+  //   }
 
-    const w_data = [{
-      type: 'bar',
-      x: dateTime /*['2000-01-01', '2001-0-02', '2002-01-03', '2003-01-04', '2004-03-05', '2006-02-06', '2007-01-07', '2008-01-08', '2009-01-09', '2010-01-10'*/,
-      y: weightData/*[70, 75, 80, 78, 85, 87, 89, 90, 92, 88]*/,
-      marker: {
-        color: '#172B4D'
-    }
-    }]
+  //   const w_data = [{
+  //     type: 'line',
+  //     x: dateTime /*['2000-01-01', '2001-0-02', '2002-01-03', '2003-01-04', '2004-03-05', '2006-02-06', '2007-01-07', '2008-01-08', '2009-01-09', '2010-01-10'*/,
+  //     y: weightData/*[70, 75, 80, 78, 85, 87, 89, 90, 92, 88]*/,
+  //     marker: {
+  //       color: '#172B4D'
+  //   }
+  //   }]
 
-    const w_layout = {
-      margin: { 
-        t:15,
-        l:30,
-        b:30,
-        r:30
-      },
-    }
+  //   const w_layout = {
+  //     margin: { 
+  //       t:15,
+  //       l:30,
+  //       b:30,
+  //       r:30
+  //     },
+  //     autosize: true
+  //   }
 
-    Plotly.plot(weight,w_data,w_layout,{
-      responsive: true, 
-      displayModeBar: false
-    });
+  //   Plotly.plot(weight,w_data,w_layout,{
+  //     responsive: true, 
+  //     displayModeBar: false
+  //   });
     
-  }
-  initHeightChart(){
-    const height = this.height.nativeElement;
+  // }
+  // initHeightChart(){
+  //   const height = this.height.nativeElement;
 
-    const h_data = [{
-      type: 'bar',
-      x: ['2000-01-01', '2001-0-02', '2002-01-03', '2003-01-04', '2004-03-05', '2006-02-06', '2007-01-07', '2008-01-08', '2009-01-09', '2010-01-10'],
-      y: [70, 75, 80, 78, 85, 87, 89, 90, 92, 88],
-      marker: {
-        color: '#172B4D'
-    }
-    }]
+  //   const h_data = [{
+  //     type: 'line',
+  //     x: ['2000-01-01', '2001-0-02', '2002-01-03', '2003-01-04', '2004-03-05', '2006-02-06', '2007-01-07', '2008-01-08', '2009-01-09', '2010-01-10'],
+  //     y: [70, 75, 80, 78, 85, 87, 89, 90, 92, 88],
+  //     marker: {
+  //       color: '#172B4D'
+  //   }
+  //   }]
 
-    const h_layout = {
-      margin: { 
-        t:15,
-        l:15,
-        b:15,
-        r:15
-      },
-    }
+  //   const h_layout = {
+  //     margin: { 
+  //       t:15,
+  //       l:15,
+  //       b:15,
+  //       r:15
+  //     },
+  //   }
 
-    Plotly.plot(height,h_data,h_layout,{
-      responsive: true, 
-      displayModeBar: false
-    });
-  }
+  //   Plotly.plot(height,h_data,h_layout,{
+  //     responsive: true, 
+  //     displayModeBar: false
+  //   });
+  // }
 
 }

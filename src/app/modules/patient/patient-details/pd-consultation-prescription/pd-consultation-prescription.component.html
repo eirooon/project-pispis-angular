@@ -75,16 +75,17 @@
       </div>
     </section>
     <section class="section-container ">
-
-      <!-- <div class="form-group">
-        <label for="username">Date</label>
-        <input class="form-control" id="date" type="date">
-      </div> -->
+      <div class="form-group">
+        <label for="username">Follow Up Date</label>
+        <div class="ui left icon input">
+          <i class="calendar icon"></i>
+          <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="datetime" formControlName="date" name="date" class="form-control" type="date" placeholder="Enter Date" id="date">
+        </div>
+      </div>
       <div class="form-group">
         <label>Remarks</label>
-        <textarea formControlName="text" name="text" rows="20" cols="80" placeholder="Describe yourself here..." class="form-control-textarea"></textarea>
+        <input formControlName="text" name="text" rows="20" cols="80" placeholder="Describe yourself here..." class="form-control"/>
       </div>
-      <!-- <button class="btn btn-primary btn-wide" type="submit" routerLink="../patient-details">Add Prescription</button> -->
       <button class="btn btn-primary btn-wide" type="submit">Add Prescription</button>
     </section>
 
@@ -94,21 +95,22 @@
 
 <ng-template class="customModal" let-context let-modal="modal" #addPrescriptionModal>
   <div class="header">Add New Prescription Item</div>
-  <form [formGroup]="medicineForm" (ngSubmit)="addMedicine()">
-  <div class="content">    
+  <div class="content">  
+    <form [formGroup]="medicineForm" (ngSubmit)="addMedicine()">
       <div class="form-group">
         <label>Select medicine from library</label>
-        <div class="form-select-wrapper">
-          <i class="mdi mdi-caret-down"></i>
-          <select formControlName="medicineName" name="medicineName"  class="form-control" autofocus required>
-            <option value='' hidden>Select medicine</option>
-            <option>Medicine 001</option>
-            <option>Medicine 001</option>
-            <option>Medicine 001</option>
-            <option>Medicine 001</option>
-            <option>Medicine 001</option>
-          </select>
-        </div>
+        <sui-select class="selection form-control"
+            [isSearchable]="false" 
+            id="medicineName" 
+            formControlName="medicineName" 
+            name="medicineName" 
+            placeholder="Select medicine">
+            <sui-select-option value="Medicine 001"></sui-select-option>
+            <sui-select-option value="Medicine 001"></sui-select-option>
+            <sui-select-option value="Medicine 001"></sui-select-option>
+            <sui-select-option value="Medicine 001"></sui-select-option>
+            <sui-select-option value="Medicine 001"></sui-select-option>
+        </sui-select>
       </div>
       <div class="form-group">
         <label for="address">Brand Name</label>
@@ -125,17 +127,18 @@
         </div>
         <div class="form-group">
           <label>Form</label>
-          <div class="form-select-wrapper">
-            <i class="mdi mdi-caret-down"></i>
-            <select formControlName="form" name="form" class="form-control">
-              <option value='' hidden>Select medicine</option>
-              <option>Medicine 001</option>
-              <option>Medicine 001</option>
-              <option>Medicine 001</option>
-              <option>Medicine 001</option>
-              <option>Medicine 001</option>
-            </select>
-          </div>
+          <sui-select class="selection form-control"
+            [isSearchable]="false" 
+            id="formName" 
+            formControlName="medicineName" 
+            name="formName" 
+            placeholder="Select form">
+            <sui-select-option value="Form 001"></sui-select-option>
+            <sui-select-option value="Form 001"></sui-select-option>
+            <sui-select-option value="Form 001"></sui-select-option>
+            <sui-select-option value="Form 001"></sui-select-option>
+            <sui-select-option value="Form 001"></sui-select-option>
+          </sui-select>
         </div>
       </div>
       <div class="split-container">
@@ -188,9 +191,8 @@
           </div>
         </sui-accordion-panel>
       </sui-accordion>
-
+    </form>
   </div>
-  </form>
   <div class="actions">
     <button class="ui  button" (click)="modal.deny('denied')">Back</button>
     <!-- <button class="ui green button" (click)="modal.approve('approved')" autofocus>Add New Schedule</button> -->
