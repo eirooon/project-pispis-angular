@@ -43,6 +43,24 @@ export class VitalSignsService {
 	getVitals(idPatient: String) {
 		this.logger.info(this.CLASSNAME, "getVitals", idPatient.toString());
 		if (idPatient != null) {
+			this.vitalsCollection = this.afs.collection('vitals', ref => ref.orderBy("date").where('idPatient', '==', idPatient));
+			this.vitalsData = this.vitalsCollection.snapshotChanges()
+				.map(changes => {
+					return changes.map(a => {
+						const data = a.payload.doc.data() as VitalsModel;
+						data.id = a.payload.doc.id;
+						console.log(data);
+						return data;
+					})
+				});
+			this.logger.info(this.CLASSNAME, "getVitals", "Vitals " + this.vitalsData);
+			return this.vitalsData;
+		}
+	}
+
+	getWeightVitalsLatest(idPatient: String) {
+		this.logger.info(this.CLASSNAME, "getVitals", idPatient.toString());
+		if (idPatient != null) {
 			this.vitalsCollection = this.afs.collection('vitals', ref => ref.where('idPatient', '==', idPatient));
 			this.vitalsData = this.vitalsCollection.snapshotChanges()
 				.map(changes => {

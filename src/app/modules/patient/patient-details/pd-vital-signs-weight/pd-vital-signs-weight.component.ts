@@ -54,6 +54,7 @@ export class PdVitalSignsWeightComponent implements OnInit {
           this.hasList = true;
           this.vitalsCollection = consultations;
           this.logger.info(this.CLASSNAME, "ngOnInit", "Vitals data: [" + this.vitalsCollection + "] List Loaded");
+          
         } else {
           this.hasList = false;
         }
@@ -64,6 +65,7 @@ export class PdVitalSignsWeightComponent implements OnInit {
         },
       );
   }
+  
 
   vitalsWeightForm = new FormGroup({
     datetime: new FormControl("", Validators.required),

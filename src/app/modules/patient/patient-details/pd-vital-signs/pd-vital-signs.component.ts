@@ -19,8 +19,32 @@ export class PdVitalSignsComponent implements OnInit {
   vitalsCollection: VitalsModel[];
   hasList: Boolean;
  
-  weightData: String[];
+  //weightData: String[];
+
+  // Vitals
   patient: Patient;
+  weightData = "";
+  heightData = "";
+  bloodPressureData ="";
+  oxygenSaturationData ="";
+  respiratoryRateData ="";
+  heartRateData = "";
+  bodyTempData = "";
+  headCircumData = "";
+  capillaryBloodGlucData = "";
+
+  // Date
+  weightDate; 
+  heightDate;
+  bloodPressureDate;
+  oxygenSaturationDate;
+  respiratoryRateDate;
+  heartRateDate;
+  bodyTempDate;
+  headCircumDate;
+  capillaryBloodGlucDate;
+
+  vitals: VitalsModel;
 
   constructor(
     private vitalsService: VitalSignsService,
@@ -33,12 +57,65 @@ export class PdVitalSignsComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.initializeVitals();
     this.vitalsService.getVitals(localStorage.getItem("ptId"))
     .subscribe(consultations => {
       if (consultations.length > 0) {
         this.hasList = true;
         this.vitalsCollection = consultations;
+        this.vitalsCollection.reverse();
         this.logger.info(this.CLASSNAME, "ngOnInit", "Vitals data: [" + this.vitalsCollection + "] List Loaded");
+
+        for(let vitalsData of this.vitalsCollection){
+          if(this.weightData == ""){
+            this.weightData = vitalsData.weight;
+            this.weightDate = vitalsData.date;
+          }
+
+          if(this.heightData == ""){
+            this.heightData = vitalsData.height;
+            this.heightDate = vitalsData.date;
+          }
+
+          if(this.bloodPressureData == ""){
+            this.bloodPressureData = vitalsData.bloodPressure;
+            this.bloodPressureDate = vitalsData.date;
+          }
+
+          if(this.oxygenSaturationData == ""){
+            this.oxygenSaturationData = vitalsData.oxygenSaturation;
+            this.oxygenSaturationDate = vitalsData.date;
+          }
+
+          if(this.respiratoryRateData == ""){
+            this.respiratoryRateData = vitalsData.respiratoryRate;
+            this.respiratoryRateDate = vitalsData.date;
+          }
+
+          if(this.heartRateData == ""){
+            this.heartRateData = vitalsData.heartRate;
+            this.heartRateDate = vitalsData.date;
+          }
+
+          if(this.bodyTempData == ""){
+            this.bodyTempData = vitalsData.bodyTemperature;
+            this.bodyTempDate = vitalsData.date;
+          }
+
+          if(this.headCircumData == ""){
+            this.headCircumData = vitalsData.headCircumference;
+            this.headCircumDate = vitalsData.date;
+          }
+
+          if(this.capillaryBloodGlucData == ""){
+            this.capillaryBloodGlucData = vitalsData.capillaryBloodGlucose;
+            this.capillaryBloodGlucDate = vitalsData.date;
+          }
+
+          this.logger.info(this.CLASSNAME, "headCircumData", vitalsData.headCircumference);
+          this.logger.info(this.CLASSNAME, "heightData", vitalsData.height);
+          this.logger.info(this.CLASSNAME, "weightItem", this.weightData);
+        }
         // this.initWeightChart();
         // this.initHeightChart();
       } else {
@@ -51,6 +128,23 @@ export class PdVitalSignsComponent implements OnInit {
       },
     );
     
+  }
+
+  initializeVitals() {
+    this.vitals = {
+      id: '',
+      idPatient: '',
+      date: '',
+      weight: '',
+      height: '',
+      bloodPressure: '',
+      oxygenSaturation: '',
+      respiratoryRate: '',
+      heartRate: '',
+      bodyTemperature: '',
+      headCircumference: '',
+      capillaryBloodGlucose: '',
+    }
   }
 
   // initWeightChart(){
