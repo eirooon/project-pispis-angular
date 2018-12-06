@@ -7,11 +7,13 @@ import { DoctorService } from '../../shared/service/doctor.service';
 import { Logger } from '../../shared/service/logger.service';
 import { Patient } from '../../shared/models/patientModel';
 import { Doctor } from '../../shared/models/doctorModel';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  providers: [DatePipe]
 })
 
 export class HomeComponent implements OnInit {
@@ -20,15 +22,21 @@ export class HomeComponent implements OnInit {
   CLASSNAME: string = this.constructor.name;
   patients: Patient[];
   doctors: Doctor[];
+  myDate = new Date();
+  pipe = new DatePipe('en-PH');
+  myFormattedDate: string;
 
   constructor(
     private router: Router,
     private patientService: PatientService,
     private doctorService: DoctorService,
     private ngProgress: NgProgress,
-    private logger: Logger
+    private logger: Logger,
+    private datePipe: DatePipe
   ) {
     this.getDoctorsName();
+    //this.myDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd').toString();
+    this.myFormattedDate = this.pipe.transform(this.myDate, 'fullDate');
   }
 
   /**
