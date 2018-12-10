@@ -1,0 +1,49 @@
+<header class="header-secondary">
+  <div class="header-wrapper">
+      <div class="menu-left" (click)="goBack()">
+          <i class="mdi mdi-close"></i>
+      </div>
+      <div class="menu-title">Height</div>
+  </div>
+</header>
+<div class="content-wrapper">
+  <div class="tab-subheader">
+      <!-- Still Need to Add Modal -->
+      <h3>New height reading</h3>
+      <button title="New Consultation" class="btn btn-default btn-icon" (click)="openAddNewHeightModal(true)">
+          <i class="mdi mdi-plus"></i>
+      </button>
+  </div>
+  <section>
+      <ul class="list-view-wrapper">
+          <li *ngFor="let vitals of vitalsCollection" class="list-view-item">
+              <div class="item-thumbnail"><i class="mdi mdi-clipboard-pulse"></i></div>
+              <a class="item-name text-ellipsis">{{vitals.height}}</a>
+              <span class="item-desc text-ellipsis">{{vitals.date}}</span>
+          </li>
+      </ul>
+  </section>
+</div>
+
+<ng-template class="customModal" let-context let-modal="modal" #addNewHeightModal>
+  <div class="header">Add New Height</div>
+  <div class="content">
+      <form [formGroup]="vitalsHeightForm">
+          <div class="form-group">
+              <label for="username">Height (kg)</label>
+              <input type="text" class="form-control" formControlName="height">
+          </div>
+          <div class="form-group">
+              <label for="">Date</label>
+              <div class="ui left icon input">
+                  <i class="calendar icon"></i>
+                  <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="datetime" formControlName="datetime">
+              </div>
+          </div>
+      </form>
+  </div>
+  <div class="actions">
+      <button class="ui  button" (click)="modal.deny('denied')">Cancel</button>
+      <button class="ui green button" (click)="modal.approve('approved')" autofocus>Add New Height</button>
+  </div>
+</ng-template>

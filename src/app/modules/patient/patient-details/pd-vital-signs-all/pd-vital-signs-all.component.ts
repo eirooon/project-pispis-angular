@@ -62,7 +62,7 @@ export class PdVitalSignsAllComponent implements OnInit {
    * @return void
    */
   cancel() {
-    this.router.navigateByUrl('/patient/patient-details');
+    this.location.back();
   }
 
   /**
@@ -150,9 +150,9 @@ export class PdVitalSignsAllComponent implements OnInit {
 
   addVitals() {
     if (this.vitalsForm.valid) {
-      this.vitals.idPatient = this.patient.id;
+      this.vitals.idPatient = localStorage.getItem("ptId");
       this.vitals.date = this.vitalsForm.value.date;
-
+      console.log("this.vitals.idPatient " + this.vitals.idPatient);
       this.vitals.weight = this.vitalsForm.value.weight;
       this.vitals.height = this.vitalsForm.value.height;
       this.vitals.bloodPressure = this.vitalsForm.value.bloodPressure;
@@ -163,8 +163,7 @@ export class PdVitalSignsAllComponent implements OnInit {
       this.vitals.headCircumference = this.vitalsForm.value.headCircumference;
       this.vitals.capillaryBloodGlucose = this.vitalsForm.value.capillaryBloodGlucose;
       this.vitalsService.addVitals(this.vitals);
-      this.location.back();
-      //this.logger.info(this.CLASSNAME, "addVitals", "Patient name: [" + this.idPatient + "] Adding Consulation done.");
+      this.goBack();
     } else {
       this.logger.error(this.CLASSNAME, "addVitals", "Error: Form is invalid");
     }
