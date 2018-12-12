@@ -1,9 +1,126 @@
-<p>
-  
-  patientname = {{details.patientname}}
-  age = {{details.age}}
-  gender = {{details.gender}}
-  address = {{details.address}}
-</p>
+<html>
+<head><meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+<style type="text/css">
 
-<button (click)="printPreview()" class="btn btn-primary btn-wide">Preview Template</button>
+span.cls_002{font-family:Arial,serif;font-size:16.0px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_002{font-family:Arial,serif;font-size:16.0px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+span.cls_003{font-family:Arial,serif;font-size:10.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_003{font-family:Arial,serif;font-size:10.0px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_004{font-family:Arial,serif;font-size:11.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_004{font-family:Arial,serif;font-size:11.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_005{font-family:Times,serif;font-size:11.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_005{font-family:Times,serif;font-size:11.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_006{font-family:Arial,serif;font-size:11.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+div.cls_006{font-family:Arial,serif;font-size:11.1px;color:rgb(0,0,0);font-weight:normal;font-style:normal;text-decoration: none}
+span.cls_008{font-family:Arial,serif;font-size:10.0px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+div.cls_008{font-family:Arial,serif;font-size:10.0px;color:rgb(0,0,0);font-weight:bold;font-style:normal;text-decoration: none}
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+</style>
+<script type="text/javascript" src="48b8b292-e95e-11e8-8f58-0cc47a792c0a_id_48b8b292-e95e-11e8-8f58-0cc47a792c0a_files/wz_jsgraphics.js"></script>
+</head>
+<body>
+<div style="position:absolute;left:50%;margin-left:-306px;top:0px;width:612px;height:792px;border-style:outset;overflow:hidden">
+<div style="position:absolute;left:0px;top:0px">
+<img src="48b8b292-e95e-11e8-8f58-0cc47a792c0a_id_48b8b292-e95e-11e8-8f58-0cc47a792c0a_files/background1.jpg" width=612 height=792></div>
+<div style="position:absolute;left:184.70px;top:70.82px" class="cls_002"><span class="cls_002">JO-ANNE V. BISNAR, MD, FPCP</span></div>
+<div style="position:absolute;left:224.09px;top:89.66px" class="cls_003"><span class="cls_003">Internal Medicine - Gastroenterology</span></div>
+<div style="position:absolute;left:205.73px;top:101.18px" class="cls_003"><span class="cls_003">Diseases of the Liver & Gastrointestinal Tract</span></div>
+<div style="position:absolute;left:90.02px;top:124.22px" class="cls_003"><span class="cls_003">THE HEALTH CENTRUM</span></div>
+<div style="position:absolute;left:342.07px;top:124.22px" class="cls_003"><span class="cls_003">CAPIZ EMMANUEL HOSPITAL</span></div>
+<div style="position:absolute;left:90.02px;top:135.74px" class="cls_003"><span class="cls_003">Teodorica Avenue, Brgy. Banica</span></div>
+<div style="position:absolute;left:342.07px;top:135.74px" class="cls_003"><span class="cls_003">Roxas Avenue, Roxas City</span></div>
+<div style="position:absolute;left:90.02px;top:147.14px" class="cls_003"><span class="cls_003">Roxas City</span></div>
+<div style="position:absolute;left:342.07px;top:147.14px" class="cls_003"><span class="cls_003">(036) 6210443</span></div>
+<div style="position:absolute;left:90.02px;top:158.66px" class="cls_003"><span class="cls_003">(036) 6219088 local 101</span></div>
+<div style="position:absolute;left:342.07px;top:158.66px" class="cls_003"><span class="cls_003">M-S 2:00 - 5:00 PM</span></div>
+<div style="position:absolute;left:90.02px;top:170.18px" class="cls_003"><span class="cls_003">(036) 6201023 local 101</span></div>
+<div style="position:absolute;left:90.02px;top:181.70px" class="cls_003"><span class="cls_003">M-S 9:00 AM - 12:00 NN</span></div>
+<div style="position:absolute;left:90.02px;top:216.14px" class="cls_003"><span class="cls_003">PATIENT: {{details['patientname']}} AGE: {{details['age']}} SEX: {{details['gender']}}</span></div>
+<div style="position:absolute;left:90.02px;top:227.66px" class="cls_003"><span class="cls_003">ADDRESS: {{details['address']}}</span></div>
+<div style="position:absolute;left:378.07px;top:250.73px" class="cls_003"><span class="cls_003">DATE:  __________, 20 ____</span></div>
+<div style="position:absolute;left:90.02px;top:273.65px" class="cls_004"><span class="cls_004">HEMATOLOGY</span></div>
+<div style="position:absolute;left:108.02px;top:298.85px" class="cls_005"><span class="cls_005">o</span><span class="cls_006"> </span><span class="cls_004">  CBC W/ PLT</span></div>
+<div style="position:absolute;left:263.81px;top:298.85px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:281.81px;top:298.85px" class="cls_004"><span class="cls_004">APTT</span></div>
+<div style="position:absolute;left:419.71px;top:298.85px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:437.71px;top:298.85px" class="cls_004"><span class="cls_004">POTASSIUM</span></div>
+<div style="position:absolute;left:108.02px;top:311.45px" class="cls_005"><span class="cls_005">o</span><span class="cls_006"> </span><span class="cls_004">  BLOOD TYPING</span></div>
+<div style="position:absolute;left:263.81px;top:311.45px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:281.81px;top:311.45px" class="cls_004"><span class="cls_004">CT</span></div>
+<div style="position:absolute;left:419.71px;top:311.45px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:437.71px;top:311.45px" class="cls_004"><span class="cls_004">CALCIUM</span></div>
+<div style="position:absolute;left:108.02px;top:324.05px" class="cls_005"><span class="cls_005">o</span><span class="cls_006"> </span><span class="cls_004">  RH TYPING</span></div>
+<div style="position:absolute;left:263.81px;top:324.05px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:281.81px;top:324.05px" class="cls_004"><span class="cls_004">BT</span></div>
+<div style="position:absolute;left:419.71px;top:324.05px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:437.71px;top:324.05px" class="cls_004"><span class="cls_004">MAGNESIUM</span></div>
+<div style="position:absolute;left:108.02px;top:336.65px" class="cls_005"><span class="cls_005">o</span><span class="cls_006"> </span><span class="cls_004">  PROTIME</span></div>
+<div style="position:absolute;left:263.81px;top:336.65px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:281.81px;top:336.65px" class="cls_004"><span class="cls_004">SODIUM</span></div>
+<div style="position:absolute;left:90.02px;top:361.97px" class="cls_004"><span class="cls_004">CHEMISTRY</span></div>
+<div style="position:absolute;left:108.02px;top:387.17px" class="cls_005"><span class="cls_005">o</span><span class="cls_006"> </span><span class="cls_004">  FBS</span></div>
+<div style="position:absolute;left:263.81px;top:387.17px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:281.81px;top:387.17px" class="cls_004"><span class="cls_004">SGOT</span></div>
+<div style="position:absolute;left:419.71px;top:387.17px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:437.71px;top:387.17px" class="cls_004"><span class="cls_004">ALKALINE</span></div>
+<div style="position:absolute;left:108.02px;top:399.77px" class="cls_005"><span class="cls_005">o</span><span class="cls_006"> </span><span class="cls_004">  LIPID PROFILE</span></div>
+<div style="position:absolute;left:263.81px;top:399.77px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:281.81px;top:399.77px" class="cls_004"><span class="cls_004">TOTAL BILIRUBIN</span></div>
+<div style="position:absolute;left:437.71px;top:399.77px" class="cls_004"><span class="cls_004">PHOSPHATASE</span></div>
+<div style="position:absolute;left:108.02px;top:412.49px" class="cls_005"><span class="cls_005">o</span><span class="cls_006"> </span><span class="cls_004">  URIC ACID</span></div>
+<div style="position:absolute;left:263.81px;top:412.49px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:281.81px;top:412.49px" class="cls_004"><span class="cls_004">DIRECT BILIRUBIN</span></div>
+<div style="position:absolute;left:419.71px;top:412.49px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:437.71px;top:412.49px" class="cls_004"><span class="cls_004">GGT</span></div>
+<div style="position:absolute;left:108.02px;top:425.11px" class="cls_005"><span class="cls_005">o</span><span class="cls_006"> </span><span class="cls_004">  CREA</span></div>
+<div style="position:absolute;left:263.81px;top:425.11px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:281.81px;top:425.11px" class="cls_004"><span class="cls_004">INDIRECT</span></div>
+<div style="position:absolute;left:108.02px;top:437.71px" class="cls_005"><span class="cls_005">o</span><span class="cls_006"> </span><span class="cls_004">  BUN</span></div>
+<div style="position:absolute;left:281.81px;top:437.71px" class="cls_004"><span class="cls_004">BILIRUBIN</span></div>
+<div style="position:absolute;left:108.02px;top:450.31px" class="cls_005"><span class="cls_005">o</span><span class="cls_006"> </span><span class="cls_004">  SGPT</span></div>
+<div style="position:absolute;left:263.81px;top:450.31px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:281.81px;top:450.31px" class="cls_004"><span class="cls_004">TPAG</span></div>
+<div style="position:absolute;left:90.02px;top:475.51px" class="cls_004"><span class="cls_004">SEROLOGY</span></div>
+<div style="position:absolute;left:108.02px;top:500.83px" class="cls_005"><span class="cls_005">o</span><span class="cls_006"> </span><span class="cls_004">  ANTI-HAV</span></div>
+<div style="position:absolute;left:263.81px;top:500.83px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:281.81px;top:500.83px" class="cls_004"><span class="cls_004">Anti-HBc Total</span></div>
+<div style="position:absolute;left:419.71px;top:500.83px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:437.71px;top:500.83px" class="cls_004"><span class="cls_004">Anti-HBe</span></div>
+<div style="position:absolute;left:108.02px;top:513.43px" class="cls_005"><span class="cls_005">o</span><span class="cls_006"> </span><span class="cls_004">  HAV IgM</span></div>
+<div style="position:absolute;left:263.81px;top:513.43px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:281.81px;top:513.43px" class="cls_004"><span class="cls_004">Anti-HBc IgM</span></div>
+<div style="position:absolute;left:419.71px;top:513.43px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:437.71px;top:513.43px" class="cls_004"><span class="cls_004">Anti-HCV</span></div>
+<div style="position:absolute;left:108.02px;top:526.03px" class="cls_005"><span class="cls_005">o</span><span class="cls_006"> </span><span class="cls_004">  HAV IgG</span></div>
+<div style="position:absolute;left:263.81px;top:526.03px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:281.81px;top:526.03px" class="cls_004"><span class="cls_004">Anti-HBs</span></div>
+<div style="position:absolute;left:108.02px;top:538.63px" class="cls_005"><span class="cls_005">o</span><span class="cls_006"> </span><span class="cls_004">  HbsAg</span></div>
+<div style="position:absolute;left:263.81px;top:538.63px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:281.81px;top:538.63px" class="cls_004"><span class="cls_004">HBeAg</span></div>
+<div style="position:absolute;left:90.02px;top:563.95px" class="cls_004"><span class="cls_004">TUMOR MARKERS</span></div>
+<div style="position:absolute;left:108.02px;top:589.15px" class="cls_005"><span class="cls_005">o</span><span class="cls_006"> </span><span class="cls_004">  PSA</span></div>
+<div style="position:absolute;left:263.81px;top:589.15px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:281.81px;top:589.15px" class="cls_004"><span class="cls_004">CEA</span></div>
+<div style="position:absolute;left:419.71px;top:589.15px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:437.71px;top:589.15px" class="cls_004"><span class="cls_004">CA-125</span></div>
+<div style="position:absolute;left:108.02px;top:601.78px" class="cls_005"><span class="cls_005">o</span><span class="cls_006"> </span><span class="cls_004">  AFP</span></div>
+<div style="position:absolute;left:263.81px;top:601.78px" class="cls_005"><span class="cls_005">o</span></div>
+<div style="position:absolute;left:281.81px;top:601.78px" class="cls_004"><span class="cls_004">CA19-9</span></div>
+<div style="position:absolute;left:90.02px;top:627.10px" class="cls_004"><span class="cls_004">OTHERS _______________________________________________________________</span></div>
+<div style="position:absolute;left:342.07px;top:662.74px" class="cls_008"><span class="cls_008">JO-ANNE V. BISNAR, MD</span></div>
+<div style="position:absolute;left:342.07px;top:674.26px" class="cls_003"><span class="cls_003">Lic No. 112524</span></div>
+<div style="position:absolute;left:342.07px;top:685.78px" class="cls_003"><span class="cls_003">PTR No. __________________</span></div>
+<div style="position:absolute;left:342.07px;top:697.30px" class="cls_003"><span class="cls_003">S2 No. ____________________</span></div>
+</div>
+
+</body>
+</html>
+
+
+<button (click)="printPreview()" class="btn btn-primary btn-wide no-print">Preview Template</button>

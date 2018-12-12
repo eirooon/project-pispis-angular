@@ -15,9 +15,12 @@ export class TemplatePreviewComponent implements OnInit {
   ngOnInit() {
     this.details = JSON.parse( localStorage.getItem( 'labdetails' ) );
     console.log(this.details);
+    console.log(this.details['patientname']);
   }
 
   printPreview(){
     window.print();
+    // mywindow.close();
+    
   }
 }

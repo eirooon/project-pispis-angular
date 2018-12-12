@@ -7,18 +7,16 @@
 </header>
 <div class="content-wrapper">
 
-<form [formGroup]="tempForm">
+<form [formGroup]="tempForm" (ngSubmit)="test()">
   <div class="form-subheader">Basic Information</div>
   <section>
       <div class="form-group">
           <label>Patient Name</label>
           <input class="form-control" type="text" placeholder="Enter patient name" formControlName="patientname" name="patientname"/>
-          <control-messages [control]="tempForm.controls.patientname"></control-messages>     
         </div>
       <div class="form-group">
           <label>Age</label>
           <input class="form-control" type="number" placeholder="Enter age" formControlName="age" name="age"/>
-          <control-messages [control]="tempForm.controls.age"></control-messages>     
       </div>
       <div class="form-group">
           <label>Gender</label>
@@ -34,8 +32,7 @@
       </div>
       <div class="form-group">
           <label>Address</label>
-          <input class="form-control" type="text" placeholder="Enter address" formControlName="address" name="address"/>
-          <control-messages [control]="tempForm.controls.address"></control-messages>     
+          <input class="form-control" type="text" placeholder="Enter address" formControlName="address" name="address"/>   
       </div>
 
   </section>
@@ -51,9 +48,9 @@
                             [hasLabels]="!hideLabels"
                             #multiSelect>
                             <sui-select-option value="Option 1">xxxxxxxxxxxx</sui-select-option>
-                            <sui-select-option value="Option 2"></sui-select-option>
-                            <sui-select-option value="Option 3"></sui-select-option>
-                            <sui-select-option value="Option 4"></sui-select-option>
+                            <sui-select-option value="Option 2">xxxxxxxxxxxx</sui-select-option>
+                            <sui-select-option value="Option 3">xxxxxxxxxxxx</sui-select-option>
+                            <sui-select-option value="Option 4">xxxxxxxxxxxx</sui-select-option>
           </sui-multi-select>
       </div>
       <div class="form-group">
@@ -64,8 +61,8 @@
                             [isDisabled]="disabled"
                             [hasLabels]="!hideLabels"
                             #multiSelect>
-                            <sui-select-option value="Option 1"></sui-select-option>
-                            <sui-select-option value="Option 2"></sui-select-option>
+                            <sui-select-option value="Option 1">xxxxxxxxxxxx</sui-select-option>
+                            <sui-select-option value="Option 2">xxxxxxxxxxxx</sui-select-option>
                             <sui-select-option value="Option 3"></sui-select-option>
                             <sui-select-option value="Option 4"></sui-select-option>
           </sui-multi-select>
