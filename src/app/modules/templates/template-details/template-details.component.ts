@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ValidationService } from '../../../shared/service/validation.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-template-details',
@@ -10,27 +10,23 @@ import { ValidationService } from '../../../shared/service/validation.service';
   styleUrls: ['./template-details.component.css']
 })
 export class TemplateDetailsComponent implements OnInit {
-  tempForm: any;
   details: Object[];
   constructor(
     private location: Location,
     private router: Router,
-    private formBuilder: FormBuilder
   ) { 
     this.ngOnInit();
   }
+  
+  tempForm = new FormGroup({
+    patientname: new FormControl("", Validators.required),
+    age: new FormControl("", Validators.required),
+    gender: new FormControl("", Validators.required),
+    address: new FormControl("", Validators.required),
+  })
 
   ngOnInit() {
-    this.tempForm = this.formBuilder.group({
-      patientname:['', Validators.required],
-      age:['', [Validators.required, Validators.minLength(3)]],
-      gender:['', Validators.required],
-      address:['', Validators.required],
-      // hematology:[''],
-      // chemistry:[''],
-      // serology:[''],
-      // tumor_makers:[''],
-    });
+
   }
 
   goBack(){
