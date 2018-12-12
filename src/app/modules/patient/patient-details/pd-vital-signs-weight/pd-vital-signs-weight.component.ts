@@ -132,4 +132,9 @@ export class PdVitalSignsWeightComponent implements OnInit {
         this.logger.info(this.CLASSNAME, "openAddNewWeightModal", "Cancel");
       });
   }
+
+  public formatDate(date: Date ){
+      var dateOut = new Date(date);
+      return dateOut;
+  }
 }

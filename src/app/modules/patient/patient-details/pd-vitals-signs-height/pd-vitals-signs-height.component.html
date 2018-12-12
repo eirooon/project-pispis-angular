@@ -19,7 +19,7 @@
           <li *ngFor="let vitals of vitalsCollection" class="list-view-item">
               <div class="item-thumbnail" *ngIf="vitals.height"><i class="mdi mdi-clipboard-pulse"></i></div> 
               <a class="item-name text-ellipsis" *ngIf="vitals.height">{{vitals.height}}</a>
-              <span class="item-desc text-ellipsis" *ngIf="vitals.height">{{vitals.date}}</span>
+              <span class="item-desc text-ellipsis" *ngIf="vitals.height">{{vitals.date | date: "MM/dd/yyyy HH:mm:ss"}}</span>
           </li>
       </ul>
   </section>
