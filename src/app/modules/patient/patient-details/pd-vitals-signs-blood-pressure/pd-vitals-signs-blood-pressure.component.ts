@@ -23,7 +23,6 @@ export class PdVitalsSignsBloodPressureComponent implements OnInit {
   hasList: Boolean;
   vitalsCollection: VitalsModel[];
   constructor(
-    private location: Location,
     private logger: Logger,
     public modalService: SuiModalService,
     private vitalsService: VitalSignsService,
