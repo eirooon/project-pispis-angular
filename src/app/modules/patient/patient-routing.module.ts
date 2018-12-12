@@ -18,6 +18,12 @@ import { PdVitalSignsAllComponent } from './patient-details/pd-vital-signs-all/p
 import { PdHealthProfileMenstrualHistoryComponent } from './patient-details/pd-health-profile-menstrual-history/pd-health-profile-menstrual-history.component';
 import { PdVitalsSignsHeightComponent } from './patient-details/pd-vitals-signs-height/pd-vitals-signs-height.component';
 import { PdVitalsSignsBloodPressureComponent } from './patient-details/pd-vitals-signs-blood-pressure/pd-vitals-signs-blood-pressure.component';
+import { PdVitalsSignsOxygenSaturationComponent } from './patient-details/pd-vitals-signs-oxygen-saturation/pd-vitals-signs-oxygen-saturation.component';
+import { PdVitalsSignsRespiratoryRateComponent } from './patient-details/pd-vitals-signs-respiratory-rate/pd-vitals-signs-respiratory-rate.component';
+import { PdVitalsSignsHeartRateComponent } from './patient-details/pd-vitals-signs-heart-rate/pd-vitals-signs-heart-rate.component';
+import { PdVitalsSignsBodyTemperatureComponent } from './patient-details/pd-vitals-signs-body-temperature/pd-vitals-signs-body-temperature.component';
+import { PdVitalsSignsHeadCircumferenceComponent } from './patient-details/pd-vitals-signs-head-circumference/pd-vitals-signs-head-circumference.component';
+import { PdVitalsSignsCapillaryBloodComponent } from './patient-details/pd-vitals-signs-capillary-blood/pd-vitals-signs-capillary-blood.component';
 
 const routes: Routes = [
   { 
@@ -92,6 +98,36 @@ const routes: Routes = [
   {
     path: 'vital-signs-blood-pressure',
     component: PdVitalsSignsBloodPressureComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'vital-signs-oxygen-saturation',
+    component: PdVitalsSignsOxygenSaturationComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'vital-signs-respiratory-rate',
+    component: PdVitalsSignsRespiratoryRateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'vital-signs-heart-rate',
+    component: PdVitalsSignsHeartRateComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'vital-signs-body-temperature',
+    component: PdVitalsSignsBodyTemperatureComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'vital-signs-head-circumference',
+    component: PdVitalsSignsHeadCircumferenceComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'vital-signs-capillary-blood',
+    component: PdVitalsSignsCapillaryBloodComponent,
     canActivate:[AuthGuard]
   }
 ];

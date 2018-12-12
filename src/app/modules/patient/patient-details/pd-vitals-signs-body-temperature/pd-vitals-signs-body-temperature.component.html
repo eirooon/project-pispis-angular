@@ -3,35 +3,35 @@
       <div class="menu-left" (click)="goBack()">
           <i class="mdi mdi-close"></i>
       </div>
-      <div class="menu-title">Blood pressure</div>
+      <div class="menu-title">Body Temperature</div>
   </div>
 </header>
 <div class="content-wrapper">
   <div class="tab-subheader">
       <!-- Still Need to Add Modal -->
-      <h3>New blood pressure reading</h3>
-      <button title="New Consultation" class="btn btn-default btn-icon" (click)="openAddNewBloodPressureModal(true)">
+      <h3>New body temperature reading</h3>
+      <button title="New Consultation" class="btn btn-default btn-icon" (click)="openAddNewBodyTemperatureModal(true)">
           <i class="mdi mdi-plus"></i>
       </button>
   </div>
   <section>
       <ul class="list-view-wrapper">
           <li *ngFor="let vitals of vitalsCollection" class="list-view-item">
-              <div class="item-thumbnail" *ngIf="vitals.bloodPressure"><i class="mdi mdi-clipboard-pulse"></i></div>
-              <a class="item-name text-ellipsis" *ngIf="vitals.bloodPressure">{{vitals.bloodPressure}}</a>
-              <span class="item-desc text-ellipsis" *ngIf="vitals.bloodPressure">{{vitals.date}}</span>
+              <div class="item-thumbnail" *ngIf="vitals.bodyTemperature"><i class="mdi mdi-clipboard-pulse"></i></div> 
+              <a class="item-name text-ellipsis" *ngIf="vitals.bodyTemperature">{{vitals.bodyTemperature}}</a>
+              <span class="item-desc text-ellipsis" *ngIf="vitals.bodyTemperature">{{vitals.date}}</span>
           </li>
       </ul>
   </section>
 </div>
 
-<ng-template class="customModal" let-context let-modal="modal" #addNewBloodPressureModal>
-  <div class="header">Add New Blood pressure</div>
+<ng-template class="customModal" let-context let-modal="modal" #addNewBodyTemperatureModal>
+  <div class="header">Add New Body Temperature</div>
   <div class="content">
-      <form [formGroup]="vitalsBloodPressureForm">
+      <form [formGroup]="vitalsBodyTemperatureForm">
           <div class="form-group">
-              <label for="username">Blood pressure (mmHg)</label>
-              <input type="text" class="form-control" formControlName="bloodPressure">
+              <label for="username">Body Temperature (kg)</label>
+              <input type="text" class="form-control" formControlName="bodyTemperature">
           </div>
           <div class="form-group">
               <label for="">Date</label>
@@ -44,6 +44,6 @@
   </div>
   <div class="actions">
       <button class="ui  button" (click)="modal.deny('denied')">Cancel</button>
-      <button class="ui green button" (click)="modal.approve('approved')" autofocus>Add New Blood pressure</button>
+      <button class="ui green button" (click)="modal.approve('approved')" autofocus>Add New BodyTemperature</button>
   </div>
 </ng-template>
