@@ -124,6 +124,51 @@ export class ClinicService {
     return this.selectedClinic;
   }
 
+  updateClinics(clinicData: Clinic) {
+    this.logger.info(this.CLASSNAME, "updateClinics", "UID Doctor: [" + localStorage.getItem("UID") + "]");
+    console.log(clinicData);
+    this.clinicsCollection = this.afs.collection('clinics', ref => ref.where('idDoc', '==', localStorage.getItem("UID")));
 
+    var clinic = this.clinicsCollection.doc(clinicData.id);
+    clinic.update({
+      clinicname:clinicData.clinicname,
+      phone:clinicData.phone,
+      mobile:clinicData.mobile,
+      province:clinicData.province,
+      city:clinicData.city,
+      hospital:clinicData.hospital,
+      roomnumber:clinicData.roomnumber,
+      clinicSchedule:{ }
+    }).then(function() {
+      console.log("Document successfully updated!");
+    })
+    .catch(function(error) {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+        return false;
+    });
+
+    return true;
+  }
+
+  updateClinicSchedule(clinicId: string, clinicSchedule: ClinicScheduleModel){
+    this.logger.info(this.CLASSNAME, "updateClinicSchedule", "clinicId" + clinicId + "clinicSchedule.id" +  clinicSchedule.id);
+
+    this.clinicsCollection = this.afs.collection('clinics', ref => ref.where('idDoc', '==', localStorage.getItem("UID")));
+
+    this.clinicsCollection.doc(clinicId).collection('clinicSchedule').doc(clinicSchedule.id).update({
+      clinicDay: clinicSchedule.clinicDay,
+      clinicType: clinicSchedule.clinicType,
+      endTime: clinicSchedule.endTime,
+      startTime: clinicSchedule.startTime,
+    }).then(function(){
+      console.log("Document successfully updated!");
+    }).catch(function(error) {
+      // The document probably doesn't exist.
+      console.error("Error updating document: ", error);
+      return false;
+    });
+    return true;
+  }
 
 }

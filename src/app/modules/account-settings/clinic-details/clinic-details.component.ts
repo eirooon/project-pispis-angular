@@ -40,7 +40,6 @@ export class ClinicDetailsComponent implements OnInit {
   hasList: boolean = false;
   state: string = '';
   clinicScheduleList: ClinicScheduleModel[];
-  clinicScheduleItem: ClinicScheduleModel;
   selectedClinic : Clinic;
   isAddSelected: boolean = false;
   modalTitle: string = "";
@@ -97,6 +96,7 @@ export class ClinicDetailsComponent implements OnInit {
         if (item.length > 0) {
           this.hasList = true;
           this.clinicScheduleList = item;
+          console.log("this.clinicScheduleList");
           this.logger.info(this.CLASSNAME, "ngOnInit", "ClinicSchedule data: " + this.clinicScheduleList);
         } else {
           this.hasList = false;
@@ -107,6 +107,18 @@ export class ClinicDetailsComponent implements OnInit {
           this.hasList = false;
         },
     );
+  }
+
+  updateClinic(){
+    this.selectedClinic.clinicname = this.clinicForm.value.clinicname;
+    this.selectedClinic.phone = this.clinicForm.value.phone;
+    this.selectedClinic.mobile = this.clinicForm.value.mobile;
+    this.selectedClinic.province = this.clinicForm.value.province;
+    this.selectedClinic.city = this.clinicForm.value.city;
+    this.selectedClinic.hospital = this.clinicForm.value.hospital;
+    this.selectedClinic.roomnumber= this.clinicForm.value.roomnumber;
+    this.clinicService.updateClinics(this.selectedClinic);
+    this.location.back();
   }
 
   
@@ -205,7 +217,7 @@ export class ClinicDetailsComponent implements OnInit {
    * Description: Get startTime
    * @return startTime
    */
-  get startType() {
+  get startTime() {
     return this.clinicScheduleForm.get('startTime');
   }
 
@@ -249,6 +261,30 @@ export class ClinicDetailsComponent implements OnInit {
       .open(config)
       .onApprove(result => {
         this.addClinicSchedule();
+      })
+      .onDeny(result => {
+        this.logger.info(this.CLASSNAME, "openClinicScheduleFromDetails", "Cancel");
+      });
+  }
+
+  public editClinicScheduleFromDetails(selectedClinicSchedule:ClinicScheduleModel) {
+    console.log("OPEN ADD CLINIC SCHEDULE FROM DETAILS");
+    const config = new TemplateModalConfig<IContext, string, string>(this.cinicScheduleModalTemplate);
+    console.log(selectedClinicSchedule);
+    console.log('Edit Selected' +  selectedClinicSchedule.clinicDay);
+    this.modalTitle = "Edit Clinic Schedule";
+    this.clinicDay.setValue(selectedClinicSchedule.clinicDay);
+    this.clinicType.setValue(selectedClinicSchedule.clinicType);
+    this.startTime.setValue(selectedClinicSchedule.startTime);
+    this.endTime.setValue(selectedClinicSchedule.endTime);
+    
+    console.log("clinic sched ID: " + selectedClinicSchedule.id);
+    config.closeResult = "closed!";
+    this.modalService
+      .open(config)
+      .onApprove(result => {
+        console.log("clinic sched ID: " + selectedClinicSchedule.id);
+        this.clinicService.updateClinicSchedule(this.selectedClinic.id, selectedClinicSchedule);
       })
       .onDeny(result => {
         this.logger.info(this.CLASSNAME, "openClinicScheduleFromDetails", "Cancel");

@@ -276,7 +276,8 @@ export class AddClinicComponent implements OnInit {
         clinicDay: '',
         clinicType: '',
         startTime: '',
-        endTime: ''
+        endTime: '',
+        id:''
       }
       this.clinicScheduleModel.clinicDay = this.clinicScheduleForm.value.clinicDay;
       this.clinicScheduleModel.clinicType = this.clinicScheduleForm.value.clinicType;
