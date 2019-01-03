@@ -23,15 +23,15 @@ export class PdVitalSignsComponent implements OnInit {
 
   // Vitals
   patient: Patient;
-  weightData = "--";
-  heightData = "--";
-  bloodPressureData ="--";
-  oxygenSaturationData ="--";
-  respiratoryRateData ="--";
-  heartRateData = "--";
-  bodyTempData = "--";
-  headCircumData = "--";
-  capillaryBloodGlucData = "--";
+  weightData = "";
+  heightData = "";
+  bloodPressureData ="";
+  oxygenSaturationData ="";
+  respiratoryRateData ="";
+  heartRateData = "";
+  bodyTempData = "";
+  headCircumData = "";
+  capillaryBloodGlucData = "";
 
   // Date
   weightDate; 
@@ -67,47 +67,47 @@ export class PdVitalSignsComponent implements OnInit {
         this.logger.info(this.CLASSNAME, "ngOnInit", "Vitals data: [" + this.vitalsCollection + "] List Loaded");
 
         for(let vitalsData of this.vitalsCollection){
-          if(this.weightData == "--"){
+          if(this.weightData == ""){
             this.weightData = vitalsData.weight;
             this.weightDate = vitalsData.date;
           }
 
-          if(this.heightData == "--"){
+          if(this.heightData == ""){
             this.heightData = vitalsData.height;
             this.heightDate = vitalsData.date;
           }
 
-          if(this.bloodPressureData == "--"){
+          if(this.bloodPressureData == ""){
             this.bloodPressureData = vitalsData.bloodPressure;
             this.bloodPressureDate = vitalsData.date;
           }
 
-          if(this.oxygenSaturationData == "--"){
+          if(this.oxygenSaturationData == ""){
             this.oxygenSaturationData = vitalsData.oxygenSaturation;
             this.oxygenSaturationDate = vitalsData.date;
           }
 
-          if(this.respiratoryRateData == "--"){
+          if(this.respiratoryRateData == ""){
             this.respiratoryRateData = vitalsData.respiratoryRate;
             this.respiratoryRateDate = vitalsData.date;
           }
 
-          if(this.heartRateData == "--"){
+          if(this.heartRateData == ""){
             this.heartRateData = vitalsData.heartRate;
             this.heartRateDate = vitalsData.date;
           }
 
-          if(this.bodyTempData == "--"){
+          if(this.bodyTempData == ""){
             this.bodyTempData = vitalsData.bodyTemperature;
             this.bodyTempDate = vitalsData.date;
           }
 
-          if(this.headCircumData == "--"){
+          if(this.headCircumData == ""){
             this.headCircumData = vitalsData.headCircumference;
             this.headCircumDate = vitalsData.date;
           }
 
-          if(this.capillaryBloodGlucData == "--"){
+          if(this.capillaryBloodGlucData == ""){
             this.capillaryBloodGlucData = vitalsData.capillaryBloodGlucose;
             this.capillaryBloodGlucDate = vitalsData.date;
           }
