@@ -34,7 +34,7 @@ export class PdConsultationTextComponent implements OnInit {
     private logger: Logger
   ) {
     this.logger.info(this.CLASSNAME, "ngOnInit", "Initial Load");
-    this.patient = this.patientService.getPatientById();
+    //this.patient = this.patientService.getPatientById();
   }
 
   consultationForm = new FormGroup({
@@ -151,14 +151,15 @@ export class PdConsultationTextComponent implements OnInit {
   addConsultationText() {
     if (this.consultationForm.valid) {
       this.consultationText.type = "Text";
-      this.consultationText.idPatient = this.patient.id;
+      this.consultationText.idPatient = localStorage.getItem("ptId"); //this.patient.id;
       this.consultationText.clinicname = this.consultationForm.value.clinicname,
       this.consultationText.date = this.consultationForm.value.date;
       this.consultationText.text = this.consultationForm.value.text;
       this.consultationText.patientType = this.consultationForm.value.patientType;
       this.consultationService.addConsultationText(this.consultationText);
       this.logger.info(this.CLASSNAME, "addConsultationText", "Clinic name: [" + this.clinicname + "] Adding Consulation done.");
-      this.router.navigateByUrl['../patient/patient-details'];
+      //this.router.navigateByUrl['../patient/patient-details'];
+      this.location.back();
     } else {
       this.logger.error(this.CLASSNAME, "addConsultationText", "Error: Form is invalid");
     }
