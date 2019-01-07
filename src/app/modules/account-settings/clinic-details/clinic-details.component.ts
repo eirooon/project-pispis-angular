@@ -12,6 +12,7 @@ import { Clinic } from '../../../shared/models/clinicModel';
 import { AllProvince } from '../../../shared/constantValues/provinceConstants';
 import { AllCity } from '../../../shared/constantValues/cityConstants';
 import { AllHospitals } from '../../../shared/constantValues/hospitalConstants';
+import { AllDaysOfTheWeek } from '../../../shared/constantValues/daysOfTheWeekConstants';
 
 export interface IContext {
   data: string;
@@ -25,7 +26,7 @@ export interface IContext {
 
 export class ClinicDetailsComponent implements OnInit {
   @ViewChild('clinicScheduleModalFromDetails') 
-  public cinicScheduleModalTemplate: ModalTemplate<IContext, string, string>
+  public clinicScheduleModalTemplate: ModalTemplate<IContext, string, string>
 
   myTitle = "Clinic";
   CLASSNAME: string = this.constructor.name;
@@ -43,6 +44,8 @@ export class ClinicDetailsComponent implements OnInit {
   selectedClinic : Clinic;
   isAddSelected: boolean = false;
   modalTitle: string = "";
+
+  daysOfTheWeekList = AllDaysOfTheWeek;
 
   constructor(
     private location: Location,
@@ -246,7 +249,7 @@ export class ClinicDetailsComponent implements OnInit {
    */
   public openClinicScheduleFromDetails(isAddSelected:boolean) {
     console.log("OPEN ADD CLINIC SCHEDULE FROM DETAILS");
-    const config = new TemplateModalConfig<IContext, string, string>(this.cinicScheduleModalTemplate);
+    const config = new TemplateModalConfig<IContext, string, string>(this.clinicScheduleModalTemplate);
 
     if(isAddSelected){
       console.log('Add Selected');
@@ -269,7 +272,7 @@ export class ClinicDetailsComponent implements OnInit {
 
   public editClinicScheduleFromDetails(selectedClinicSchedule:ClinicScheduleModel) {
     console.log("OPEN ADD CLINIC SCHEDULE FROM DETAILS");
-    const config = new TemplateModalConfig<IContext, string, string>(this.cinicScheduleModalTemplate);
+    const config = new TemplateModalConfig<IContext, string, string>(this.clinicScheduleModalTemplate);
     console.log(selectedClinicSchedule);
     console.log('Edit Selected' +  selectedClinicSchedule.clinicDay);
     this.modalTitle = "Edit Clinic Schedule";
@@ -297,7 +300,7 @@ export class ClinicDetailsComponent implements OnInit {
    * @return void
    */
   addClinicSchedule() {
-
+    
   }
   editClinicSchedule() {
 

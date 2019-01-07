@@ -54,6 +54,7 @@ export class PdVitalSignsComponent implements OnInit {
       this.logger.info(this.CLASSNAME, "ngOnInit", "Initial Load");
       this.patient = this.patientService.getPatientById();
       this.logger.info(this.CLASSNAME, "ngOnInit", "Initial Load" + this.patient);
+
     }
 
   ngOnInit() {

@@ -37,7 +37,7 @@
         <label for="username">Date</label>
         <div class="ui left icon input">
           <i class="calendar icon"></i>
-          <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="datetime" formControlName="date" name="date" class="form-control" type="date" placeholder="Enter Date" id="date">
+          <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="date" formControlName="date" name="date" class="form-control" type="date" placeholder="Enter Date">
         </div>
       </div>
     </section>
@@ -50,25 +50,11 @@
       </div>
       <div class="prescription-list-wrapper">
         <ul class="list-view-wrapper">
-          <!-- <li class="list-view-item">
-            <div class="item-thumbnail">
-              <i class="mdi mdi-pill"></i>
-            </div>
-            <a class="item-name text-ellipsis">Sample Prescription 001</a>
-            <span class="item-desc text-ellipsis">Description....</span>
-          </li>
-          <li class="list-view-item">
-            <div class="item-thumbnail">
-              <i class="mdi mdi-pill"></i>
-            </div>
-            <a class="item-name text-ellipsis">Sample Prescription 001</a>
-            <span class="item-desc text-ellipsis">Description...</span>
-          </li> -->
           <li class="list-view-item" *ngFor="let med of medicineModel ; let i = index">
             <div class="item-thumbnail">
               <i class="mdi mdi-pill"></i>
             </div>
-            <a class="item-name text-ellipsis">Index:{{i}} {{med.medicine}}</a>
+            <a class="item-name text-ellipsis">{{med.medicine}}</a>
             <span class="item-desc text-ellipsis">{{med.note}}</span>
           </li>
         </ul>
@@ -79,7 +65,7 @@
         <label for="username">Follow Up Date</label>
         <div class="ui left icon input">
           <i class="calendar icon"></i>
-          <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="datetime" formControlName="date" name="date" class="form-control" type="date" placeholder="Enter Date" id="date">
+          <input suiDatepicker pickerUseNativeOnMobile="true" pickerMode="date" formControlName="date" name="date" class="form-control" type="date" placeholder="Enter Date">
         </div>
       </div>
       <div class="form-group">
@@ -96,7 +82,7 @@
 <ng-template class="customModal" let-context let-modal="modal" #addPrescriptionModal>
   <div class="header">Add New Prescription Item</div>
   <div class="content">  
-    <form [formGroup]="medicineForm" (ngSubmit)="addMedicine()">
+    <form [formGroup]="medicineForm">
       <div class="form-group">
         <label>Select medicine from library</label>
         <sui-select class="selection form-control"
@@ -129,9 +115,9 @@
           <label>Form</label>
           <sui-select class="selection form-control"
             [isSearchable]="false" 
-            id="formName" 
-            formControlName="medicineName" 
-            name="formName" 
+            id="form" 
+            formControlName="form" 
+            name="form" 
             placeholder="Select form">
             <sui-select-option value="Form 001"></sui-select-option>
             <sui-select-option value="Form 001"></sui-select-option>
@@ -181,11 +167,11 @@
             <div class="split-container">
               <div class="form-group">
                 <label for="username">Start Date</label>
-                <input formControlName="startDate" name="startDate" class="form-control" id="date" type="date">
+                <input formControlName="startDate" name="startDate" class="form-control" type="date">
               </div>
               <div class="form-group">
                 <label for="username">End Date</label>
-                <input formControlName="endDate" name="endDate" class="form-control" id="date" type="date">
+                <input formControlName="endDate" name="endDate" class="form-control" type="date">
               </div>
             </div>
           </div>
@@ -195,8 +181,7 @@
   </div>
   <div class="actions">
     <button class="ui  button" (click)="modal.deny('denied')">Back</button>
-    <!-- <button class="ui green button" (click)="modal.approve('approved')" autofocus>Add New Schedule</button> -->
-    <button class="ui green button" (click)="addMedicine()" autofocus>Add New Medicine</button>
+    <button class="ui green button" (click)="modal.approve('approved')" autofocus>Add New Medicine</button>
   </div>
 
 </ng-template>

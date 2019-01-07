@@ -12,11 +12,11 @@
 <div class="content-wrapper">
 	<sui-tabset>
 		<div class="ui top attached tabular menu">
-			<a class="item" suiTabHeader="1" isActive="true">Consultation</a>
-			<a class="item" suiTabHeader="2">Personal Profile</a>
-			<a class="item" suiTabHeader="3">Heath Profile</a>
-			<a class="item" suiTabHeader="4">Vital Signs</a>
-			<a class="item" suiTabHeader="5">Health Records</a>
+			<a class="item" suiTabHeader="1" [(isActive)]="consultationTabActive" (click)="consultationTabClicked()">Consultation</a>
+			<a class="item" suiTabHeader="2" [(isActive)]="personalProfileTabActive" (click)="personalProfileTabClicked()">Personal Profile</a>
+			<a class="item" suiTabHeader="3" [(isActive)]="healthProfileTabActive" (click)="healthProfileTabClicked()">Health Profile</a>
+			<a class="item" suiTabHeader="4" [(isActive)]="vitalSignsTabActive" (click)="vitalSignsTabClicked()">Vital Signs</a>
+			<a class="item" suiTabHeader="5" [(isActive)]="healthRecordTabActive" (click)="healthRecordTabClicked()">Health Records</a>
 		</div>
 		<!-- Consultation Tab -->
 		<div class="ui bottom attached segment" suiTabContent="1">

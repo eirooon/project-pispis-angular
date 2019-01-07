@@ -120,7 +120,8 @@ export class PdConsultationPrescriptionComponent implements OnInit {
     this.modalService
       .open(config)
       .onApprove(result => {
-        
+        this.logger.info(this.CLASSNAME, "openAddPrescriptionModal", "Approve");
+        this.addMedicine();
       })
       .onDeny(result => {
         this.logger.info(this.CLASSNAME, "openAddPrescriptionModal", "Cancel");

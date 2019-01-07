@@ -40,13 +40,17 @@
       </div>
       <div class="form-group">
         <label for="address">From</label>
-        <input type="time" placeholder="00:00" id="startTime"  formControlName="startTime" class="form-control">
+        <div class="ui left icon input">
+          <i class="time icon"></i>
+          <input suiDatepicker pickerUseNativeOnMobile="true" id="startTime" pickerMode="time" formControlName="startTime" name="time" class="form-control" placeholder="Enter Start Time">
+      </div>
+        <!-- <input type="time" placeholder="00:00" id="startTime"  formControlName="startTime" class="form-control"> -->
       </div>
       <div class="form-group">
         <label for="address">To</label>
         <input type="time" placeholder="00:00" id="endTime"  formControlName="endTime" class="form-control">
       </div>
-        <button class="btn btn-primary btn-wide" type="submit" [disabled]="!this.clinicScheduleForm.valid">Add Clinic Schedule</button> 
+      <button class="btn btn-primary btn-wide" type="submit" [disabled]="!this.clinicScheduleForm.valid">Add Clinic Schedule</button> 
     </section>
   </form>
 </div>

@@ -28,6 +28,8 @@ export class PatientComponent implements OnInit {
 
   CLASSNAME: string = this.constructor.name;
 
+  tabname = "consultation";
+  
   constructor(
     private router: Router,
     private patientService: PatientService,
@@ -112,7 +114,7 @@ export class PatientComponent implements OnInit {
    * @return void
    */
   setPatientDetails(event, patient: Patient) {
-    localStorage.removeItem("ptId");
+    // localStorage.removeItem("ptId");
     this.patientService.setPatient(patient);
   }
 

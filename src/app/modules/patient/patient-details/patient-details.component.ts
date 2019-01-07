@@ -6,6 +6,9 @@ import { AuthService } from '../../../shared/service/auth.service';
 import { PatientService } from '../../../shared/service/patient.service';
 import { Logger } from '../../../shared/service/logger.service';
 import { ConsultationTextModel } from '../../../shared/models/consulationModel';
+import { SharedModule } from '../../../shared/shared.module';
+
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-details',
@@ -15,15 +18,21 @@ import { ConsultationTextModel } from '../../../shared/models/consulationModel';
   host: { '[@fadeAnimation]': '' }
 })
 export class PatientDetailsComponent implements OnInit {
+  consultationTabActive = true;
+  patientProfileTabActive = false;
+  healthProfileTabActive = false;
+  vitalSignsTabActive = false;
+  healthRecordTabActive = false;
+  tabname:String;
 
   CLASSNAME: string = this.constructor.name;
 
   constructor(
     private location: Location,
-    private consultationService: ConsultationService,
-    private authService: AuthService,
     private patientService: PatientService,
-    private logger: Logger
+    private logger: Logger,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.ngOnInit();
   }
@@ -34,10 +43,14 @@ export class PatientDetailsComponent implements OnInit {
    * @return void
    */
   ngOnInit() {
-    this.logger.info(this.CLASSNAME, "ngOnInit", "Patient Details Load");
+    this.logger.info(this.CLASSNAME, "ngOnInit", this.patientService.getPatient().id);
     localStorage.setItem("ptId", this.patientService.getPatient().id);
-  }
 
+    this.route.paramMap.subscribe(params => {
+      console.log("PARAMS: ", params.get('tabname'));
+    });
+  }
+  
   /**
    * Method: goBack
    * Description: Go Back to previous page
@@ -46,4 +59,45 @@ export class PatientDetailsComponent implements OnInit {
   goBack() {
     this.location.back();
   }
+
+  consultationTabClicked(){
+    this.consultationTabActive = true;
+    this.patientProfileTabActive = false;
+    this.healthProfileTabActive = false;
+    this.vitalSignsTabActive = false;
+    this.healthRecordTabActive = false;
+
+  }
+  personalProfileTabClicked(){
+    this.consultationTabActive = false;
+    this.patientProfileTabActive = true;
+    this.healthProfileTabActive = false;
+    this.vitalSignsTabActive = false;
+    this.healthRecordTabActive = false;
+  }
+  healthProfileTabClicked(){
+    this.consultationTabActive = false;
+    this.patientProfileTabActive = false;
+    this.healthProfileTabActive = true;
+    this.vitalSignsTabActive = false;
+    this.healthRecordTabActive = false;
+  }
+  vitalSignsTabClicked(){
+    this.consultationTabActive = false;
+    this.patientProfileTabActive = false;
+    this.healthProfileTabActive = false;
+    this.vitalSignsTabActive = true;
+    this.healthRecordTabActive = false;
+  }
+
+  healthRecordTabClicked(){
+    this.consultationTabActive = false;
+    this.patientProfileTabActive = false;
+    this.healthProfileTabActive = false;
+    this.vitalSignsTabActive = false;
+    this.healthRecordTabActive = true;
+  }
+
+
+
 }

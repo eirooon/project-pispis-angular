@@ -21,6 +21,9 @@ export class TemplatePreviewComponent implements OnInit {
   printPreview(){
     window.print();
     // mywindow.close();
-    
+  }
+
+  cancel(){
+    this.router.navigate(['/templates/template-details']);
   }
 }

@@ -5,6 +5,7 @@ import { Allergy } from '../../../../shared/models/allergyModel';
 import { AllergyService } from '../../../../shared/service/allergy.service';
 import { PatientService } from '../../../../shared/service/patient.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pd-health-profile-allergy',
@@ -24,7 +25,8 @@ export class PdHealthProfileAllergyComponent implements OnInit {
     private patientService: PatientService,
     private location: Location,
     private logger: Logger,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.ngOnInit();
     this.initializeAllergy();
@@ -79,7 +81,7 @@ export class PdHealthProfileAllergyComponent implements OnInit {
     //Check for valid inputs
     this.allergyService.addAllergy(this.allergy);
     this.logger.info(this.CLASSNAME, "addAllergy", "Allergy ID: [" + this.allergy.id + "] Adding done");
-    this.goBack();
+    this.router.navigate(['/patient/patient-details']);
   }
 
   /**
@@ -90,6 +92,6 @@ export class PdHealthProfileAllergyComponent implements OnInit {
   editAllergy() {
     this.allergyService.updateAllergy(this.allergy);
     this.logger.info(this.CLASSNAME, "updateAllergy", "Allergy ID: [" + this.allergy.id + "] Update done");
-    this.goBack();
+    this.router.navigate(['/patient/patient-details']);
   }
 }

@@ -45,7 +45,6 @@ export class PdPersonalProfileComponent implements OnInit {
    */
   editPatientDetails() {
     this.patientService.updatePatient(this.patient);
-    this.router.navigateByUrl('/patient');
     this.logger.info(this.CLASSNAME, "editPatientDetails", "Patient Profile Edited.");
   }
 

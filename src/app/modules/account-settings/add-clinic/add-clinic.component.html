@@ -124,36 +124,33 @@
         <form [formGroup]="clinicScheduleForm" id="clinicScheduleFormID" (ngSubmit)="addClinicSchedule()">
               <div class="form-group">
                 <label>Day</label>
-                <input type="text" placeholder="Choose Day" list="daysOfTheWeekList" id="clinicDay" formControlName="clinicDay" data-list-filter="^"
-                    class="form-control" autofocus>
-                <datalist id="daysOfTheWeekList">
-                    <select>
-                        <option *ngFor="let clinicDay of daysOfTheWeekList" value="{{clinicDay.day}}"></option>
-                    </select>
-
-                </datalist>
+                <sui-select id="clinicDay"  class="selection form-control"
+                [isSearchable]="false" formControlName="clinicDay" required>
+                    <sui-select-option *ngFor="let clinicDay of daysOfTheWeekList" value="{{clinicDay.day}}"></sui-select-option>
+                </sui-select>
               </div>
               <div class="form-group">
                 <label>Clinic Type</label>
-                <input type="text" placeholder="No Clinic" 
-                list="clinicTypeList" 
-                id="clinicType" 
-                formControlName="clinicType" data-list-filter="^" class="form-control">
-                <datalist id="clinicTypeList">
-                  <select>
-                    <option value="No Clinic"></option>
-                    <option value="Appointment"></option>
-                    <option value="Walk-in"></option>
-                  </select>
-                </datalist>
+                <sui-select id="clinicType"  class="selection form-control"
+                [isSearchable]="false" formControlName="clinicType" required>
+                    <sui-select-option value="No Clinic"></sui-select-option>
+                    <sui-select-option value="Appointment"></sui-select-option>
+                    <sui-select-option value="Walk-in"></sui-select-option>
+                </sui-select>
               </div>
               <div class="form-group">
-                <label for="address">From</label>
-                <input type="time" placeholder="00:00" id="startTime"  formControlName="startTime" class="form-control">
+                <label for="from">From</label>
+                <div class="ui left icon input">
+                  <i class="time icon"></i>
+                  <input suiDatepicker pickerUseNativeOnMobile="true" id="startTime" pickerMode="time" formControlName="startTime" name="time" class="form-control" placeholder="Enter Start Time">
+                </div>
               </div>
               <div class="form-group">
-                <label for="address">To</label>
-                <input type="time" placeholder="00:00" id="endTime"  formControlName="endTime" class="form-control">
+                <label for="to">To</label>
+                <div class="ui left icon input">
+                    <i class="time icon"></i>
+                    <input suiDatepicker pickerUseNativeOnMobile="true" id="endTime" pickerMode="time" formControlName="endTime" name="time" class="form-control" placeholder="Enter End Time">
+                  </div>
               </div>
           </form>
     </div>

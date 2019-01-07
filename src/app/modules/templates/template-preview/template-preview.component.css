@@ -1,0 +1,10 @@
+.btn-print{
+}
+.button-wrapper{
+    margin: 150px 10px 10px;
+    width: 95%;
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}

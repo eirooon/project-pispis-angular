@@ -1,12 +1,11 @@
 <div class="form-inputs">
   <div class="form-group">
     <label>Patient Type*</label>
-    <input
-      class="form-control"
-      type="text"
-      value="{{patient.type}}"
-      [(ngModel)]="patient.type"
-    />
+    <sui-select class="selection form-control"
+    [isSearchable]="false" [(ngModel)]="patient.type" placeholder="patient.type" required>
+        <sui-select-option value="In-Patient"></sui-select-option>
+        <sui-select-option value="Out-Patient"></sui-select-option>
+    </sui-select>
   </div>
   <div class="form-group">
     <label>First Name*</label>

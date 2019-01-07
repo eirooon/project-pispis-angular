@@ -289,8 +289,7 @@ export class AddClinicComponent implements OnInit {
       this.removeDocument(this.clinicScheduleModel.clinicDay);
       this.resetForm();
     }
-  }
-
+  } 
   /**
    * Method: removeDocument
    * Description: Remove document

@@ -4,6 +4,7 @@ import { Logger } from '../../../../shared/service/logger.service';
 import { Menstrual } from '../../../../shared/models/menstrualModel';
 import { MenstrualService } from '../../../../shared/service/menstrual.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pd-health-profile-menstrual-history',
@@ -23,6 +24,7 @@ export class PdHealthProfileMenstrualHistoryComponent implements OnInit {
     private menstrualService: MenstrualService,
     private logger: Logger,
     private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.ngOnInit();
     this.initializeMenstrual();
@@ -85,7 +87,7 @@ export class PdHealthProfileMenstrualHistoryComponent implements OnInit {
     if (!this.isEdit) {
       this.menstrualService.addMenstrual(this.menstrual);
       this.logger.info(this.CLASSNAME, "addMenstrual", "Menstrual ID: [" + this.menstrual.id + "] Adding done");
-      this.goBack();
+      this.router.navigate(['/patient/patient-details']);
     } else {
       this.editMenstrual();
     }
@@ -100,6 +102,6 @@ export class PdHealthProfileMenstrualHistoryComponent implements OnInit {
   editMenstrual() {
     this.menstrualService.updateMenstrual(this.menstrual);
     this.logger.info(this.CLASSNAME, "editMenstrual", "Menstrual ID: [" + this.menstrual.id + "] Update done");
-    this.goBack();
+    this.router.navigate(['/patient/patient-details']);
   }
 }
